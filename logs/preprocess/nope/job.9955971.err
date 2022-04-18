@@ -1,0 +1,12 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER
+/share/software/tools/miniconda/3.8/4.9.2/etc/profile.d/conda.sh: line 81: 3832281 Killed                  "$CONDA_EXE" $_CE_M $_CE_CONDA "$cmd" "$@"
+/var/spool/slurmd/job9955971/slurm_script: line 45: 3835250 Killed                  pip install -e /home/smaijer/code/nnUNet
+slurmstepd: error: *** JOB 9955971 ON res-hpc-gpu02 CANCELLED AT 2022-04-15T08:36:37 ***
+slurmstepd: error: Detected 2 oom-kill event(s) in StepId=9955971.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

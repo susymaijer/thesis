@@ -1,0 +1,36 @@
+Starting at Fri Apr 15 08:26:59 CEST 2022
+Running on hosts: res-hpc-gpu02
+Running on 1 nodes.
+Running 1 tasks.
+Account: div2-lkeb
+Job ID: 9955971
+Job name: NIHPancreasPreprocess
+Node running script: res-hpc-gpu02
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Fri Apr 15 08:26:59 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA TITAN Xp     On   | 00000000:AF:00.0 Off |                  N/A |
+| 23%   24C    P8     8W / 250W |      0MiB / 12196MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+Installing nnU-net..
