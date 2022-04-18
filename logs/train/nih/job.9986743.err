@@ -1,0 +1,9 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER
+slurmstepd: error: *** JOB 9986743 ON res-hpc-lkeb04 CANCELLED AT 2022-04-18T12:40:52 DUE TO TIME LIMIT ***
