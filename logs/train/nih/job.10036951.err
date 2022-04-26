@@ -1,0 +1,10 @@
+/var/spool/slurmd/job10036951/slurm_script: line 35: ll: command not found
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER
+rm: cannot remove '/tmp/NIHPancreasTrain': No such file or directory

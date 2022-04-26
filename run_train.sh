@@ -27,7 +27,7 @@ echo "#!/bin/bash
 #SBATCH --cpus-per-task=$cpu
 #SBATCH --time=$t
 #SBATCH --mem=32GB
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:RTX6000:1
 #SBATCH --error=/home/smaijer/logs/train/nih/job.%J.err
 #SBATCH --output=/home/smaijer/logs/train/nih/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL

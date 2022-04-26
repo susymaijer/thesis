@@ -1,0 +1,20 @@
+mkdir: cannot create directory ‘/tmp/NIHPancreasTrain’: File exists
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 137, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/NIHPancreasTrain/Task500_NIH_Pancreas/nnUNetPlansv2.1_plans_3D.pkl'
+rm: cannot remove '/tmp/NIHPancreasTrain': Is a directory

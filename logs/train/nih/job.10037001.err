@@ -1,0 +1,11 @@
+mkdir: cannot create directory ‘/tmp/NIHPancreasTrainTEST’: File exists
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER
+mv: inter-device move failed: '/tmp/NIHPancreasTrainTEST' to '/home/smaijer/NIHPancreasTrainTEST'; unable to remove target: Directory not empty
+rm: cannot remove '/tmp/NIHPancreasTrainTEST': Is a directory
