@@ -1,0 +1,10 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER
+usage: Used to determine the postprocessing for a trained model. Useful for when the best configuration (2d, 3d_fullres etc) as selected manually.
+nnUNet_determine_postprocessing: error: the following arguments are required: -m

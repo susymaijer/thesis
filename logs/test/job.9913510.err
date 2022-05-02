@@ -1,7 +1,0 @@
-
-Currently Loaded Modules:
-  1) tools/miniconda/python3.8/4.8.5
-
- 
-
-/var/spool/slurmd/job9913510/slurm_script: line 35: hello.sh: command not found
