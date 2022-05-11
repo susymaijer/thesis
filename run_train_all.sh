@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Make predictions for a specific folder. We do this either for training images or test images!"
+echo "Perform training for all folds."
 echo ""
 
 read -p "Enter task:" task
@@ -8,31 +8,24 @@ read -p "Enter task:" task
 read -p "Default partition is LKEBgpu. If not desired, type other partition name:" p
 p=${p:-LKEBgpu}
 
-read -p "Default cpu amount is 6. If not desired, type other amount:" cpu
-cpu=${cpu:-6}
-
-read -p "Default wall time is 01:00:00. If not desired, type other wall time:" t
-t=${t:-01:00:00}
+read -p "Default cpu amount is 8. If not desired, type other amount:" cpu
+cpu=${cpu:-8}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
-read -p "Enter folder suffix [Ts, Tr]:" tstr
-
-# We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/inference_${task}_${p}_${cpu}_${config}_${tstr}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/train_${task}_${p}_${cpu}_${config}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
-#SBATCH -J PancreasInference
+#SBATCH -J PancreasTrain
 #SBATCH -p $p
 #SBATCH -N 1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=$cpu
-#SBATCH --time=$t
 #SBATCH --mem=32GB
 #SBATCH --gres=gpu:RTX6000:1
-#SBATCH --error=/home/smaijer/logs/inference/$task/job.%J.err
-#SBATCH --output=/home/smaijer/logs/inference/$task/job.%J.out
+#SBATCH --error=/home/smaijer/logs/train/$task/job.%J.err
+#SBATCH --output=/home/smaijer/logs/train/$task/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=susy.maijer@lumc.nl
 
@@ -64,12 +57,11 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
-mkdir $OUTPUT/$task/
-mkdir $OUTPUT/$task/$config/
-mkdir $OUTPUT/$task/$config/images$tstr
-mkdir $OUTPUT/$task/$config/images$tstr/inference 
-
-nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/images$tstr -o $OUTPUT/$task/$config/images$tstr/inference -t $task -m $config
+nnUNet_train $config nnUNetTrainerV2 $task 0
+nnUNet_train $config nnUNetTrainerV2 $task 1
+nnUNet_train $config nnUNetTrainerV2 $task 2
+nnUNet_train $config nnUNetTrainerV2 $task 3
+nnUNet_train $config nnUNetTrainerV2 $task 4
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

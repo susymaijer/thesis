@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "Evaluate a specific folder (either test cases or training cases)."
+
+read -p "Enter task:" task
+
 read -p "Default cpu amount is 6. If not desired, type other amount:" cpu
 cpu=${cpu:-6}
 
@@ -8,19 +12,21 @@ t=${t:-00:30:00}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
+read -p "Enter folder suffix [Ts, Tr]:" tstr
+
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/evalfolder_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/evalfolder_${task}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
-#SBATCH -J NIHPancreasEvalFolder
+#SBATCH -J PancreasEvalFolder
 #SBATCH -N 1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=$cpu
 #SBATCH --time=$t
 #SBATCH --mem=12GB
-#SBATCH --error=/home/smaijer/logs/evalfolder/500/job.%J.err
-#SBATCH --output=/home/smaijer/logs/evalfolder/500/job.%J.out
+#SBATCH --error=/home/smaijer/logs/evalfolder/$task/job.%J.err
+#SBATCH --output=/home/smaijer/logs/evalfolder/$task/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=susy.maijer@lumc.nl
 
@@ -52,7 +58,7 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
-nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task500_NIH_Pancreas/labelsTr -pred $OUTPUT/500/$config/inference -l 1
+nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labels$tstr -pred $OUTPUT/$task/$config/images$tstr/inference -l 1
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

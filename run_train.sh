@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "Perform training for a specific fold."
+echo ""
+
+read -p "Enter task:" task
+
 read -p "Default partition is LKEBgpu. If not desired, type other partition name:" p
 p=${p:-LKEBgpu}
 
@@ -17,10 +22,10 @@ read -p "Enter -c if you want to continue:" c
 
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/train_${p}_${cpu}_${config}_${fold}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/train_${task}_${p}_${cpu}_${config}_${fold}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
-#SBATCH -J NIHPancreasTrain
+#SBATCH -J PancreasTrain
 #SBATCH -p $p
 #SBATCH -N 1
 #SBATCH --ntasks=1
@@ -28,8 +33,8 @@ echo "#!/bin/bash
 #SBATCH --time=$t
 #SBATCH --mem=32GB
 #SBATCH --gres=gpu:RTX6000:1
-#SBATCH --error=/home/smaijer/logs/train/500/job.%J.err
-#SBATCH --output=/home/smaijer/logs/train/500/job.%J.out
+#SBATCH --error=/home/smaijer/logs/train/$task/job.%J.err
+#SBATCH --output=/home/smaijer/logs/train/$task/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=susy.maijer@lumc.nl
 
@@ -61,7 +66,7 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
-nnUNet_train $config nnUNetTrainerV2 500 $fold $c --npz
+nnUNet_train $config nnUNetTrainerV2 $task $fold $c
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

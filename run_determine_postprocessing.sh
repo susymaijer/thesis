@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "Determine postprocessing (only done once!)"
+echo ""
+
+read -p "Enter task:" task
+
 read -p "Default partition is LKEBgpu. If not desired, type other partition name:" p
 p=${p:-LKEBgpu}
 
@@ -13,10 +18,10 @@ read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/postprocess_${p}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/postprocess_${task}_${p}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
-#SBATCH -J NIHPancreasDeterminePostprocess
+#SBATCH -J PancreasDeterminePostprocess
 #SBATCH -p $p
 #SBATCH -N 1
 #SBATCH --ntasks=1
@@ -24,8 +29,8 @@ echo "#!/bin/bash
 #SBATCH --time=$t
 #SBATCH --mem=32GB
 #SBATCH --gres=gpu:RTX6000:1
-#SBATCH --error=/home/smaijer/logs/postprocess/500/job.%J.err
-#SBATCH --output=/home/smaijer/logs/postprocess/500/job.%J.out
+#SBATCH --error=/home/smaijer/logs/postprocess/$task/job.%J.err
+#SBATCH --output=/home/smaijer/logs/postprocess/$task/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=susy.maijer@lumc.nl
 
@@ -57,7 +62,7 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
-nnUNet_determine_postprocessing -t 500 -m $config
+nnUNet_determine_postprocessing -t $task -m $config
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

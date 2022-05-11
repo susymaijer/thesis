@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "For each image, plot the slices with the most foreground."
+echo ""
+
+read -p "Enter task:" task
+
 read -p "Default cpu amount is 6. If not desired, type other amount:" cpu
 cpu=${cpu:-6}
 
@@ -8,17 +13,17 @@ t=${t:-00:10:00}
 
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/plot_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/plot_${task}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
-#SBATCH -J NIHPancreasPlot
+#SBATCH -J PancreasPlot
 #SBATCH -N 1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=$cpu
 #SBATCH --time=$t
 #SBATCH --mem=12GB
-#SBATCH --error=/home/smaijer/logs/plot/500/job.%J.err
-#SBATCH --output=/home/smaijer/logs/plot/500/job.%J.out
+#SBATCH --error=/home/smaijer/logs/plot/$task/job.%J.err
+#SBATCH --output=/home/smaijer/logs/plot/$task/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=susy.maijer@lumc.nl
 
@@ -50,7 +55,10 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
-nnUNet_plot_task_pngs -t 500 -o $OUTPUT/500/plot
+mkdir $OUTPUT/$task
+mkdir $OUTPUT/$task/plot
+
+nnUNet_plot_task_pngs -t $task -o $OUTPUT/$task/plot
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file
