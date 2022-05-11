@@ -1,0 +1,18 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_evaluate_folder", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_evaluate_folder')())
+  File "/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py", line 483, in nnunet_evaluate_folder
+    return evaluate_folder(args.ref, args.pred, args.l)
+  File "/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py", line 455, in evaluate_folder
+    files_pred = subfiles(folder_with_predictions, suffix=".nii.gz", join=False)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 40, in subfiles
+    res = [l(folder, i) for i in os.listdir(folder) if os.path.isfile(os.path.join(folder, i))
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/output/501/3d_lowres/inference'
