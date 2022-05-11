@@ -1,0 +1,10 @@
+500- NIH, all data used for training 
+501- NIH, held-out testset of 12 images
+510- MSD
+600- amos, MRI only, pancreas only 
+601- amos, MRI only, pancreas + 1 other organ
+602- amos, MRI only, pancreas + 2 other organs
+610- amos, CT+MRI, pancreas only 
+611- amos, CT+MRI, pancreas + 1 other organ
+612- amos, CT+MRI, pancreas + 2 other organs
+
