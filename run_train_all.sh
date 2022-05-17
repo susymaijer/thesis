@@ -13,6 +13,14 @@ cpu=${cpu:-8}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
+
+if [ $config != "3d_cascade_fullres" ]; then
+   trainer="nnUNetTrainerV2"
+fi
+if [ $config == "3d_cascade_fullres" ]; then
+   trainer="nnUNetTrainerV2CascadeFullRes"
+fi
+
 job_directory=/home/smaijer/slurm/jobs/
 job_file="${job_directory}/train_${task}_${p}_${cpu}_${config}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
@@ -57,11 +65,19 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
-nnUNet_train $config nnUNetTrainerV2 $task 0
-nnUNet_train $config nnUNetTrainerV2 $task 1
-nnUNet_train $config nnUNetTrainerV2 $task 2
-nnUNet_train $config nnUNetTrainerV2 $task 3
-nnUNet_train $config nnUNetTrainerV2 $task 4
+echo "Train all the folds.."
+nnUNet_train $config $trainer $task 0
+nnUNet_train $config $trainer $task 1
+nnUNet_train $config $trainer $task 2
+nnUNet_train $config $trainer $task 3
+nnUNet_train $config $trainer $task 4
+
+echo "Done training all the folds! Now we do the same command but with continue option, to generate log files".
+nnUNet_train $config $trainer $task 0 -c
+nnUNet_train $config $trainer $task 1 -c
+nnUNet_train $config $trainer $task 2 -c
+nnUNet_train $config $trainer $task 3 -c
+nnUNet_train $config $trainer $task 4 -c
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

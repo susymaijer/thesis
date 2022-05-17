@@ -55,8 +55,7 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
-mkdir $OUTPUT/$task
-mkdir $OUTPUT/$task/plot
+mkdir -p $OUTPUT/$task/plot
 
 nnUNet_plot_task_pngs -t $task -o $OUTPUT/$task/plot
 

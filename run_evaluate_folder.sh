@@ -2,7 +2,9 @@
 
 echo "Evaluate a specific folder (either test cases or training cases)."
 
-read -p "Enter task:" task
+read -p "Enter task (model):" task
+
+read -p "Enter task (evaluation folder)": taskPredict
 
 read -p "Default cpu amount is 6. If not desired, type other amount:" cpu
 cpu=${cpu:-6}
@@ -16,7 +18,7 @@ read -p "Enter folder suffix [Ts, Tr]:" tstr
 
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/evalfolder_${task}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/evalfolder_${task}_${config}_${taskPredict}_${tstr}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
 #SBATCH -J PancreasEvalFolder
@@ -58,7 +60,7 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
-nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labels$tstr -pred $OUTPUT/$task/$config/images$tstr/inference -l 1
+nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/labels$tstr -pred $OUTPUT/$task/$config/$taskPredict/images$tstr -l 1
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file
