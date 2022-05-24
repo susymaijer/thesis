@@ -20,6 +20,13 @@ read -p "Enter fold:" fold
 
 read -p "Enter -c if you want to continue:" c
 
+if [ $config != "3d_cascade_fullres" ]; then
+   trainer="nnUNetTrainerV2"
+fi
+if [ $config == "3d_cascade_fullres" ]; then
+   trainer="nnUNetTrainerV2CascadeFullRes"
+fi
+
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
 job_file="${job_directory}/train_${task}_${p}_${cpu}_${config}_${fold}_$(date +"%Y_%m_%d_%I_%M_%p").job"
@@ -66,7 +73,7 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
-nnUNet_train $config nnUNetTrainerV2 $task $fold $c
+nnUNet_train $config $trainer $task $fold $c
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file
