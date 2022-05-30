@@ -62,6 +62,8 @@ echo \"Activate conda env nnunet..\"
 conda activate nn
 echo \"Verifying environment variables:\"
 conda env config vars list
+echo "Installing hiddenlayer.."
+pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/code/nnUNet
 
