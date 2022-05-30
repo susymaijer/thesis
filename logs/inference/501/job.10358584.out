@@ -1,0 +1,2821 @@
+Starting at Sun May 29 14:23:34 CEST 2022
+Running on hosts: res-hpc-lkeb06
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 6.
+Account: div2-lkeb
+Job ID: 10358584
+Job name: PancreasInferenceEval
+Node running script: res-hpc-lkeb06
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Mon May 30 13:53:22 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.82.01    Driver Version: 470.82.01    CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 6000     Off  | 00000000:AF:00.0 Off |                  Off |
+| 34%   32C    P0    65W / 260W |      0MiB / 24220MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+nnUNet_raw_data_base = /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base
+nnUNet_preprocessed = /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed
+RESULTS_FOLDER = /exports/lkeb-hpc/smaijer/results
+OUTPUT = /exports/lkeb-hpc/smaijer/output
+Installing nnU-net..
+Obtaining file:///home/smaijer/code/nnUNet
+Requirement already satisfied: torch>1.10.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.11.0)
+Requirement already satisfied: tqdm in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (4.64.0)
+Requirement already satisfied: dicom2nifti in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.3.2)
+Requirement already satisfied: scikit-image>=0.14 in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.19.2)
+Requirement already satisfied: medpy in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.4.0)
+Requirement already satisfied: scipy in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.8.0)
+Requirement already satisfied: batchgenerators>=0.23 in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.23)
+Requirement already satisfied: numpy in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.21.2)
+Requirement already satisfied: sklearn in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.0)
+Requirement already satisfied: SimpleITK in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.1.1)
+Requirement already satisfied: pandas in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: requests in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.27.1)
+Requirement already satisfied: nibabel in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.2.2)
+Requirement already satisfied: tifffile in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2022.4.8)
+Requirement already satisfied: matplotlib in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.5.1)
+Requirement already satisfied: pillow>=7.1.2 in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (9.0.1)
+Requirement already satisfied: threadpoolctl in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (3.1.0)
+Requirement already satisfied: future in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (0.18.2)
+Requirement already satisfied: scikit-learn in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.0.2)
+Requirement already satisfied: unittest2 in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Requirement already satisfied: packaging>=20.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (21.3)
+Requirement already satisfied: PyWavelets>=1.1.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (1.3.0)
+Requirement already satisfied: networkx>=2.2 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.8)
+Requirement already satisfied: imageio>=2.4.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.16.2)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in ./.conda/envs/nn/lib/python3.9/site-packages (from packaging>=20.0->scikit-image>=0.14->nnunet==1.7.0) (3.0.8)
+Requirement already satisfied: typing_extensions in ./.conda/envs/nn/lib/python3.9/site-packages (from torch>1.10.0->nnunet==1.7.0) (4.1.1)
+Requirement already satisfied: pydicom>=1.3.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from dicom2nifti->nnunet==1.7.0) (2.3.0)
+Requirement already satisfied: python-dateutil>=2.7 in ./.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (2.8.2)
+Requirement already satisfied: cycler>=0.10 in ./.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (0.11.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: fonttools>=4.22.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (4.32.0)
+Requirement already satisfied: six>=1.5 in ./.conda/envs/nn/lib/python3.9/site-packages (from python-dateutil>=2.7->matplotlib->nnunet==1.7.0) (1.16.0)
+Requirement already satisfied: setuptools in ./.conda/envs/nn/lib/python3.9/site-packages (from nibabel->nnunet==1.7.0) (58.0.4)
+Requirement already satisfied: pytz>=2020.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from pandas->nnunet==1.7.0) (2022.1)
+Requirement already satisfied: charset-normalizer~=2.0.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in ./.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (3.3)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (1.26.8)
+Requirement already satisfied: certifi>=2017.4.17 in ./.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2021.10.8)
+Requirement already satisfied: joblib>=0.11 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-learn->batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Requirement already satisfied: traceback2 in ./.conda/envs/nn/lib/python3.9/site-packages (from unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.4.0)
+Requirement already satisfied: linecache2 in ./.conda/envs/nn/lib/python3.9/site-packages (from traceback2->unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.0.0)
+Installing collected packages: argparse, nnunet
+  Attempting uninstall: nnunet
+    Found existing installation: nnunet 1.7.0
+    Uninstalling nnunet-1.7.0:
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+using model stored in  /exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1
+This model expects 1 input modalities for each image
+Found 42 unique case ids, here are some examples: ['panc_092' 'panc_074' 'panc_227' 'panc_100' 'panc_012' 'panc_298'
+ 'panc_089' 'panc_095' 'panc_145' 'panc_378']
+If they don't look right, make sure to double check your filenames. They must end with _0000.nii.gz etc
+number of cases: 42
+number of cases that still need to be predicted: 42
+emptying cuda cache
+loading parameters for folds, None
+folds is None so we will automatically look for output folders (not using 'all'!)
+found the following folds:  ['/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_4']
+Susy hier
+Generic_UNet(
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(640, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (conv_blocks_context): ModuleList(
+    (0): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(1, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (1): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 64, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (2): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (3): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (4): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (5): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (td): ModuleList()
+  (tu): ModuleList(
+    (0): ConvTranspose3d(320, 320, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+    (1): ConvTranspose3d(320, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (4): ConvTranspose3d(64, 32, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(320, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(256, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(128, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(64, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (4): Conv3d(32, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+using the following model files:  ['/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_4/model_final_checkpoint.model']
+starting preprocessing generator
+starting prediction...
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_042.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 31, 62], [0, 87], [0, 60, 119]]
+number of tiles: 18
+computing Gaussian
+done
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 31, 62], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 31, 62], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 31, 62], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 31, 62], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_012.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 135, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 55], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 135, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 55], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 135, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 55], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 135, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 55], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 135, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 55], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_006.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 140, 254, 254)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 60], [0, 62], [0, 47, 94]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 140, 254, 254)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 60], [0, 62], [0, 47, 94]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 140, 254, 254)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 60], [0, 62], [0, 47, 94]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 140, 254, 254)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 60], [0, 62], [0, 47, 94]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 140, 254, 254)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 60], [0, 62], [0, 47, 94]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_046.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 67], [0, 50, 99]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 67], [0, 50, 99]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 67], [0, 50, 99]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 67], [0, 50, 99]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 67], [0, 50, 99]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_071.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 65, 97, 130, 162], [0, 67], [0, 50, 99]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 65, 97, 130, 162], [0, 67], [0, 50, 99]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 65, 97, 130, 162], [0, 67], [0, 50, 99]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 65, 97, 130, 162], [0, 67], [0, 50, 99]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 65, 97, 130, 162], [0, 67], [0, 50, 99]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_064.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 296, 296)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 52, 104], [0, 68, 136]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 296, 296)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 52, 104], [0, 68, 136]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 296, 296)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 52, 104], [0, 68, 136]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 296, 296)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 52, 104], [0, 68, 136]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 296, 296)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 52, 104], [0, 68, 136]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_089.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 257, 257)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 65], [0, 48, 97]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 257, 257)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 65], [0, 48, 97]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 257, 257)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 65], [0, 48, 97]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 257, 257)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 65], [0, 48, 97]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 257, 257)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 65], [0, 48, 97]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_088.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 253, 253)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 61], [0, 46, 93]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 253, 253)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 61], [0, 46, 93]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 253, 253)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 61], [0, 46, 93]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 253, 253)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 61], [0, 46, 93]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 253, 253)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 61], [0, 46, 93]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_074.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 103, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23], [0, 67], [0, 50, 99]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 103, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23], [0, 67], [0, 50, 99]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 103, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23], [0, 67], [0, 50, 99]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 103, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23], [0, 67], [0, 50, 99]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 103, 259, 259)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23], [0, 67], [0, 50, 99]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_092.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 256, 267, 267)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 35, 70, 106, 141, 176], [0, 75], [0, 54, 107]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 256, 267, 267)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 35, 70, 106, 141, 176], [0, 75], [0, 54, 107]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 256, 267, 267)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 35, 70, 106, 141, 176], [0, 75], [0, 54, 107]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 256, 267, 267)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 35, 70, 106, 141, 176], [0, 75], [0, 54, 107]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 256, 267, 267)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 35, 70, 106, 141, 176], [0, 75], [0, 54, 107]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_099.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 238, 238)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 46], [0, 78]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 238, 238)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 46], [0, 78]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 238, 238)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 46], [0, 78]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 238, 238)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 46], [0, 78]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 238, 238)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 46], [0, 78]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_095.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_109.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 264, 264)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 72], [0, 52, 104]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 264, 264)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 72], [0, 52, 104]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 264, 264)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 72], [0, 52, 104]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 264, 264)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 72], [0, 52, 104]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 264, 264)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 72], [0, 52, 104]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_104.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 139, 298, 298)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 59], [0, 53, 106], [0, 69, 138]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 139, 298, 298)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 59], [0, 53, 106], [0, 69, 138]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 139, 298, 298)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 59], [0, 53, 106], [0, 69, 138]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 139, 298, 298)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 59], [0, 53, 106], [0, 69, 138]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 139, 298, 298)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30, 59], [0, 53, 106], [0, 69, 138]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_100.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 272, 272)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 80], [0, 56, 112]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 272, 272)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 80], [0, 56, 112]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 272, 272)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 80], [0, 56, 112]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 272, 272)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 80], [0, 56, 112]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 272, 272)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 80], [0, 56, 112]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_111.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 158, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 39, 78], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 158, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 39, 78], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 158, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 39, 78], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 158, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 39, 78], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 158, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 39, 78], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_147.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 243, 243)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 51], [0, 42, 83]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 243, 243)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 51], [0, 42, 83]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 243, 243)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 51], [0, 42, 83]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 243, 243)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 51], [0, 42, 83]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 243, 243)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 51], [0, 42, 83]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_145.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_213.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 311, 311)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 60, 119], [0, 76, 151]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_210.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 293, 293)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 50, 101], [0, 66, 133]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 293, 293)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 50, 101], [0, 66, 133]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 293, 293)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 50, 101], [0, 66, 133]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 293, 293)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 50, 101], [0, 66, 133]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 293, 293)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 50, 101], [0, 66, 133]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_155.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 84], [0, 58, 116]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 84], [0, 58, 116]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 84], [0, 58, 116]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 84], [0, 58, 116]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 132, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 52], [0, 84], [0, 58, 116]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_217.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 149, 275, 275)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 34, 69], [0, 83], [0, 58, 115]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 149, 275, 275)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 34, 69], [0, 83], [0, 58, 115]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 149, 275, 275)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 34, 69], [0, 83], [0, 58, 115]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 149, 275, 275)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 34, 69], [0, 83], [0, 58, 115]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 149, 275, 275)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 34, 69], [0, 83], [0, 58, 115]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_225.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 53], [0, 42, 85]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 53], [0, 42, 85]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 53], [0, 42, 85]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 53], [0, 42, 85]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 53], [0, 42, 85]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_218.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 250, 250)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 58], [0, 45, 90]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 250, 250)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 58], [0, 45, 90]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 250, 250)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 58], [0, 45, 90]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 250, 250)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 58], [0, 45, 90]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 138, 250, 250)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58], [0, 58], [0, 45, 90]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_042.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 51, 512, 512) after crop: (1, 51, 512, 512) spacing: [5.         0.84179699 0.84179699] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.84179699, 0.84179699]), 'spacing_transposed': array([5.        , 0.84179699, 0.84179699]), 'data.shape (data is transposed)': (1, 51, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 142, 279, 279)} 
+
+(1, 142, 279, 279)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_089.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 91, 512, 512) after crop: (1, 91, 512, 512) spacing: [2.5        0.77734399 0.77734399] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.77734399, 0.77734399]), 'spacing_transposed': array([2.5       , 0.77734399, 0.77734399]), 'data.shape (data is transposed)': (1, 91, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 126, 257, 257)} 
+
+(1, 126, 257, 257)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_109.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 99, 512, 512) after crop: (1, 99, 512, 512) spacing: [2.5      0.796875 0.796875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5     , 0.796875, 0.796875]), 'spacing_transposed': array([2.5     , 0.796875, 0.796875]), 'data.shape (data is transposed)': (1, 99, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 138, 264, 264)} 
+
+(1, 138, 264, 264)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_213.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 95, 512, 512) after crop: (1, 95, 512, 512) spacing: [2.5    0.9375 0.9375] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5   , 0.9375, 0.9375]), 'spacing_transposed': array([2.5   , 0.9375, 0.9375]), 'data.shape (data is transposed)': (1, 95, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 132, 311, 311)} 
+
+(1, 132, 311, 311)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_259.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 88, 512, 512) after crop: (1, 88, 512, 512) spacing: [2.5     0.84375 0.84375] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5    , 0.84375, 0.84375]), 'spacing_transposed': array([2.5    , 0.84375, 0.84375]), 'data.shape (data is transposed)': (1, 88, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 122, 279, 279)} 
+
+(1, 122, 279, 279)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_315.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 93, 512, 512) after crop: (1, 93, 512, 512) spacing: [2.5        0.85546899 0.85546899] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.85546899, 0.85546899]), 'spacing_transposed': array([2.5       , 0.85546899, 0.85546899]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 129, 283, 283)} 
+
+(1, 129, 283, 283)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_378.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 93, 512, 512) after crop: (1, 93, 512, 512) spacing: [2.5        0.74023402 0.74023402] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.74023402, 0.74023402]), 'spacing_transposed': array([2.5       , 0.74023402, 0.74023402]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 129, 245, 245)} 
+
+(1, 129, 245, 245)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_012.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 97, 512, 512) after crop: (1, 97, 512, 512) spacing: [2.5        0.78710902 0.78710902] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.78710902, 0.78710902]), 'spacing_transposed': array([2.5       , 0.78710902, 0.78710902]), 'data.shape (data is transposed)': (1, 97, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 135, 261, 261)} 
+
+(1, 135, 261, 261)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_088.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 103, 512, 512) after crop: (1, 103, 512, 512) spacing: [2.5        0.76367199 0.76367199] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.76367199, 0.76367199]), 'spacing_transposed': array([2.5       , 0.76367199, 0.76367199]), 'data.shape (data is transposed)': (1, 103, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 143, 253, 253)} 
+
+(1, 143, 253, 253)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_104.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 100, 512, 512) after crop: (1, 100, 512, 512) spacing: [2.5        0.89843798 0.89843798] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.89843798, 0.89843798]), 'spacing_transposed': array([2.5       , 0.89843798, 0.89843798]), 'data.shape (data is transposed)': (1, 100, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 139, 298, 298)} 
+
+(1, 139, 298, 298)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_210.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 93, 512, 512) after crop: (1, 93, 512, 512) spacing: [2.5        0.88476598 0.88476598] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.88476598, 0.88476598]), 'spacing_transposed': array([2.5       , 0.88476598, 0.88476598]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 129, 293, 293)} 
+
+(1, 129, 293, 293)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_258.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 79, 512, 512) after crop: (1, 79, 512, 512) spacing: [2.5        0.73046899 0.73046899] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.73046899, 0.73046899]), 'spacing_transposed': array([2.5       , 0.73046899, 0.73046899]), 'data.shape (data is transposed)': (1, 79, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 110, 242, 242)} 
+
+(1, 110, 242, 242)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_300.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 85, 512, 512) after crop: (1, 85, 512, 512) spacing: [2.5        0.86718798 0.86718798] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.86718798, 0.86718798]), 'spacing_transposed': array([2.5       , 0.86718798, 0.86718798]), 'data.shape (data is transposed)': (1, 85, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 118, 287, 287)} 
+
+(1, 118, 287, 287)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_362.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 48, 512, 512) after crop: (1, 48, 512, 512) spacing: [5.       0.703125 0.703125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.703125, 0.703125]), 'spacing_transposed': array([5.      , 0.703125, 0.703125]), 'data.shape (data is transposed)': (1, 48, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 133, 233, 233)} 
+
+(1, 133, 233, 233)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_006.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 101, 512, 512) after crop: (1, 101, 512, 512) spacing: [2.5        0.76757801 0.76757801] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.76757801, 0.76757801]), 'spacing_transposed': array([2.5       , 0.76757801, 0.76757801]), 'data.shape (data is transposed)': (1, 101, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 140, 254, 254)} 
+
+(1, 140, 254, 254)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_074.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 37, 512, 512) after crop: (1, 37, 512, 512) spacing: [5.      0.78125 0.78125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.     , 0.78125, 0.78125]), 'spacing_transposed': array([5.     , 0.78125, 0.78125]), 'data.shape (data is transposed)': (1, 37, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 103, 259, 259)} 
+
+(1, 103, 259, 259)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_100.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 98, 512, 512) after crop: (1, 98, 512, 512) spacing: [2.5        0.82031202 0.82031202] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.82031202, 0.82031202]), 'spacing_transposed': array([2.5       , 0.82031202, 0.82031202]), 'data.shape (data is transposed)': (1, 98, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 136, 272, 272)} 
+
+(1, 136, 272, 272)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_155.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 95, 512, 512) after crop: (1, 95, 512, 512) spacing: [2.5        0.83203101 0.83203101] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.83203101, 0.83203101]), 'spacing_transposed': array([2.5       , 0.83203101, 0.83203101]), 'data.shape (data is transposed)': (1, 95, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 132, 276, 276)} 
+
+(1, 132, 276, 276)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_227.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 89, 512, 512) after crop: (1, 89, 512, 512) spacing: [2.5        0.97656202 0.97656202] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.97656202, 0.97656202]), 'spacing_transposed': array([2.5       , 0.97656202, 0.97656202]), 'data.shape (data is transposed)': (1, 89, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 124, 323, 323)} 
+
+(1, 124, 323, 323)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_298.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 93, 512, 512) after crop: (1, 93, 512, 512) spacing: [2.5        0.86523402 0.86523402] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.86523402, 0.86523402]), 'spacing_transposed': array([2.5       , 0.86523402, 0.86523402]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 129, 287, 287)} 
+
+(1, 129, 287, 287)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_360.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 40, 512, 512) after crop: (1, 40, 512, 512) spacing: [7.5        0.81835902 0.81835902] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([7.5       , 0.81835902, 0.81835902]), 'spacing_transposed': array([7.5       , 0.81835902, 0.81835902]), 'data.shape (data is transposed)': (1, 40, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 167, 271, 271)} 
+
+(1, 167, 271, 271)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_046.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 103, 512, 512) after crop: (1, 103, 512, 512) spacing: [2.5     0.78125 0.78125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5    , 0.78125, 0.78125]), 'spacing_transposed': array([2.5    , 0.78125, 0.78125]), 'data.shape (data is transposed)': (1, 103, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 143, 259, 259)} 
+
+(1, 143, 259, 259)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_092.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 92, 512, 512) after crop: (1, 92, 512, 512) spacing: [5.         0.80468798 0.80468798] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.80468798, 0.80468798]), 'spacing_transposed': array([5.        , 0.80468798, 0.80468798]), 'data.shape (data is transposed)': (1, 92, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 256, 267, 267)} 
+
+(1, 256, 267, 267)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_111.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 57, 512, 512) after crop: (1, 57, 512, 512) spacing: [5.         0.84179699 0.84179699] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.84179699, 0.84179699]), 'spacing_transposed': array([5.        , 0.84179699, 0.84179699]), 'data.shape (data is transposed)': (1, 57, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 158, 279, 279)} 
+
+(1, 158, 279, 279)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_217.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 107, 512, 512) after crop: (1, 107, 512, 512) spacing: [2.5        0.83007801 0.83007801] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.83007801, 0.83007801]), 'spacing_transposed': array([2.5       , 0.83007801, 0.83007801]), 'data.shape (data is transposed)': (1, 107, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 149, 275, 275)} 
+
+(1, 149, 275, 275)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_265.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 81, 512, 512) after crop: (1, 81, 512, 512) spacing: [2.5        0.83398402 0.83398402] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.83398402, 0.83398402]), 'spacing_transposed': array([2.5       , 0.83398402, 0.83398402]), 'data.shape (data is transposed)': (1, 81, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 113, 276, 276)} 
+
+(1, 113, 276, 276)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_318.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 105, 512, 512) after crop: (1, 105, 512, 512) spacing: [2.5        0.78906202 0.78906202] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.78906202, 0.78906202]), 'spacing_transposed': array([2.5       , 0.78906202, 0.78906202]), 'data.shape (data is transposed)': (1, 105, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 146, 261, 261)} 
+
+(1, 146, 261, 261)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_391.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 89, 512, 512) after crop: (1, 89, 512, 512) spacing: [2.5        0.95703101 0.95703101] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.95703101, 0.95703101]), 'spacing_transposed': array([2.5       , 0.95703101, 0.95703101]), 'data.shape (data is transposed)': (1, 89, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 124, 317, 317)} 
+
+(1, 124, 317, 317)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_071.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 87, 512, 512) after crop: (1, 87, 512, 512) spacing: [5.      0.78125 0.78125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.     , 0.78125, 0.78125]), 'spacing_transposed': array([5.     , 0.78125, 0.78125]), 'data.shape (data is transposed)': (1, 87, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 242, 259, 259)} 
+
+(1, 242, 259, 259)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_099.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 48, 512, 512) after crop: (1, 48, 512, 512) spacing: [5.      0.71875 0.71875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.     , 0.71875, 0.71875]), 'spacing_transposed': array([5.     , 0.71875, 0.71875]), 'data.shape (data is transposed)': (1, 48, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 133, 238, 238)} 
+
+(1, 133, 238, 238)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_147.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 85, 512, 512) after crop: (1, 85, 512, 512) spacing: [2.5        0.73242199 0.73242199] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.73242199, 0.73242199]), 'spacing_transposed': array([2.5       , 0.73242199, 0.73242199]), 'data.shape (data is transposed)': (1, 85, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 118, 243, 243)} 
+
+(1, 118, 243, 243)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_225.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 81, 512, 512) after crop: (1, 81, 512, 512) spacing: [2.5        0.74023402 0.74023402] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.74023402, 0.74023402]), 'spacing_transposed': array([2.5       , 0.74023402, 0.74023402]), 'data.shape (data is transposed)': (1, 81, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 113, 245, 245)} 
+
+(1, 113, 245, 245)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_295.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 105, 512, 512) after crop: (1, 105, 512, 512) spacing: [2.5    0.8125 0.8125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5   , 0.8125, 0.8125]), 'spacing_transposed': array([2.5   , 0.8125, 0.8125]), 'data.shape (data is transposed)': (1, 105, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 146, 269, 269)} 
+
+(1, 146, 269, 269)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_346.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 103, 512, 512) after crop: (1, 103, 512, 512) spacing: [2.5        0.86132801 0.86132801] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.86132801, 0.86132801]), 'spacing_transposed': array([2.5       , 0.86132801, 0.86132801]), 'data.shape (data is transposed)': (1, 103, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 143, 285, 285)} 
+
+(1, 143, 285, 285)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_416.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 116, 512, 512) after crop: (1, 116, 512, 512) spacing: [4.00003004 0.921875   0.921875  ] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([4.00003004, 0.921875  , 0.921875  ]), 'spacing_transposed': array([4.00003004, 0.921875  , 0.921875  ]), 'data.shape (data is transposed)': (1, 116, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 258, 305, 305)} 
+
+(1, 258, 305, 305)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_064.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 93, 512, 512) after crop: (1, 93, 512, 512) spacing: [2.5        0.89453101 0.89453101] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.89453101, 0.89453101]), 'spacing_transposed': array([2.5       , 0.89453101, 0.89453101]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 129, 296, 296)} 
+
+(1, 129, 296, 296)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_095.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 93, 512, 512) after crop: (1, 93, 512, 512) spacing: [2.5        0.75195301 0.75195301] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.75195301, 0.75195301]), 'spacing_transposed': array([2.5       , 0.75195301, 0.75195301]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 129, 249, 249)} 
+
+(1, 129, 249, 249)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_145.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 93, 512, 512) after crop: (1, 93, 512, 512) spacing: [2.5    0.9375 0.9375] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5   , 0.9375, 0.9375]), 'spacing_transposed': array([2.5   , 0.9375, 0.9375]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 129, 311, 311)} 
+
+(1, 129, 311, 311)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_218.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 99, 512, 512) after crop: (1, 99, 512, 512) spacing: [2.5        0.75390601 0.75390601] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.75390601, 0.75390601]), 'spacing_transposed': array([2.5       , 0.75390601, 0.75390601]), 'data.shape (data is transposed)': (1, 99, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 138, 250, 250)} 
+
+(1, 138, 250, 250)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_287.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 98, 512, 512) after crop: (1, 98, 512, 512) spacing: [2.5        0.77929699 0.77929699] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.77929699, 0.77929699]), 'spacing_transposed': array([2.5       , 0.77929699, 0.77929699]), 'data.shape (data is transposed)': (1, 98, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 136, 258, 258)} 
+
+(1, 136, 258, 258)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_334.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 91, 512, 512) after crop: (1, 91, 512, 512) spacing: [2.5        0.75195301 0.75195301] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.75195301, 0.75195301]), 'spacing_transposed': array([2.5       , 0.75195301, 0.75195301]), 'data.shape (data is transposed)': (1, 91, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 126, 249, 249)} 
+
+(1, 126, 249, 249)
+preprocessing /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_411.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 103, 512, 512) after crop: (1, 103, 512, 512) spacing: [2.5        0.73632801 0.73632801] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.73632801, 0.73632801]), 'spacing_transposed': array([2.5       , 0.73632801, 0.73632801]), 'data.shape (data is transposed)': (1, 103, 512, 512)} 
+after:  {'spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'data.shape (data is resampled)': (1, 143, 244, 244)} 
+
+(1, 143, 244, 244)
+This worker has ended successfully, no errors to report
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+/exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_259.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 122, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 21, 42], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 122, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 21, 42], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 122, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 21, 42], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 122, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 21, 42], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 122, 279, 279)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 21, 42], [0, 87], [0, 60, 119]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_258.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 110, 242, 242)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30], [0, 50], [0, 41, 82]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 110, 242, 242)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30], [0, 50], [0, 41, 82]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 110, 242, 242)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30], [0, 50], [0, 41, 82]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 110, 242, 242)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30], [0, 50], [0, 41, 82]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 110, 242, 242)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 30], [0, 50], [0, 41, 82]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_227.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 323, 323)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 66, 131], [0, 54, 109, 163]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 323, 323)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 66, 131], [0, 54, 109, 163]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 323, 323)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 66, 131], [0, 54, 109, 163]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 323, 323)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 66, 131], [0, 54, 109, 163]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 323, 323)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 66, 131], [0, 54, 109, 163]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_265.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 84], [0, 58, 116]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 84], [0, 58, 116]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 84], [0, 58, 116]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 84], [0, 58, 116]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 113, 276, 276)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33], [0, 84], [0, 58, 116]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_295.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 269, 269)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 77], [0, 54, 109]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 269, 269)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 77], [0, 54, 109]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 269, 269)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 77], [0, 54, 109]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 269, 269)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 77], [0, 54, 109]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 269, 269)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 77], [0, 54, 109]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_287.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 258, 258)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 66], [0, 49, 98]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 258, 258)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 66], [0, 49, 98]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 258, 258)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 66], [0, 49, 98]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 258, 258)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 66], [0, 49, 98]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 136, 258, 258)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 28, 56], [0, 66], [0, 49, 98]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_315.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 283, 283)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 91], [0, 62, 123]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 283, 283)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 91], [0, 62, 123]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 283, 283)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 91], [0, 62, 123]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 283, 283)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 91], [0, 62, 123]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 283, 283)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 91], [0, 62, 123]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_300.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 95], [0, 64, 127]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 95], [0, 64, 127]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 95], [0, 64, 127]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 95], [0, 64, 127]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 118, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 38], [0, 95], [0, 64, 127]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_298.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 95], [0, 64, 127]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 95], [0, 64, 127]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 95], [0, 64, 127]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 95], [0, 64, 127]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 287, 287)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 95], [0, 64, 127]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_318.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 146, 261, 261)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 33, 66], [0, 69], [0, 50, 101]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_346.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 285, 285)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 93], [0, 62, 125]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 285, 285)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 93], [0, 62, 125]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 285, 285)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 93], [0, 62, 125]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 285, 285)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 93], [0, 62, 125]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 285, 285)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 93], [0, 62, 125]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_334.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 126, 249, 249)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 23, 46], [0, 57], [0, 44, 89]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_378.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 53], [0, 42, 85]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 53], [0, 42, 85]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 53], [0, 42, 85]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 53], [0, 42, 85]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 129, 245, 245)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 24, 49], [0, 53], [0, 42, 85]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_362.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 233, 233)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 41], [0, 73]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 233, 233)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 41], [0, 73]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 233, 233)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 41], [0, 73]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 233, 233)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 41], [0, 73]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 133, 233, 233)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 26, 53], [0, 41], [0, 73]]
+number of tiles: 12
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_360.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 167, 271, 271)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58, 87], [0, 79], [0, 56, 111]]
+number of tiles: 24
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 167, 271, 271)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58, 87], [0, 79], [0, 56, 111]]
+number of tiles: 24
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 167, 271, 271)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58, 87], [0, 79], [0, 56, 111]]
+number of tiles: 24
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 167, 271, 271)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58, 87], [0, 79], [0, 56, 111]]
+number of tiles: 24
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 167, 271, 271)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 29, 58, 87], [0, 79], [0, 56, 111]]
+number of tiles: 24
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_391.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 317, 317)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 62, 125], [0, 78, 157]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 317, 317)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 62, 125], [0, 78, 157]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 317, 317)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 62, 125], [0, 78, 157]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 317, 317)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 62, 125], [0, 78, 157]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 124, 317, 317)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 22, 44], [0, 62, 125], [0, 78, 157]]
+number of tiles: 27
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_416.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 305, 305)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 36, 71, 107, 142, 178], [0, 56, 113], [0, 72, 145]]
+number of tiles: 54
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 305, 305)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 36, 71, 107, 142, 178], [0, 56, 113], [0, 72, 145]]
+number of tiles: 54
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 305, 305)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 36, 71, 107, 142, 178], [0, 56, 113], [0, 72, 145]]
+number of tiles: 54
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 305, 305)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 36, 71, 107, 142, 178], [0, 56, 113], [0, 72, 145]]
+number of tiles: 54
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 305, 305)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 36, 71, 107, 142, 178], [0, 56, 113], [0, 72, 145]]
+number of tiles: 54
+using precomputed Gaussian
+prediction done
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_lowres/510/imagesTs/panc_411.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 244, 244)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 52], [0, 42, 84]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 244, 244)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 52], [0, 42, 84]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 244, 244)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 52], [0, 42, 84]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 244, 244)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 52], [0, 42, 84]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 143, 244, 244)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 32, 63], [0, 52], [0, 42, 84]]
+number of tiles: 18
+using precomputed Gaussian
+prediction done
+inference done. Now waiting for the segmentation export to finish...
+postprocessing...
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Program finished with exit code 0 at: Sun May 29 14:23:34 CEST 2022
