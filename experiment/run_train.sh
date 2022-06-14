@@ -42,6 +42,7 @@ echo "#!/bin/bash
 #SBATCH --time=$t
 #SBATCH --mem=32GB
 #SBATCH --gres=gpu:RTX6000:1
+#SBATCH --partition=short
 #SBATCH --error=/home/smaijer/logs/train/$task/job.%J.err
 #SBATCH --output=/home/smaijer/logs/train/$task/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL

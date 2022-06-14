@@ -6,3 +6,4 @@ Currently Loaded Modules:
 
 WARNING: overwriting environment variables set in the machine
 overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
+slurmstepd: error: *** JOB 10469507 ON res-hpc-lkeb06 CANCELLED AT 2022-06-14T10:21:17 ***
