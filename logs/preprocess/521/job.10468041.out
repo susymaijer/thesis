@@ -1,0 +1,840 @@
+Starting at Fri Jun 10 18:05:53 CEST 2022
+Running on hosts: res-hpc-gpu02
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 8.
+Account: div2-lkeb
+Job ID: 10468041
+Job name: PancreasPreprocess
+Node running script: res-hpc-gpu02
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Sat Jun 11 17:16:31 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA TITAN Xp     On   | 00000000:AF:00.0 Off |                  N/A |
+| 23%   24C    P8     8W / 250W |      0MiB / 12196MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+nnUNet_raw_data_base = /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base
+nnUNet_preprocessed = /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed
+RESULTS_FOLDER = /exports/lkeb-hpc/smaijer/results
+OUTPUT = /exports/lkeb-hpc/smaijer/output
+Installing nnU-net..
+Obtaining file:///home/smaijer/code/nnUNet
+Requirement already satisfied: torch>1.10.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.11.0)
+Requirement already satisfied: tqdm in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (4.64.0)
+Requirement already satisfied: dicom2nifti in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.3.2)
+Requirement already satisfied: scikit-image>=0.14 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.19.2)
+Requirement already satisfied: medpy in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.4.0)
+Requirement already satisfied: scipy in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.8.0)
+Requirement already satisfied: batchgenerators>=0.23 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.23)
+Requirement already satisfied: numpy in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.21.2)
+Requirement already satisfied: sklearn in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.0)
+Requirement already satisfied: SimpleITK in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.1.1)
+Requirement already satisfied: pandas in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: requests in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.27.1)
+Requirement already satisfied: nibabel in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.2.2)
+Requirement already satisfied: tifffile in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2022.4.8)
+Requirement already satisfied: matplotlib in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.5.1)
+Requirement already satisfied: unittest2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Requirement already satisfied: pillow>=7.1.2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (9.0.1)
+Requirement already satisfied: threadpoolctl in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (3.1.0)
+Requirement already satisfied: scikit-learn in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.0.2)
+Requirement already satisfied: future in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (0.18.2)
+Requirement already satisfied: networkx>=2.2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.8)
+Requirement already satisfied: PyWavelets>=1.1.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (1.3.0)
+Requirement already satisfied: packaging>=20.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (21.3)
+Requirement already satisfied: imageio>=2.4.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.16.2)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from packaging>=20.0->scikit-image>=0.14->nnunet==1.7.0) (3.0.8)
+Requirement already satisfied: typing_extensions in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from torch>1.10.0->nnunet==1.7.0) (4.1.1)
+Requirement already satisfied: pydicom>=1.3.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from dicom2nifti->nnunet==1.7.0) (2.3.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: cycler>=0.10 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (0.11.0)
+Requirement already satisfied: fonttools>=4.22.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (4.32.0)
+Requirement already satisfied: python-dateutil>=2.7 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (2.8.2)
+Requirement already satisfied: six>=1.5 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from python-dateutil>=2.7->matplotlib->nnunet==1.7.0) (1.16.0)
+Requirement already satisfied: setuptools in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nibabel->nnunet==1.7.0) (58.0.4)
+Requirement already satisfied: pytz>=2020.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from pandas->nnunet==1.7.0) (2022.1)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (1.26.8)
+Requirement already satisfied: certifi>=2017.4.17 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2021.10.8)
+Requirement already satisfied: idna<4,>=2.5 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (3.3)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2.0.4)
+Requirement already satisfied: joblib>=0.11 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-learn->batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Requirement already satisfied: traceback2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.4.0)
+Requirement already satisfied: linecache2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from traceback2->unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.0.0)
+Installing collected packages: argparse, nnunet
+  Attempting uninstall: nnunet
+    Found existing installation: nnunet 1.7.0
+    Uninstalling nnunet-1.7.0:
+      Successfully uninstalled nnunet-1.7.0
+  Running setup.py develop for nnunet
+Successfully installed argparse-1.4.0 nnunet-1.7.0
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Verifying training set
+checking case panc_0001
+checking case panc_0003
+checking case panc_0005
+checking case panc_0006
+checking case panc_0007
+checking case panc_0009
+checking case panc_0010
+checking case panc_0021
+checking case panc_0022
+checking case panc_0023
+checking case panc_0024
+checking case panc_0026
+checking case panc_0027
+checking case panc_0028
+checking case panc_0029
+checking case panc_0030
+checking case panc_0031
+checking case panc_0032
+checking case panc_0033
+checking case panc_0034
+checking case panc_0035
+checking case panc_0036
+checking case panc_0037
+checking case panc_0038
+checking case panc_0039
+checking case panc_0040
+Verifying label values
+Expected label values are [0, 1]
+Labels OK
+Verifying test set
+Dataset OK
+panc_0005
+before crop: (1, 117, 512, 512) after crop: (1, 117, 512, 512) spacing: [3.      0.90625 0.90625] 
+
+panc_0022
+before crop: (1, 89, 512, 512) after crop: (1, 89, 512, 512) spacing: [5.         0.76757801 0.76757801] 
+
+panc_0030
+before crop: (1, 153, 512, 512) after crop: (1, 153, 512, 512) spacing: [3.        0.7421875 0.7421875] 
+
+panc_0010
+before crop: (1, 148, 512, 512) after crop: (1, 148, 512, 512) spacing: [3.      0.78125 0.78125] 
+
+panc_0024
+before crop: (1, 124, 512, 512) after crop: (1, 124, 512, 512) spacing: [3.         0.68554688 0.68554688] 
+
+panc_0034
+before crop: (1, 98, 512, 512) after crop: (1, 98, 512, 512) spacing: [5.       0.671875 0.671875] 
+
+panc_0003
+before crop: (1, 198, 512, 512) after crop: (1, 198, 512, 512) spacing: [3.        0.8984375 0.8984375] 
+
+panc_0031
+before crop: (1, 93, 512, 512) after crop: (1, 93, 512, 512) spacing: [3.         0.83789062 0.83789062] 
+
+panc_0038
+before crop: (1, 100, 512, 512) after crop: (1, 100, 512, 512) spacing: [5.         0.97656202 0.97656202] 
+
+panc_0006
+before crop: (1, 131, 512, 512) after crop: (1, 131, 512, 512) spacing: [3.         0.70117188 0.70117188] 
+
+panc_0023
+before crop: (1, 96, 512, 512) after crop: (1, 96, 512, 512) spacing: [5.         0.70703125 0.70703125] 
+
+panc_0032
+before crop: (1, 144, 512, 512) after crop: (1, 144, 512, 512) spacing: [3.         0.74023438 0.74023438] 
+
+panc_0007
+before crop: (1, 163, 512, 512) after crop: (1, 163, 512, 512) spacing: [3.         0.74804688 0.74804688] 
+
+panc_0029
+before crop: (1, 100, 512, 512) after crop: (1, 100, 512, 512) spacing: [3.    0.875 0.875] 
+
+panc_0037
+before crop: (1, 99, 512, 512) after crop: (1, 99, 512, 512) spacing: [5.       0.703125 0.703125] 
+
+panc_0001
+before crop: (1, 147, 512, 512) after crop: (1, 147, 512, 512) spacing: [3.         0.66796875 0.66796875] 
+
+panc_0028
+before crop: (1, 89, 512, 512) after crop: (1, 89, 512, 512) spacing: [5.       0.796875 0.796875] 
+
+panc_0035
+before crop: (1, 94, 512, 512) after crop: (1, 94, 512, 512) spacing: [5.         0.91992199 0.91992199] 
+
+panc_0039
+before crop: (1, 90, 512, 512) after crop: (1, 90, 512, 512) spacing: [5.         0.97600001 0.97600001] 
+
+panc_0021
+before crop: (1, 143, 512, 512) after crop: (1, 143, 512, 512) spacing: [3.         0.68359375 0.68359375] 
+
+panc_0027
+before crop: (1, 88, 512, 512) after crop: (1, 88, 512, 512) spacing: [5.         0.77539098 0.77539098] 
+
+panc_0033
+before crop: (1, 104, 512, 512) after crop: (1, 104, 512, 512) spacing: [5.         0.81445301 0.81445301] 
+
+panc_0040
+before crop: (1, 195, 512, 512) after crop: (1, 195, 512, 512) spacing: [3.        0.7421875 0.7421875] 
+
+panc_0009
+before crop: (1, 149, 512, 512) after crop: (1, 149, 512, 512) spacing: [2.5        0.97656202 0.97656202] 
+
+panc_0026
+before crop: (1, 131, 512, 512) after crop: (1, 131, 512, 512) spacing: [5.         0.77929699 0.77929699] 
+
+panc_0036
+before crop: (1, 184, 512, 512) after crop: (1, 184, 512, 512) spacing: [3.         0.74609375 0.74609375] 
+
+
+
+
+ Task521
+number of threads:  (8, 8) 
+
+Are we using the nonzero mask for normalizaion? OrderedDict([(0, False)])
+the median shape of the dataset is  [149.16666667 512.         512.        ]
+the max shape in the dataset is  [218.33333333 648.10084922 648.10084922]
+the min shape in the dataset is  [ 93.         443.30119732 443.30119732]
+we don't want feature maps smaller than  4  in the bottleneck
+the transposed median shape of the dataset is  [149.16666667 512.         512.        ]
+generating configuration for 3d_fullres
+generating configuration for 3d_lowres
+{0: {'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 96, 160, 160]), 'median_patient_size_in_voxels': array([146, 258, 258]), 'current_spacing': array([3.0603    , 1.53285824, 1.53285824]), 'original_spacing': array([3.        , 0.77148449, 0.77148449]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [1, 2, 2]], 'conv_kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}, 1: {'batch_size': 2, 'num_pool_per_axis': [3, 5, 5], 'patch_size': array([ 48, 192, 192]), 'median_patient_size_in_voxels': array([149, 512, 512]), 'current_spacing': array([3.        , 0.77148449, 0.77148449]), 'original_spacing': array([3.        , 0.77148449, 0.77148449]), 'do_dummy_2D_data_aug': True, 'pool_op_kernel_sizes': [[1, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [1, 2, 2]], 'conv_kernel_sizes': [[1, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}}
+transpose forward [0, 1, 2]
+transpose backward [0, 1, 2]
+Initializing to run preprocessing
+npz folder: /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_cropped_data/Task521
+output_folder: /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.68359375, 0.68359375]), 'spacing_transposed': array([3.        , 0.68359375, 0.68359375]), 'data.shape (data is transposed)': (1, 143, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 140, 228, 228)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0021.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.70703125, 0.70703125]), 'spacing_transposed': array([5.        , 0.70703125, 0.70703125]), 'data.shape (data is transposed)': (1, 96, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 157, 236, 236)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0023.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.74023438, 0.74023438]), 'spacing_transposed': array([3.        , 0.74023438, 0.74023438]), 'data.shape (data is transposed)': (1, 144, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 141, 247, 247)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0032.npz
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.5       , 0.97656202, 0.97656202]), 'spacing_transposed': array([2.5       , 0.97656202, 0.97656202]), 'data.shape (data is transposed)': (1, 149, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 122, 326, 326)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0009.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.81445301, 0.81445301]), 'spacing_transposed': array([5.        , 0.81445301, 0.81445301]), 'data.shape (data is transposed)': (1, 104, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 170, 272, 272)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0033.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.74804688, 0.74804688]), 'spacing_transposed': array([3.        , 0.74804688, 0.74804688]), 'data.shape (data is transposed)': (1, 163, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 160, 250, 250)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0007.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.796875, 0.796875]), 'spacing_transposed': array([5.      , 0.796875, 0.796875]), 'data.shape (data is transposed)': (1, 89, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 145, 266, 266)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0028.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.91992199, 0.91992199]), 'spacing_transposed': array([5.        , 0.91992199, 0.91992199]), 'data.shape (data is transposed)': (1, 94, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 154, 307, 307)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0035.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.66796875, 0.66796875]), 'spacing_transposed': array([3.        , 0.66796875, 0.66796875]), 'data.shape (data is transposed)': (1, 147, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 144, 223, 223)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0001.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.68554688, 0.68554688]), 'spacing_transposed': array([3.        , 0.68554688, 0.68554688]), 'data.shape (data is transposed)': (1, 124, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 122, 229, 229)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0024.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.83789062, 0.83789062]), 'spacing_transposed': array([3.        , 0.83789062, 0.83789062]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 91, 280, 280)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0031.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.703125, 0.703125]), 'spacing_transposed': array([5.      , 0.703125, 0.703125]), 'data.shape (data is transposed)': (1, 99, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 162, 235, 235)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0037.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.     , 0.90625, 0.90625]), 'spacing_transposed': array([3.     , 0.90625, 0.90625]), 'data.shape (data is transposed)': (1, 117, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 115, 303, 303)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0005.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.77929699, 0.77929699]), 'spacing_transposed': array([5.        , 0.77929699, 0.77929699]), 'data.shape (data is transposed)': (1, 131, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 214, 260, 260)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0026.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.74609375, 0.74609375]), 'spacing_transposed': array([3.        , 0.74609375, 0.74609375]), 'data.shape (data is transposed)': (1, 184, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 180, 249, 249)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0036.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.     , 0.78125, 0.78125]), 'spacing_transposed': array([3.     , 0.78125, 0.78125]), 'data.shape (data is transposed)': (1, 148, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 145, 261, 261)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0010.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.77539098, 0.77539098]), 'spacing_transposed': array([5.        , 0.77539098, 0.77539098]), 'data.shape (data is transposed)': (1, 88, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 144, 259, 259)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0027.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.671875, 0.671875]), 'spacing_transposed': array([5.      , 0.671875, 0.671875]), 'data.shape (data is transposed)': (1, 98, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 160, 224, 224)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0034.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.97600001, 0.97600001]), 'spacing_transposed': array([5.        , 0.97600001, 0.97600001]), 'data.shape (data is transposed)': (1, 90, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 147, 326, 326)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0039.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.       , 0.8984375, 0.8984375]), 'spacing_transposed': array([3.       , 0.8984375, 0.8984375]), 'data.shape (data is transposed)': (1, 198, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 194, 300, 300)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0003.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.       , 0.7421875, 0.7421875]), 'spacing_transposed': array([3.       , 0.7421875, 0.7421875]), 'data.shape (data is transposed)': (1, 153, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 150, 248, 248)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0030.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.       , 0.7421875, 0.7421875]), 'spacing_transposed': array([3.       , 0.7421875, 0.7421875]), 'data.shape (data is transposed)': (1, 195, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 191, 248, 248)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0040.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.70117188, 0.70117188]), 'spacing_transposed': array([3.        , 0.70117188, 0.70117188]), 'data.shape (data is transposed)': (1, 131, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 128, 234, 234)} 
+
+1 8238
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0006.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.76757801, 0.76757801]), 'spacing_transposed': array([5.        , 0.76757801, 0.76757801]), 'data.shape (data is transposed)': (1, 89, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 145, 256, 256)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0022.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.   , 0.875, 0.875]), 'spacing_transposed': array([3.   , 0.875, 0.875]), 'data.shape (data is transposed)': (1, 100, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 98, 292, 292)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0029.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.97656202, 0.97656202]), 'spacing_transposed': array([5.        , 0.97656202, 0.97656202]), 'data.shape (data is transposed)': (1, 100, 512, 512)} 
+after:  {'spacing': array([3.0603    , 1.53285824, 1.53285824]), 'data.shape (data is resampled)': (1, 163, 326, 326)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage0/panc_0038.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.97656202, 0.97656202]), 'spacing_transposed': array([2.5       , 0.97656202, 0.97656202]), 'data.shape (data is transposed)': (1, 149, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 124, 648, 648)} 
+
+1 17284
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0009.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.671875, 0.671875]), 'spacing_transposed': array([5.      , 0.671875, 0.671875]), 'data.shape (data is transposed)': (1, 98, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 163, 446, 446)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0034.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.       , 0.8984375, 0.8984375]), 'spacing_transposed': array([3.       , 0.8984375, 0.8984375]), 'data.shape (data is transposed)': (1, 198, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 198, 596, 596)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0003.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.       , 0.7421875, 0.7421875]), 'spacing_transposed': array([3.       , 0.7421875, 0.7421875]), 'data.shape (data is transposed)': (1, 153, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 153, 493, 493)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0030.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.74609375, 0.74609375]), 'spacing_transposed': array([3.        , 0.74609375, 0.74609375]), 'data.shape (data is transposed)': (1, 184, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 184, 495, 495)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0036.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.74804688, 0.74804688]), 'spacing_transposed': array([3.        , 0.74804688, 0.74804688]), 'data.shape (data is transposed)': (1, 163, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 163, 496, 496)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0007.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.796875, 0.796875]), 'spacing_transposed': array([5.      , 0.796875, 0.796875]), 'data.shape (data is transposed)': (1, 89, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 148, 529, 529)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0028.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.703125, 0.703125]), 'spacing_transposed': array([5.      , 0.703125, 0.703125]), 'data.shape (data is transposed)': (1, 99, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 165, 467, 467)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0037.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.66796875, 0.66796875]), 'spacing_transposed': array([3.        , 0.66796875, 0.66796875]), 'data.shape (data is transposed)': (1, 147, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 147, 443, 443)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0001.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.68554688, 0.68554688]), 'spacing_transposed': array([3.        , 0.68554688, 0.68554688]), 'data.shape (data is transposed)': (1, 124, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 124, 455, 455)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0024.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.   , 0.875, 0.875]), 'spacing_transposed': array([3.   , 0.875, 0.875]), 'data.shape (data is transposed)': (1, 100, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 100, 581, 581)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0029.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.81445301, 0.81445301]), 'spacing_transposed': array([5.        , 0.81445301, 0.81445301]), 'data.shape (data is transposed)': (1, 104, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 173, 541, 541)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0033.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.     , 0.90625, 0.90625]), 'spacing_transposed': array([3.     , 0.90625, 0.90625]), 'data.shape (data is transposed)': (1, 117, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 117, 601, 601)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0005.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.77929699, 0.77929699]), 'spacing_transposed': array([5.        , 0.77929699, 0.77929699]), 'data.shape (data is transposed)': (1, 131, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 218, 517, 517)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0026.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.       , 0.7421875, 0.7421875]), 'spacing_transposed': array([3.       , 0.7421875, 0.7421875]), 'data.shape (data is transposed)': (1, 195, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 195, 493, 493)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0040.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.     , 0.78125, 0.78125]), 'spacing_transposed': array([3.     , 0.78125, 0.78125]), 'data.shape (data is transposed)': (1, 148, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 148, 518, 518)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0010.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.77539098, 0.77539098]), 'spacing_transposed': array([5.        , 0.77539098, 0.77539098]), 'data.shape (data is transposed)': (1, 88, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 147, 515, 515)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0027.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.91992199, 0.91992199]), 'spacing_transposed': array([5.        , 0.91992199, 0.91992199]), 'data.shape (data is transposed)': (1, 94, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 157, 611, 611)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0035.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.70117188, 0.70117188]), 'spacing_transposed': array([3.        , 0.70117188, 0.70117188]), 'data.shape (data is transposed)': (1, 131, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 131, 465, 465)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0006.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.76757801, 0.76757801]), 'spacing_transposed': array([5.        , 0.76757801, 0.76757801]), 'data.shape (data is transposed)': (1, 89, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 148, 509, 509)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0022.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.74023438, 0.74023438]), 'spacing_transposed': array([3.        , 0.74023438, 0.74023438]), 'data.shape (data is transposed)': (1, 144, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 144, 491, 491)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0032.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.97600001, 0.97600001]), 'spacing_transposed': array([5.        , 0.97600001, 0.97600001]), 'data.shape (data is transposed)': (1, 90, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 150, 648, 648)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0039.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.68359375, 0.68359375]), 'spacing_transposed': array([3.        , 0.68359375, 0.68359375]), 'data.shape (data is transposed)': (1, 143, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 143, 454, 454)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0021.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.70703125, 0.70703125]), 'spacing_transposed': array([5.        , 0.70703125, 0.70703125]), 'data.shape (data is transposed)': (1, 96, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 160, 469, 469)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0023.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.83789062, 0.83789062]), 'spacing_transposed': array([3.        , 0.83789062, 0.83789062]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 93, 556, 556)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0031.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.97656202, 0.97656202]), 'spacing_transposed': array([5.        , 0.97656202, 0.97656202]), 'data.shape (data is transposed)': (1, 100, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 167, 648, 648)} 
+
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_stage1/panc_0038.npz
+Are we using the nonzero maks for normalizaion? OrderedDict([(0, False)])
+the median shape of the dataset is  [149.16666667 512.         512.        ]
+the max shape in the dataset is  [218.33333333 648.10084922 648.10084922]
+the min shape in the dataset is  [ 93.         443.30119732 443.30119732]
+we don't want feature maps smaller than  4  in the bottleneck
+the transposed median shape of the dataset is  [149.16666667 512.         512.        ]
+[{'batch_size': 12, 'num_pool_per_axis': [7, 7], 'patch_size': array([512, 512]), 'median_patient_size_in_voxels': array([149, 512, 512]), 'current_spacing': array([3.        , 0.77148449, 0.77148449]), 'original_spacing': array([3.        , 0.77148449, 0.77148449]), 'pool_op_kernel_sizes': [[2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'do_dummy_2D_data_aug': False}]
+Initializing to run preprocessing
+npz folder: /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_cropped_data/Task521
+output_folder: /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.68359375, 0.68359375]), 'spacing_transposed': array([3.        , 0.68359375, 0.68359375]), 'data.shape (data is transposed)': (1, 143, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 143, 454, 454)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0021.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.70703125, 0.70703125]), 'spacing_transposed': array([5.        , 0.70703125, 0.70703125]), 'data.shape (data is transposed)': (1, 96, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 96, 469, 469)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0023.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.       , 0.7421875, 0.7421875]), 'spacing_transposed': array([3.       , 0.7421875, 0.7421875]), 'data.shape (data is transposed)': (1, 153, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 153, 493, 493)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0030.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.66796875, 0.66796875]), 'spacing_transposed': array([3.        , 0.66796875, 0.66796875]), 'data.shape (data is transposed)': (1, 147, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 147, 443, 443)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0001.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.68554688, 0.68554688]), 'spacing_transposed': array([3.        , 0.68554688, 0.68554688]), 'data.shape (data is transposed)': (1, 124, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 124, 455, 455)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0024.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.74023438, 0.74023438]), 'spacing_transposed': array([3.        , 0.74023438, 0.74023438]), 'data.shape (data is transposed)': (1, 144, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 144, 491, 491)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0032.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.74804688, 0.74804688]), 'spacing_transposed': array([3.        , 0.74804688, 0.74804688]), 'data.shape (data is transposed)': (1, 163, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 163, 496, 496)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0007.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.796875, 0.796875]), 'spacing_transposed': array([5.      , 0.796875, 0.796875]), 'data.shape (data is transposed)': (1, 89, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 89, 529, 529)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0028.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.91992199, 0.91992199]), 'spacing_transposed': array([5.        , 0.91992199, 0.91992199]), 'data.shape (data is transposed)': (1, 94, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 94, 611, 611)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0035.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.70117188, 0.70117188]), 'spacing_transposed': array([3.        , 0.70117188, 0.70117188]), 'data.shape (data is transposed)': (1, 131, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 131, 465, 465)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0006.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.76757801, 0.76757801]), 'spacing_transposed': array([5.        , 0.76757801, 0.76757801]), 'data.shape (data is transposed)': (1, 89, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 89, 509, 509)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0022.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.   , 0.875, 0.875]), 'spacing_transposed': array([3.   , 0.875, 0.875]), 'data.shape (data is transposed)': (1, 100, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 100, 581, 581)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0029.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.703125, 0.703125]), 'spacing_transposed': array([5.      , 0.703125, 0.703125]), 'data.shape (data is transposed)': (1, 99, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 99, 467, 467)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0037.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.       , 0.8984375, 0.8984375]), 'spacing_transposed': array([3.       , 0.8984375, 0.8984375]), 'data.shape (data is transposed)': (1, 198, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 198, 596, 596)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0003.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.671875, 0.671875]), 'spacing_transposed': array([5.      , 0.671875, 0.671875]), 'data.shape (data is transposed)': (1, 98, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 98, 446, 446)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0034.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.97600001, 0.97600001]), 'spacing_transposed': array([5.        , 0.97600001, 0.97600001]), 'data.shape (data is transposed)': (1, 90, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 90, 648, 648)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0039.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.     , 0.90625, 0.90625]), 'spacing_transposed': array([3.     , 0.90625, 0.90625]), 'data.shape (data is transposed)': (1, 117, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 117, 601, 601)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0005.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.77929699, 0.77929699]), 'spacing_transposed': array([5.        , 0.77929699, 0.77929699]), 'data.shape (data is transposed)': (1, 131, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 131, 517, 517)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0026.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.74609375, 0.74609375]), 'spacing_transposed': array([3.        , 0.74609375, 0.74609375]), 'data.shape (data is transposed)': (1, 184, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 184, 495, 495)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0036.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.97656202, 0.97656202]), 'spacing_transposed': array([2.5       , 0.97656202, 0.97656202]), 'data.shape (data is transposed)': (1, 149, 512, 512)} 
+after:  {'spacing': array([2.5       , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 149, 648, 648)} 
+
+normalization...
+normalization done
+1 20749
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0009.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.83789062, 0.83789062]), 'spacing_transposed': array([3.        , 0.83789062, 0.83789062]), 'data.shape (data is transposed)': (1, 93, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 93, 556, 556)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0031.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.97656202, 0.97656202]), 'spacing_transposed': array([5.        , 0.97656202, 0.97656202]), 'data.shape (data is transposed)': (1, 100, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 100, 648, 648)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0038.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.     , 0.78125, 0.78125]), 'spacing_transposed': array([3.     , 0.78125, 0.78125]), 'data.shape (data is transposed)': (1, 148, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 148, 518, 518)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0010.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.77539098, 0.77539098]), 'spacing_transposed': array([5.        , 0.77539098, 0.77539098]), 'data.shape (data is transposed)': (1, 88, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 88, 515, 515)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0027.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.81445301, 0.81445301]), 'spacing_transposed': array([5.        , 0.81445301, 0.81445301]), 'data.shape (data is transposed)': (1, 104, 512, 512)} 
+after:  {'spacing': array([5.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 104, 541, 541)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0033.npz
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.       , 0.7421875, 0.7421875]), 'spacing_transposed': array([3.       , 0.7421875, 0.7421875]), 'data.shape (data is transposed)': (1, 195, 512, 512)} 
+after:  {'spacing': array([3.        , 0.77148449, 0.77148449]), 'data.shape (data is resampled)': (1, 195, 493, 493)} 
+
+normalization...
+normalization done
+1 10000
+saving:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task521/nnUNetData_plans_v2.1_2D_stage0/panc_0040.npz
+Program finished with exit code 0 at: Fri Jun 10 18:05:53 CEST 2022

@@ -8,6 +8,13 @@ read -p "Enter task:" task
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
+if [ $config != "3d_cascade_fullres" ]; then
+   trainer="nnUNetTrainerV2"
+fi
+if [ $config == "3d_cascade_fullres" ]; then
+   trainer="nnUNetTrainerV2CascadeFullRes"
+fi
+
 download="$DOWNLOAD/$task/$config"
 mkdir -p $download
 
@@ -18,7 +25,7 @@ zip -r inference.zip *
 mv inference.zip $download
 
 # Extract the cross validation ensembled results of all the training images
-cd $RESULTS_FOLDER/nnUNet/$config/Task$task/nnUNetTrainerV2__nnUNetPlansv2.1/cv_niftis_postprocessed
+cd $RESULTS_FOLDER/nnUNet/$config/Task$task/${trainer}__nnUNetPlansv2.1/cv_niftis_postprocessed
 zip -r cv_niftis_postprocessed.zip *
 mv cv_niftis_postprocessed.zip $download
 
@@ -29,10 +36,11 @@ extract_fold(){
 	fold="fold_$1"
 	fold_dir="${fold}_results"
 	fold_dir_zip="${fold}_dir.zip"
-
+	
 	# we are either in a fold or in cv_niftis_postprocessed. so go one folder up
 	cd ..
 	cd $fold
+	echo $pwd
 	mkdir -p $fold_dir
 	
 	# get all the relevant files

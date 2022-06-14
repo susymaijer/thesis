@@ -1,0 +1,10 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
+slurmstepd: error: *** JOB 10402839 ON res-hpc-lkeb07 CANCELLED AT 2022-06-02T23:56:25 DUE TO TIME LIMIT ***
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=10402839.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
