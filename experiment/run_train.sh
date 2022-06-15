@@ -14,7 +14,7 @@ cpu=${cpu:-8}
 read -p "Default wall time is 01:00:00. If not desired, type other wall time:" t
 t=${t:-01:00:00}
 
-read -p "Enter trainer [UNETR]:" trainer
+read -p "Enter trainer [UNETR,empty]:" trainer
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
@@ -22,11 +22,29 @@ read -p "Enter fold:" fold
 
 read -p "Enter -c if you want to continue:" c
 
-if [ $config != "3d_cascade_fullres" ]; then
-   trainer="nnUNetTrainerV2_$trainer"
+# lowres of fullres
+if [ $config != "3d_cascade_fullres" ]; 
+then
+   if [ -z $trainer ]; 
+   then
+      trainer="nnUNetTrainerV2"
+   fi
+   if [ $trainer != '' ]; 
+   then
+      trainer="nnUNetTrainerV2_$trainer"
+   fi
 fi
-if [ $config == "3d_cascade_fullres" ]; then
-   trainer="nnUNetTrainerV2CascadeFullRes_$trainer"
+# cascade
+if [ $config == "3d_cascade_fullres" ]; 
+then
+   if [ -z $trainer ]; 
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes"
+   fi
+   if [ $trainer != '' ]; 
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes_$trainer"
+   fi
 fi
 
 # We assume running this from the script directory
@@ -42,7 +60,6 @@ echo "#!/bin/bash
 #SBATCH --time=$t
 #SBATCH --mem=32GB
 #SBATCH --gres=gpu:RTX6000:1
-#SBATCH --partition=short
 #SBATCH --error=/home/smaijer/logs/train/$task/job.%J.err
 #SBATCH --output=/home/smaijer/logs/train/$task/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL
