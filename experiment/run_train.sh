@@ -25,25 +25,25 @@ read -p "Enter -c if you want to continue:" c
 # lowres of fullres
 if [ $config != "3d_cascade_fullres" ]; 
 then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2_$trainer"
+   fi
    if [ -z $trainer ]; 
    then
       trainer="nnUNetTrainerV2"
-   fi
-   if [ $trainer != '' ]; 
-   then
-      trainer="nnUNetTrainerV2_$trainer"
    fi
 fi
 # cascade
 if [ $config == "3d_cascade_fullres" ]; 
 then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes_$trainer"
+   fi   
    if [ -z $trainer ]; 
    then
       trainer="nnUNetTrainerV2CascadeFullRes"
-   fi
-   if [ $trainer != '' ]; 
-   then
-      trainer="nnUNetTrainerV2CascadeFullRes_$trainer"
    fi
 fi
 
