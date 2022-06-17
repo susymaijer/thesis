@@ -1,3 +1,6 @@
 [submodule "experiment/nnUNet"]
 	path = experiment/nnUNet
 	url = https://github.com/susymaijer/nnUNet.git
+[submodule "nnUNet"]
+	path = nnUNet
+	url = https://github.com/susymaijer/nnUNet.git

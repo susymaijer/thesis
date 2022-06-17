@@ -93,7 +93,7 @@ conda env config vars list
 echo "Installing hidden layer.."
 pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 echo \"Installing nnU-net..\"
-pip install -e /home/smaijer/code/nnUNet
+pip install -e /home/smaijer/nnUNet
 
 nnUNet_train $config $trainer $task $fold $c
 

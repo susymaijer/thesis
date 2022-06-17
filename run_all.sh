@@ -86,7 +86,7 @@ echo \"Verifying environment variables:\"
 conda env config vars list
 echo \"Installing hidden layer and nnUnet..\"
 pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
-pip install -e /home/smaijer/code/nnUNet
+pip install -e /home/smaijer/nnUNet
 
 echo "Start preprocessing.."
 nnUNet_plan_and_preprocess -t $task --verify_dataset_integrity

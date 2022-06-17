@@ -54,7 +54,7 @@ conda activate nn
 echo \"Verifying environment variables:\"
 conda env config vars list
 echo \"Installing nnU-net..\"
-pip install -e /home/smaijer/code/nnUNet
+pip install -e /home/smaijer/nnUNet
 
 nnUNet_plan_and_preprocess -t $task --verify_dataset_integrity
 
