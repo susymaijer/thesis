@@ -4,8 +4,9 @@
 #SBATCH -N 1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --time=00:50:00
+#SBATCH --time=00:15:00
 #SBATCH --mem=32GB
+#SBATCH --partition=short
 #SBATCH --gres=gpu:RTX6000:1
 #SBATCH --error=/home/smaijer/logs/train/900/job.%J.err
 #SBATCH --output=/home/smaijer/logs/train/900/job.%J.out
@@ -13,7 +14,7 @@
 #SBATCH --mail-user=susy.maijer@lumc.nl
 
 # Prepare nnUnet
-echo "Starting at Tue Jun 14 10:25:14 CEST 2022"
+echo "Starting at Wed Jun 15 16:05:07 CEST 2022"
 
 echo "Running on hosts: $SLURM_JOB_NODELIST"
 echo "Running on $SLURM_JOB_NUM_NODES nodes."
@@ -42,6 +43,6 @@ pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_
 echo "Installing nnU-net.."
 pip install -e /home/smaijer/experiment/nnUNet
 
-nnUNet_train 3d_lowres nnUNetTrainerV2_UNETR 900 0 
+nnUNet_train 3d_lowres nnUNetTrainerV2_Hybrid 900 0 
 
-echo "Program finished with exit code 0 at: Tue Jun 14 10:25:14 CEST 2022"
+echo "Program finished with exit code 0 at: Wed Jun 15 16:05:07 CEST 2022"

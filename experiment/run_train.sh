@@ -14,7 +14,7 @@ cpu=${cpu:-8}
 read -p "Default wall time is 01:00:00. If not desired, type other wall time:" t
 t=${t:-01:00:00}
 
-read -p "Enter trainer [UNETR,empty]:" trainer
+read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
