@@ -1,0 +1,26 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-0cvf4i6h/hiddenlayer_f3fbdbf2635447788f08d97be6db1851
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/experiment/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/experiment/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/experiment/nnUNet/nnunet/training/network_training/nnUNetTrainerV2_Hybrid.py", line 39, in initialize_network
+    self.network = Hybrid(self.num_input_channels, 
+  File "/home/smaijer/experiment/nnUNet/nnunet/network_architecture/susy/hybrid.py", line 104, in __init__
+    self.td = nn.ModuleList(self.encoder.td)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'UNETREncoder' object has no attribute 'td'

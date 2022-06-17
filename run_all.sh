@@ -13,16 +13,35 @@ cpu=${cpu:-8}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
+read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
 
-if [ $config != "3d_cascade_fullres" ]; then
-   trainer="nnUNetTrainerV2"
+# lowres of fullres
+if [ $config != "3d_cascade_fullres" ];
+then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2_$trainer"
+   fi
+   if [ -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2"
+   fi
 fi
-if [ $config == "3d_cascade_fullres" ]; then
-   trainer="nnUNetTrainerV2CascadeFullRes"
+# cascade
+if [ $config == "3d_cascade_fullres" ];
+then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes_$trainer"
+   fi
+   if [ -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes"
+   fi
 fi
 
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/all_${task}_${p}_${cpu}_${config}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/all_${task}_${p}_${trainer}_${cpu}_${config}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 log_path="/home/smaijer/logs/all/$task"
 mkdir -p log_path
@@ -65,7 +84,8 @@ echo \"Activate conda env nnunet..\"
 conda activate nn
 echo \"Verifying environment variables:\"
 conda env config vars list
-echo \"Installing nnU-net..\"
+echo \"Installing hidden layer and nnUnet..\"
+pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 pip install -e /home/smaijer/code/nnUNet
 
 echo "Start preprocessing.."
@@ -86,17 +106,17 @@ nnUNet_train $config $trainer $task 3 -c
 nnUNet_train $config $trainer $task 4 -c
 
 echo "Start postprocessing.."
-nnUNet_determine_postprocessing -t $task -m $config
+nnUNet_determine_postprocessing -t $task -m $config -tr $trainer
 
 echo "Done postprocessing! Now start inferencing its own train and test files."
-mkdir -p $OUTPUT/$task/$config/$task/imagesTr
-mkdir -p $OUTPUT/$task/$config/$task/imagesTs
-nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/imagesTr -o $OUTPUT/$task/$config/$task/imagesTr -t $task -m $config
-nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/imagesTs -o $OUTPUT/$task/$config/$task/imagesTs -t $task -m $config
+mkdir -p $OUTPUT/$task/$config/$trainer/$task/imagesTr
+mkdir -p $OUTPUT/$task/$config/$trainer/$task/imagesTs
+nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/imagesTr -o $OUTPUT/$task/$config/$trainer/$task/imagesTr -t $task -m $config -tr $trainer -ctr "lala"
+nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/imagesTs -o $OUTPUT/$task/$config/$trainer/$task/imagesTs -t $task -m $config -tr $trainer -ctr "lala"
 
 echo "Done inferencing! Now start the evaluation."
-nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labelsTr -pred $OUTPUT/$task/$config/$task/imagesTr -l 1
-nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labelsTs -pred $OUTPUT/$task/$config/$task/imagesTs -l 1
+nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labelsTr -pred $OUTPUT/$task/$config/$trainer/$task/imagesTr -l 1
+nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labelsTs -pred $OUTPUT/$task/$config/$trainer/$task/imagesTs -l 1
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

@@ -13,16 +13,35 @@ cpu=${cpu:-8}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
+read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
 
-if [ $config != "3d_cascade_fullres" ]; then
-   trainer="nnUNetTrainerV2"
+# lowres of fullres
+if [ $config != "3d_cascade_fullres" ];
+then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2_$trainer"
+   fi
+   if [ -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2"
+   fi
 fi
-if [ $config == "3d_cascade_fullres" ]; then
-   trainer="nnUNetTrainerV2CascadeFullRes"
+# cascade
+if [ $config == "3d_cascade_fullres" ];
+then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes_$trainer"
+   fi
+   if [ -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes"
+   fi
 fi
 
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/train_${task}_${p}_${cpu}_${config}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/train_${task}_${p}_${trainer}_${cpu}_${config}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
 #SBATCH -J PancreasTrain

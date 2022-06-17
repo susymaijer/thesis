@@ -16,9 +16,36 @@ t=${t:-01:00:00}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
+read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
+
+# lowres of fullres
+if [ $config != "3d_cascade_fullres" ];
+then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2_$trainer"
+   fi
+   if [ -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2"
+   fi
+fi
+# cascade
+if [ $config == "3d_cascade_fullres" ];
+then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes_$trainer"
+   fi
+   if [ -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes"
+   fi
+fi
+
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/postprocess_${task}_${p}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/postprocess_${task}_${p}_${trainer}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
 #SBATCH -J PancreasDeterminePostprocess
@@ -60,9 +87,10 @@ conda activate nn
 echo \"Verifying environment variables:\"
 conda env config vars list
 echo \"Installing nnU-net..\"
+pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 pip install -e /home/smaijer/code/nnUNet
 
-nnUNet_determine_postprocessing -t $task -m $config
+nnUNet_determine_postprocessing -t $task -m $config -tr $trainer
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

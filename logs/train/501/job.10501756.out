@@ -1,0 +1,1917 @@
+Starting at Thu Jun 16 08:06:36 CEST 2022
+Running on hosts: res-hpc-lkeb06
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 8.
+Account: div2-lkeb
+Job ID: 10501756
+Job name: ExpPancreasTrain
+Node running script: res-hpc-lkeb06
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Thu Jun 16 08:10:24 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.82.01    Driver Version: 470.82.01    CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 6000     Off  | 00000000:AF:00.0 Off |                  Off |
+| 49%   64C    P0    73W / 260W |      0MiB / 24220MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer/experiment
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+nnUNet_raw_data_base = /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base
+nnUNet_preprocessed = /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed
+RESULTS_FOLDER = /exports/lkeb-hpc/smaijer/results
+OUTPUT = /exports/lkeb-hpc/smaijer/output
+Installing hidden layer..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-j6grd83d/hiddenlayer_1907aa839ace4cfe976b3d7c49aeeb66
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Installing nnU-net..
+Obtaining file:///home/smaijer/experiment/nnUNet
+Requirement already satisfied: torch>1.10.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.11.0)
+Requirement already satisfied: tqdm in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (4.64.0)
+Requirement already satisfied: dicom2nifti in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.3.2)
+Requirement already satisfied: scikit-image>=0.14 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.19.2)
+Requirement already satisfied: medpy in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.4.0)
+Requirement already satisfied: scipy in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.8.0)
+Requirement already satisfied: batchgenerators>=0.23 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.23)
+Requirement already satisfied: numpy in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.21.2)
+Requirement already satisfied: sklearn in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.0)
+Requirement already satisfied: SimpleITK in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.1.1)
+Requirement already satisfied: pandas in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: requests in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.27.1)
+Requirement already satisfied: nibabel in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.2.2)
+Requirement already satisfied: tifffile in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2022.4.8)
+Requirement already satisfied: matplotlib in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.5.1)
+Requirement already satisfied: monai in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.9.0)
+Requirement already satisfied: einops in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.4.1)
+Requirement already satisfied: unittest2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Requirement already satisfied: future in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (0.18.2)
+Requirement already satisfied: threadpoolctl in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (3.1.0)
+Requirement already satisfied: pillow>=7.1.2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (9.0.1)
+Requirement already satisfied: scikit-learn in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.0.2)
+Requirement already satisfied: imageio>=2.4.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.16.2)
+Requirement already satisfied: networkx>=2.2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.8)
+Requirement already satisfied: packaging>=20.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (21.3)
+Requirement already satisfied: PyWavelets>=1.1.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (1.3.0)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from packaging>=20.0->scikit-image>=0.14->nnunet==1.7.0) (3.0.8)
+Requirement already satisfied: typing_extensions in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from torch>1.10.0->nnunet==1.7.0) (4.1.1)
+Requirement already satisfied: pydicom>=1.3.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from dicom2nifti->nnunet==1.7.0) (2.3.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: cycler>=0.10 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (0.11.0)
+Requirement already satisfied: fonttools>=4.22.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (4.32.0)
+Requirement already satisfied: python-dateutil>=2.7 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (2.8.2)
+Requirement already satisfied: six>=1.5 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from python-dateutil>=2.7->matplotlib->nnunet==1.7.0) (1.16.0)
+Requirement already satisfied: setuptools in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nibabel->nnunet==1.7.0) (58.0.4)
+Requirement already satisfied: pytz>=2020.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from pandas->nnunet==1.7.0) (2022.1)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (1.26.8)
+Requirement already satisfied: certifi>=2017.4.17 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2021.10.8)
+Requirement already satisfied: idna<4,>=2.5 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (3.3)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2.0.4)
+Requirement already satisfied: joblib>=0.11 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-learn->batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Requirement already satisfied: traceback2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.4.0)
+Requirement already satisfied: linecache2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from traceback2->unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.0.0)
+Installing collected packages: argparse, nnunet
+  Attempting uninstall: nnunet
+    Found existing installation: nnunet 1.7.0
+    Uninstalling nnunet-1.7.0:
+      Successfully uninstalled nnunet-1.7.0
+  Running setup.py develop for nnunet
+Successfully installed argparse-1.4.0 nnunet-1.7.0
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Suus0 - run_training. Args:
+Namespace(network='3d_lowres', network_trainer='nnUNetTrainerV2_UNETRLarge', task='501', fold='0', validation_only=False, continue_training=True, p='nnUNetPlansv2.1', use_compressed_data=False, deterministic=False, npz=False, find_lr=False, valbest=False, fp32=False, val_folder='validation_raw', disable_saving=False, disable_postprocessing_on_folds=False, val_disable_overwrite=True, disable_next_stage_pred=False, pretrained_weights=None)
+###############################################
+I am running the following nnUNet: 3d_lowres
+My trainer class is:  <class 'nnunet.training.network_training.nnUNetTrainerV2_UNETRLarge.nnUNetTrainerV2_UNETRLarge'>
+For that I will be using the following configuration:
+num_classes:  1
+modalities:  {0: 'CT'}
+use_mask_for_norm OrderedDict([(0, False)])
+keep_only_largest_region None
+min_region_size_per_class None
+min_size_per_class None
+normalization_schemes OrderedDict([(0, 'CT')])
+stages...
+
+stage:  0
+{'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 80, 192, 160]), 'median_patient_size_in_voxels': array([120, 285, 285]), 'current_spacing': array([1.7987096 , 1.54576606, 1.54576606]), 'original_spacing': array([1.      , 0.859375, 0.859375]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [1, 2, 2]], 'conv_kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+stage:  1
+{'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 80, 192, 160]), 'median_patient_size_in_voxels': array([216, 512, 512]), 'current_spacing': array([1.      , 0.859375, 0.859375]), 'original_spacing': array([1.      , 0.859375, 0.859375]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [1, 2, 2]], 'conv_kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+I am using stage 0 from these plans
+I am using sample dice + CE loss
+
+I am using data from this folder:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task501/nnUNetData_plans_v2.1
+###############################################
+Suus1 - Initialise de NetworkTrainer
+Suus2 - Initialise de nnUNetTrainer
+Suus3 - Initialise de nnUNetTrainerV2
+Suus4 - Initialise de trainer echt
+Suus5 - zet de plans properties
+Suus6 - Zet de data augmentation params
+Suus7 - zet deep supervision weights die de meerdere outputs prioriteit geven
+loading dataset
+loading all case properties
+2022-06-16 08:10:43.466374: Using splits from existing split file: /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task501/splits_final.pkl
+2022-06-16 08:10:43.477163: The split file contains 5 splits.
+2022-06-16 08:10:43.479583: Desired fold for training: 0
+2022-06-16 08:10:43.481479: This split has 54 training and 14 validation cases.
+unpacking dataset
+done
+2022-06-16 08:10:43.571464: UNETR initialising network
+Img size: [ 80 192 160]
+Patch size: (16, 16, 16)
+Feature size: (5, 12, 10)
+UNETR(
+  (encoder): UNETREncoder(
+    (vit): ViT(
+      (patch_embedding): PatchEmbeddingBlock(
+        (patch_embeddings): Sequential(
+          (0): Rearrange('b c (h p1) (w p2) (d p3) -> b (h w d) (p1 p2 p3 c)', p1=16, p2=16, p3=16)
+          (1): Linear(in_features=4096, out_features=768, bias=True)
+        )
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (blocks): ModuleList(
+        (0): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (1): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (2): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (3): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (4): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (5): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (6): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (7): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (8): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (9): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (10): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (11): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    )
+    (encoder1): UnetrBasicBlock(
+      (layer): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (encoder2): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+        (1): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder3): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(128, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder4): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList()
+    )
+  )
+  (decoder): UNETRDecoder(
+    (decoder5): UnetrUpBlock(
+      (transp_conv): Convolution(
+        (conv): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (conv_block): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(512, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (decoder4): UnetrUpBlock(
+      (transp_conv): Convolution(
+        (conv): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (conv_block): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(256, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (decoder3): UnetrUpBlock(
+      (transp_conv): Convolution(
+        (conv): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (conv_block): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(128, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (decoder2): UnetrUpBlock(
+      (transp_conv): Convolution(
+        (conv): ConvTranspose3d(64, 32, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (conv_block): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(64, 32, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (out): UnetOutBlock(
+      (conv): Convolution(
+        (conv): Conv3d(32, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+      )
+    )
+  )
+)
+SuusA - Load checkpoint (final, latest, best)
+2022-06-16 08:10:47.148189: loading checkpoint /exports/lkeb-hpc/smaijer/results/nnUNet/3d_lowres/Task501/nnUNetTrainerV2_UNETRLarge__nnUNetPlansv2.1/fold_0/model_latest.model train= True
+SuusB run_training - zet learning rate als  
+2022-06-16 08:11:10.267194: Suus1 maybe_update_lr lr: 0.002349
+SuusC - run_training!
+using pin_memory on device 0
+using pin_memory on device 0
+2022-06-16 08:11:18.655382: Unable to plot network architecture:
+2022-06-16 08:11:18.688453: No module named 'IPython'
+2022-06-16 08:11:18.723024: 
+printing the network instead:
+
+2022-06-16 08:11:18.777447: UNETR(
+  (encoder): UNETREncoder(
+    (vit): ViT(
+      (patch_embedding): PatchEmbeddingBlock(
+        (patch_embeddings): Sequential(
+          (0): Rearrange('b c (h p1) (w p2) (d p3) -> b (h w d) (p1 p2 p3 c)', p1=16, p2=16, p3=16)
+          (1): Linear(in_features=4096, out_features=768, bias=True)
+        )
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (blocks): ModuleList(
+        (0): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (1): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (2): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (3): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (4): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (5): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (6): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (7): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (8): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (9): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (10): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (11): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    )
+    (encoder1): UnetrBasicBlock(
+      (layer): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (encoder2): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+        (1): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder3): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(128, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder4): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList()
+    )
+  )
+  (decoder): UNETRDecoder(
+    (decoder5): UnetrUpBlock(
+      (transp_conv): Convolution(
+        (conv): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (conv_block): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(512, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (decoder4): UnetrUpBlock(
+      (transp_conv): Convolution(
+        (conv): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (conv_block): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(256, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (decoder3): UnetrUpBlock(
+      (transp_conv): Convolution(
+        (conv): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (conv_block): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(128, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (decoder2): UnetrUpBlock(
+      (transp_conv): Convolution(
+        (conv): ConvTranspose3d(64, 32, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (conv_block): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(64, 32, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (out): UnetOutBlock(
+      (conv): Convolution(
+        (conv): Conv3d(32, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+      )
+    )
+  )
+)
+2022-06-16 08:11:18.822047: 
+
+2022-06-16 08:11:18.846646: 
+epoch:  400
+2022-06-16 08:13:29.489359: train loss : 1.2558
+2022-06-16 08:13:37.090835: validation loss: 1.2605
+2022-06-16 08:13:37.094350: Average global foreground Dice: [0.8131]
+2022-06-16 08:13:37.096280: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:13:37.575378: Suus1 maybe_update_lr lr: 0.002328
+2022-06-16 08:13:37.577804: saving best epoch checkpoint...
+2022-06-16 08:13:37.988138: saving checkpoint...
+2022-06-16 08:13:41.098536: done, saving took 3.52 seconds
+2022-06-16 08:13:41.108199: This epoch took 142.225571 s
+
+2022-06-16 08:13:41.110151: 
+epoch:  401
+2022-06-16 08:15:36.519906: train loss : 1.2566
+2022-06-16 08:15:44.193168: validation loss: 1.2560
+2022-06-16 08:15:44.197228: Average global foreground Dice: [0.8251]
+2022-06-16 08:15:44.199543: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:15:44.633868: Suus1 maybe_update_lr lr: 0.002307
+2022-06-16 08:15:44.636228: saving best epoch checkpoint...
+2022-06-16 08:15:44.898442: saving checkpoint...
+2022-06-16 08:15:47.975026: done, saving took 3.34 seconds
+2022-06-16 08:15:47.984312: This epoch took 126.872031 s
+
+2022-06-16 08:15:47.986687: 
+epoch:  402
+2022-06-16 08:17:43.480945: train loss : 1.2559
+2022-06-16 08:17:51.216242: validation loss: 1.2518
+2022-06-16 08:17:51.219594: Average global foreground Dice: [0.8269]
+2022-06-16 08:17:51.221719: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:17:51.655621: Suus1 maybe_update_lr lr: 0.002286
+2022-06-16 08:17:51.658146: saving best epoch checkpoint...
+2022-06-16 08:17:51.800133: saving checkpoint...
+2022-06-16 08:17:54.905251: done, saving took 3.24 seconds
+2022-06-16 08:17:54.913707: This epoch took 126.924639 s
+
+2022-06-16 08:17:54.916500: 
+epoch:  403
+2022-06-16 08:19:50.148347: train loss : 1.2586
+2022-06-16 08:19:57.915667: validation loss: 1.2655
+2022-06-16 08:19:57.918500: Average global foreground Dice: [0.8063]
+2022-06-16 08:19:57.920524: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:19:58.353150: Suus1 maybe_update_lr lr: 0.002264
+2022-06-16 08:19:58.355685: This epoch took 123.436639 s
+
+2022-06-16 08:19:58.357744: 
+epoch:  404
+2022-06-16 08:21:53.443491: train loss : 1.2573
+2022-06-16 08:22:01.099384: validation loss: 1.2663
+2022-06-16 08:22:01.102924: Average global foreground Dice: [0.8034]
+2022-06-16 08:22:01.105051: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:22:01.539289: Suus1 maybe_update_lr lr: 0.002243
+2022-06-16 08:22:01.541895: This epoch took 123.182198 s
+
+2022-06-16 08:22:01.544006: 
+epoch:  405
+2022-06-16 08:23:56.749239: train loss : 1.2591
+2022-06-16 08:24:04.373639: validation loss: 1.2574
+2022-06-16 08:24:04.381929: Average global foreground Dice: [0.816]
+2022-06-16 08:24:04.383873: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:24:04.820162: Suus1 maybe_update_lr lr: 0.002222
+2022-06-16 08:24:04.822476: This epoch took 123.276441 s
+
+2022-06-16 08:24:04.824474: 
+epoch:  406
+2022-06-16 08:26:00.427675: train loss : 1.2584
+2022-06-16 08:26:08.251668: validation loss: 1.2601
+2022-06-16 08:26:08.256206: Average global foreground Dice: [0.8157]
+2022-06-16 08:26:08.258639: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:26:08.694665: Suus1 maybe_update_lr lr: 0.002201
+2022-06-16 08:26:08.696893: This epoch took 123.870330 s
+
+2022-06-16 08:26:08.698984: 
+epoch:  407
+2022-06-16 08:28:04.254081: train loss : 1.2587
+2022-06-16 08:28:11.974423: validation loss: 1.2628
+2022-06-16 08:28:11.977606: Average global foreground Dice: [0.8098]
+2022-06-16 08:28:11.979837: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:28:12.414421: Suus1 maybe_update_lr lr: 0.002179
+2022-06-16 08:28:12.416562: This epoch took 123.715533 s
+
+2022-06-16 08:28:12.418846: 
+epoch:  408
+2022-06-16 08:30:07.613839: train loss : 1.2605
+2022-06-16 08:30:15.226576: validation loss: 1.2611
+2022-06-16 08:30:15.230376: Average global foreground Dice: [0.8149]
+2022-06-16 08:30:15.232368: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:30:15.665838: Suus1 maybe_update_lr lr: 0.002158
+2022-06-16 08:30:15.668281: This epoch took 123.247246 s
+
+2022-06-16 08:30:15.670346: 
+epoch:  409
+2022-06-16 08:32:11.250905: train loss : 1.2520
+2022-06-16 08:32:18.867841: validation loss: 1.2735
+2022-06-16 08:32:18.870780: Average global foreground Dice: [0.7932]
+2022-06-16 08:32:18.872661: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:32:19.303791: Suus1 maybe_update_lr lr: 0.002137
+2022-06-16 08:32:19.306045: This epoch took 123.633761 s
+
+2022-06-16 08:32:19.308311: 
+epoch:  410
+2022-06-16 08:34:14.617588: train loss : 1.2516
+2022-06-16 08:34:22.367786: validation loss: 1.2618
+2022-06-16 08:34:22.370764: Average global foreground Dice: [0.8144]
+2022-06-16 08:34:22.372854: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:34:22.802531: Suus1 maybe_update_lr lr: 0.002115
+2022-06-16 08:34:22.804701: This epoch took 123.494173 s
+
+2022-06-16 08:34:22.806579: 
+epoch:  411
+2022-06-16 08:36:18.671211: train loss : 1.2592
+2022-06-16 08:36:26.400428: validation loss: 1.2646
+2022-06-16 08:36:26.403186: Average global foreground Dice: [0.8076]
+2022-06-16 08:36:26.405049: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:36:26.832731: Suus1 maybe_update_lr lr: 0.002094
+2022-06-16 08:36:26.834882: This epoch took 124.026332 s
+
+2022-06-16 08:36:26.837222: 
+epoch:  412
+2022-06-16 08:38:21.934663: train loss : 1.2497
+2022-06-16 08:38:29.781930: validation loss: 1.2514
+2022-06-16 08:38:29.784700: Average global foreground Dice: [0.8284]
+2022-06-16 08:38:29.786811: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:38:30.211719: Suus1 maybe_update_lr lr: 0.002072
+2022-06-16 08:38:30.214195: This epoch took 123.374977 s
+
+2022-06-16 08:38:30.216400: 
+epoch:  413
+2022-06-16 08:40:25.470359: train loss : 1.2527
+2022-06-16 08:40:33.104227: validation loss: 1.2590
+2022-06-16 08:40:33.107355: Average global foreground Dice: [0.8192]
+2022-06-16 08:40:33.109427: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:40:33.538991: Suus1 maybe_update_lr lr: 0.002051
+2022-06-16 08:40:33.541412: This epoch took 123.322943 s
+
+2022-06-16 08:40:33.543757: 
+epoch:  414
+2022-06-16 08:42:29.003327: train loss : 1.2508
+2022-06-16 08:42:36.800360: validation loss: 1.2543
+2022-06-16 08:42:36.804046: Average global foreground Dice: [0.8209]
+2022-06-16 08:42:36.806322: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:42:37.234683: Suus1 maybe_update_lr lr: 0.00203
+2022-06-16 08:42:37.237355: This epoch took 123.691576 s
+
+2022-06-16 08:42:37.239536: 
+epoch:  415
+2022-06-16 08:44:33.372868: train loss : 1.2574
+2022-06-16 08:44:41.092911: validation loss: 1.2688
+2022-06-16 08:44:41.095976: Average global foreground Dice: [0.7996]
+2022-06-16 08:44:41.098356: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:44:41.524340: Suus1 maybe_update_lr lr: 0.002008
+2022-06-16 08:44:41.526648: This epoch took 124.284730 s
+
+2022-06-16 08:44:41.528728: 
+epoch:  416
+2022-06-16 08:46:36.923548: train loss : 1.2540
+2022-06-16 08:46:44.552317: validation loss: 1.2553
+2022-06-16 08:46:44.555965: Average global foreground Dice: [0.8234]
+2022-06-16 08:46:44.558186: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:46:44.975900: Suus1 maybe_update_lr lr: 0.001987
+2022-06-16 08:46:44.977971: This epoch took 123.447198 s
+
+2022-06-16 08:46:44.979912: 
+epoch:  417
+2022-06-16 08:48:40.289262: train loss : 1.2570
+2022-06-16 08:48:48.108406: validation loss: 1.2603
+2022-06-16 08:48:48.111322: Average global foreground Dice: [0.8124]
+2022-06-16 08:48:48.113460: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:48:48.544073: Suus1 maybe_update_lr lr: 0.001965
+2022-06-16 08:48:48.546537: This epoch took 123.564439 s
+
+2022-06-16 08:48:48.548548: 
+epoch:  418
+2022-06-16 08:50:43.902318: train loss : 1.2525
+2022-06-16 08:50:51.928439: validation loss: 1.2690
+2022-06-16 08:50:51.932134: Average global foreground Dice: [0.8067]
+2022-06-16 08:50:51.934599: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:50:52.360981: Suus1 maybe_update_lr lr: 0.001943
+2022-06-16 08:50:52.363497: This epoch took 123.813035 s
+
+2022-06-16 08:50:52.365772: 
+epoch:  419
+2022-06-16 08:52:47.990430: train loss : 1.2623
+2022-06-16 08:52:55.620788: validation loss: 1.2532
+2022-06-16 08:52:55.623908: Average global foreground Dice: [0.8239]
+2022-06-16 08:52:55.626405: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:52:56.056950: Suus1 maybe_update_lr lr: 0.001922
+2022-06-16 08:52:56.059510: This epoch took 123.691397 s
+
+2022-06-16 08:52:56.061413: 
+epoch:  420
+2022-06-16 08:54:51.308811: train loss : 1.2544
+2022-06-16 08:54:59.044456: validation loss: 1.2688
+2022-06-16 08:54:59.047751: Average global foreground Dice: [0.8025]
+2022-06-16 08:54:59.050006: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:54:59.477465: Suus1 maybe_update_lr lr: 0.0019
+2022-06-16 08:54:59.479824: This epoch took 123.416404 s
+
+2022-06-16 08:54:59.481929: 
+epoch:  421
+2022-06-16 08:56:54.706928: train loss : 1.2518
+2022-06-16 08:57:02.381089: validation loss: 1.2586
+2022-06-16 08:57:02.384450: Average global foreground Dice: [0.8193]
+2022-06-16 08:57:02.386705: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:57:02.814642: Suus1 maybe_update_lr lr: 0.001879
+2022-06-16 08:57:02.817071: This epoch took 123.333021 s
+
+2022-06-16 08:57:02.819043: 
+epoch:  422
+2022-06-16 08:58:58.025411: train loss : 1.2552
+2022-06-16 08:59:05.701687: validation loss: 1.2530
+2022-06-16 08:59:05.704430: Average global foreground Dice: [0.8209]
+2022-06-16 08:59:05.706250: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 08:59:06.134085: Suus1 maybe_update_lr lr: 0.001857
+2022-06-16 08:59:06.136751: This epoch took 123.315708 s
+
+2022-06-16 08:59:06.139172: 
+epoch:  423
+2022-06-16 09:01:01.587473: train loss : 1.2541
+2022-06-16 09:01:09.217107: validation loss: 1.2701
+2022-06-16 09:01:09.219983: Average global foreground Dice: [0.8061]
+2022-06-16 09:01:09.222156: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:01:09.649588: Suus1 maybe_update_lr lr: 0.001835
+2022-06-16 09:01:09.651837: This epoch took 123.510625 s
+
+2022-06-16 09:01:09.653843: 
+epoch:  424
+2022-06-16 09:03:04.659520: train loss : 1.2531
+2022-06-16 09:03:12.279818: validation loss: 1.2642
+2022-06-16 09:03:12.283357: Average global foreground Dice: [0.8219]
+2022-06-16 09:03:12.285388: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:03:12.711713: Suus1 maybe_update_lr lr: 0.001813
+2022-06-16 09:03:12.713998: This epoch took 123.058239 s
+
+2022-06-16 09:03:12.715994: 
+epoch:  425
+2022-06-16 09:05:08.032916: train loss : 1.2535
+2022-06-16 09:05:15.669313: validation loss: 1.2581
+2022-06-16 09:05:15.672632: Average global foreground Dice: [0.8165]
+2022-06-16 09:05:15.674645: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:05:16.097363: Suus1 maybe_update_lr lr: 0.001792
+2022-06-16 09:05:16.099961: This epoch took 123.381955 s
+
+2022-06-16 09:05:16.102222: 
+epoch:  426
+2022-06-16 09:07:11.007321: train loss : 1.2506
+2022-06-16 09:07:18.583489: validation loss: 1.2577
+2022-06-16 09:07:18.587222: Average global foreground Dice: [0.8181]
+2022-06-16 09:07:18.589405: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:07:19.007270: Suus1 maybe_update_lr lr: 0.00177
+2022-06-16 09:07:19.009875: This epoch took 122.905379 s
+
+2022-06-16 09:07:19.011957: 
+epoch:  427
+2022-06-16 09:09:14.422226: train loss : 1.2486
+2022-06-16 09:09:21.984638: validation loss: 1.2589
+2022-06-16 09:09:21.987621: Average global foreground Dice: [0.8165]
+2022-06-16 09:09:21.989605: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:09:22.416494: Suus1 maybe_update_lr lr: 0.001748
+2022-06-16 09:09:22.418703: This epoch took 123.404642 s
+
+2022-06-16 09:09:22.420547: 
+epoch:  428
+2022-06-16 09:11:17.463900: train loss : 1.2483
+2022-06-16 09:11:25.155218: validation loss: 1.2637
+2022-06-16 09:11:25.158901: Average global foreground Dice: [0.807]
+2022-06-16 09:11:25.161565: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:11:25.590321: Suus1 maybe_update_lr lr: 0.001726
+2022-06-16 09:11:25.592734: This epoch took 123.170194 s
+
+2022-06-16 09:11:25.594896: 
+epoch:  429
+2022-06-16 09:13:20.761238: train loss : 1.2505
+2022-06-16 09:13:28.309195: validation loss: 1.2701
+2022-06-16 09:13:28.312359: Average global foreground Dice: [0.7968]
+2022-06-16 09:13:28.314945: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:13:28.747011: Suus1 maybe_update_lr lr: 0.001704
+2022-06-16 09:13:28.749525: This epoch took 123.152492 s
+
+2022-06-16 09:13:28.751525: 
+epoch:  430
+2022-06-16 09:15:24.316915: train loss : 1.2527
+2022-06-16 09:15:31.828153: validation loss: 1.2478
+2022-06-16 09:15:31.831444: Average global foreground Dice: [0.8317]
+2022-06-16 09:15:31.833649: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:15:32.260955: Suus1 maybe_update_lr lr: 0.001682
+2022-06-16 09:15:32.263729: This epoch took 123.510230 s
+
+2022-06-16 09:15:32.266489: 
+epoch:  431
+2022-06-16 09:17:27.366053: train loss : 1.2481
+2022-06-16 09:17:35.109022: validation loss: 1.2493
+2022-06-16 09:17:35.111841: Average global foreground Dice: [0.8292]
+2022-06-16 09:17:35.114372: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:17:35.541813: Suus1 maybe_update_lr lr: 0.00166
+2022-06-16 09:17:35.544372: saving best epoch checkpoint...
+2022-06-16 09:17:35.687365: saving checkpoint...
+2022-06-16 09:17:38.771003: done, saving took 3.22 seconds
+2022-06-16 09:17:38.779681: This epoch took 126.510743 s
+
+2022-06-16 09:17:38.781824: 
+epoch:  432
+2022-06-16 09:19:33.721830: train loss : 1.2500
+2022-06-16 09:19:41.270981: validation loss: 1.2567
+2022-06-16 09:19:41.273749: Average global foreground Dice: [0.8175]
+2022-06-16 09:19:41.276191: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:19:41.701669: Suus1 maybe_update_lr lr: 0.001638
+2022-06-16 09:19:41.704034: saving best epoch checkpoint...
+2022-06-16 09:19:41.846649: saving checkpoint...
+2022-06-16 09:19:44.821106: done, saving took 3.12 seconds
+2022-06-16 09:19:44.830532: This epoch took 126.046644 s
+
+2022-06-16 09:19:44.832718: 
+epoch:  433
+2022-06-16 09:21:39.848373: train loss : 1.2499
+2022-06-16 09:21:47.619731: validation loss: 1.2506
+2022-06-16 09:21:47.622553: Average global foreground Dice: [0.8268]
+2022-06-16 09:21:47.624390: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:21:48.052012: Suus1 maybe_update_lr lr: 0.001616
+2022-06-16 09:21:48.054300: saving best epoch checkpoint...
+2022-06-16 09:21:48.199996: saving checkpoint...
+2022-06-16 09:21:51.313976: done, saving took 3.26 seconds
+2022-06-16 09:21:51.322720: This epoch took 126.487646 s
+
+2022-06-16 09:21:51.324697: 
+epoch:  434
+2022-06-16 09:23:46.177331: train loss : 1.2487
+2022-06-16 09:23:53.722035: validation loss: 1.2456
+2022-06-16 09:23:53.724709: Average global foreground Dice: [0.8346]
+2022-06-16 09:23:53.726596: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:23:54.143202: Suus1 maybe_update_lr lr: 0.001594
+2022-06-16 09:23:54.145413: saving best epoch checkpoint...
+2022-06-16 09:23:54.286983: saving checkpoint...
+2022-06-16 09:23:57.215617: done, saving took 3.07 seconds
+2022-06-16 09:23:57.223715: This epoch took 125.896915 s
+
+2022-06-16 09:23:57.225730: 
+epoch:  435
+2022-06-16 09:25:52.437624: train loss : 1.2486
+2022-06-16 09:25:59.957422: validation loss: 1.2519
+2022-06-16 09:25:59.961288: Average global foreground Dice: [0.8304]
+2022-06-16 09:25:59.963281: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:26:00.388298: Suus1 maybe_update_lr lr: 0.001572
+2022-06-16 09:26:00.390793: saving best epoch checkpoint...
+2022-06-16 09:26:00.533345: saving checkpoint...
+2022-06-16 09:26:03.520253: done, saving took 3.13 seconds
+2022-06-16 09:26:03.529009: This epoch took 126.301366 s
+
+2022-06-16 09:26:03.531047: 
+epoch:  436
+2022-06-16 09:27:58.609899: train loss : 1.2527
+2022-06-16 09:28:06.120204: validation loss: 1.2519
+2022-06-16 09:28:06.123897: Average global foreground Dice: [0.8252]
+2022-06-16 09:28:06.125809: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:28:06.551784: Suus1 maybe_update_lr lr: 0.00155
+2022-06-16 09:28:06.554276: saving best epoch checkpoint...
+2022-06-16 09:28:06.697741: saving checkpoint...
+2022-06-16 09:28:09.728887: done, saving took 3.17 seconds
+2022-06-16 09:28:09.737241: This epoch took 126.204237 s
+
+2022-06-16 09:28:09.739282: 
+epoch:  437
+2022-06-16 09:30:04.545990: train loss : 1.2485
+2022-06-16 09:30:12.084419: validation loss: 1.2630
+2022-06-16 09:30:12.086993: Average global foreground Dice: [0.8081]
+2022-06-16 09:30:12.089015: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:30:12.517804: Suus1 maybe_update_lr lr: 0.001528
+2022-06-16 09:30:12.520272: This epoch took 122.779011 s
+
+2022-06-16 09:30:12.522278: 
+epoch:  438
+2022-06-16 09:32:07.701267: train loss : 1.2532
+2022-06-16 09:32:15.206485: validation loss: 1.2512
+2022-06-16 09:32:15.209485: Average global foreground Dice: [0.8265]
+2022-06-16 09:32:15.211509: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:32:15.642075: Suus1 maybe_update_lr lr: 0.001506
+2022-06-16 09:32:15.644658: This epoch took 123.120509 s
+
+2022-06-16 09:32:15.646944: 
+epoch:  439
+2022-06-16 09:34:10.778856: train loss : 1.2539
+2022-06-16 09:34:18.281155: validation loss: 1.2675
+2022-06-16 09:34:18.284138: Average global foreground Dice: [0.8038]
+2022-06-16 09:34:18.286334: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:34:18.712642: Suus1 maybe_update_lr lr: 0.001483
+2022-06-16 09:34:18.714780: This epoch took 123.065515 s
+
+2022-06-16 09:34:18.716732: 
+epoch:  440
+2022-06-16 09:36:14.503916: train loss : 1.2514
+2022-06-16 09:36:22.212534: validation loss: 1.2475
+2022-06-16 09:36:22.215497: Average global foreground Dice: [0.8315]
+2022-06-16 09:36:22.217467: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:36:22.644077: Suus1 maybe_update_lr lr: 0.001461
+2022-06-16 09:36:22.646462: This epoch took 123.927707 s
+
+2022-06-16 09:36:22.648488: 
+epoch:  441
+2022-06-16 09:38:17.723979: train loss : 1.2509
+2022-06-16 09:38:25.477989: validation loss: 1.2598
+2022-06-16 09:38:25.481021: Average global foreground Dice: [0.8122]
+2022-06-16 09:38:25.483698: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:38:25.915037: Suus1 maybe_update_lr lr: 0.001439
+2022-06-16 09:38:25.917835: This epoch took 123.267253 s
+
+2022-06-16 09:38:25.919846: 
+epoch:  442
+2022-06-16 09:40:20.907304: train loss : 1.2547
+2022-06-16 09:40:28.408350: validation loss: 1.2569
+2022-06-16 09:40:28.411412: Average global foreground Dice: [0.8198]
+2022-06-16 09:40:28.413450: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:40:28.841725: Suus1 maybe_update_lr lr: 0.001416
+2022-06-16 09:40:28.843919: This epoch took 122.921783 s
+
+2022-06-16 09:40:28.845844: 
+epoch:  443
+2022-06-16 09:42:23.909039: train loss : 1.2476
+2022-06-16 09:42:31.416683: validation loss: 1.2597
+2022-06-16 09:42:31.420109: Average global foreground Dice: [0.8115]
+2022-06-16 09:42:31.422152: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:42:31.838266: Suus1 maybe_update_lr lr: 0.001394
+2022-06-16 09:42:31.840559: This epoch took 122.992746 s
+
+2022-06-16 09:42:31.842730: 
+epoch:  444
+2022-06-16 09:44:26.883970: train loss : 1.2498
+2022-06-16 09:44:34.495960: validation loss: 1.2530
+2022-06-16 09:44:34.498761: Average global foreground Dice: [0.8235]
+2022-06-16 09:44:34.500699: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:44:34.925733: Suus1 maybe_update_lr lr: 0.001372
+2022-06-16 09:44:34.928084: This epoch took 123.083163 s
+
+2022-06-16 09:44:34.930167: 
+epoch:  445
+2022-06-16 09:46:29.805037: train loss : 1.2501
+2022-06-16 09:46:37.689805: validation loss: 1.2468
+2022-06-16 09:46:37.693371: Average global foreground Dice: [0.8329]
+2022-06-16 09:46:37.695554: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:46:38.115776: Suus1 maybe_update_lr lr: 0.001349
+2022-06-16 09:46:38.117784: This epoch took 123.185345 s
+
+2022-06-16 09:46:38.119638: 
+epoch:  446
+2022-06-16 09:48:33.536619: train loss : 1.2483
+2022-06-16 09:48:41.051890: validation loss: 1.2526
+2022-06-16 09:48:41.054806: Average global foreground Dice: [0.8287]
+2022-06-16 09:48:41.056894: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:48:41.483037: Suus1 maybe_update_lr lr: 0.001327
+2022-06-16 09:48:41.485532: saving best epoch checkpoint...
+2022-06-16 09:48:41.629201: saving checkpoint...
+2022-06-16 09:48:44.619496: done, saving took 3.13 seconds
+2022-06-16 09:48:44.629281: This epoch took 126.507714 s
+
+2022-06-16 09:48:44.631618: 
+epoch:  447
+2022-06-16 09:50:40.105645: train loss : 1.2500
+2022-06-16 09:50:47.995893: validation loss: 1.2528
+2022-06-16 09:50:47.999297: Average global foreground Dice: [0.8231]
+2022-06-16 09:50:48.001407: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:50:48.428960: Suus1 maybe_update_lr lr: 0.001304
+2022-06-16 09:50:48.431366: saving best epoch checkpoint...
+2022-06-16 09:50:48.575983: saving checkpoint...
+2022-06-16 09:50:51.550898: done, saving took 3.12 seconds
+2022-06-16 09:50:51.559422: This epoch took 126.925205 s
+
+2022-06-16 09:50:51.561639: 
+epoch:  448
+2022-06-16 09:52:46.963927: train loss : 1.2524
+2022-06-16 09:52:54.485421: validation loss: 1.2514
+2022-06-16 09:52:54.488161: Average global foreground Dice: [0.8244]
+2022-06-16 09:52:54.490128: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:52:54.909456: Suus1 maybe_update_lr lr: 0.001282
+2022-06-16 09:52:54.912424: saving best epoch checkpoint...
+2022-06-16 09:52:55.056786: saving checkpoint...
+2022-06-16 09:52:58.078608: done, saving took 3.16 seconds
+2022-06-16 09:52:58.088076: This epoch took 126.524275 s
+
+2022-06-16 09:52:58.090174: 
+epoch:  449
+2022-06-16 09:54:53.064599: train loss : 1.2500
+2022-06-16 09:55:00.569022: validation loss: 1.2504
+2022-06-16 09:55:00.572038: Average global foreground Dice: [0.8279]
+2022-06-16 09:55:00.574089: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:55:01.000872: Suus1 maybe_update_lr lr: 0.001259
+2022-06-16 09:55:01.003312: saving scheduled checkpoint file...
+2022-06-16 09:55:01.150106: saving checkpoint...
+2022-06-16 09:55:04.185900: done, saving took 3.18 seconds
+2022-06-16 09:55:04.196591: done
+2022-06-16 09:55:04.198695: saving best epoch checkpoint...
+2022-06-16 09:55:04.261688: saving checkpoint...
+2022-06-16 09:55:07.269884: done, saving took 3.07 seconds
+2022-06-16 09:55:07.279432: This epoch took 129.187143 s
+
+2022-06-16 09:55:07.281780: 
+epoch:  450
+2022-06-16 09:57:02.134873: train loss : 1.2538
+2022-06-16 09:57:09.839329: validation loss: 1.2568
+2022-06-16 09:57:09.843036: Average global foreground Dice: [0.8179]
+2022-06-16 09:57:09.844903: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:57:10.267974: Suus1 maybe_update_lr lr: 0.001236
+2022-06-16 09:57:10.270334: This epoch took 122.986170 s
+
+2022-06-16 09:57:10.272498: 
+epoch:  451
+2022-06-16 09:59:05.269599: train loss : 1.2499
+2022-06-16 09:59:12.770833: validation loss: 1.2520
+2022-06-16 09:59:12.774632: Average global foreground Dice: [0.8244]
+2022-06-16 09:59:12.776699: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 09:59:13.197005: Suus1 maybe_update_lr lr: 0.001214
+2022-06-16 09:59:13.199339: This epoch took 122.924256 s
+
+2022-06-16 09:59:13.201594: 
+epoch:  452
+2022-06-16 10:01:08.280879: train loss : 1.2488
+2022-06-16 10:01:15.879112: validation loss: 1.2518
+2022-06-16 10:01:15.883420: Average global foreground Dice: [0.8251]
+2022-06-16 10:01:15.885677: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:01:16.424767: Suus1 maybe_update_lr lr: 0.001191
+2022-06-16 10:01:16.427668: saving best epoch checkpoint...
+2022-06-16 10:01:16.570554: saving checkpoint...
+2022-06-16 10:01:21.019721: done, saving took 4.59 seconds
+2022-06-16 10:01:21.030132: This epoch took 127.825878 s
+
+2022-06-16 10:01:21.033211: 
+epoch:  453
+2022-06-16 10:03:16.108103: train loss : 1.2493
+2022-06-16 10:03:23.610450: validation loss: 1.2531
+2022-06-16 10:03:23.614368: Average global foreground Dice: [0.8255]
+2022-06-16 10:03:23.616855: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:03:24.035719: Suus1 maybe_update_lr lr: 0.001168
+2022-06-16 10:03:24.038491: saving best epoch checkpoint...
+2022-06-16 10:03:24.180896: saving checkpoint...
+2022-06-16 10:03:27.256927: done, saving took 3.22 seconds
+2022-06-16 10:03:27.265544: This epoch took 126.229484 s
+
+2022-06-16 10:03:27.267643: 
+epoch:  454
+2022-06-16 10:05:22.366741: train loss : 1.2455
+2022-06-16 10:05:29.953921: validation loss: 1.2611
+2022-06-16 10:05:29.957804: Average global foreground Dice: [0.8173]
+2022-06-16 10:05:29.959927: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:05:30.384642: Suus1 maybe_update_lr lr: 0.001145
+2022-06-16 10:05:30.387214: This epoch took 123.117385 s
+
+2022-06-16 10:05:30.389271: 
+epoch:  455
+2022-06-16 10:07:25.235721: train loss : 1.2487
+2022-06-16 10:07:32.736926: validation loss: 1.2481
+2022-06-16 10:07:32.739846: Average global foreground Dice: [0.8275]
+2022-06-16 10:07:32.741885: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:07:33.169162: Suus1 maybe_update_lr lr: 0.001122
+2022-06-16 10:07:33.171388: saving best epoch checkpoint...
+2022-06-16 10:07:33.315439: saving checkpoint...
+2022-06-16 10:07:36.309702: done, saving took 3.14 seconds
+2022-06-16 10:07:36.317933: This epoch took 125.926532 s
+
+2022-06-16 10:07:36.319907: 
+epoch:  456
+2022-06-16 10:09:31.307475: train loss : 1.2444
+2022-06-16 10:09:38.793404: validation loss: 1.2433
+2022-06-16 10:09:38.796508: Average global foreground Dice: [0.84]
+2022-06-16 10:09:38.799371: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:09:39.222842: Suus1 maybe_update_lr lr: 0.001099
+2022-06-16 10:09:39.225557: saving best epoch checkpoint...
+2022-06-16 10:09:39.370060: saving checkpoint...
+2022-06-16 10:09:42.464352: done, saving took 3.24 seconds
+2022-06-16 10:09:42.475870: This epoch took 126.153713 s
+
+2022-06-16 10:09:42.478448: 
+epoch:  457
+2022-06-16 10:11:37.821749: train loss : 1.2480
+2022-06-16 10:11:45.441335: validation loss: 1.2553
+2022-06-16 10:11:45.445251: Average global foreground Dice: [0.8208]
+2022-06-16 10:11:45.447369: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:11:45.870063: Suus1 maybe_update_lr lr: 0.001076
+2022-06-16 10:11:45.872122: This epoch took 123.391662 s
+
+2022-06-16 10:11:45.874073: 
+epoch:  458
+2022-06-16 10:13:40.659151: train loss : 1.2463
+2022-06-16 10:13:48.282193: validation loss: 1.2454
+2022-06-16 10:13:48.285220: Average global foreground Dice: [0.8343]
+2022-06-16 10:13:48.287271: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:13:48.706286: Suus1 maybe_update_lr lr: 0.001053
+2022-06-16 10:13:48.708634: saving best epoch checkpoint...
+2022-06-16 10:13:48.854524: saving checkpoint...
+2022-06-16 10:13:52.017248: done, saving took 3.31 seconds
+2022-06-16 10:13:52.025853: This epoch took 126.149721 s
+
+2022-06-16 10:13:52.027871: 
+epoch:  459
+2022-06-16 10:15:46.903830: train loss : 1.2504
+2022-06-16 10:15:54.413907: validation loss: 1.2532
+2022-06-16 10:15:54.416847: Average global foreground Dice: [0.8218]
+2022-06-16 10:15:54.419265: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:15:54.834473: Suus1 maybe_update_lr lr: 0.00103
+2022-06-16 10:15:54.836865: This epoch took 122.806622 s
+
+2022-06-16 10:15:54.838907: 
+epoch:  460
+2022-06-16 10:17:50.080765: train loss : 1.2448
+2022-06-16 10:17:57.577034: validation loss: 1.2553
+2022-06-16 10:17:57.579931: Average global foreground Dice: [0.8223]
+2022-06-16 10:17:57.581948: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:17:57.997542: Suus1 maybe_update_lr lr: 0.001007
+2022-06-16 10:17:58.000298: This epoch took 123.158895 s
+
+2022-06-16 10:17:58.002368: 
+epoch:  461
+2022-06-16 10:19:53.106068: train loss : 1.2493
+2022-06-16 10:20:00.633982: validation loss: 1.2520
+2022-06-16 10:20:00.636715: Average global foreground Dice: [0.8247]
+2022-06-16 10:20:00.638628: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:20:01.065389: Suus1 maybe_update_lr lr: 0.000983
+2022-06-16 10:20:01.068050: This epoch took 123.063670 s
+
+2022-06-16 10:20:01.070619: 
+epoch:  462
+2022-06-16 10:21:56.375753: train loss : 1.2477
+2022-06-16 10:22:03.880912: validation loss: 1.2489
+2022-06-16 10:22:03.883734: Average global foreground Dice: [0.8268]
+2022-06-16 10:22:03.885614: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:22:04.299875: Suus1 maybe_update_lr lr: 0.00096
+2022-06-16 10:22:04.302320: This epoch took 123.229597 s
+
+2022-06-16 10:22:04.304537: 
+epoch:  463
+2022-06-16 10:23:59.601840: train loss : 1.2465
+2022-06-16 10:24:07.138093: validation loss: 1.2578
+2022-06-16 10:24:07.144181: Average global foreground Dice: [0.8173]
+2022-06-16 10:24:07.146471: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:24:07.571457: Suus1 maybe_update_lr lr: 0.000937
+2022-06-16 10:24:07.574126: This epoch took 123.267555 s
+
+2022-06-16 10:24:07.576202: 
+epoch:  464
+2022-06-16 10:26:02.806436: train loss : 1.2457
+2022-06-16 10:26:10.428301: validation loss: 1.2523
+2022-06-16 10:26:10.431693: Average global foreground Dice: [0.8244]
+2022-06-16 10:26:10.433900: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:26:10.854768: Suus1 maybe_update_lr lr: 0.000913
+2022-06-16 10:26:10.857354: This epoch took 123.279166 s
+
+2022-06-16 10:26:10.859435: 
+epoch:  465
+2022-06-16 10:28:06.198407: train loss : 1.2444
+2022-06-16 10:28:13.697671: validation loss: 1.2560
+2022-06-16 10:28:13.702036: Average global foreground Dice: [0.8177]
+2022-06-16 10:28:13.704431: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:28:14.119914: Suus1 maybe_update_lr lr: 0.00089
+2022-06-16 10:28:14.122617: This epoch took 123.261031 s
+
+2022-06-16 10:28:14.124760: 
+epoch:  466
+2022-06-16 10:30:08.921083: train loss : 1.2450
+2022-06-16 10:30:16.409807: validation loss: 1.2498
+2022-06-16 10:30:16.412688: Average global foreground Dice: [0.827]
+2022-06-16 10:30:16.414674: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:30:16.834236: Suus1 maybe_update_lr lr: 0.000866
+2022-06-16 10:30:16.836653: This epoch took 122.709685 s
+
+2022-06-16 10:30:16.838743: 
+epoch:  467
+2022-06-16 10:32:11.960862: train loss : 1.2440
+2022-06-16 10:32:19.553966: validation loss: 1.2538
+2022-06-16 10:32:19.556903: Average global foreground Dice: [0.824]
+2022-06-16 10:32:19.558919: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:32:19.981048: Suus1 maybe_update_lr lr: 0.000842
+2022-06-16 10:32:19.983114: This epoch took 123.142371 s
+
+2022-06-16 10:32:19.985192: 
+epoch:  468
+2022-06-16 10:34:15.015403: train loss : 1.2469
+2022-06-16 10:34:22.576379: validation loss: 1.2518
+2022-06-16 10:34:22.579329: Average global foreground Dice: [0.8279]
+2022-06-16 10:34:22.581320: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:34:22.995488: Suus1 maybe_update_lr lr: 0.000819
+2022-06-16 10:34:22.997649: This epoch took 123.010392 s
+
+2022-06-16 10:34:22.999804: 
+epoch:  469
+2022-06-16 10:36:18.019923: train loss : 1.2467
+2022-06-16 10:36:25.545327: validation loss: 1.2517
+2022-06-16 10:36:25.548233: Average global foreground Dice: [0.8252]
+2022-06-16 10:36:25.550265: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:36:25.965191: Suus1 maybe_update_lr lr: 0.000795
+2022-06-16 10:36:25.967459: This epoch took 122.965632 s
+
+2022-06-16 10:36:25.969615: 
+epoch:  470
+2022-06-16 10:38:20.820293: train loss : 1.2493
+2022-06-16 10:38:28.319513: validation loss: 1.2560
+2022-06-16 10:38:28.323041: Average global foreground Dice: [0.8197]
+2022-06-16 10:38:28.325242: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:38:28.736528: Suus1 maybe_update_lr lr: 0.000771
+2022-06-16 10:38:28.738717: This epoch took 122.767174 s
+
+2022-06-16 10:38:28.740779: 
+epoch:  471
+2022-06-16 10:40:23.589578: train loss : 1.2449
+2022-06-16 10:40:31.186564: validation loss: 1.2473
+2022-06-16 10:40:31.189681: Average global foreground Dice: [0.8297]
+2022-06-16 10:40:31.191690: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:40:31.618146: Suus1 maybe_update_lr lr: 0.000747
+2022-06-16 10:40:31.620265: This epoch took 122.877401 s
+
+2022-06-16 10:40:31.622237: 
+epoch:  472
+2022-06-16 10:42:26.382042: train loss : 1.2435
+2022-06-16 10:42:33.880029: validation loss: 1.2536
+2022-06-16 10:42:33.883070: Average global foreground Dice: [0.8236]
+2022-06-16 10:42:33.885334: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:42:34.310243: Suus1 maybe_update_lr lr: 0.000723
+2022-06-16 10:42:34.313222: This epoch took 122.689040 s
+
+2022-06-16 10:42:34.315490: 
+epoch:  473
+2022-06-16 10:44:29.102564: train loss : 1.2411
+2022-06-16 10:44:36.601305: validation loss: 1.2495
+2022-06-16 10:44:36.604970: Average global foreground Dice: [0.8289]
+2022-06-16 10:44:36.607056: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:44:37.032686: Suus1 maybe_update_lr lr: 0.000699
+2022-06-16 10:44:37.034978: This epoch took 122.717431 s
+
+2022-06-16 10:44:37.037147: 
+epoch:  474
+2022-06-16 10:46:32.031343: train loss : 1.2417
+2022-06-16 10:46:39.518856: validation loss: 1.2458
+2022-06-16 10:46:39.521859: Average global foreground Dice: [0.8321]
+2022-06-16 10:46:39.523934: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:46:39.940094: Suus1 maybe_update_lr lr: 0.000675
+2022-06-16 10:46:39.942277: saving best epoch checkpoint...
+2022-06-16 10:46:40.086371: saving checkpoint...
+2022-06-16 10:46:43.085902: done, saving took 3.14 seconds
+2022-06-16 10:46:43.095245: This epoch took 126.052216 s
+
+2022-06-16 10:46:43.097339: 
+epoch:  475
+2022-06-16 10:48:37.876382: train loss : 1.2450
+2022-06-16 10:48:45.399799: validation loss: 1.2481
+2022-06-16 10:48:45.402655: Average global foreground Dice: [0.8297]
+2022-06-16 10:48:45.404665: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:48:45.813358: Suus1 maybe_update_lr lr: 0.00065
+2022-06-16 10:48:45.815671: saving best epoch checkpoint...
+2022-06-16 10:48:45.959083: saving checkpoint...
+2022-06-16 10:48:48.896971: done, saving took 3.08 seconds
+2022-06-16 10:48:48.904813: This epoch took 125.805310 s
+
+2022-06-16 10:48:48.906828: 
+epoch:  476
+2022-06-16 10:50:43.997241: train loss : 1.2445
+2022-06-16 10:50:51.486218: validation loss: 1.2506
+2022-06-16 10:50:51.489440: Average global foreground Dice: [0.8288]
+2022-06-16 10:50:51.491584: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:50:51.908789: Suus1 maybe_update_lr lr: 0.000626
+2022-06-16 10:50:51.911461: saving best epoch checkpoint...
+2022-06-16 10:50:52.054124: saving checkpoint...
+2022-06-16 10:50:55.015957: done, saving took 3.10 seconds
+2022-06-16 10:50:55.024425: This epoch took 126.115637 s
+
+2022-06-16 10:50:55.026590: 
+epoch:  477
+2022-06-16 10:52:49.638460: train loss : 1.2378
+2022-06-16 10:52:57.128678: validation loss: 1.2478
+2022-06-16 10:52:57.132615: Average global foreground Dice: [0.8326]
+2022-06-16 10:52:57.134669: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:52:57.556491: Suus1 maybe_update_lr lr: 0.000601
+2022-06-16 10:52:57.558862: saving best epoch checkpoint...
+2022-06-16 10:52:57.701189: saving checkpoint...
+2022-06-16 10:53:00.656009: done, saving took 3.09 seconds
+2022-06-16 10:53:00.663785: This epoch took 125.635014 s
+
+2022-06-16 10:53:00.665925: 
+epoch:  478
+2022-06-16 10:54:55.445928: train loss : 1.2408
+2022-06-16 10:55:02.935937: validation loss: 1.2512
+2022-06-16 10:55:02.938881: Average global foreground Dice: [0.8234]
+2022-06-16 10:55:02.940775: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:55:03.358693: Suus1 maybe_update_lr lr: 0.000577
+2022-06-16 10:55:03.361216: This epoch took 122.693146 s
+
+2022-06-16 10:55:03.363317: 
+epoch:  479
+2022-06-16 10:56:58.393072: train loss : 1.2407
+2022-06-16 10:57:05.888102: validation loss: 1.2480
+2022-06-16 10:57:05.891658: Average global foreground Dice: [0.8307]
+2022-06-16 10:57:05.894017: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:57:06.304508: Suus1 maybe_update_lr lr: 0.000552
+2022-06-16 10:57:06.306915: saving best epoch checkpoint...
+2022-06-16 10:57:06.455300: saving checkpoint...
+2022-06-16 10:57:10.043252: done, saving took 3.73 seconds
+2022-06-16 10:57:10.053987: This epoch took 126.688267 s
+
+2022-06-16 10:57:10.056239: 
+epoch:  480
+2022-06-16 10:59:04.826906: train loss : 1.2404
+2022-06-16 10:59:12.335728: validation loss: 1.2466
+2022-06-16 10:59:12.338814: Average global foreground Dice: [0.8324]
+2022-06-16 10:59:12.340692: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 10:59:12.862234: Suus1 maybe_update_lr lr: 0.000527
+2022-06-16 10:59:12.864480: saving best epoch checkpoint...
+2022-06-16 10:59:13.008101: saving checkpoint...
+2022-06-16 10:59:16.043585: done, saving took 3.18 seconds
+2022-06-16 10:59:16.053261: This epoch took 125.994978 s
+
+2022-06-16 10:59:16.055833: 
+epoch:  481
+2022-06-16 11:01:11.587918: train loss : 1.2432
+2022-06-16 11:01:19.091376: validation loss: 1.2455
+2022-06-16 11:01:19.094837: Average global foreground Dice: [0.833]
+2022-06-16 11:01:19.096853: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:01:19.508579: Suus1 maybe_update_lr lr: 0.000502
+2022-06-16 11:01:19.510890: saving best epoch checkpoint...
+2022-06-16 11:01:19.656252: saving checkpoint...
+2022-06-16 11:01:22.655208: done, saving took 3.14 seconds
+2022-06-16 11:01:22.664064: This epoch took 126.605631 s
+
+2022-06-16 11:01:22.666236: 
+epoch:  482
+2022-06-16 11:03:18.473403: train loss : 1.2406
+2022-06-16 11:03:26.077984: validation loss: 1.2465
+2022-06-16 11:03:26.081023: Average global foreground Dice: [0.8323]
+2022-06-16 11:03:26.083041: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:03:26.494392: Suus1 maybe_update_lr lr: 0.000477
+2022-06-16 11:03:26.496986: saving best epoch checkpoint...
+2022-06-16 11:03:26.645880: saving checkpoint...
+2022-06-16 11:03:29.616050: done, saving took 3.12 seconds
+2022-06-16 11:03:29.624898: This epoch took 126.956476 s
+
+2022-06-16 11:03:29.627364: 
+epoch:  483
+2022-06-16 11:05:24.579523: train loss : 1.2399
+2022-06-16 11:05:32.107761: validation loss: 1.2516
+2022-06-16 11:05:32.110647: Average global foreground Dice: [0.8241]
+2022-06-16 11:05:32.112799: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:05:32.528501: Suus1 maybe_update_lr lr: 0.000451
+2022-06-16 11:05:32.531138: This epoch took 122.901680 s
+
+2022-06-16 11:05:32.533233: 
+epoch:  484
+2022-06-16 11:07:27.425521: train loss : 1.2409
+2022-06-16 11:07:34.931340: validation loss: 1.2502
+2022-06-16 11:07:34.934368: Average global foreground Dice: [0.8329]
+2022-06-16 11:07:34.936912: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:07:35.355445: Suus1 maybe_update_lr lr: 0.000426
+2022-06-16 11:07:35.358448: saving best epoch checkpoint...
+2022-06-16 11:07:35.506295: saving checkpoint...
+2022-06-16 11:07:39.189769: done, saving took 3.83 seconds
+2022-06-16 11:07:39.200701: This epoch took 126.665344 s
+
+2022-06-16 11:07:39.203146: 
+epoch:  485
+2022-06-16 11:09:33.996080: train loss : 1.2385
+2022-06-16 11:09:41.485776: validation loss: 1.2545
+2022-06-16 11:09:41.489734: Average global foreground Dice: [0.8198]
+2022-06-16 11:09:41.492383: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:09:41.910319: Suus1 maybe_update_lr lr: 0.0004
+2022-06-16 11:09:41.912611: This epoch took 122.706802 s
+
+2022-06-16 11:09:41.915985: 
+epoch:  486
+2022-06-16 11:11:36.699759: train loss : 1.2406
+2022-06-16 11:11:44.295813: validation loss: 1.2482
+2022-06-16 11:11:44.299521: Average global foreground Dice: [0.8314]
+2022-06-16 11:11:44.302147: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:11:44.718959: Suus1 maybe_update_lr lr: 0.000375
+2022-06-16 11:11:44.721266: This epoch took 122.802811 s
+
+2022-06-16 11:11:44.723574: 
+epoch:  487
+2022-06-16 11:13:39.883100: train loss : 1.2412
+2022-06-16 11:13:47.731328: validation loss: 1.2527
+2022-06-16 11:13:47.735477: Average global foreground Dice: [0.8226]
+2022-06-16 11:13:47.738206: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:13:48.158079: Suus1 maybe_update_lr lr: 0.000348
+2022-06-16 11:13:48.161181: This epoch took 123.435459 s
+
+2022-06-16 11:13:48.164290: 
+epoch:  488
+2022-06-16 11:15:42.994451: train loss : 1.2434
+2022-06-16 11:15:50.495794: validation loss: 1.2473
+2022-06-16 11:15:50.498980: Average global foreground Dice: [0.8314]
+2022-06-16 11:15:50.501209: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:15:50.931412: Suus1 maybe_update_lr lr: 0.000322
+2022-06-16 11:15:50.934517: This epoch took 122.767552 s
+
+2022-06-16 11:15:50.936612: 
+epoch:  489
+2022-06-16 11:17:46.019736: train loss : 1.2378
+2022-06-16 11:17:53.533278: validation loss: 1.2401
+2022-06-16 11:17:53.537410: Average global foreground Dice: [0.8398]
+2022-06-16 11:17:53.539718: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:17:53.948391: Suus1 maybe_update_lr lr: 0.000296
+2022-06-16 11:17:53.951418: saving best epoch checkpoint...
+2022-06-16 11:17:54.093371: saving checkpoint...
+2022-06-16 11:17:57.046103: done, saving took 3.09 seconds
+2022-06-16 11:17:57.054306: This epoch took 126.115571 s
+
+2022-06-16 11:17:57.056443: 
+epoch:  490
+2022-06-16 11:19:51.808867: train loss : 1.2449
+2022-06-16 11:19:59.532776: validation loss: 1.2500
+2022-06-16 11:19:59.536957: Average global foreground Dice: [0.826]
+2022-06-16 11:19:59.539496: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:19:59.954780: Suus1 maybe_update_lr lr: 0.000269
+2022-06-16 11:19:59.957450: This epoch took 122.898955 s
+
+2022-06-16 11:19:59.960139: 
+epoch:  491
+2022-06-16 11:21:54.760275: train loss : 1.2386
+2022-06-16 11:22:02.316412: validation loss: 1.2502
+2022-06-16 11:22:02.319499: Average global foreground Dice: [0.8309]
+2022-06-16 11:22:02.321723: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:22:02.736241: Suus1 maybe_update_lr lr: 0.000242
+2022-06-16 11:22:02.739032: This epoch took 122.776621 s
+
+2022-06-16 11:22:02.741116: 
+epoch:  492
+2022-06-16 11:23:57.768173: train loss : 1.2414
+2022-06-16 11:24:05.258705: validation loss: 1.2504
+2022-06-16 11:24:05.261903: Average global foreground Dice: [0.8264]
+2022-06-16 11:24:05.264080: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:24:05.678950: Suus1 maybe_update_lr lr: 0.000215
+2022-06-16 11:24:05.681545: This epoch took 122.937983 s
+
+2022-06-16 11:24:05.683819: 
+epoch:  493
+2022-06-16 11:26:00.447343: train loss : 1.2369
+2022-06-16 11:26:07.956480: validation loss: 1.2524
+2022-06-16 11:26:07.959137: Average global foreground Dice: [0.8242]
+2022-06-16 11:26:07.965390: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:26:08.388672: Suus1 maybe_update_lr lr: 0.000187
+2022-06-16 11:26:08.398417: This epoch took 122.712665 s
+
+2022-06-16 11:26:08.406736: 
+epoch:  494
+2022-06-16 11:28:03.285767: train loss : 1.2369
+2022-06-16 11:28:10.801249: validation loss: 1.2450
+2022-06-16 11:28:10.804879: Average global foreground Dice: [0.8347]
+2022-06-16 11:28:10.807019: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:28:11.234544: Suus1 maybe_update_lr lr: 0.000158
+2022-06-16 11:28:11.237469: This epoch took 122.827615 s
+
+2022-06-16 11:28:11.239833: 
+epoch:  495
+2022-06-16 11:30:06.021589: train loss : 1.2411
+2022-06-16 11:30:13.539788: validation loss: 1.2516
+2022-06-16 11:30:13.543464: Average global foreground Dice: [0.8274]
+2022-06-16 11:30:13.545836: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:30:13.960302: Suus1 maybe_update_lr lr: 0.00013
+2022-06-16 11:30:13.962826: This epoch took 122.720867 s
+
+2022-06-16 11:30:13.965189: 
+epoch:  496
+2022-06-16 11:32:09.354884: train loss : 1.2400
+2022-06-16 11:32:16.848023: validation loss: 1.2517
+2022-06-16 11:32:16.851989: Average global foreground Dice: [0.8236]
+2022-06-16 11:32:16.854716: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:32:17.263531: Suus1 maybe_update_lr lr: 0.0001
+2022-06-16 11:32:17.265806: This epoch took 123.298331 s
+
+2022-06-16 11:32:17.268193: 
+epoch:  497
+2022-06-16 11:34:12.390670: train loss : 1.2377
+2022-06-16 11:34:19.926718: validation loss: 1.2562
+2022-06-16 11:34:19.929980: Average global foreground Dice: [0.8168]
+2022-06-16 11:34:19.932259: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:34:20.343020: Suus1 maybe_update_lr lr: 6.9e-05
+2022-06-16 11:34:20.345782: This epoch took 123.075294 s
+
+2022-06-16 11:34:20.348382: 
+epoch:  498
+2022-06-16 11:36:15.340204: train loss : 1.2383
+2022-06-16 11:36:22.973573: validation loss: 1.2516
+2022-06-16 11:36:22.977919: Average global foreground Dice: [0.8262]
+2022-06-16 11:36:22.979961: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:36:23.391330: Suus1 maybe_update_lr lr: 3.7e-05
+2022-06-16 11:36:23.393931: This epoch took 123.043336 s
+
+2022-06-16 11:36:23.396047: 
+epoch:  499
+2022-06-16 11:38:18.348390: train loss : 1.2428
+2022-06-16 11:38:25.875740: validation loss: 1.2417
+2022-06-16 11:38:25.878717: Average global foreground Dice: [0.8401]
+2022-06-16 11:38:25.880682: (interpret this as an estimate for the Dice of the different classes. This is not exact.)
+2022-06-16 11:38:26.405130: Suus1 maybe_update_lr lr: 0.0
+2022-06-16 11:38:26.407597: saving scheduled checkpoint file...
+2022-06-16 11:38:26.552262: saving checkpoint...
+2022-06-16 11:38:29.764269: done, saving took 3.35 seconds
+2022-06-16 11:38:29.774787: done
+2022-06-16 11:38:29.777045: This epoch took 126.378488 s
+
+2022-06-16 11:38:29.872091: saving checkpoint...
+2022-06-16 11:38:33.033774: done, saving took 3.25 seconds
+panc_0006 (2, 124, 311, 311)
+debug: mirroring True mirror_axes (0, 1, 2)
+Program finished with exit code 0 at: Thu Jun 16 08:06:36 CEST 2022
