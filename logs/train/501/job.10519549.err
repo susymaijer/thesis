@@ -1,0 +1,32 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-d2mvvt78/hiddenlayer_9912f2dc3c34405ca26cf33cd971f856
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/threading.py", line 973, in _bootstrap_inner
+Exception in thread Thread-4:
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/threading.py", line 973, in _bootstrap_inner
+    self.run()
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/threading.py", line 910, in run
+    self.run()
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/threading.py", line 910, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    self._target(*self._args, **self._kwargs)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full

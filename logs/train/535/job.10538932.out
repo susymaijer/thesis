@@ -1,0 +1,949 @@
+Starting at Mon Jun 20 11:01:49 CEST 2022
+Running on hosts: res-hpc-exe029
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 8.
+Account: div2-lkeb
+Job ID: 10538932
+Job name: PancreasTrain
+Node running script: res-hpc-exe029
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS:  or 
+NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.
+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+nnUNet_raw_data_base = /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base
+nnUNet_preprocessed = /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed
+RESULTS_FOLDER = /exports/lkeb-hpc/smaijer/results
+OUTPUT = /exports/lkeb-hpc/smaijer/output
+Installing hidden layer..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-1udv56in/hiddenlayer_5256a00e5e0047018a82f7a2683d9a16
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Installing nnU-net..
+Obtaining file:///home/smaijer/nnUNet
+Requirement already satisfied: torch>1.10.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.11.0)
+Requirement already satisfied: tqdm in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (4.64.0)
+Requirement already satisfied: dicom2nifti in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.3.2)
+Requirement already satisfied: scikit-image>=0.14 in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.19.2)
+Requirement already satisfied: medpy in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.4.0)
+Requirement already satisfied: scipy in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.8.0)
+Requirement already satisfied: batchgenerators>=0.23 in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.23)
+Requirement already satisfied: numpy in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.21.2)
+Requirement already satisfied: sklearn in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.0)
+Requirement already satisfied: SimpleITK in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.1.1)
+Requirement already satisfied: pandas in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: requests in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.27.1)
+Requirement already satisfied: nibabel in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.2.2)
+Requirement already satisfied: tifffile in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2022.4.8)
+Requirement already satisfied: matplotlib in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.5.1)
+Requirement already satisfied: monai in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.9.0)
+Requirement already satisfied: einops in ./.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.4.1)
+Requirement already satisfied: threadpoolctl in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (3.1.0)
+Requirement already satisfied: pillow>=7.1.2 in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (9.0.1)
+Requirement already satisfied: scikit-learn in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.0.2)
+Requirement already satisfied: future in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (0.18.2)
+Requirement already satisfied: unittest2 in ./.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Requirement already satisfied: networkx>=2.2 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.8)
+Requirement already satisfied: packaging>=20.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (21.3)
+Requirement already satisfied: PyWavelets>=1.1.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (1.3.0)
+Requirement already satisfied: imageio>=2.4.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.16.2)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in ./.conda/envs/nn/lib/python3.9/site-packages (from packaging>=20.0->scikit-image>=0.14->nnunet==1.7.0) (3.0.8)
+Requirement already satisfied: typing_extensions in ./.conda/envs/nn/lib/python3.9/site-packages (from torch>1.10.0->nnunet==1.7.0) (4.1.1)
+Requirement already satisfied: pydicom>=1.3.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from dicom2nifti->nnunet==1.7.0) (2.3.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: python-dateutil>=2.7 in ./.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (2.8.2)
+Requirement already satisfied: fonttools>=4.22.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (4.32.0)
+Requirement already satisfied: cycler>=0.10 in ./.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (0.11.0)
+Requirement already satisfied: six>=1.5 in ./.conda/envs/nn/lib/python3.9/site-packages (from python-dateutil>=2.7->matplotlib->nnunet==1.7.0) (1.16.0)
+Requirement already satisfied: setuptools in ./.conda/envs/nn/lib/python3.9/site-packages (from nibabel->nnunet==1.7.0) (58.0.4)
+Requirement already satisfied: pytz>=2020.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from pandas->nnunet==1.7.0) (2022.1)
+Requirement already satisfied: idna<4,>=2.5 in ./.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (3.3)
+Requirement already satisfied: charset-normalizer~=2.0.0 in ./.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2.0.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in ./.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (1.26.8)
+Requirement already satisfied: certifi>=2017.4.17 in ./.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2021.10.8)
+Requirement already satisfied: joblib>=0.11 in ./.conda/envs/nn/lib/python3.9/site-packages (from scikit-learn->batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Requirement already satisfied: traceback2 in ./.conda/envs/nn/lib/python3.9/site-packages (from unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.4.0)
+Requirement already satisfied: linecache2 in ./.conda/envs/nn/lib/python3.9/site-packages (from traceback2->unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.0.0)
+Installing collected packages: argparse, nnunet
+  Attempting uninstall: nnunet
+    Found existing installation: nnunet 1.7.0
+    Uninstalling nnunet-1.7.0:
+      Successfully uninstalled nnunet-1.7.0
+  Running setup.py develop for nnunet
+Successfully installed argparse-1.4.0 nnunet-1.7.0
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Suus0 - run_training. Args:
+Namespace(network='3d_fullres', network_trainer='nnUNetTrainerV2_Hybrid', task='535', fold='0', validation_only=False, continue_training=False, p='nnUNetPlansv2.1', use_compressed_data=False, deterministic=False, npz=False, find_lr=False, valbest=False, fp32=False, val_folder='validation_raw', disable_saving=False, disable_postprocessing_on_folds=False, val_disable_overwrite=True, disable_next_stage_pred=False, pretrained_weights=None)
+###############################################
+I am running the following nnUNet: 3d_fullres
+My trainer class is:  <class 'nnunet.training.network_training.nnUNetTrainerV2_Hybrid.nnUNetTrainerV2_Hybrid'>
+For that I will be using the following configuration:
+num_classes:  15
+modalities:  {0: 'CT'}
+use_mask_for_norm OrderedDict([(0, False)])
+keep_only_largest_region None
+min_region_size_per_class None
+min_size_per_class None
+normalization_schemes OrderedDict([(0, 'CT')])
+stages...
+
+stage:  0
+{'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 80, 160, 160]), 'median_patient_size_in_voxels': array([141, 240, 240]), 'current_spacing': array([3.32215628, 1.6685856 , 1.6685856 ]), 'original_spacing': array([2.        , 0.68825001, 0.68825001]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [1, 2, 2]], 'conv_kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+stage:  1
+{'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 64, 160, 160]), 'median_patient_size_in_voxels': array([235, 582, 582]), 'current_spacing': array([2.        , 0.68825001, 0.68825001]), 'original_spacing': array([2.        , 0.68825001, 0.68825001]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[1, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]], 'conv_kernel_sizes': [[1, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+I am using stage 1 from these plans
+I am using batch dice + CE loss
+
+I am using data from this folder:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task535/nnUNetData_plans_v2.1
+###############################################
+Suus1 - Initialise de NetworkTrainer
+Suus2 - Initialise de nnUNetTrainer
+Suus3 - Initialise de nnUNetTrainerV2
+Suus4 - Initialise de trainer echt
+Suus5 - zet de plans properties
+Suus6 - Zet de data augmentation params
+Suus7 - zet deep supervision weights die de meerdere outputs prioriteit geven
+loading dataset
+loading all case properties
+2022-06-20 16:34:39.825880: Using splits from existing split file: /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task535/splits_final.pkl
+2022-06-20 16:34:39.835943: The split file contains 5 splits.
+2022-06-20 16:34:39.838613: Desired fold for training: 0
+2022-06-20 16:34:39.840878: This split has 160 training and 40 validation cases.
+unpacking dataset
+done
+Img size: [ 64 160 160]
+Patch size: (8, 16, 16)
+Feature size: (8, 10, 10)
+Suus10 - Maak alle decoding layrs aan (conv_blocks_context
+Suus10 - StackedConvLayers, input: 512 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 32 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Hybrid(
+  (encoder): UNETREncoder(
+    (vit): ViT(
+      (patch_embedding): PatchEmbeddingBlock(
+        (patch_embeddings): Sequential(
+          (0): Rearrange('b c (h p1) (w p2) (d p3) -> b (h w d) (p1 p2 p3 c)', p1=8, p2=16, p3=16)
+          (1): Linear(in_features=2048, out_features=768, bias=True)
+        )
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (blocks): ModuleList(
+        (0): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (1): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (2): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (3): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (4): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (5): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (6): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (7): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (8): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (9): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (10): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (11): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    )
+    (encoder1): UnetrBasicBlock(
+      (layer): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (encoder2): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 64, kernel_size=(3, 2, 2), stride=(3, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(3, 2, 2), stride=(3, 2, 2), bias=False)
+        )
+        (1): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(3, 2, 2), stride=(3, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder3): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(128, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder4): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList()
+    )
+  )
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (tu): ModuleList(
+    (0): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (1): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(64, 32, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(256, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(128, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(64, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(32, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+SuusB run_training - zet learning rate als  
+2022-06-20 16:34:42.201108: Suus1 maybe_update_lr lr: 0.01
+SuusC - run_training!
+2022-06-20 16:34:42.930717: WARNING!!! You are attempting to run training on a CPU (torch.cuda.is_available() is False). This can be VERY slow!
+2022-06-20 16:35:03.361650: Unable to plot network architecture:
+2022-06-20 16:35:03.384842: No module named 'IPython'
+2022-06-20 16:35:03.395610: 
+printing the network instead:
+
+2022-06-20 16:35:03.410508: Hybrid(
+  (encoder): UNETREncoder(
+    (vit): ViT(
+      (patch_embedding): PatchEmbeddingBlock(
+        (patch_embeddings): Sequential(
+          (0): Rearrange('b c (h p1) (w p2) (d p3) -> b (h w d) (p1 p2 p3 c)', p1=8, p2=16, p3=16)
+          (1): Linear(in_features=2048, out_features=768, bias=True)
+        )
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (blocks): ModuleList(
+        (0): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (1): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (2): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (3): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (4): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (5): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (6): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (7): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (8): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (9): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (10): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (11): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU()
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    )
+    (encoder1): UnetrBasicBlock(
+      (layer): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (encoder2): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 64, kernel_size=(3, 2, 2), stride=(3, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(3, 2, 2), stride=(3, 2, 2), bias=False)
+        )
+        (1): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(3, 2, 2), stride=(3, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder3): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(128, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder4): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList()
+    )
+  )
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (tu): ModuleList(
+    (0): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (1): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(64, 32, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(256, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(128, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(64, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(32, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+2022-06-20 16:35:03.431981: 
+
+2022-06-20 16:35:03.447480: 
+epoch:  0
+x_in.shape: torch.Size([2, 1, 64, 160, 160])
+hidden_states_out.shape: 12
+x: torch.Size([2, 800, 768]), x2: torch.Size([2, 800, 768]), x3: torch.Size([2, 800, 768]), x4: torch.Size([2, 800, 768])
+enc1: torch.Size([2, 32, 64, 160, 160]), enc2: torch.Size([2, 64, 216, 80, 80]), enc3: torch.Size([2, 128, 32, 40, 40]), enc4: torch.Size([2, 256, 16, 20, 20]), bottleneck: torch.Size([2, 768, 8, 10, 10])
+Suus12b - Decoder.
+Upsample 0
+ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+x.shape before self.tu[u].x: torch.Size([2, 768, 8, 10, 10])
+x.shape after self.tu[u].x: torch.Size([2, 256, 16, 20, 20])
+x.shape after concat skips: torch.Size([2, 512, 16, 20, 20])
+x.shape after conv_blocks_localization: torch.Size([2, 256, 16, 20, 20])
+De final result wordt nog door een seg_outputs convolutional 3d layer gehaald, en nonlinear: torch.Size([2, 16, 16, 20, 20])
+Upsample 1
+ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+x.shape before self.tu[u].x: torch.Size([2, 256, 16, 20, 20])
+x.shape after self.tu[u].x: torch.Size([2, 128, 32, 40, 40])
+x.shape after concat skips: torch.Size([2, 256, 32, 40, 40])
+x.shape after conv_blocks_localization: torch.Size([2, 128, 32, 40, 40])
+De final result wordt nog door een seg_outputs convolutional 3d layer gehaald, en nonlinear: torch.Size([2, 16, 32, 40, 40])
+Upsample 2
+ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+x.shape before self.tu[u].x: torch.Size([2, 128, 32, 40, 40])
+x.shape after self.tu[u].x: torch.Size([2, 64, 64, 80, 80])
+Program finished with exit code 0 at: Mon Jun 20 11:01:49 CEST 2022

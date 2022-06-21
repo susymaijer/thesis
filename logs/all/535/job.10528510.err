@@ -1,0 +1,222 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-_mbr99dm/hiddenlayer_09c675e97917421eaa4d4773c6d71a7b
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 164, in main
+    trainer.initialize(not validation_only)
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 124, in initialize
+    self.initialize_network()
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 159, in initialize_network
+    self.network = Generic_UNet(self.num_input_channels, self.base_num_features, self.num_classes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 506, in __init__
+    self.set_do_ds(deep_supervision)
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/generic_UNet.py", line 539, in set_do_ds
+    self.decoder.do_ds = do_ds
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'Generic_UNet' object has no attribute 'decoder'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_determine_postprocessing", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_determine_postprocessing')())
+  File "/home/smaijer/nnUNet/nnunet/postprocessing/consolidate_postprocessing_simple.py", line 56, in main
+    consolidate_folds(folder, val)
+  File "/home/smaijer/nnUNet/nnunet/postprocessing/consolidate_postprocessing.py", line 61, in consolidate_folds
+    collect_cv_niftis(output_folder_base, output_folder_raw, validation_folder_name,
+  File "/home/smaijer/nnUNet/nnunet/postprocessing/consolidate_postprocessing.py", line 31, in collect_cv_niftis
+    raise RuntimeError("some folds are missing. Please run the full 5-fold cross-validation. "
+RuntimeError: some folds are missing. Please run the full 5-fold cross-validation. The following folds seem to be missing: [0, 1, 2, 3, 4]
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_predict", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_predict')())
+  File "/home/smaijer/nnUNet/nnunet/inference/predict_simple.py", line 217, in main
+    predict_from_folder(model_folder_name, input_folder, output_folder, folds, save_npz, num_threads_preprocessing,
+  File "/home/smaijer/nnUNet/nnunet/inference/predict.py", line 630, in predict_from_folder
+    shutil.copy(join(model, 'plans.pkl'), output_folder)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/shutil.py", line 427, in copy
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/shutil.py", line 264, in copyfile
+    with open(src, 'rb') as fsrc:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2__nnUNetPlansv2.1/plans.pkl'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_predict", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_predict')())
+  File "/home/smaijer/nnUNet/nnunet/inference/predict_simple.py", line 217, in main
+    predict_from_folder(model_folder_name, input_folder, output_folder, folds, save_npz, num_threads_preprocessing,
+  File "/home/smaijer/nnUNet/nnunet/inference/predict.py", line 630, in predict_from_folder
+    shutil.copy(join(model, 'plans.pkl'), output_folder)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/shutil.py", line 427, in copy
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/shutil.py", line 264, in copyfile
+    with open(src, 'rb') as fsrc:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2__nnUNetPlansv2.1/plans.pkl'
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_evaluate_folder", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_evaluate_folder')())
+  File "/home/smaijer/nnUNet/nnunet/evaluation/evaluator.py", line 483, in nnunet_evaluate_folder
+    return evaluate_folder(args.ref, args.pred, args.l)
+  File "/home/smaijer/nnUNet/nnunet/evaluation/evaluator.py", line 456, in evaluate_folder
+    assert all([i in files_pred for i in files_gt]), "files missing in folder_with_predictions"
+AssertionError: files missing in folder_with_predictions
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_evaluate_folder", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_evaluate_folder')())
+  File "/home/smaijer/nnUNet/nnunet/evaluation/evaluator.py", line 483, in nnunet_evaluate_folder
+    return evaluate_folder(args.ref, args.pred, args.l)
+  File "/home/smaijer/nnUNet/nnunet/evaluation/evaluator.py", line 456, in evaluate_folder
+    assert all([i in files_pred for i in files_gt]), "files missing in folder_with_predictions"
+AssertionError: files missing in folder_with_predictions

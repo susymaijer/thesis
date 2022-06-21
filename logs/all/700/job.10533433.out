@@ -1,0 +1,421 @@
+Starting at Mon Jun 20 02:24:17 CEST 2022
+Running on hosts: res-hpc-lkeb07
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 8.
+Account: div2-lkeb
+Job ID: 10533433
+Job name: PancreasAll
+Node running script: res-hpc-lkeb07
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Mon Jun 20 09:24:50 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.82.01    Driver Version: 470.82.01    CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 6000     Off  | 00000000:AF:00.0 Off |                  Off |
+| 32%   36C    P0    53W / 260W |      0MiB / 24220MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+nnUNet_raw_data_base = /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base
+nnUNet_preprocessed = /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed
+RESULTS_FOLDER = /exports/lkeb-hpc/smaijer/results
+OUTPUT = /exports/lkeb-hpc/smaijer/output
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-3tht3wah/hiddenlayer_a1514df3043547068e9cce0fa22d086d
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Obtaining file:///home/smaijer/nnUNet
+Requirement already satisfied: torch>1.10.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.11.0)
+Requirement already satisfied: tqdm in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (4.64.0)
+Requirement already satisfied: dicom2nifti in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.3.2)
+Requirement already satisfied: scikit-image>=0.14 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.19.2)
+Requirement already satisfied: medpy in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.4.0)
+Requirement already satisfied: scipy in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.8.0)
+Requirement already satisfied: batchgenerators>=0.23 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.23)
+Requirement already satisfied: numpy in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.21.2)
+Requirement already satisfied: sklearn in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.0)
+Requirement already satisfied: SimpleITK in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.1.1)
+Requirement already satisfied: pandas in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: requests in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2.27.1)
+Requirement already satisfied: nibabel in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.2.2)
+Requirement already satisfied: tifffile in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (2022.4.8)
+Requirement already satisfied: matplotlib in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (3.5.1)
+Requirement already satisfied: monai in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.9.0)
+Requirement already satisfied: einops in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nnunet==1.7.0) (0.4.1)
+Requirement already satisfied: unittest2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Requirement already satisfied: threadpoolctl in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (3.1.0)
+Requirement already satisfied: future in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (0.18.2)
+Requirement already satisfied: scikit-learn in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.0.2)
+Requirement already satisfied: pillow>=7.1.2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (9.0.1)
+Requirement already satisfied: PyWavelets>=1.1.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (1.3.0)
+Requirement already satisfied: imageio>=2.4.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.16.2)
+Requirement already satisfied: networkx>=2.2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.8)
+Requirement already satisfied: packaging>=20.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (21.3)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from packaging>=20.0->scikit-image>=0.14->nnunet==1.7.0) (3.0.8)
+Requirement already satisfied: typing_extensions in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from torch>1.10.0->nnunet==1.7.0) (4.1.1)
+Requirement already satisfied: pydicom>=1.3.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from dicom2nifti->nnunet==1.7.0) (2.3.0)
+Requirement already satisfied: cycler>=0.10 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (0.11.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (1.4.2)
+Requirement already satisfied: python-dateutil>=2.7 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (2.8.2)
+Requirement already satisfied: fonttools>=4.22.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from matplotlib->nnunet==1.7.0) (4.32.0)
+Requirement already satisfied: six>=1.5 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from python-dateutil>=2.7->matplotlib->nnunet==1.7.0) (1.16.0)
+Requirement already satisfied: setuptools in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from nibabel->nnunet==1.7.0) (58.0.4)
+Requirement already satisfied: pytz>=2020.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from pandas->nnunet==1.7.0) (2022.1)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2.0.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (1.26.8)
+Requirement already satisfied: idna<4,>=2.5 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (3.3)
+Requirement already satisfied: certifi>=2017.4.17 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from requests->nnunet==1.7.0) (2021.10.8)
+Requirement already satisfied: joblib>=0.11 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from scikit-learn->batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Requirement already satisfied: traceback2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.4.0)
+Requirement already satisfied: linecache2 in /home/smaijer/.conda/envs/nn/lib/python3.9/site-packages (from traceback2->unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.0.0)
+Installing collected packages: argparse, nnunet
+  Attempting uninstall: nnunet
+    Found existing installation: nnunet 1.7.0
+    Uninstalling nnunet-1.7.0:
+      Successfully uninstalled nnunet-1.7.0
+  Running setup.py develop for nnunet
+Successfully installed argparse-1.4.0 nnunet-1.7.0
+Start preprocessing..
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Verifying training set
+checking case panc_0001
+checking case panc_0004
+checking case panc_0005
+checking case panc_0006
+checking case panc_0007
+checking case panc_0009
+checking case panc_0010
+checking case panc_0011
+checking case panc_0014
+checking case panc_0015
+checking case panc_0016
+checking case panc_0017
+checking case panc_0019
+checking case panc_0021
+checking case panc_0023
+checking case panc_0024
+checking case panc_0025
+checking case panc_0027
+checking case panc_0030
+checking case panc_0033
+checking case panc_0035
+checking case panc_0036
+checking case panc_0038
+checking case panc_0042
+checking case panc_0043
+checking case panc_0044
+checking case panc_0045
+checking case panc_0047
+checking case panc_0048
+checking case panc_0049
+checking case panc_0050
+checking case panc_0052
+checking case panc_0054
+checking case panc_0057
+checking case panc_0058
+checking case panc_0059
+checking case panc_0060
+checking case panc_0064
+checking case panc_0066
+checking case panc_0067
+checking case panc_0069
+checking case panc_0071
+checking case panc_0072
+checking case panc_0075
+checking case panc_0076
+checking case panc_0077
+checking case panc_0078
+checking case panc_0079
+checking case panc_0081
+checking case panc_0083
+checking case panc_0084
+checking case panc_0086
+checking case panc_0088
+checking case panc_0089
+checking case panc_0092
+checking case panc_0094
+checking case panc_0097
+checking case panc_0098
+checking case panc_0099
+checking case panc_0102
+checking case panc_0103
+checking case panc_0104
+checking case panc_0105
+checking case panc_0109
+checking case panc_0110
+checking case panc_0111
+checking case panc_0113
+checking case panc_0115
+checking case panc_0116
+checking case panc_0118
+checking case panc_0119
+checking case panc_0121
+checking case panc_0124
+checking case panc_0125
+checking case panc_0126
+checking case panc_0127
+checking case panc_0129
+checking case panc_0131
+checking case panc_0133
+checking case panc_0134
+checking case panc_0135
+checking case panc_0137
+checking case panc_0138
+checking case panc_0141
+checking case panc_0142
+checking case panc_0143
+checking case panc_0147
+checking case panc_0149
+checking case panc_0152
+checking case panc_0153
+checking case panc_0154
+checking case panc_0156
+checking case panc_0158
+checking case panc_0159
+checking case panc_0160
+checking case panc_0161
+checking case panc_0162
+checking case panc_0166
+checking case panc_0170
+checking case panc_0171
+checking case panc_0172
+checking case panc_0173
+checking case panc_0175
+checking case panc_0177
+checking case panc_0179
+checking case panc_0180
+checking case panc_0181
+checking case panc_0184
+checking case panc_0185
+checking case panc_0186
+checking case panc_0188
+checking case panc_0190
+checking case panc_0192
+checking case panc_0193
+checking case panc_0195
+checking case panc_0196
+checking case panc_0197
+checking case panc_0198
+checking case panc_0199
+checking case panc_0212
+checking case panc_0214
+checking case panc_0215
+checking case panc_0217
+checking case panc_0224
+checking case panc_0225
+checking case panc_0226
+checking case panc_0230
+checking case panc_0231
+checking case panc_0235
+checking case panc_0237
+checking case panc_0239
+checking case panc_0242
+checking case panc_0245
+checking case panc_0248
+checking case panc_0249
+checking case panc_0254
+checking case panc_0259
+checking case panc_0263
+checking case panc_0264
+checking case panc_0268
+checking case panc_0272
+checking case panc_0273
+checking case panc_0274
+checking case panc_0276
+checking case panc_0279
+checking case panc_0281
+checking case panc_0282
+checking case panc_0288
+checking case panc_0294
+checking case panc_0296
+checking case panc_0297
+checking case panc_0299
+checking case panc_0301
+checking case panc_0302
+checking case panc_0307
+checking case panc_0317
+checking case panc_0320
+checking case panc_0321
+checking case panc_0330
+checking case panc_0332
+checking case panc_0336
+checking case panc_0337
+checking case panc_0341
+checking case panc_0348
+checking case panc_0349
+checking case panc_0350
+checking case panc_0351
+checking case panc_0353
+checking case panc_0358
+checking case panc_0361
+checking case panc_0362
+checking case panc_0366
+checking case panc_0367
+checking case panc_0370
+checking case panc_0371
+checking case panc_0374
+checking case panc_0376
+checking case panc_0378
+checking case panc_0379
+checking case panc_0380
+checking case panc_0381
+checking case panc_0383
+checking case panc_0384
+checking case panc_0387
+checking case panc_0388
+checking case panc_0390
+checking case panc_0391
+checking case panc_0392
+checking case panc_0395
+checking case panc_0396
+checking case panc_0398
+checking case panc_0400
+checking case panc_0401
+checking case panc_0402
+checking case panc_0403
+checking case panc_0404
+checking case panc_0405
+checking case panc_0406
+checking case panc_0408
+checking case panc_0410
+checking case panc_0507
+checking case panc_0508
+checking case panc_0510
+checking case panc_0514
+checking case panc_0517
+Done preprocessing! Start training all the folds..
+Done training all the folds! Now start the same command but with continue option, to generate log files
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Suus0 - run_training. Args:
+Namespace(network='3d_fullres', network_trainer='nnUNetTrainerV2', task='700', fold='0', validation_only=False, continue_training=True, p='nnUNetPlansv2.1', use_compressed_data=False, deterministic=False, npz=False, find_lr=False, valbest=False, fp32=False, val_folder='validation_raw', disable_saving=False, disable_postprocessing_on_folds=False, val_disable_overwrite=True, disable_next_stage_pred=False, pretrained_weights=None)
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Suus0 - run_training. Args:
+Namespace(network='3d_fullres', network_trainer='nnUNetTrainerV2', task='700', fold='1', validation_only=False, continue_training=True, p='nnUNetPlansv2.1', use_compressed_data=False, deterministic=False, npz=False, find_lr=False, valbest=False, fp32=False, val_folder='validation_raw', disable_saving=False, disable_postprocessing_on_folds=False, val_disable_overwrite=True, disable_next_stage_pred=False, pretrained_weights=None)
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Suus0 - run_training. Args:
+Namespace(network='3d_fullres', network_trainer='nnUNetTrainerV2', task='700', fold='2', validation_only=False, continue_training=True, p='nnUNetPlansv2.1', use_compressed_data=False, deterministic=False, npz=False, find_lr=False, valbest=False, fp32=False, val_folder='validation_raw', disable_saving=False, disable_postprocessing_on_folds=False, val_disable_overwrite=True, disable_next_stage_pred=False, pretrained_weights=None)
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Suus0 - run_training. Args:
+Namespace(network='3d_fullres', network_trainer='nnUNetTrainerV2', task='700', fold='3', validation_only=False, continue_training=True, p='nnUNetPlansv2.1', use_compressed_data=False, deterministic=False, npz=False, find_lr=False, valbest=False, fp32=False, val_folder='validation_raw', disable_saving=False, disable_postprocessing_on_folds=False, val_disable_overwrite=True, disable_next_stage_pred=False, pretrained_weights=None)
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Suus0 - run_training. Args:
+Namespace(network='3d_fullres', network_trainer='nnUNetTrainerV2', task='700', fold='4', validation_only=False, continue_training=True, p='nnUNetPlansv2.1', use_compressed_data=False, deterministic=False, npz=False, find_lr=False, valbest=False, fp32=False, val_folder='validation_raw', disable_saving=False, disable_postprocessing_on_folds=False, val_disable_overwrite=True, disable_next_stage_pred=False, pretrained_weights=None)
+Start postprocessing..
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Done postprocessing! Now start inferencing its own train and test files.
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+using model stored in  /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+using model stored in  /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1
+Done inferencing! Now start the evaluation.
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Program finished with exit code 0 at: Mon Jun 20 02:24:17 CEST 2022

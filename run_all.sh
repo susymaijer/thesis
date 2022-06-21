@@ -15,6 +15,8 @@ read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
 read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
 
+read -p "Perform preprocessing? [y,]" prep
+
 # lowres of fullres
 if [ $config != "3d_cascade_fullres" ];
 then
@@ -89,7 +91,10 @@ pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_
 pip install -e /home/smaijer/nnUNet
 
 echo "Start preprocessing.."
-nnUNet_plan_and_preprocess -t $task --verify_dataset_integrity
+if [ $prep == "y" ];
+then
+   nnUNet_plan_and_preprocess -t $task --verify_dataset_integrity -tl 4 -tf 4
+fi
 
 echo "Done preprocessing! Start training all the folds.."
 nnUNet_train $config $trainer $task 0

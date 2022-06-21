@@ -1,0 +1,14 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-c3xttz5v/hiddenlayer_ed254692330144beb4d3d55af14125ca
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+slurmstepd: error: *** JOB 10519676 ON res-hpc-lkeb07 CANCELLED AT 2022-06-19T15:39:58 ***
+slurmstepd: error: Detected 20 oom-kill event(s) in StepId=10519676.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

@@ -56,7 +56,7 @@ conda env config vars list
 echo \"Installing nnU-net..\"
 pip install -e /home/smaijer/nnUNet
 
-nnUNet_plan_and_preprocess -t $task --verify_dataset_integrity
+nnUNet_plan_and_preprocess -t $task --verify_dataset_integrity -tl 6 -tf 6
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

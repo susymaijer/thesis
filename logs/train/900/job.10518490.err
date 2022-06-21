@@ -1,0 +1,56 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-2i79_9kl/hiddenlayer_8e539a52ef3a4b76b7225722a4044dbb
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/nnUNet/nnunet/run/run_training.py", line 190, in main
+    trainer.validate(save_softmax=args.npz, validation_folder_name=val_folder,
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 200, in validate
+    ret = super().validate(do_mirroring=do_mirroring, use_sliding_window=use_sliding_window, step_size=step_size,
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainer.py", line 598, in validate
+    softmax_pred = self.predict_preprocessed_data_return_seg_and_softmax(data[:-1],
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 220, in predict_preprocessed_data_return_seg_and_softmax
+    ret = super().predict_preprocessed_data_return_seg_and_softmax(data,
+  File "/home/smaijer/nnUNet/nnunet/training/network_training/nnUNetTrainer.py", line 520, in predict_preprocessed_data_return_seg_and_softmax
+    ret = self.network.predict_3D(data, do_mirroring=do_mirroring, mirror_axes=mirror_axes,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/neural_network.py", line 146, in predict_3D
+    res = self._internal_predict_3D_3Dconv_tiled(x, step_size, do_mirroring, mirror_axes, patch_size,
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/neural_network.py", line 386, in _internal_predict_3D_3Dconv_tiled
+    predicted_patch = self._internal_maybe_mirror_and_pred_3D(
+  File "/home/smaijer/nnUNet/nnunet/network_architecture/neural_network.py", line 535, in _internal_maybe_mirror_and_pred_3D
+    pred = self.inference_apply_nonlin(self(x))
+  File "/home/smaijer/nnUNet/nnunet/utilities/nd_softmax.py", line 20, in <lambda>
+    softmax_helper = lambda x: F.softmax(x, 1)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/torch/nn/functional.py", line 1818, in softmax
+    ret = input.softmax(dim)
+AttributeError: 'tuple' object has no attribute 'softmax'
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/threading.py", line 973, in _bootstrap_inner
+    self.run()
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/threading.py", line 910, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4:
+Traceback (most recent call last):
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/threading.py", line 973, in _bootstrap_inner
+    self.run()
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/threading.py", line 910, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/smaijer/.conda/envs/nn/lib/python3.9/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
