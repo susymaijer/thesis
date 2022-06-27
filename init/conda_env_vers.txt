@@ -7,4 +7,5 @@ nnUNet_preprocessed="/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed"
 RESULTS_FOLDER="/exports/lkeb-hpc/smaijer/results"
 OUTPUT="/exports/lkeb-hpc/smaijer/output"
 
-
+# Eenmalig
+pip config set pancreas.target /exports/lkeb-hpc/smaijer/venv_environments/pancreas

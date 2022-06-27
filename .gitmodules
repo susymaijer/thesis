@@ -3,4 +3,4 @@
 	url = https://github.com/susymaijer/nnUNet.git
 [submodule "nnUNet"]
 	path = nnUNet
-	url = https://github.com/susymaijer/nnUNet.git
+	url = git@github.com:MIC-DKFZ/nnUNet.git

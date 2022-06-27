@@ -29,8 +29,8 @@ echo "Current working directory is /home/smaijer"
 echo "Load all modules.."
 module purge
 module add system/python/3.10.2
-source /exports/lkeb-hpc/smaijer/venv_environments/thesisSusy/bin/activate
-pip3 install torch torchvision torchaudio
+source /exports/lkeb-hpc/smaijer/venv_environments/pancreas/bin/activate
+python -m pip install torch torchvision torchaudio
 python -c 'import torch;print(torch.backends.cudnn.version())'
 python -c 'import torch;print(torch.__version__)'
-python3 -m pip install --editable /home/smaijer/nnUNet
+python -m pip install --editable /home/smaijer/nnUNet
