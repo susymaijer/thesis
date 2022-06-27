@@ -77,18 +77,19 @@ echo \"GPUS: \$CUDA_VISIBLE_DEVICES or \$SLURM_STEP_GPUS\"
 nvidia-smi
 echo \"Current working directory is `\pwd`\"
 
-echo \"Load all modules..\"
+echo "Load all modules.."
 module purge
-module add tools/miniconda/python3.8/4.9.2
-echo \"Done with loading all modules. Modules:\"
+module add system/python/3.10.2
+echo "Done with loading all modules. Modules:"
 module li
-echo \"Activate conda env nnunet..\"
-conda activate nn
-echo \"Verifying environment variables:\"
+echo "Activate conda env nnunet.."
+source /exports/lkeb-hpc/smaijer/venv_environments/pancreas/bin/activate
+echo "Verifying environment variables:"
 conda env config vars list
-echo \"Installing hidden layer and nnUnet..\"
-pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
-pip install -e /home/smaijer/nnUNet
+echo "Installing hidden layer and nnUnet.."
+python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
+python -m pip install -editable /home/smaijer/code/nnUNet
+
 
 echo "Start preprocessing.."
 if [ $prep == "y" ];
