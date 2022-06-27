@@ -1,10 +1,10 @@
-conda env config vars set nnUNet_preprocessed="/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed"
-conda env config vars set nnUNet_raw_data_base="/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base"
+# Use the following command to set conda environment variables:
+conda env config vars set X="Y"
 
-# User specific aliases and functions
-export nnUNet_raw_data_base="/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base"
-export nnUNet_preprocessed="/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed"
-export RESULTS_FOLDER="/exports/lkeb-hpc/smaijer/results"
-export OUTPUT="/exports/lkeb-hpc/smaijer/output"
+# For all the following variables:
+nnUNet_raw_data_base="/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base"
+nnUNet_preprocessed="/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed"
+RESULTS_FOLDER="/exports/lkeb-hpc/smaijer/results"
+OUTPUT="/exports/lkeb-hpc/smaijer/output"
 
 
