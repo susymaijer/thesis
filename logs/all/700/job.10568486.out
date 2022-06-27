@@ -1,0 +1,23 @@
+Starting at Fri Jun 24 15:19:45 CEST 2022
+Running on hosts: res-hpc-exe011
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 8.
+Account: div2-lkeb
+Job ID: 10568486
+Job name: PancreasAll
+Node running script: res-hpc-exe011
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS:  or 
+NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.
+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+nnUNet_raw_data_base = /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base
+nnUNet_preprocessed = /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed
+RESULTS_FOLDER = /exports/lkeb-hpc/smaijer/results
+OUTPUT = /exports/lkeb-hpc/smaijer/output
+Installing hidden layer and nnUnet..

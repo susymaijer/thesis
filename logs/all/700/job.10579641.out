@@ -1,0 +1,173 @@
+Starting at Mon Jun 20 02:24:17 CEST 2022
+Running on hosts: res-hpc-lkeb06
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 6.
+Account: div2-lkeb
+Job ID: 10579641
+Job name: PancreasAll
+Node running script: res-hpc-lkeb06
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Mon Jun 27 11:02:59 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.82.01    Driver Version: 470.82.01    CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 6000     On   | 00000000:D8:00.0 Off |                  Off |
+| 33%   25C    P8     4W / 260W |      0MiB / 24220MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+nnUNet_preprocessed = /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed
+nnUNet_raw_data_base = /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base
+RESULTS_FOLDER = /exports/lkeb-hpc/smaijer/results
+OUTPUT = /exports/lkeb-hpc/smaijer/output
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-cbjzy4u6/hiddenlayer_2eaa78756578442f95f0d027a7c3614a
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Building wheels for collected packages: hiddenlayer
+  Building wheel for hiddenlayer (setup.py): started
+  Building wheel for hiddenlayer (setup.py): finished with status 'done'
+  Created wheel for hiddenlayer: filename=hiddenlayer-0.2-py3-none-any.whl size=19816 sha256=33b9d97544324aa968aaab479676065c50a9171460cf16030629acfac55b2752
+  Stored in directory: /tmp/pip-ephem-wheel-cache-yq6z9skj/wheels/d0/55/ac/9bed4d3c2b391f53472275d39a8b69db33c2f893e88c778a4e
+Successfully built hiddenlayer
+Installing collected packages: hiddenlayer
+Successfully installed hiddenlayer-0.2
+Obtaining file:///home/smaijer/nnUNet
+Collecting torch>1.10.0
+  Downloading torch-1.11.0-cp310-cp310-manylinux1_x86_64.whl (750.6 MB)
+Collecting tqdm
+  Using cached tqdm-4.64.0-py2.py3-none-any.whl (78 kB)
+Collecting dicom2nifti
+  Using cached dicom2nifti-2.3.4.tar.gz (35 kB)
+Collecting scikit-image>=0.14
+  Downloading scikit_image-0.19.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.9 MB)
+Collecting medpy
+  Using cached MedPy-0.4.0.tar.gz (151 kB)
+Collecting scipy
+  Downloading scipy-1.8.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (42.2 MB)
+Collecting batchgenerators>=0.23
+  Using cached batchgenerators-0.24.tar.gz (61 kB)
+Collecting numpy
+  Downloading numpy-1.23.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.0 MB)
+Collecting sklearn
+  Using cached sklearn-0.0.tar.gz (1.1 kB)
+Collecting SimpleITK
+  Downloading SimpleITK-2.1.1.2-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (48.4 MB)
+Collecting pandas
+  Downloading pandas-1.4.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.6 MB)
+Collecting requests
+  Using cached requests-2.28.0-py3-none-any.whl (62 kB)
+Collecting nibabel
+  Using cached nibabel-4.0.1-py3-none-any.whl (3.3 MB)
+Collecting tifffile
+  Using cached tifffile-2022.5.4-py3-none-any.whl (195 kB)
+Collecting matplotlib
+  Downloading matplotlib-3.5.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.9 MB)
+Collecting monai
+  Using cached monai-0.9.0-202206131636-py3-none-any.whl (939 kB)
+Collecting einops
+  Using cached einops-0.4.1-py3-none-any.whl (28 kB)
+Collecting pillow>=7.1.2
+  Downloading Pillow-9.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+Collecting scikit-learn
+  Downloading scikit_learn-1.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (30.4 MB)
+Collecting future
+  Using cached future-0.18.2.tar.gz (829 kB)
+Collecting unittest2
+  Using cached unittest2-1.1.0-py2.py3-none-any.whl (96 kB)
+Collecting threadpoolctl
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting imageio>=2.4.1
+  Using cached imageio-2.19.3-py3-none-any.whl (3.4 MB)
+Collecting PyWavelets>=1.1.1
+  Downloading PyWavelets-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.9 MB)
+Collecting networkx>=2.2
+  Using cached networkx-2.8.4-py3-none-any.whl (2.0 MB)
+Collecting packaging>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Using cached pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Collecting typing-extensions
+  Using cached typing_extensions-4.2.0-py3-none-any.whl (24 kB)
+Collecting pydicom>=1.3.0
+  Using cached pydicom-2.3.0-py3-none-any.whl (2.0 MB)
+Collecting python-dateutil>=2.7
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Collecting cycler>=0.10
+  Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.4.3-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+Collecting fonttools>=4.22.0
+  Using cached fonttools-4.33.3-py3-none-any.whl (930 kB)
+Collecting six>=1.5
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting setuptools
+  Using cached setuptools-62.6.0-py3-none-any.whl (1.2 MB)
+Collecting pytz>=2020.1
+  Using cached pytz-2022.1-py2.py3-none-any.whl (503 kB)
+Collecting charset-normalizer~=2.0.0
+  Using cached charset_normalizer-2.0.12-py3-none-any.whl (39 kB)
+Collecting idna<4,>=2.5
+  Using cached idna-3.3-py3-none-any.whl (61 kB)
+Collecting certifi>=2017.4.17
+  Using cached certifi-2022.6.15-py3-none-any.whl (160 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Using cached urllib3-1.26.9-py2.py3-none-any.whl (138 kB)
+Collecting joblib>=1.0.0
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Collecting traceback2
+  Using cached traceback2-1.4.0-py2.py3-none-any.whl (16 kB)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Collecting linecache2
+  Using cached linecache2-1.0.0-py2.py3-none-any.whl (12 kB)
+Building wheels for collected packages: batchgenerators, dicom2nifti, future, medpy, sklearn
+  Building wheel for batchgenerators (setup.py): started
+  Building wheel for batchgenerators (setup.py): finished with status 'done'
+  Created wheel for batchgenerators: filename=batchgenerators-0.24-py3-none-any.whl size=89210 sha256=da9f72064d3c11617fdb497edc4353bc85fc3e75fc8a8ea6aa1b957b5e23a03e
+  Stored in directory: /home/smaijer/.cache/pip/wheels/d1/60/77/680dea6153145675c78c09916567c7107a053cce7071b736af
+  Building wheel for dicom2nifti (setup.py): started
+  Building wheel for dicom2nifti (setup.py): finished with status 'done'
+  Created wheel for dicom2nifti: filename=dicom2nifti-2.3.4-py3-none-any.whl size=44529 sha256=269b52ccc5be7fa2d1b3ec4b36266a5623e3959bbbc2f066abdf88cce24220c7
+  Stored in directory: /home/smaijer/.cache/pip/wheels/68/63/8d/9e2076d2dae7e027c9c916863b471c28b7d81cec4bb9dab982
+  Building wheel for future (setup.py): started
+  Building wheel for future (setup.py): finished with status 'done'
+  Created wheel for future: filename=future-0.18.2-py3-none-any.whl size=491070 sha256=b48258c48d657dbc871217846c6e415e51c1fd32ea88f1cb8b69365fdbefca7c
+  Stored in directory: /home/smaijer/.cache/pip/wheels/22/73/06/557dc4f4ef68179b9d763930d6eec26b88ed7c389b19588a1c
+  Building wheel for medpy (setup.py): started
+  Building wheel for medpy (setup.py): finished with status 'done'
+  Created wheel for medpy: filename=MedPy-0.4.0-py3-none-any.whl size=214963 sha256=3dc0a1e6390b342b6078a3a49b0f023b58459961a750d91e1458ceefc3177372
+  Stored in directory: /home/smaijer/.cache/pip/wheels/d4/32/c7/6380ab2edb8cca018d39a0f1d43250fd9791922c963117de46
+  Building wheel for sklearn (setup.py): started
+  Building wheel for sklearn (setup.py): finished with status 'done'
+  Created wheel for sklearn: filename=sklearn-0.0-py2.py3-none-any.whl size=1310 sha256=0ae5729cb60a4d063c30cd989290478736594fa719f624b3f4639eaecffd4724
+  Stored in directory: /home/smaijer/.cache/pip/wheels/9b/13/01/6f3a7fd641f90e1f6c8c7cded057f3394f451f340371c68f3d
+Successfully built batchgenerators dicom2nifti future medpy sklearn
+Installing collected packages: pyparsing, pillow, numpy, linecache2, typing-extensions, traceback2, tifffile, threadpoolctl, six, setuptools, scipy, PyWavelets, packaging, networkx, joblib, imageio, argparse, urllib3, unittest2, torch, SimpleITK, scikit-learn, scikit-image, pytz, python-dateutil, pydicom, nibabel, kiwisolver, idna, future, fonttools, cycler, charset-normalizer, certifi, tqdm, sklearn, requests, pandas, monai, medpy, matplotlib, einops, dicom2nifti, batchgenerators, nnunet
+  Running setup.py develop for nnunet
+Successfully installed PyWavelets-1.3.0 SimpleITK-2.1.1.2 argparse-1.4.0 batchgenerators-0.24 certifi-2022.6.15 charset-normalizer-2.0.12 cycler-0.11.0 dicom2nifti-2.3.4 einops-0.4.1 fonttools-4.33.3 future-0.18.2 idna-3.3 imageio-2.19.3 joblib-1.1.0 kiwisolver-1.4.3 linecache2-1.0.0 matplotlib-3.5.2 medpy-0.4.0 monai-0.9.0 networkx-2.8.4 nibabel-4.0.1 nnunet numpy-1.23.0 packaging-21.3 pandas-1.4.3 pillow-9.1.1 pydicom-2.3.0 pyparsing-3.0.9 python-dateutil-2.8.2 pytz-2022.1 requests-2.28.0 scikit-image-0.19.3 scikit-learn-1.1.1 scipy-1.8.1 setuptools-62.6.0 six-1.16.0 sklearn-0.0 threadpoolctl-3.1.0 tifffile-2022.5.4 torch-1.11.0 tqdm-4.64.0 traceback2-1.4.0 typing-extensions-4.2.0 unittest2-1.1.0 urllib3-1.26.9
+Start preprocessing..
+Done preprocessing! Start training all the folds..
+Done training all the folds! Now start the same command but with continue option, to generate log files
+Start postprocessing..
+Done postprocessing! Now start inferencing its own train and test files.
+Done inferencing! Now start the evaluation.
+Program finished with exit code 0 at: Mon Jun 20 02:24:17 CEST 2022

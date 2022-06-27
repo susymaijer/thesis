@@ -1,0 +1,26 @@
+echo "Load all modules.."
+module purge
+module add system/python/3.10.2
+
+
+
+# ONLY ONCE WHEN CREATING PYTHON VIRTUAL ENVIRONMENT
+mkdir /exports/lkeb-hpc/smaijer/venv_environments
+
+
+
+
+
+
+echo "Activate conda env nnunet.."
+conda activate nn2
+echo "Verifying environment variables:"
+conda env config vars list
+echo "Installing pytorch.."| 
+#conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+echo "Verify pytorch"
+python -c 'import torch;print(torch.backends.cudnn.version())'
+python -c 'import torch;print(torch.__version__)'
+echo "Installing nnU-net.."
+pip install -e /home/smaijer/code/nnUNet
+

@@ -1,0 +1,25 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_preprocessed nnUNet_raw_data_base RESULTS_FOLDER OUTPUT
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-cbjzy4u6/hiddenlayer_2eaa78756578442f95f0d027a7c3614a
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+/var/spool/slurmd/job10579641/slurm_script: line 49: nnUNet_train: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 50: nnUNet_train: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 51: nnUNet_train: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 54: nnUNet_train: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 55: nnUNet_train: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 56: nnUNet_train: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 57: nnUNet_train: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 58: nnUNet_train: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 61: nnUNet_determine_postprocessing: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 66: nnUNet_predict: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 67: nnUNet_predict: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 70: nnUNet_evaluate_folder: command not found
+/var/spool/slurmd/job10579641/slurm_script: line 71: nnUNet_evaluate_folder: command not found

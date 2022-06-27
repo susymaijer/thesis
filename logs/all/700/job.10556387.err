@@ -1,0 +1,145 @@
+
+Currently Loaded Modules:
+  1) tools/miniconda/python3.8/4.9.2
+
+ 
+
+WARNING: overwriting environment variables set in the machine
+overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-s3vhpaeb/hiddenlayer_17d97aef73774a3dade274161cd6b129
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+    ERROR: Command errored out with exit status 1:
+     command: /exports/lkeb-hpc/smaijer/envs/nn/bin/python -c 'import io, os, sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-s3vhpaeb/hiddenlayer_17d97aef73774a3dade274161cd6b129/setup.py'"'"'; __file__='"'"'/tmp/pip-install-s3vhpaeb/hiddenlayer_17d97aef73774a3dade274161cd6b129/setup.py'"'"';f = getattr(tokenize, '"'"'open'"'"', open)(__file__) if os.path.exists(__file__) else io.StringIO('"'"'from setuptools import setup; setup()'"'"');code = f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' egg_info --egg-base /tmp/pip-pip-egg-info-ft0odk7y
+         cwd: /tmp/pip-install-s3vhpaeb/hiddenlayer_17d97aef73774a3dade274161cd6b129/
+    Complete output (49 lines):
+    running egg_info
+    creating /tmp/pip-pip-egg-info-ft0odk7y/hiddenlayer.egg-info
+    writing /tmp/pip-pip-egg-info-ft0odk7y/hiddenlayer.egg-info/PKG-INFO
+    writing dependency_links to /tmp/pip-pip-egg-info-ft0odk7y/hiddenlayer.egg-info/dependency_links.txt
+    writing top-level names to /tmp/pip-pip-egg-info-ft0odk7y/hiddenlayer.egg-info/top_level.txt
+    writing manifest file '/tmp/pip-pip-egg-info-ft0odk7y/hiddenlayer.egg-info/SOURCES.txt'
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+      File "/tmp/pip-install-s3vhpaeb/hiddenlayer_17d97aef73774a3dade274161cd6b129/setup.py", line 3, in <module>
+        setuptools.setup(
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/__init__.py", line 153, in setup
+        return distutils.core.setup(**attrs)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/core.py", line 148, in setup
+        dist.run_commands()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/dist.py", line 966, in run_commands
+        self.run_command(cmd)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/dist.py", line 985, in run_command
+        cmd_obj.run()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/egg_info.py", line 299, in run
+        self.find_sources()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/egg_info.py", line 306, in find_sources
+        mm.run()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/egg_info.py", line 541, in run
+        self.add_defaults()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/egg_info.py", line 578, in add_defaults
+        sdist.add_defaults(self)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/command/sdist.py", line 226, in add_defaults
+        self._add_defaults_python()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/sdist.py", line 107, in _add_defaults_python
+        build_py = self.get_finalized_command('build_py')
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/cmd.py", line 299, in get_finalized_command
+        cmd_obj.ensure_finalized()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/cmd.py", line 107, in ensure_finalized
+        self.finalize_options()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/build_py.py", line 29, in finalize_options
+        orig.build_py.finalize_options(self)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/command/build_py.py", line 43, in finalize_options
+        self.set_undefined_options('build',
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/cmd.py", line 286, in set_undefined_options
+        src_cmd_obj = self.distribution.get_command_obj(src_cmd)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/dist.py", line 857, in get_command_obj
+        klass = self.get_command_class(command)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/dist.py", line 887, in get_command_class
+        self.cmdclass[command] = cmdclass = ep.load()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/pkg_resources/__init__.py", line 2450, in load
+        return self.resolve()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+        module = __import__(self.module_name, fromlist=['__name__'], level=0)
+    ModuleNotFoundError: No module named 'setuptools.command.build'
+    ----------------------------------------
+WARNING: Discarding git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer. Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+ERROR: Could not find a version that satisfies the requirement hiddenlayer (unavailable) (from versions: 0.1, 0.2, 0.3)
+ERROR: No matching distribution found for hiddenlayer (unavailable)
+    ERROR: Command errored out with exit status 1:
+     command: /exports/lkeb-hpc/smaijer/envs/nn/bin/python -c 'import io, os, sys, setuptools, tokenize; sys.argv[0] = '"'"'/home/smaijer/nnUNet/setup.py'"'"'; __file__='"'"'/home/smaijer/nnUNet/setup.py'"'"';f = getattr(tokenize, '"'"'open'"'"', open)(__file__) if os.path.exists(__file__) else io.StringIO('"'"'from setuptools import setup; setup()'"'"');code = f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' egg_info --egg-base /tmp/pip-pip-egg-info-7ibmir46
+         cwd: /home/smaijer/nnUNet/
+    Complete output (53 lines):
+    /exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/dist.py:717: UserWarning: Usage of dash-separated 'description-file' will not be supported in future versions. Please use the underscore name 'description_file' instead
+      warnings.warn(
+    running egg_info
+    creating /tmp/pip-pip-egg-info-7ibmir46/nnunet.egg-info
+    writing /tmp/pip-pip-egg-info-7ibmir46/nnunet.egg-info/PKG-INFO
+    writing dependency_links to /tmp/pip-pip-egg-info-7ibmir46/nnunet.egg-info/dependency_links.txt
+    writing entry points to /tmp/pip-pip-egg-info-7ibmir46/nnunet.egg-info/entry_points.txt
+    writing requirements to /tmp/pip-pip-egg-info-7ibmir46/nnunet.egg-info/requires.txt
+    writing top-level names to /tmp/pip-pip-egg-info-7ibmir46/nnunet.egg-info/top_level.txt
+    writing manifest file '/tmp/pip-pip-egg-info-7ibmir46/nnunet.egg-info/SOURCES.txt'
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+      File "/home/smaijer/nnUNet/setup.py", line 3, in <module>
+        setup(name='nnunet',
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/__init__.py", line 153, in setup
+        return distutils.core.setup(**attrs)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/core.py", line 148, in setup
+        dist.run_commands()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/dist.py", line 966, in run_commands
+        self.run_command(cmd)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/dist.py", line 985, in run_command
+        cmd_obj.run()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/egg_info.py", line 299, in run
+        self.find_sources()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/egg_info.py", line 306, in find_sources
+        mm.run()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/egg_info.py", line 541, in run
+        self.add_defaults()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/egg_info.py", line 578, in add_defaults
+        sdist.add_defaults(self)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/command/sdist.py", line 226, in add_defaults
+        self._add_defaults_python()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/sdist.py", line 107, in _add_defaults_python
+        build_py = self.get_finalized_command('build_py')
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/cmd.py", line 299, in get_finalized_command
+        cmd_obj.ensure_finalized()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/cmd.py", line 107, in ensure_finalized
+        self.finalize_options()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/command/build_py.py", line 29, in finalize_options
+        orig.build_py.finalize_options(self)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/command/build_py.py", line 43, in finalize_options
+        self.set_undefined_options('build',
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/cmd.py", line 286, in set_undefined_options
+        src_cmd_obj = self.distribution.get_command_obj(src_cmd)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/distutils/dist.py", line 857, in get_command_obj
+        klass = self.get_command_class(command)
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/setuptools/dist.py", line 887, in get_command_class
+        self.cmdclass[command] = cmdclass = ep.load()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/pkg_resources/__init__.py", line 2450, in load
+        return self.resolve()
+      File "/exports/lkeb-hpc/smaijer/envs/nn/lib/python3.9/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+        module = __import__(self.module_name, fromlist=['__name__'], level=0)
+    ModuleNotFoundError: No module named 'setuptools.command.build'
+    ----------------------------------------
+WARNING: Discarding file:///home/smaijer/nnUNet. Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+/var/spool/slurmd/job10556387/slurm_script: line 42: [: ==: unary operator expected
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_train: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_determine_postprocessing: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_predict: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_predict: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_evaluate_folder: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
+/var/spool/slurmd/job10556387/slurm_script: /exports/lkeb-hpc/smaijer/envs/nn/bin/nnUNet_evaluate_folder: /home/smaijer/.conda/envs/nn/bin/python: bad interpreter: No such file or directory
