@@ -1,0 +1,4 @@
+pkgs_dirs:
+  - /exports/lkeb-hpc/smaijer/pkgs
+envs_dirs:
+  - /exports/lkeb-hpc/smaijer/envs

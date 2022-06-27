@@ -1,0 +1,8 @@
+/exports/lkeb-hpc/smaijer/venv_environments/pancreas/bin/python: No module named pip3
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'torch'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'torch'
+/exports/lkeb-hpc/smaijer/venv_environments/pancreas/bin/python: No module named pip3
