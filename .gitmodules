@@ -1,6 +1,0 @@
-[submodule "experiment/nnUNet"]
-	path = experiment/nnUNet
-	url = https://github.com/susymaijer/nnUNet.git
-[submodule "nnUNet"]
-	path = nnUNet
-	url = git@github.com:MIC-DKFZ/nnUNet.git
