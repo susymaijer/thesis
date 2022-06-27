@@ -86,7 +86,7 @@ echo \"Verifying environment variables:\"
 conda env config vars list
 echo \"Installing nnU-net..\"
 pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
-pip install --upgrade -e /home/smaijer/nnUNet
+pip install -e /home/smaijer/nnUNet
 
 nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/labels$tstr -pred $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr -l 1
 

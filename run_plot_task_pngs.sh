@@ -53,7 +53,7 @@ conda activate nn
 echo \"Verifying environment variables:\"
 conda env config vars list
 echo \"Installing nnU-net..\"
-pip install --upgrade -e /home/smaijer/nnUNet
+pip install -e /home/smaijer/nnUNet
 
 mkdir -p $OUTPUT/$task/plot
 
