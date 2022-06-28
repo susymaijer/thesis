@@ -54,7 +54,7 @@ echo "#!/bin/bash
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=$cpu
 #SBATCH --time=$t
-#SBATCH --mem=32GB
+#SBATCH --mem=64GB
 #SBATCH --gres=gpu:RTX6000:1
 #SBATCH --error=/home/smaijer/logs/postprocess/$task/job.%J.err
 #SBATCH --output=/home/smaijer/logs/postprocess/$task/job.%J.out
@@ -83,7 +83,7 @@ module add system/python/3.10.2
 echo "Done with loading all modules. Modules:"
 module li
 echo "Activate conda env nnunet.."
-source /exports/lkeb-hpc/smaijer/venv_environments/pancreas/bin/activate
+source /exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate
 echo "Verifying environment variables:"
 conda env config vars list
 echo "Installing hidden layer and nnUnet.."

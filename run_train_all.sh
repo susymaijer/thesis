@@ -49,7 +49,7 @@ echo "#!/bin/bash
 #SBATCH -N 1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=$cpu
-#SBATCH --mem=32GB
+#SBATCH --mem=64GB
 #SBATCH --gres=gpu:RTX6000:1
 #SBATCH --error=/home/smaijer/logs/train/$task/job.%J.err
 #SBATCH --output=/home/smaijer/logs/train/$task/job.%J.out
@@ -78,7 +78,7 @@ module add system/python/3.10.2
 echo "Done with loading all modules. Modules:"
 module li
 echo "Activate conda env nnunet.."
-source /exports/lkeb-hpc/smaijer/venv_environments/pancreas/bin/activate
+source /exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate
 echo "Verifying environment variables:"
 conda env config vars list
 echo "Installing hidden layer and nnUnet.."
@@ -93,11 +93,11 @@ nnUNet_train $config $trainer $task 3
 nnUNet_train $config $trainer $task 4
 
 echo "Done training all the folds! Now we do the same command but with continue option, to generate log files".
-nnUNet_train $config $trainer $task 0 -c
-nnUNet_train $config $trainer $task 1 -c
-nnUNet_train $config $trainer $task 2 -c
-nnUNet_train $config $trainer $task 3 -c
-nnUNet_train $config $trainer $task 4 -c
+nnUNet_train $config $trainer $task 0 -c --val_disable_overwrite True
+nnUNet_train $config $trainer $task 1 -c --val_disable_overwrite True
+nnUNet_train $config $trainer $task 2 -c --val_disable_overwrite True
+nnUNet_train $config $trainer $task 3 -c --val_disable_overwrite True
+nnUNet_train $config $trainer $task 4 -c --val_disable_overwrite True
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

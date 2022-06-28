@@ -49,7 +49,7 @@ module add system/python/3.10.2
 echo "Done with loading all modules. Modules:"
 module li
 echo "Activate conda env nnunet.."
-source /exports/lkeb-hpc/smaijer/venv_environments/pancreas/bin/activate
+source /exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate
 echo "Verifying environment variables:"
 conda env config vars list
 echo "Installing hidden layer and nnUnet.."
