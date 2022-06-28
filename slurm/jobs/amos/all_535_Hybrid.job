@@ -3,8 +3,8 @@
 #SBATCH -p LKEBgpu
 #SBATCH -N 1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=32GB
+#SBATCH --cpus-per-task=5
+#SBATCH --mem=64GB
 #SBATCH --gres=gpu:RTX6000:1
 #SBATCH --error=/home/smaijer/logs/all/535/job.%J.err
 #SBATCH --output=/home/smaijer/logs/all/535/job.%J.out
@@ -29,33 +29,23 @@ echo "Current working directory is /home/smaijer"
 
 echo "Load all modules.."
 module purge
-module add tools/miniconda/python3.8/4.9.2
+module add system/python/3.10.2
 echo "Done with loading all modules. Modules:"
 module li
 echo "Activate conda env nnunet.."
-conda activate nn
+source /exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate
 echo "Verifying environment variables:"
 conda env config vars list
 echo "Installing hidden layer and nnUnet.."
-pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
-pip install -e /home/smaijer/nnUNet
+python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
+python -m pip install --editable /home/smaijer/code/nnUNet
 
-echo Start preprocessing..
-#nnUNet_plan_and_preprocess -t 535 --verify_dataset_integrity -tl 6 -tf 6
-
-echo Done preprocessing! Start training all the folds..
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 0
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 1
+echo Start training all the folds..
+#nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 0 -c
+nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 1 -c
 nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 2
 nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 3
 nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 4
-
-echo Done training all the folds! Now start the same command but with continue option, to generate log files
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 0 -c
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 1 -c
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 2 -c
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 3 -c
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 4 -c
 
 echo Start postprocessing..
 nnUNet_determine_postprocessing -t 535 -m 3d_fullres -tr nnUNetTrainerV2_Hybrid
