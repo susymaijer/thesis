@@ -1,0 +1,23 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job10582157/slurm_script: line 39: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-nv92gcmz/hiddenlayer_b1e189dec9c64c9eb311efbcc55f0077
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+usage: nnUNet_train [-h] [-val] [-c] [-p P] [--use_compressed_data]
+                    [--deterministic] [--npz] [--find_lr] [--valbest] [--fp32]
+                    [--val_folder VAL_FOLDER] [--disable_saving]
+                    [--disable_postprocessing_on_folds]
+                    [--val_disable_overwrite] [--disable_next_stage_pred]
+                    [-pretrained_weights PRETRAINED_WEIGHTS]
+                    network network_trainer task fold
+nnUNet_train: error: unrecognized arguments: True

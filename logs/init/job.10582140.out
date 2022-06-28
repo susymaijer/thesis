@@ -1,0 +1,87 @@
+Starting at Sat Jun 18 17:37:25 CEST 2022
+Running on hosts: res-hpc-lkeb07
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 1.
+Account: div2-lkeb
+Job ID: 10582140
+Job name: Init
+Node running script: res-hpc-lkeb07
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS:  or 
+No devices were found
+Current working directory is /home/smaijer
+Load all modules..
+7605
+1.11.0+cu102
+Obtaining file:///home/smaijer/code/nnUNet
+Requirement already satisfied: torch>1.10.0 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (1.11.0)
+Requirement already satisfied: tqdm in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (4.64.0)
+Requirement already satisfied: dicom2nifti in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (2.3.4)
+Requirement already satisfied: scikit-image>=0.14 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (0.19.3)
+Requirement already satisfied: medpy in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (0.4.0)
+Requirement already satisfied: scipy in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (1.8.1)
+Requirement already satisfied: batchgenerators>=0.23 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (0.24)
+Requirement already satisfied: numpy in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (1.23.0)
+Requirement already satisfied: sklearn in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (0.0)
+Requirement already satisfied: SimpleITK in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (2.1.1.2)
+Requirement already satisfied: pandas in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (1.4.3)
+Requirement already satisfied: requests in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (2.28.0)
+Requirement already satisfied: nibabel in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (4.0.1)
+Requirement already satisfied: tifffile in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (2022.5.4)
+Requirement already satisfied: matplotlib in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (3.5.2)
+Requirement already satisfied: monai in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (0.9.0)
+Requirement already satisfied: einops in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (0.4.1)
+Requirement already satisfied: ipython in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (8.4.0)
+Requirement already satisfied: graphviz in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from nnunet==1.7.0) (0.20)
+Requirement already satisfied: future in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (0.18.2)
+Requirement already satisfied: scikit-learn in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.1.1)
+Requirement already satisfied: pillow>=7.1.2 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (9.1.1)
+Requirement already satisfied: unittest2 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Requirement already satisfied: threadpoolctl in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from batchgenerators>=0.23->nnunet==1.7.0) (3.1.0)
+Requirement already satisfied: PyWavelets>=1.1.1 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (1.3.0)
+Requirement already satisfied: imageio>=2.4.1 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.19.3)
+Requirement already satisfied: networkx>=2.2 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (2.8.4)
+Requirement already satisfied: packaging>=20.0 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from scikit-image>=0.14->nnunet==1.7.0) (21.3)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from packaging>=20.0->scikit-image>=0.14->nnunet==1.7.0) (3.0.9)
+Requirement already satisfied: typing-extensions in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from torch>1.10.0->nnunet==1.7.0) (4.2.0)
+Requirement already satisfied: pydicom>=1.3.0 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from dicom2nifti->nnunet==1.7.0) (2.3.0)
+Requirement already satisfied: traitlets>=5 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (5.3.0)
+Requirement already satisfied: backcall in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (0.2.0)
+Requirement already satisfied: matplotlib-inline in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (0.1.3)
+Requirement already satisfied: pygments>=2.4.0 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (2.12.0)
+Requirement already satisfied: setuptools>=18.5 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (58.1.0)
+Requirement already satisfied: decorator in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (5.1.1)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (3.0.30)
+Requirement already satisfied: stack-data in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (0.3.0)
+Requirement already satisfied: jedi>=0.16 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (0.18.1)
+Requirement already satisfied: pickleshare in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (0.7.5)
+Requirement already satisfied: pexpect>4.3 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from ipython->nnunet==1.7.0) (4.8.0)
+Requirement already satisfied: parso<0.9.0,>=0.8.0 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from jedi>=0.16->ipython->nnunet==1.7.0) (0.8.3)
+Requirement already satisfied: ptyprocess>=0.5 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from pexpect>4.3->ipython->nnunet==1.7.0) (0.7.0)
+Requirement already satisfied: wcwidth in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->ipython->nnunet==1.7.0) (0.2.5)
+Requirement already satisfied: fonttools>=4.22.0 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from matplotlib->nnunet==1.7.0) (4.33.3)
+Requirement already satisfied: cycler>=0.10 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from matplotlib->nnunet==1.7.0) (0.11.0)
+Requirement already satisfied: python-dateutil>=2.7 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from matplotlib->nnunet==1.7.0) (2.8.2)
+Requirement already satisfied: kiwisolver>=1.0.1 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from matplotlib->nnunet==1.7.0) (1.4.3)
+Requirement already satisfied: six>=1.5 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from python-dateutil>=2.7->matplotlib->nnunet==1.7.0) (1.16.0)
+Requirement already satisfied: pytz>=2020.1 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from pandas->nnunet==1.7.0) (2022.1)
+Requirement already satisfied: certifi>=2017.4.17 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from requests->nnunet==1.7.0) (2022.6.15)
+Requirement already satisfied: idna<4,>=2.5 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from requests->nnunet==1.7.0) (3.3)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from requests->nnunet==1.7.0) (1.26.9)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from requests->nnunet==1.7.0) (2.0.12)
+Requirement already satisfied: joblib>=1.0.0 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from scikit-learn->batchgenerators>=0.23->nnunet==1.7.0) (1.1.0)
+Requirement already satisfied: executing in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from stack-data->ipython->nnunet==1.7.0) (0.8.3)
+Requirement already satisfied: pure-eval in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from stack-data->ipython->nnunet==1.7.0) (0.2.2)
+Requirement already satisfied: asttokens in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from stack-data->ipython->nnunet==1.7.0) (2.0.5)
+Requirement already satisfied: traceback2 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.4.0)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Requirement already satisfied: linecache2 in /exports/lkeb-hpc/smaijer/venv_environments/pancreas/lib/python3.10/site-packages (from traceback2->unittest2->batchgenerators>=0.23->nnunet==1.7.0) (1.0.0)
+Installing collected packages: argparse, nnunet
+  Attempting uninstall: nnunet
+    Found existing installation: nnunet 1.7.0
+    Uninstalling nnunet-1.7.0:
+      Successfully uninstalled nnunet-1.7.0
+  Running setup.py develop for nnunet
+Successfully installed argparse-1.4.0 nnunet-1.7.0

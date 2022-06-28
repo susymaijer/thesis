@@ -1,0 +1,86 @@
+Starting at Sat Jun 18 17:37:25 CEST 2022
+Running on hosts: res-hpc-lkeb06
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 6.
+Account: div2-lkeb
+Job ID: 10579874
+Job name: PancreasAll
+Node running script: res-hpc-lkeb06
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Mon Jun 27 14:36:40 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.82.01    Driver Version: 470.82.01    CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 6000     On   | 00000000:D8:00.0 Off |                  Off |
+| 33%   24C    P8     4W / 260W |      0MiB / 24220MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-btzkxxnf/hiddenlayer_70deeec700c246348808e33e40504dcd
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Start preprocessing..
+Done preprocessing! Start training all the folds..
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+###############################################
+I am running the following nnUNet: 3d_fullres
+My trainer class is:  <class 'nnunet.training.network_training.nnUNetTrainerV2.nnUNetTrainerV2'>
+For that I will be using the following configuration:
+num_classes:  15
+modalities:  {0: 'CT'}
+use_mask_for_norm OrderedDict([(0, False)])
+keep_only_largest_region None
+min_region_size_per_class None
+min_size_per_class None
+normalization_schemes OrderedDict([(0, 'CT')])
+stages...
+
+stage:  0
+{'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 80, 160, 160]), 'median_patient_size_in_voxels': array([141, 240, 240]), 'current_spacing': array([3.32215628, 1.6685856 , 1.6685856 ]), 'original_spacing': array([2.        , 0.68825001, 0.68825001]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [1, 2, 2]], 'conv_kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+stage:  1
+{'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 64, 160, 160]), 'median_patient_size_in_voxels': array([235, 582, 582]), 'current_spacing': array([2.        , 0.68825001, 0.68825001]), 'original_spacing': array([2.        , 0.68825001, 0.68825001]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[1, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]], 'conv_kernel_sizes': [[1, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+I am using stage 1 from these plans
+I am using batch dice + CE loss
+
+I am using data from this folder:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task535/nnUNetData_plans_v2.1
+###############################################
+loading dataset
+loading all case properties
+2022-06-27 14:36:50.571351: Using splits from existing split file: /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task535/splits_final.pkl
+2022-06-27 14:36:50.580771: The split file contains 5 splits.
+2022-06-27 14:36:50.583022: Desired fold for training: 1
+2022-06-27 14:36:50.584871: This split has 160 training and 40 validation cases.
+unpacking dataset
+done
+2022-06-27 14:36:54.535996: loading checkpoint /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1/model_best.model train= True
+2022-06-27 14:37:02.678216: lr: 0.009585
+using pin_memory on device 0
