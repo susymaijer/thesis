@@ -1,9 +1,0 @@
-
-Currently Loaded Modules:
-  1) tools/miniconda/python3.8/4.9.2
-
- 
-
-WARNING: overwriting environment variables set in the machine
-overwriting variable nnUNet_preprocessed nnUNet_raw_data_base RESULTS_FOLDER OUTPUT
-slurmstepd: error: *** JOB 10579605 ON res-hpc-mem01 CANCELLED AT 2022-06-27T10:27:31 ***

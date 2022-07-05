@@ -1,167 +1,0 @@
-Starting at Mon Jun 27 10:26:43 CEST 2022
-Running on hosts: res-hpc-mem01
-Running on 1 nodes.
-Running 1 tasks.
-Account: div2-lkeb
-Job ID: 10579605
-Job name: init
-Node running script: res-hpc-mem01
-Submit host: res-hpc-lo02.researchlumc.nl
-GPUS:  or 
-NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.
-
-Current working directory is /home/smaijer/init
-Load all modules..
-Done with loading all modules. Modules:
-Activate conda env nnunet..
-Verifying environment variables:
-nnUNet_preprocessed = /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed
-nnUNet_raw_data_base = /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base
-RESULTS_FOLDER = /exports/lkeb-hpc/smaijer/results
-OUTPUT = /exports/lkeb-hpc/smaijer/output
-Collecting package metadata (current_repodata.json): ...working... done
-Solving environment: ...working... done
-
-## Package Plan ##
-
-  environment location: /exports/lkeb-hpc/smaijer/envs/nn2
-
-  added / updated specs:
-    - cudatoolkit=10.2
-    - pytorch
-    - torchaudio
-    - torchvision
-
-
-The following packages will be downloaded:
-
-    package                    |            build
-    ---------------------------|-----------------
-    _libgcc_mutex-0.1          |             main           3 KB
-    _openmp_mutex-5.1          |            1_gnu          21 KB
-    blas-1.0                   |              mkl           6 KB
-    brotlipy-0.7.0             |py310h7f8727e_1002         712 KB
-    bzip2-1.0.8                |       h7b6447c_0          78 KB
-    certifi-2022.6.15          |  py310h06a4308_0         153 KB
-    cffi-1.15.0                |  py310hd667e15_1         363 KB
-    cryptography-37.0.1        |  py310h9ce1e76_0         1.5 MB
-    cudatoolkit-10.2.89        |       hfd86e86_1       365.1 MB
-    gmp-6.2.1                  |       h295c915_3         544 KB
-    jpeg-9e                    |       h7f8727e_0         240 KB
-    ld_impl_linux-64-2.38      |       h1181459_1         654 KB
-    libffi-3.3                 |       he6710b0_2          50 KB
-    libgcc-ng-11.2.0           |       h1234567_1         5.3 MB
-    libgomp-11.2.0             |       h1234567_1         474 KB
-    libiconv-1.16              |       h7f8727e_2         736 KB
-    libpng-1.6.37              |       hbc83047_0         278 KB
-    libstdcxx-ng-11.2.0        |       h1234567_1         4.7 MB
-    libtiff-4.2.0              |       h2818925_1         452 KB
-    libuuid-1.0.3              |       h7f8727e_2          17 KB
-    mkl-service-2.4.0          |  py310h7f8727e_0         177 KB
-    mkl_fft-1.3.1              |  py310hd6ae3a3_0         567 KB
-    mkl_random-1.2.2           |  py310h00e6091_0        1009 KB
-    numpy-1.22.3               |  py310hfa59a62_0          10 KB
-    numpy-base-1.22.3          |  py310h9585f30_0        11.8 MB
-    pillow-9.0.1               |  py310h22f2fdc_0         1.1 MB
-    pip-21.2.4                 |  py310h06a4308_0         1.8 MB
-    pysocks-1.7.1              |  py310h06a4308_0          28 KB
-    python-3.10.4              |       h12debd9_0        24.2 MB
-    pytorch-1.11.0             |py3.10_cuda10.2_cudnn7.6.5_0       623.1 MB  pytorch
-    pytorch-mutex-1.0          |             cuda           3 KB  pytorch
-    setuptools-61.2.0          |  py310h06a4308_0        1019 KB
-    sqlite-3.38.5              |       hc218d9a_0         1.0 MB
-    tk-8.6.12                  |       h1ccaba5_0         3.0 MB
-    torchaudio-0.11.0          |      py310_cu102         5.3 MB  pytorch
-    torchvision-0.12.0         |      py310_cu102        27.2 MB  pytorch
-    urllib3-1.26.9             |  py310h06a4308_0         181 KB
-    xz-5.2.5                   |       h7f8727e_1         339 KB
-    zlib-1.2.12                |       h7f8727e_2         106 KB
-    zstd-1.5.2                 |       ha4553b6_0         488 KB
-    ------------------------------------------------------------
-                                           Total:        1.06 GB
-
-The following NEW packages will be INSTALLED:
-
-  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
-  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
-  blas               pkgs/main/linux-64::blas-1.0-mkl
-  brotlipy           pkgs/main/linux-64::brotlipy-0.7.0-py310h7f8727e_1002
-  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h7b6447c_0
-  ca-certificates    pkgs/main/linux-64::ca-certificates-2022.4.26-h06a4308_0
-  certifi            pkgs/main/linux-64::certifi-2022.6.15-py310h06a4308_0
-  cffi               pkgs/main/linux-64::cffi-1.15.0-py310hd667e15_1
-  charset-normalizer pkgs/main/noarch::charset-normalizer-2.0.4-pyhd3eb1b0_0
-  cryptography       pkgs/main/linux-64::cryptography-37.0.1-py310h9ce1e76_0
-  cudatoolkit        pkgs/main/linux-64::cudatoolkit-10.2.89-hfd86e86_1
-  ffmpeg             pytorch/linux-64::ffmpeg-4.3-hf484d3e_0
-  freetype           pkgs/main/linux-64::freetype-2.11.0-h70c0345_0
-  giflib             pkgs/main/linux-64::giflib-5.2.1-h7b6447c_0
-  gmp                pkgs/main/linux-64::gmp-6.2.1-h295c915_3
-  gnutls             pkgs/main/linux-64::gnutls-3.6.15-he1e5248_0
-  idna               pkgs/main/noarch::idna-3.3-pyhd3eb1b0_0
-  intel-openmp       pkgs/main/linux-64::intel-openmp-2021.4.0-h06a4308_3561
-  jpeg               pkgs/main/linux-64::jpeg-9e-h7f8727e_0
-  lame               pkgs/main/linux-64::lame-3.100-h7b6447c_0
-  lcms2              pkgs/main/linux-64::lcms2-2.12-h3be6417_0
-  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.38-h1181459_1
-  libffi             pkgs/main/linux-64::libffi-3.3-he6710b0_2
-  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1
-  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1
-  libiconv           pkgs/main/linux-64::libiconv-1.16-h7f8727e_2
-  libidn2            pkgs/main/linux-64::libidn2-2.3.2-h7f8727e_0
-  libpng             pkgs/main/linux-64::libpng-1.6.37-hbc83047_0
-  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1
-  libtasn1           pkgs/main/linux-64::libtasn1-4.16.0-h27cfd23_0
-  libtiff            pkgs/main/linux-64::libtiff-4.2.0-h2818925_1
-  libunistring       pkgs/main/linux-64::libunistring-0.9.10-h27cfd23_0
-  libuuid            pkgs/main/linux-64::libuuid-1.0.3-h7f8727e_2
-  libuv              pkgs/main/linux-64::libuv-1.40.0-h7b6447c_0
-  libwebp            pkgs/main/linux-64::libwebp-1.2.2-h55f646e_0
-  libwebp-base       pkgs/main/linux-64::libwebp-base-1.2.2-h7f8727e_0
-  lz4-c              pkgs/main/linux-64::lz4-c-1.9.3-h295c915_1
-  mkl                pkgs/main/linux-64::mkl-2021.4.0-h06a4308_640
-  mkl-service        pkgs/main/linux-64::mkl-service-2.4.0-py310h7f8727e_0
-  mkl_fft            pkgs/main/linux-64::mkl_fft-1.3.1-py310hd6ae3a3_0
-  mkl_random         pkgs/main/linux-64::mkl_random-1.2.2-py310h00e6091_0
-  ncurses            pkgs/main/linux-64::ncurses-6.3-h7f8727e_2
-  nettle             pkgs/main/linux-64::nettle-3.7.3-hbbd107a_1
-  numpy              pkgs/main/linux-64::numpy-1.22.3-py310hfa59a62_0
-  numpy-base         pkgs/main/linux-64::numpy-base-1.22.3-py310h9585f30_0
-  openh264           pkgs/main/linux-64::openh264-2.1.1-h4ff587b_0
-  openssl            pkgs/main/linux-64::openssl-1.1.1o-h7f8727e_0
-  pillow             pkgs/main/linux-64::pillow-9.0.1-py310h22f2fdc_0
-  pip                pkgs/main/linux-64::pip-21.2.4-py310h06a4308_0
-  pycparser          pkgs/main/noarch::pycparser-2.21-pyhd3eb1b0_0
-  pyopenssl          pkgs/main/noarch::pyopenssl-22.0.0-pyhd3eb1b0_0
-  pysocks            pkgs/main/linux-64::pysocks-1.7.1-py310h06a4308_0
-  python             pkgs/main/linux-64::python-3.10.4-h12debd9_0
-  pytorch            pytorch/linux-64::pytorch-1.11.0-py3.10_cuda10.2_cudnn7.6.5_0
-  pytorch-mutex      pytorch/noarch::pytorch-mutex-1.0-cuda
-  readline           pkgs/main/linux-64::readline-8.1.2-h7f8727e_1
-  requests           pkgs/main/noarch::requests-2.27.1-pyhd3eb1b0_0
-  setuptools         pkgs/main/linux-64::setuptools-61.2.0-py310h06a4308_0
-  six                pkgs/main/noarch::six-1.16.0-pyhd3eb1b0_1
-  sqlite             pkgs/main/linux-64::sqlite-3.38.5-hc218d9a_0
-  tk                 pkgs/main/linux-64::tk-8.6.12-h1ccaba5_0
-  torchaudio         pytorch/linux-64::torchaudio-0.11.0-py310_cu102
-  torchvision        pytorch/linux-64::torchvision-0.12.0-py310_cu102
-  typing_extensions  pkgs/main/noarch::typing_extensions-4.1.1-pyh06a4308_0
-  tzdata             pkgs/main/noarch::tzdata-2022a-hda174b7_0
-  urllib3            pkgs/main/linux-64::urllib3-1.26.9-py310h06a4308_0
-  wheel              pkgs/main/noarch::wheel-0.37.1-pyhd3eb1b0_0
-  xz                 pkgs/main/linux-64::xz-5.2.5-h7f8727e_1
-  zlib               pkgs/main/linux-64::zlib-1.2.12-h7f8727e_2
-  zstd               pkgs/main/linux-64::zstd-1.5.2-ha4553b6_0
-
-
-Proceed ([y]/n)? Invalid choice: installing pytorch..
-Proceed ([y]/n)? 
-
-Downloading and Extracting Packages
-numpy-base-1.22.3    | 11.8 MB   |            |   0% numpy-base-1.22.3    | 11.8 MB   | ###3       |  33% numpy-base-1.22.3    | 11.8 MB   | ########## | 100% numpy-base-1.22.3    | 11.8 MB   | ########## | 100% 
-libgcc-ng-11.2.0     | 5.3 MB    |            |   0% libgcc-ng-11.2.0     | 5.3 MB    | #########6 |  97% libgcc-ng-11.2.0     | 5.3 MB    | ########## | 100% 
-zlib-1.2.12          | 106 KB    |            |   0% zlib-1.2.12          | 106 KB    | ########## | 100% zlib-1.2.12          | 106 KB    | ########## | 100% 
-mkl_random-1.2.2     | 1009 KB   |            |   0% mkl_random-1.2.2     | 1009 KB   | ########## | 100% mkl_random-1.2.2     | 1009 KB   | ########## | 100% 
-cudatoolkit-10.2.89  | 365.1 MB  |            |   0% cudatoolkit-10.2.89  | 365.1 MB  | 2          |   2% cudatoolkit-10.2.89  | 365.1 MB  | 5          |   5% cudatoolkit-10.2.89  | 365.1 MB  | 7          |   8% cudatoolkit-10.2.89  | 365.1 MB  | #          |  10% cudatoolkit-10.2.89  | 365.1 MB  | #2         |  13% cudatoolkit-10.2.89  | 365.1 MB  | #5         |  16% cudatoolkit-10.2.89  | 365.1 MB  | #7         |  18% cudatoolkit-10.2.89  | 365.1 MB  | ##         |  21% cudatoolkit-10.2.89  | 365.1 MB  | ##3        |  24% cudatoolkit-10.2.89  | 365.1 MB  | ##6        |  26% cudatoolkit-10.2.89  | 365.1 MB  | ##9        |  29% cudatoolkit-10.2.89  | 365.1 MB  | ###2       |  32% cudatoolkit-10.2.89  | 365.1 MB  | ###5       |  35% cudatoolkit-10.2.89  | 365.1 MB  | ###7       |  38% cudatoolkit-10.2.89  | 365.1 MB  | ####       |  41% cudatoolkit-10.2.89  | 365.1 MB  | ####3      |  44% cudatoolkit-10.2.89  | 365.1 MB  | ####6      |  46% cudatoolkit-10.2.89  | 365.1 MB  | ####9      |  49% cudatoolkit-10.2.89  | 365.1 MB  | #####2     |  52% cudatoolkit-10.2.89  | 365.1 MB  | #####4     |  55% cudatoolkit-10.2.89  | 365.1 MB  | #####7     |  58% cudatoolkit-10.2.89  | 365.1 MB  | ######     |  61% cudatoolkit-10.2.89  | 365.1 MB  | ######3    |  63% cudatoolkit-10.2.89  | 365.1 MB  | ######6    |  66% cudatoolkit-10.2.89  | 365.1 MB  | ######8    |  69% cudatoolkit-10.2.89  | 365.1 MB  | #######1   |  72% cudatoolkit-10.2.89  | 365.1 MB  | #######4   |  74% cudatoolkit-10.2.89  | 365.1 MB  | #######6   |  77% cudatoolkit-10.2.89  | 365.1 MB  | #######9   |  80% cudatoolkit-10.2.89  | 365.1 MB  | ########2  |  83% cudatoolkit-10.2.89  | 365.1 MB  | ########5  |  85% cudatoolkit-10.2.89  | 365.1 MB  | ########8  |  88% cudatoolkit-10.2.89  | 365.1 MB  | #########  |  91% cudatoolkit-10.2.89  | 365.1 MB  | #########3 |  94% cudatoolkit-10.2.89  | 365.1 MB  | #########6 |  96% cudatoolkit-10.2.89  | 365.1 MB  | #########9 |  99% cudatoolkit-10.2.89  | 365.1 MB  | ########## | 100% 
-libiconv-1.16        | 736 KB    |            |   0% libiconv-1.16        | 736 KB    | ########## | 100% libiconv-1.16        | 736 KB    | ########## | 100% 
-python-3.10.4        | 24.2 MB   |            |   0% python-3.10.4        | 24.2 MB   | ##2        |  23% python-3.10.4        | 24.2 MB   | ######5    |  66% 

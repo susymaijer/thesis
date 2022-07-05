@@ -1,8 +1,0 @@
-
-Currently Loaded Modules:
-  1) tools/miniconda/python3.8/4.9.2
-
- 
-
-WARNING: overwriting environment variables set in the machine
-overwriting variable nnUNet_raw_data_base nnUNet_preprocessed RESULTS_FOLDER OUTPUT
