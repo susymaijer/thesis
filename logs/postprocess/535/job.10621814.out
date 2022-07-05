@@ -1,0 +1,124 @@
+Starting at Tue Jul  5 19:07:15 CEST 2022
+Running on hosts: res-hpc-lkeb05
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 6.
+Account: div2-lkeb
+Job ID: 10621814
+Job name: PancreasDeterminePostprocess
+Node running script: res-hpc-lkeb05
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Tue Jul  5 19:20:48 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 6000     Off  | 00000000:D8:00.0 Off |                  Off |
+| 34%   37C    P0    54W / 260W |      0MiB / 24220MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-b3ta17t0/hiddenlayer_269dfe123070457a9eefe512c54169bc
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Foreground vs background
+before: 0.869729273689051
+after:  0.7151167652373605
+1
+before: 0.9471747206157369
+after:  0.9480670190349179
+Removing all but the largest region for class 1 improved results!
+min_valid_object_sizes None
+10
+before: 0.8432666252144561
+after:  0.8416244373847988
+11
+before: 0.7764781214049215
+after:  0.7765440009780941
+Removing all but the largest region for class 11 improved results!
+min_valid_object_sizes None
+12
+before: 0.7888436844934037
+after:  0.7899987745407825
+Removing all but the largest region for class 12 improved results!
+min_valid_object_sizes None
+13
+before: 0.7995777375787745
+after:  0.794022038379525
+14
+before: 0.8612772037745927
+after:  0.8613503285357661
+Removing all but the largest region for class 14 improved results!
+min_valid_object_sizes None
+15
+before: 0.8309828335948579
+after:  0.8348883995422972
+Removing all but the largest region for class 15 improved results!
+min_valid_object_sizes None
+2
+before: 0.9428846953933588
+after:  0.947470590732852
+Removing all but the largest region for class 2 improved results!
+min_valid_object_sizes None
+3
+before: 0.9286573473543763
+after:  0.9310744256492111
+Removing all but the largest region for class 3 improved results!
+min_valid_object_sizes None
+4
+before: 0.8202114536093852
+after:  0.8214957512721566
+Removing all but the largest region for class 4 improved results!
+min_valid_object_sizes None
+5
+before: 0.8165642303654742
+after:  0.813040386996876
+6
+before: 0.9637944675251966
+after:  0.9673195154046003
+Removing all but the largest region for class 6 improved results!
+min_valid_object_sizes None
+7
+before: 0.8878528330985732
+after:  0.8907854454165023
+Removing all but the largest region for class 7 improved results!
+min_valid_object_sizes None
+8
+before: 0.941905332137068
+after:  0.9417560434561805
+9
+before: 0.8964678191755873
+after:  0.8948216546619854
+done
+for which classes:
+[1, 11, 12, 14, 15, 2, 3, 4, 6, 7]
+min_object_sizes
+None
+done
+Program finished with exit code 0 at: Tue Jul  5 19:07:15 CEST 2022

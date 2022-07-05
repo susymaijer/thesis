@@ -1,0 +1,14 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job10598351/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-ymik_6i9/hiddenlayer_3fcd1267388949f48c27540858e427ef
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+slurmstepd: error: *** JOB 10598351 ON res-hpc-lkeb05 CANCELLED AT 2022-07-01T00:16:10 ***

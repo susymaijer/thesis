@@ -1303,3 +1303,55 @@ printing the network instead:
 
 2022-06-28 23:06:53.871553: saving checkpoint...
 2022-06-28 23:06:55.159514: done, saving took 1.40 seconds
+panc_0015 (2, 258, 640, 640)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 640, 640)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 139, 166, 194], [0, 80, 160, 240, 320, 400, 480], [0, 80, 160, 240, 320, 400, 480]]
+number of tiles: 392
+computing Gaussian
+done
+prediction done
+suus panc_0015 transposed
+suus panc_0015 not saving softmax
+suus panc_0015 we moeten gekke ding doen met groot commentaar
+suus panc_0015 voeg toe aan pred_gt tuples voor later
+panc_0025 (2, 202, 513, 513)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 202, 513, 513)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 110, 138], [0, 71, 141, 212, 282, 353], [0, 71, 141, 212, 282, 353]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+suus panc_0025 transposed
+suus panc_0025 not saving softmax
+suus panc_0025 we moeten gekke ding doen met groot commentaar
+suus panc_0025 voeg toe aan pred_gt tuples voor later
+panc_0035 (2, 232, 631, 631)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 631, 631)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 78, 157, 236, 314, 392, 471], [0, 78, 157, 236, 314, 392, 471]]
+number of tiles: 343
+using precomputed Gaussian
+prediction done
+suus panc_0035 transposed
+suus panc_0035 not saving softmax
+suus panc_0035 we moeten gekke ding doen met groot commentaar
+suus panc_0035 voeg toe aan pred_gt tuples voor later
+panc_0047 (2, 245, 579, 579)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 245, 579, 579)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 121, 151, 181], [0, 70, 140, 210, 279, 349, 419], [0, 70, 140, 210, 279, 349, 419]]
+number of tiles: 343
+using precomputed Gaussian

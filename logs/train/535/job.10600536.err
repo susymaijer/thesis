@@ -1,0 +1,37 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job10600536/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-bhom767h/hiddenlayer_bbd06946100f4dd79469d08f7aaf84c7
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+/var/spool/slurmd/job10600536/slurm_script: line 43: 411620 Killed                  nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 535 2 -c --val_disable_overwrite
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+slurmstepd: error: Detected 111 oom-kill event(s) in StepId=10600536.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

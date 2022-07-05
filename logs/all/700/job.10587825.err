@@ -1,0 +1,103 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job10587825/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-kw56r4ft/hiddenlayer_2fc14e6a6c8e4d329022d5435aa68749
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+/var/spool/slurmd/job10587825/slurm_script: line 44: [: ==: unary operator expected
+/var/spool/slurmd/job10587825/slurm_script: line 50: 3907154 Killed                  nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 700 0 -c --val_disable_overwrite
+/var/spool/slurmd/job10587825/slurm_script: line 51: 4175287 Killed                  nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 700 1 -c --val_disable_overwrite
+/var/spool/slurmd/job10587825/slurm_script: line 52: 67084 Killed                  nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 700 2
+/var/spool/slurmd/job10587825/slurm_script: line 53: 67952 Killed                  nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 700 3
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 180, in main
+    trainer.run_training()
+  File "/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 453, in run_training
+    ret = super().run_training()
+  File "/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainer.py", line 320, in run_training
+    super(nnUNetTrainer, self).run_training()
+  File "/home/smaijer/code/nnUNet/nnunet/training/network_training/network_trainer.py", line 459, in run_training
+    l = self.run_iteration(self.tr_gen, True)
+  File "/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py", line 259, in run_iteration
+    l = self.loss(output, target)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/smaijer/code/nnUNet/nnunet/training/loss_functions/deep_supervision.py", line 39, in forward
+    l = weights[0] * self.loss(x[0], y[0])
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/smaijer/code/nnUNet/nnunet/training/loss_functions/dice_loss.py", line 344, in forward
+    dc_loss = self.dc(net_output, target, loss_mask=mask) if self.weight_dice != 0 else 0
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/smaijer/code/nnUNet/nnunet/training/loss_functions/dice_loss.py", line 177, in forward
+    tp, fp, fn, _ = get_tp_fp_fn_tn(x, y, axes, loss_mask, False)
+  File "/home/smaijer/code/nnUNet/nnunet/training/loss_functions/dice_loss.py", line 131, in get_tp_fp_fn_tn
+    fp = net_output * (1 - y_onehot)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/_tensor.py", line 32, in wrapped
+    return f(*args, **kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/_tensor.py", line 639, in __rsub__
+    return _C._VariableFunctions.rsub(self, other)
+RuntimeError: CUDA out of memory. Tried to allocate 200.00 MiB (GPU 0; 23.65 GiB total capacity; 5.82 GiB already allocated; 124.31 MiB free; 5.96 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_determine_postprocessing", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_determine_postprocessing')())
+  File "/home/smaijer/code/nnUNet/nnunet/postprocessing/consolidate_postprocessing_simple.py", line 56, in main
+    consolidate_folds(folder, val)
+  File "/home/smaijer/code/nnUNet/nnunet/postprocessing/consolidate_postprocessing.py", line 61, in consolidate_folds
+    collect_cv_niftis(output_folder_base, output_folder_raw, validation_folder_name,
+  File "/home/smaijer/code/nnUNet/nnunet/postprocessing/consolidate_postprocessing.py", line 31, in collect_cv_niftis
+    raise RuntimeError("some folds are missing. Please run the full 5-fold cross-validation. "
+RuntimeError: some folds are missing. Please run the full 5-fold cross-validation. The following folds seem to be missing: [2, 3, 4]
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_predict", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_predict')())
+  File "/home/smaijer/code/nnUNet/nnunet/inference/predict_simple.py", line 217, in main
+    predict_from_folder(model_folder_name, input_folder, output_folder, folds, save_npz, num_threads_preprocessing,
+  File "/home/smaijer/code/nnUNet/nnunet/inference/predict.py", line 658, in predict_from_folder
+    return predict_cases(model, list_of_lists[part_id::num_parts], output_files[part_id::num_parts], folds,
+  File "/home/smaijer/code/nnUNet/nnunet/inference/predict.py", line 184, in predict_cases
+    trainer, params = load_model_and_checkpoint_files(model, folds, mixed_precision=mixed_precision,
+  File "/home/smaijer/code/nnUNet/nnunet/training/model_restore.py", line 147, in load_model_and_checkpoint_files
+    all_params = [torch.load(i, map_location=torch.device('cpu')) for i in all_best_model_files]
+  File "/home/smaijer/code/nnUNet/nnunet/training/model_restore.py", line 147, in <listcomp>
+    all_params = [torch.load(i, map_location=torch.device('cpu')) for i in all_best_model_files]
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/serialization.py", line 699, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2_Hybrid__nnUNetPlansv2.1/fold_2/model_final_checkpoint.model'
+slurmstepd: error: Detected 88 oom-kill event(s) in StepId=10587825.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

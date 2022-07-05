@@ -4,14 +4,15 @@ Currently Loaded Modules:
 
  
 
-/var/spool/slurmd/job10582154/slurm_script: line 38: conda: command not found
-  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-d2h75ewx/hiddenlayer_3184a2a7bf674356a361e7bcf7051cc6
+/var/spool/slurmd/job10600493/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-njafsgvz/hiddenlayer_937cfa70d77b4f18b961cc6bd35655d5
   Running command git checkout -b more_plotted_details --track origin/more_plotted_details
   Switched to a new branch 'more_plotted_details'
   Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
 WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
 You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+WARNING: Error parsing requirements for argparse: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/argparse-1.4.0.dist-info/METADATA'
 WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
 You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
-slurmstepd: error: *** JOB 10582154 ON res-hpc-lkeb06 CANCELLED AT 2022-06-29T11:11:19 ***
-slurmstepd: error: Detected 96 oom-kill event(s) in StepId=10582154.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
+/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py:381: RuntimeWarning: Mean of empty slice
+  all_scores["mean"][label][score] = float(np.nanmean(all_scores["mean"][label][score]))

@@ -1,0 +1,20 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job10616543/slurm_script: line 37: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-ztf4a2sp/hiddenlayer_038d8086bfef4819a86b9cd72da3e6ae
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/cuda/amp/grad_scaler.py:115: UserWarning: torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.
+  warnings.warn("torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.")
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/amp/autocast_mode.py:198: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn('User provided device_type of \'cuda\', but CUDA is not available. Disabling')
+slurmstepd: error: *** JOB 10616543 ON res-hpc-lkeb04 CANCELLED AT 2022-07-05T19:32:01 ***

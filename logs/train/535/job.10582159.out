@@ -3183,3 +3183,127 @@ printing the network instead:
 
 2022-06-28 23:12:32.492118: saving checkpoint...
 2022-06-28 23:12:37.482272: done, saving took 5.30 seconds
+suus panc_0016 voeg toe aan pred_gt tuples voor later
+suus panc_0025 voeg toe aan pred_gt tuples voor later
+panc_0027 (2, 310, 582, 582)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 310, 582, 582)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154, 184, 215, 246], [0, 70, 141, 211, 281, 352, 422], [0, 70, 141, 211, 281, 352, 422]]
+number of tiles: 441
+computing Gaussian
+done
+prediction done
+suus panc_0027 transposed
+suus panc_0027 not saving softmax
+suus panc_0027 we moeten gekke ding doen met groot commentaar
+suus panc_0027 voeg toe aan pred_gt tuples voor later
+panc_0035 (2, 232, 715, 715)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 715, 715)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 79, 159, 238, 317, 396, 476, 555], [0, 79, 159, 238, 317, 396, 476, 555]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+suus panc_0035 transposed
+suus panc_0035 not saving softmax
+suus panc_0035 we moeten gekke ding doen met groot commentaar
+suus panc_0035 voeg toe aan pred_gt tuples voor later
+panc_0047 (2, 245, 657, 657)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 245, 657, 657)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 121, 151, 181], [0, 71, 142, 213, 284, 355, 426, 497], [0, 71, 142, 213, 284, 355, 426, 497]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+suus panc_0047 transposed
+suus panc_0047 not saving softmax
+suus panc_0047 we moeten gekke ding doen met groot commentaar
+suus panc_0047 voeg toe aan pred_gt tuples voor later
+panc_0084 (2, 210, 582, 582)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 210, 582, 582)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 88, 117, 146], [0, 70, 141, 211, 281, 352, 422], [0, 70, 141, 211, 281, 352, 422]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+suus panc_0084 transposed
+suus panc_0084 not saving softmax
+suus panc_0084 we moeten gekke ding doen met groot commentaar
+suus panc_0084 voeg toe aan pred_gt tuples voor later
+panc_0088 (2, 170, 556, 556)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 170, 556, 556)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 26, 53, 80, 106], [0, 79, 158, 238, 317, 396], [0, 79, 158, 238, 317, 396]]
+number of tiles: 180
+using precomputed Gaussian
+prediction done
+suus panc_0088 transposed
+suus panc_0088 not saving softmax
+suus panc_0088 we moeten gekke ding doen met groot commentaar
+suus panc_0088 voeg toe aan pred_gt tuples voor later
+panc_0092 (2, 330, 582, 582)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 330, 582, 582)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148, 177, 207, 236, 266], [0, 70, 141, 211, 281, 352, 422], [0, 70, 141, 211, 281, 352, 422]]
+number of tiles: 490
+using precomputed Gaussian
+prediction done
+suus panc_0092 transposed
+suus panc_0092 not saving softmax
+suus panc_0092 we moeten gekke ding doen met groot commentaar
+suus panc_0092 voeg toe aan pred_gt tuples voor later
+panc_0094 (2, 228, 613, 613)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 228, 613, 613)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 55, 82, 109, 137, 164], [0, 76, 151, 226, 302, 378, 453], [0, 76, 151, 226, 302, 378, 453]]
+number of tiles: 343
+using precomputed Gaussian
+prediction done
+suus panc_0094 transposed
+suus panc_0094 not saving softmax
+suus panc_0094 we moeten gekke ding doen met groot commentaar
+suus panc_0094 voeg toe aan pred_gt tuples voor later
+panc_0097 (2, 315, 795, 795)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 315, 795, 795)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157, 188, 220, 251], [0, 79, 159, 238, 318, 397, 476, 556, 635], [0, 79, 159, 238, 318, 397, 476, 556, 635]]
+number of tiles: 729
+using precomputed Gaussian
+prediction done
+suus panc_0097 transposed
+suus panc_0097 not saving softmax
+suus panc_0097 we moeten gekke ding doen met groot commentaar
+suus panc_0097 voeg toe aan pred_gt tuples voor later
+panc_0104 (2, 220, 582, 582)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 220, 582, 582)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156], [0, 70, 141, 211, 281, 352, 422], [0, 70, 141, 211, 281, 352, 422]]
+number of tiles: 294
+using precomputed Gaussian

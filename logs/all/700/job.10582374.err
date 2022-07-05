@@ -4,8 +4,8 @@ Currently Loaded Modules:
 
  
 
-/var/spool/slurmd/job10582154/slurm_script: line 38: conda: command not found
-  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-d2h75ewx/hiddenlayer_3184a2a7bf674356a361e7bcf7051cc6
+/var/spool/slurmd/job10582374/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-czg_mrpc/hiddenlayer_d42798f4e4fb4417b50f7379e3e566d3
   Running command git checkout -b more_plotted_details --track origin/more_plotted_details
   Switched to a new branch 'more_plotted_details'
   Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
@@ -13,5 +13,6 @@ WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
 You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
 WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
 You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
-slurmstepd: error: *** JOB 10582154 ON res-hpc-lkeb06 CANCELLED AT 2022-06-29T11:11:19 ***
-slurmstepd: error: Detected 96 oom-kill event(s) in StepId=10582154.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
+/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py:381: RuntimeWarning: Mean of empty slice
+  all_scores["mean"][label][score] = float(np.nanmean(all_scores["mean"][label][score]))
+slurmstepd: error: *** JOB 10582374 ON res-hpc-lkeb06 CANCELLED AT 2022-06-30T07:29:06 ***
