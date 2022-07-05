@@ -93,11 +93,11 @@ nnUNet_train $config $trainer $task 3
 nnUNet_train $config $trainer $task 4
 
 echo "Done training all the folds! Now we do the same command but with continue option, to generate log files".
-nnUNet_train $config $trainer $task 0 -c --val_disable_overwrite True
-nnUNet_train $config $trainer $task 1 -c --val_disable_overwrite True
-nnUNet_train $config $trainer $task 2 -c --val_disable_overwrite True
-nnUNet_train $config $trainer $task 3 -c --val_disable_overwrite True
-nnUNet_train $config $trainer $task 4 -c --val_disable_overwrite True
+nnUNet_train $config $trainer $task 0 -c --val_disable_overwrite
+nnUNet_train $config $trainer $task 1 -c --val_disable_overwrite
+nnUNet_train $config $trainer $task 2 -c --val_disable_overwrite
+nnUNet_train $config $trainer $task 3 -c --val_disable_overwrite
+nnUNet_train $config $trainer $task 4 -c --val_disable_overwrite
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

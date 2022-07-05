@@ -22,6 +22,9 @@ read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
 
 read -p "Enter folder suffix [Ts, Tr]:" tstr
 
+read -p "Enter folds, like '0 1 2 3 4':" folds
+t=${t:-0 1 2 3 4}
+
 # lowres of fullres
 if [ $config != "3d_cascade_fullres" ];
 then
@@ -92,11 +95,11 @@ echo "Verifying environment variables:"
 conda env config vars list
 echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
-python -m pip install -editable /home/smaijer/code/nnUNet
+python -m pip install --editable /home/smaijer/code/nnUNet
 
-mkdir -p $OUTPUT/$task/$config/$taskPredict/images$tstr
+mkdir -p $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr
 
-nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/images$tstr -o $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr -t $task -m $config
+nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/images$tstr -o $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr -t $task -m $config -tr $trainer -f $folds
 
 nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/labels$tstr -pred $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr -l 1
 

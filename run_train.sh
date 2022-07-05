@@ -94,7 +94,7 @@ echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install --editable /home/smaijer/code/nnUNet
 
-nnUNet_train $config $trainer $task $fold $c --val_disable_overwrite True
+nnUNet_train $config $trainer $task $fold $c --val_disable_overwrite
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file
