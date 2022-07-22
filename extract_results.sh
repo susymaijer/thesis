@@ -8,18 +8,38 @@ read -p "Enter task:" task
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
-if [ $config != "3d_cascade_fullres" ]; then
-   trainer="nnUNetTrainerV2"
+read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,empty]:" trainer
+
+# lowres of fullres
+if [ $config != "3d_cascade_fullres" ];
+then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2_$trainer"
+   fi
+   if [ -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2"
+   fi
 fi
-if [ $config == "3d_cascade_fullres" ]; then
-   trainer="nnUNetTrainerV2CascadeFullRes"
+# cascade
+if [ $config == "3d_cascade_fullres" ];
+then
+   if [ ! -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes_$trainer"
+   fi
+   if [ -z $trainer ];
+   then
+      trainer="nnUNetTrainerV2CascadeFullRes"
+   fi
 fi
 
-download="$DOWNLOAD/$task/$config"
+download="$DOWNLOAD/$task/$config/$trainer"
 mkdir -p $download
 
 # Extract the final segmentations of training and testing dataset 
-cd $OUTPUT/$task/$config
+cd $OUTPUT/$task/$config/$trainer
 ls -l
 zip -r inference.zip *
 mv inference.zip $download

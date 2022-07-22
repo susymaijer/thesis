@@ -18,12 +18,15 @@ t=${t:-01:00:00}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
-read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
+read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,empty]:" trainer
 
 read -p "Enter folder suffix [Ts, Tr]:" tstr
 
 read -p "Enter folds, like '0 1 2 3 4':" folds
 t=${t:-0 1 2 3 4}
+
+read -p "Enter seglabels, like '1' (default 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15):" segLabels
+t=${t:-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15}
 
 # lowres of fullres
 if [ $config != "3d_cascade_fullres" ];
@@ -61,7 +64,7 @@ echo "#!/bin/bash
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=$cpu
 #SBATCH --time=$t
-#SBATCH --mem=64GB
+#SBATCH --mem=85GB
 #SBATCH --gres=gpu:RTX6000:1
 #SBATCH --error=/home/smaijer/logs/inference/$task/job.%J.err
 #SBATCH --output=/home/smaijer/logs/inference/$task/job.%J.out
@@ -101,7 +104,7 @@ mkdir -p $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr
 
 nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/images$tstr -o $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr -t $task -m $config -tr $trainer -f $folds
 
-nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/labels$tstr -pred $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr -l 1
+nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/labels$tstr -pred $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr -l $segLabels
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

@@ -18,7 +18,7 @@ t=${t:-01:00:00}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
-read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
+read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,empty]:" trainer
 
 # lowres of fullres
 if [ $config != "3d_cascade_fullres" ];

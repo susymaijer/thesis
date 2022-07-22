@@ -16,7 +16,7 @@ t=${t:-01:00:00}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
-read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
+read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,empty]:" trainer
 
 read -p "Enter fold:" fold
 
@@ -93,6 +93,10 @@ conda env config vars list
 echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install --editable /home/smaijer/code/nnUNet
+
+python -c 'import torch;print(torch.__version__)'
+python -c 'import torch;print(torch.backends.cudnn.version())'
+python -c 'import torch;print(torch.__file__)'
 
 nnUNet_train $config $trainer $task $fold $c --val_disable_overwrite
 
