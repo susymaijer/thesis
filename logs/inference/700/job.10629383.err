@@ -1,0 +1,8 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job10629383/slurm_script: line 39: conda: command not found
+slurmstepd: error: *** JOB 10629383 ON res-hpc-lkeb07 CANCELLED AT 2022-07-06T23:06:36 ***

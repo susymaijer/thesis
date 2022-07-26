@@ -1,19 +1,17 @@
 #!/bin/bash
-#SBATCH -J pred535H
-#SBATCH -p LKEBgpu
+#SBATCH -J PancreasEvalFolder
 #SBATCH -N 1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=6
-#SBATCH --time=16:00:00
-#SBATCH --mem=85GB
-#SBATCH --gres=gpu:RTX6000:1
-#SBATCH --error=/home/smaijer/logs/inference/535/job.%J.err
-#SBATCH --output=/home/smaijer/logs/inference/535/job.%J.out
+#SBATCH --time=00:30:00
+#SBATCH --mem=12GB
+#SBATCH --error=/home/smaijer/logs/evalfolder/510/job.%J.err
+#SBATCH --output=/home/smaijer/logs/evalfolder/510/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=susy.maijer@lumc.nl
 
 # Prepare nnUnet
-echo "Starting at Tue Jul  5 23:57:37 CEST 2022"
+echo "Starting at Mon Jul 18 16:52:00 CEST 2022"
 
 echo "Running on hosts: $SLURM_JOB_NODELIST"
 echo "Running on $SLURM_JOB_NUM_NODES nodes."
@@ -39,10 +37,8 @@ echo Verifying environment variables:
 conda env config vars list
 echo Installing hidden layer and nnUnet..
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
-python -m pip install --editable /home/smaijer/code/nnUNet
+python -m pip install -editable /home/smaijer/code/nnUNet
 
-mkdir -p /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs
+nnUNet_evaluate_folder -ref /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs -pred /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/501/imagesTs -l 1
 
-nnUNet_predict -i /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task535/imagesTs -o /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs -t 535 -m 3d_fullres -tr nnUNetTrainerV2_Hybrid -f 0 1 2 3
-
-
+echo "Program finished with exit code 0 at: Mon Jul 18 16:52:00 CEST 2022"

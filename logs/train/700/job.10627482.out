@@ -1,0 +1,1185 @@
+Starting at Fri Jul  1 00:13:25 CEST 2022
+Running on hosts: res-hpc-lkeb05
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 6.
+Account: div2-lkeb
+Job ID: 10627482
+Job name: 700
+Node running script: res-hpc-lkeb05
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Tue Jul  5 23:02:54 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 6000     Off  | 00000000:AF:00.0 Off |                  Off |
+| 34%   56C    P0    69W / 260W |      0MiB / 24220MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-o49c45n7/hiddenlayer_34ff5a11c6374e1bb6435545a4cdd837
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Using legacy 'setup.py install' for hiddenlayer, since package 'wheel' is not installed.
+Installing collected packages: hiddenlayer
+    Running setup.py install for hiddenlayer: started
+    Running setup.py install for hiddenlayer: finished with status 'done'
+Successfully installed hiddenlayer-0.2
+Obtaining file:///home/smaijer/code/nnUNet
+Collecting torch>1.10.0
+  Using cached torch-1.12.0-cp310-cp310-manylinux1_x86_64.whl (776.3 MB)
+Collecting tqdm
+  Using cached tqdm-4.64.0-py2.py3-none-any.whl (78 kB)
+Collecting dicom2nifti
+  Using cached dicom2nifti-2.4.2-py3-none-any.whl (43 kB)
+Collecting scikit-image>=0.14
+  Using cached scikit_image-0.19.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.9 MB)
+Collecting medpy
+  Using cached MedPy-0.4.0-py3-none-any.whl
+Collecting scipy
+  Using cached scipy-1.8.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (42.2 MB)
+Collecting batchgenerators>=0.23
+  Using cached batchgenerators-0.24-py3-none-any.whl
+Collecting numpy
+  Using cached numpy-1.23.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.0 MB)
+Collecting sklearn
+  Using cached sklearn-0.0-py2.py3-none-any.whl
+Collecting SimpleITK
+  Using cached SimpleITK-2.1.1.2-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (48.4 MB)
+Collecting pandas
+  Using cached pandas-1.4.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.6 MB)
+Collecting requests
+  Using cached requests-2.28.1-py3-none-any.whl (62 kB)
+Collecting nibabel
+  Using cached nibabel-4.0.1-py3-none-any.whl (3.3 MB)
+Collecting tifffile
+  Using cached tifffile-2022.5.4-py3-none-any.whl (195 kB)
+Collecting matplotlib
+  Using cached matplotlib-3.5.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.9 MB)
+Collecting monai
+  Using cached monai-0.9.0-202206131636-py3-none-any.whl (939 kB)
+Collecting einops
+  Using cached einops-0.4.1-py3-none-any.whl (28 kB)
+Collecting ipython
+  Using cached ipython-8.4.0-py3-none-any.whl (750 kB)
+Collecting graphviz
+  Using cached graphviz-0.20-py3-none-any.whl (46 kB)
+Collecting threadpoolctl
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting pillow>=7.1.2
+  Using cached Pillow-9.2.0-cp310-cp310-manylinux_2_28_x86_64.whl (3.2 MB)
+Collecting scikit-learn
+  Using cached scikit_learn-1.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (30.4 MB)
+Collecting future
+  Using cached future-0.18.2-py3-none-any.whl
+Collecting unittest2
+  Using cached unittest2-1.1.0-py2.py3-none-any.whl (96 kB)
+Collecting packaging>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting networkx>=2.2
+  Using cached networkx-2.8.4-py3-none-any.whl (2.0 MB)
+Collecting imageio>=2.4.1
+  Using cached imageio-2.19.3-py3-none-any.whl (3.4 MB)
+Collecting PyWavelets>=1.1.1
+  Using cached PyWavelets-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.9 MB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Using cached pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Collecting typing-extensions
+  Using cached typing_extensions-4.3.0-py3-none-any.whl (25 kB)
+Collecting pydicom>=2.2.0
+  Using cached pydicom-2.3.0-py3-none-any.whl (2.0 MB)
+Collecting python-gdcm
+  Using cached python_gdcm-3.0.14-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.8 MB)
+Collecting pickleshare
+  Using cached pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+Collecting pexpect>4.3
+  Using cached pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+Collecting backcall
+  Using cached backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+Collecting setuptools>=18.5
+  Using cached setuptools-63.1.0-py3-none-any.whl (1.2 MB)
+Collecting matplotlib-inline
+  Using cached matplotlib_inline-0.1.3-py3-none-any.whl (8.2 kB)
+Collecting stack-data
+  Using cached stack_data-0.3.0-py3-none-any.whl (23 kB)
+Collecting decorator
+  Using cached decorator-5.1.1-py3-none-any.whl (9.1 kB)
+Collecting pygments>=2.4.0
+  Using cached Pygments-2.12.0-py3-none-any.whl (1.1 MB)
+Collecting prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0
+  Using cached prompt_toolkit-3.0.30-py3-none-any.whl (381 kB)
+Collecting traitlets>=5
+  Using cached traitlets-5.3.0-py3-none-any.whl (106 kB)
+Collecting jedi>=0.16
+  Using cached jedi-0.18.1-py2.py3-none-any.whl (1.6 MB)
+Collecting parso<0.9.0,>=0.8.0
+  Using cached parso-0.8.3-py2.py3-none-any.whl (100 kB)
+Collecting ptyprocess>=0.5
+  Using cached ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+Collecting python-dateutil>=2.7
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Collecting fonttools>=4.22.0
+  Using cached fonttools-4.33.3-py3-none-any.whl (930 kB)
+Collecting cycler>=0.10
+  Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting kiwisolver>=1.0.1
+  Using cached kiwisolver-1.4.3-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+Collecting six>=1.5
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting pytz>=2020.1
+  Using cached pytz-2022.1-py2.py3-none-any.whl (503 kB)
+Collecting idna<4,>=2.5
+  Using cached idna-3.3-py3-none-any.whl (61 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Using cached urllib3-1.26.9-py2.py3-none-any.whl (138 kB)
+Collecting certifi>=2017.4.17
+  Using cached certifi-2022.6.15-py3-none-any.whl (160 kB)
+Collecting charset-normalizer<3,>=2
+  Using cached charset_normalizer-2.1.0-py3-none-any.whl (39 kB)
+Collecting joblib>=1.0.0
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Collecting asttokens
+  Using cached asttokens-2.0.5-py2.py3-none-any.whl (20 kB)
+Collecting executing
+  Using cached executing-0.8.3-py2.py3-none-any.whl (16 kB)
+Collecting pure-eval
+  Using cached pure_eval-0.2.2-py3-none-any.whl (11 kB)
+Collecting traceback2
+  Using cached traceback2-1.4.0-py2.py3-none-any.whl (16 kB)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Collecting linecache2
+  Using cached linecache2-1.0.0-py2.py3-none-any.whl (12 kB)
+Installing collected packages: six, pyparsing, pillow, numpy, linecache2, wcwidth, typing-extensions, traitlets, traceback2, tifffile, threadpoolctl, setuptools, scipy, PyWavelets, pure-eval, ptyprocess, parso, packaging, networkx, joblib, imageio, executing, asttokens, argparse, urllib3, unittest2, torch, stack-data, SimpleITK, scikit-learn, scikit-image, pytz, python-gdcm, python-dateutil, pygments, pydicom, prompt-toolkit, pickleshare, pexpect, nibabel, matplotlib-inline, kiwisolver, jedi, idna, future, fonttools, decorator, cycler, charset-normalizer, certifi, backcall, tqdm, sklearn, requests, pandas, monai, medpy, matplotlib, ipython, graphviz, einops, dicom2nifti, batchgenerators, nnunet
+  Running setup.py develop for nnunet
+Successfully installed PyWavelets-1.3.0 SimpleITK-2.1.1.2 argparse-1.4.0 asttokens-2.0.5 backcall-0.2.0 batchgenerators-0.24 certifi-2022.6.15 charset-normalizer-2.1.0 cycler-0.11.0 decorator-5.1.1 dicom2nifti-2.4.2 einops-0.4.1 executing-0.8.3 fonttools-4.33.3 future-0.18.2 graphviz-0.20 idna-3.3 imageio-2.19.3 ipython-8.4.0 jedi-0.18.1 joblib-1.1.0 kiwisolver-1.4.3 linecache2-1.0.0 matplotlib-3.5.2 matplotlib-inline-0.1.3 medpy-0.4.0 monai-0.9.0 networkx-2.8.4 nibabel-4.0.1 nnunet numpy-1.23.0 packaging-21.3 pandas-1.4.3 parso-0.8.3 pexpect-4.8.0 pickleshare-0.7.5 pillow-9.2.0 prompt-toolkit-3.0.30 ptyprocess-0.7.0 pure-eval-0.2.2 pydicom-2.3.0 pygments-2.12.0 pyparsing-3.0.9 python-dateutil-2.8.2 python-gdcm-3.0.14 pytz-2022.1 requests-2.28.1 scikit-image-0.19.3 scikit-learn-1.1.1 scipy-1.8.1 setuptools-63.1.0 six-1.16.0 sklearn-0.0 stack-data-0.3.0 threadpoolctl-3.1.0 tifffile-2022.5.4 torch-1.12.0 tqdm-4.64.0 traceback2-1.4.0 traitlets-5.3.0 typing-extensions-4.3.0 unittest2-1.1.0 urllib3-1.26.9 wcwidth-0.2.5
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Suus0 - run_training. Args:
+Namespace(network='3d_fullres', network_trainer='nnUNetTrainerV2', task='700', fold='3', validation_only=False, continue_training=True, p='nnUNetPlansv2.1', use_compressed_data=False, deterministic=False, npz=False, find_lr=False, valbest=False, fp32=True, val_folder='validation_raw', disable_saving=False, disable_postprocessing_on_folds=False, val_disable_overwrite=False, disable_next_stage_pred=False, pretrained_weights=None)
+###############################################
+I am running the following nnUNet: 3d_fullres
+My trainer class is:  <class 'nnunet.training.network_training.nnUNetTrainerV2.nnUNetTrainerV2'>
+For that I will be using the following configuration:
+num_classes:  15
+modalities:  {0: 'CT'}
+use_mask_for_norm OrderedDict([(0, False)])
+keep_only_largest_region None
+min_region_size_per_class None
+min_size_per_class None
+normalization_schemes OrderedDict([(0, 'CT')])
+stages...
+
+stage:  0
+{'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 80, 160, 160]), 'median_patient_size_in_voxels': array([138, 243, 243]), 'current_spacing': array([3.28926364, 1.64543342, 1.64543342]), 'original_spacing': array([2.        , 0.78014851, 0.78014851]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [1, 2, 2]], 'conv_kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+stage:  1
+{'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 64, 160, 160]), 'median_patient_size_in_voxels': array([228, 513, 513]), 'current_spacing': array([2.        , 0.78014851, 0.78014851]), 'original_spacing': array([2.        , 0.78014851, 0.78014851]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[1, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]], 'conv_kernel_sizes': [[1, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+I am using stage 1 from these plans
+I am using batch dice + CE loss
+
+I am using data from this folder:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task700/nnUNetData_plans_v2.1
+###############################################
+Suus1 - Initialise de NetworkTrainer
+Suus2 - Initialise de nnUNetTrainer
+Suus3 - Initialise de nnUNetTrainerV2
+Suus4 - Initialise de trainer echt
+Suus5 - zet de plans properties
+Suus6 - Zet de data augmentation params
+Suus7 - zet deep supervision weights die de meerdere outputs prioriteit geven
+loading dataset
+loading all case properties
+2022-07-05 23:03:56.750549: Using splits from existing split file: /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task700/splits_final.pkl
+2022-07-05 23:03:56.760514: The split file contains 5 splits.
+2022-07-05 23:03:56.762898: Desired fold for training: 3
+2022-07-05 23:03:56.765094: This split has 192 training and 48 validation cases.
+unpacking dataset
+done
+Suus8 - Maak network aan (BELANGRIJK!)
+SuusB - first stride 
+Suus10 - StackedConvLayers, input: 1 en output: 32, first_stride: None, num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [1, 3, 3], 'padding': [0, 1, 1]}
+SuusA - first_stride [1, 2, 2]
+Suus10 - StackedConvLayers, input: 32 en output: 64, first_stride: [1, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 64 en output: 128, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 128 en output: 256, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 256 en output: 320, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: [2, 2, 2], num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 640 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 512 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 32 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Generic_UNet(
+  (encoder): Generic_UNETEncoder()
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(640, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (conv_blocks_context): ModuleList(
+    (0): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(1, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (1): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 64, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (2): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (3): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (4): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (5): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (td): ModuleList()
+  (tu): ModuleList(
+    (0): ConvTranspose3d(320, 320, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (1): ConvTranspose3d(320, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (4): ConvTranspose3d(64, 32, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(320, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(256, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(128, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(64, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (4): Conv3d(32, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+SuusA - Load checkpoint (final, latest, best)
+2022-07-05 23:03:58.747213: loading checkpoint /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/model_final_checkpoint.model train= True
+SuusB run_training - zet learning rate als  
+2022-07-05 23:04:00.636716: Suus1 maybe_update_lr lr: 0.0
+SuusC - run_training!
+using pin_memory on device 0
+using pin_memory on device 0
+Suus for now disable cause it breaks the logs
+2022-07-05 23:04:21.752532: Unable to plot network architecture:
+2022-07-05 23:04:21.769288: local variable 'g' referenced before assignment
+2022-07-05 23:04:21.795304: 
+printing the network instead:
+
+2022-07-05 23:04:21.817296: Generic_UNet(
+  (encoder): Generic_UNETEncoder()
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(640, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (conv_blocks_context): ModuleList(
+    (0): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(1, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (1): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 64, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (2): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (3): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (4): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (5): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (td): ModuleList()
+  (tu): ModuleList(
+    (0): ConvTranspose3d(320, 320, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (1): ConvTranspose3d(320, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (4): ConvTranspose3d(64, 32, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(320, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(256, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(128, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(64, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (4): Conv3d(32, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+2022-07-05 23:04:21.840172: 
+
+2022-07-05 23:04:22.035978: saving checkpoint...
+2022-07-05 23:04:23.588349: done, saving took 1.73 seconds
+suus panc_0001 voeg toe aan pred_gt tuples voor later
+suus panc_0006 voeg toe aan pred_gt tuples voor later
+suus panc_0009 voeg toe aan pred_gt tuples voor later
+suus panc_0010 voeg toe aan pred_gt tuples voor later
+suus panc_0019 voeg toe aan pred_gt tuples voor later
+suus panc_0036 voeg toe aan pred_gt tuples voor later
+suus panc_0038 voeg toe aan pred_gt tuples voor later
+suus panc_0054 voeg toe aan pred_gt tuples voor later
+suus panc_0064 voeg toe aan pred_gt tuples voor later
+suus panc_0066 voeg toe aan pred_gt tuples voor later
+suus panc_0071 voeg toe aan pred_gt tuples voor later
+suus panc_0078 voeg toe aan pred_gt tuples voor later
+suus panc_0089 voeg toe aan pred_gt tuples voor later
+suus panc_0099 voeg toe aan pred_gt tuples voor later
+suus panc_0105 voeg toe aan pred_gt tuples voor later
+suus panc_0109 voeg toe aan pred_gt tuples voor later
+suus panc_0111 voeg toe aan pred_gt tuples voor later
+suus panc_0124 voeg toe aan pred_gt tuples voor later
+suus panc_0126 voeg toe aan pred_gt tuples voor later
+suus panc_0129 voeg toe aan pred_gt tuples voor later
+suus panc_0135 voeg toe aan pred_gt tuples voor later
+suus panc_0138 voeg toe aan pred_gt tuples voor later
+suus panc_0141 voeg toe aan pred_gt tuples voor later
+suus panc_0152 voeg toe aan pred_gt tuples voor later
+suus panc_0184 voeg toe aan pred_gt tuples voor later
+suus panc_0185 voeg toe aan pred_gt tuples voor later
+panc_0224 (2, 212, 442, 442)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 212, 442, 442)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148], [0, 70, 141, 212, 282], [0, 70, 141, 212, 282]]
+number of tiles: 150
+computing Gaussian
+done
+prediction done
+suus panc_0224 transposed
+suus panc_0224 not saving softmax
+suus panc_0224 we moeten gekke ding doen met groot commentaar
+suus panc_0224 voeg toe aan pred_gt tuples voor later
+panc_0282 (2, 265, 517, 517)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 265, 517, 517)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 115, 144, 172, 201], [0, 71, 143, 214, 286, 357], [0, 71, 143, 214, 286, 357]]
+number of tiles: 288
+using precomputed Gaussian
+prediction done
+suus panc_0282 transposed
+suus panc_0282 not saving softmax
+suus panc_0282 we moeten gekke ding doen met groot commentaar
+suus panc_0282 voeg toe aan pred_gt tuples voor later
+panc_0296 (2, 234, 522, 522)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 234, 522, 522)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 113, 142, 170], [0, 72, 145, 217, 290, 362], [0, 72, 145, 217, 290, 362]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+suus panc_0296 transposed
+suus panc_0296 not saving softmax
+suus panc_0296 we moeten gekke ding doen met groot commentaar
+suus panc_0296 voeg toe aan pred_gt tuples voor later
+panc_0307 (2, 251, 441, 441)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 251, 441, 441)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156, 187], [0, 70, 140, 211, 281], [0, 70, 140, 211, 281]]
+number of tiles: 175
+using precomputed Gaussian
+prediction done
+suus panc_0307 transposed
+suus panc_0307 not saving softmax
+suus panc_0307 we moeten gekke ding doen met groot commentaar
+suus panc_0307 voeg toe aan pred_gt tuples voor later
+panc_0317 (2, 218, 404, 404)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 404, 404)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 61, 122, 183, 244], [0, 61, 122, 183, 244]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+suus panc_0317 transposed
+suus panc_0317 not saving softmax
+suus panc_0317 we moeten gekke ding doen met groot commentaar
+suus panc_0317 voeg toe aan pred_gt tuples voor later
+panc_0358 (2, 201, 406, 406)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 201, 406, 406)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 55, 82, 110, 137], [0, 62, 123, 184, 246], [0, 62, 123, 184, 246]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+suus panc_0358 transposed
+suus panc_0358 not saving softmax
+suus panc_0358 we moeten gekke ding doen met groot commentaar
+suus panc_0358 voeg toe aan pred_gt tuples voor later
+panc_0370 (2, 252, 636, 636)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 252, 636, 636)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 125, 157, 188], [0, 79, 159, 238, 317, 397, 476], [0, 79, 159, 238, 317, 397, 476]]
+number of tiles: 343
+using precomputed Gaussian
+prediction done
+suus panc_0370 transposed
+suus panc_0370 not saving softmax
+suus panc_0370 we moeten gekke ding doen met groot commentaar
+suus panc_0370 voeg toe aan pred_gt tuples voor later
+panc_0379 (2, 250, 599, 599)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 250, 599, 599)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155, 186], [0, 73, 146, 220, 293, 366, 439], [0, 73, 146, 220, 293, 366, 439]]
+number of tiles: 343
+using precomputed Gaussian
+prediction done
+suus panc_0379 transposed
+suus panc_0379 not saving softmax
+suus panc_0379 we moeten gekke ding doen met groot commentaar
+suus panc_0379 voeg toe aan pred_gt tuples voor later
+panc_0380 (2, 232, 597, 597)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 597, 597)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 73, 146, 218, 291, 364, 437], [0, 73, 146, 218, 291, 364, 437]]
+number of tiles: 343
+using precomputed Gaussian
+prediction done
+suus panc_0380 transposed
+suus panc_0380 not saving softmax
+suus panc_0380 we moeten gekke ding doen met groot commentaar
+suus panc_0380 voeg toe aan pred_gt tuples voor later
+panc_0384 (2, 235, 455, 455)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 235, 455, 455)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 86, 114, 142, 171], [0, 74, 148, 221, 295], [0, 74, 148, 221, 295]]
+number of tiles: 175
+using precomputed Gaussian
+prediction done
+suus panc_0384 transposed
+suus panc_0384 not saving softmax
+suus panc_0384 we moeten gekke ding doen met groot commentaar
+suus panc_0384 voeg toe aan pred_gt tuples voor later
+panc_0400 (2, 198, 460, 460)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 460, 460)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 75, 150, 225, 300], [0, 75, 150, 225, 300]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+suus panc_0400 transposed
+suus panc_0400 not saving softmax
+suus panc_0400 we moeten gekke ding doen met groot commentaar
+suus panc_0400 voeg toe aan pred_gt tuples voor later
+panc_0401 (2, 228, 517, 517)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 228, 517, 517)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 55, 82, 109, 137, 164], [0, 71, 143, 214, 286, 357], [0, 71, 143, 214, 286, 357]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+suus panc_0401 transposed
+suus panc_0401 not saving softmax
+suus panc_0401 we moeten gekke ding doen met groot commentaar
+suus panc_0401 voeg toe aan pred_gt tuples voor later
+panc_0402 (2, 232, 543, 543)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 543, 543)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 77, 153, 230, 306, 383], [0, 77, 153, 230, 306, 383]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+suus panc_0402 transposed
+suus panc_0402 not saving softmax
+suus panc_0402 we moeten gekke ding doen met groot commentaar
+suus panc_0402 voeg toe aan pred_gt tuples voor later
+panc_0406 (2, 205, 547, 547)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 205, 547, 547)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 85, 113, 141], [0, 77, 155, 232, 310, 387], [0, 77, 155, 232, 310, 387]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+suus panc_0406 transposed
+suus panc_0406 not saving softmax
+suus panc_0406 we moeten gekke ding doen met groot commentaar
+suus panc_0406 voeg toe aan pred_gt tuples voor later
+panc_0408 (2, 260, 605, 605)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 260, 605, 605)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168, 196], [0, 74, 148, 222, 297, 371, 445], [0, 74, 148, 222, 297, 371, 445]]
+number of tiles: 392
+using precomputed Gaussian
+prediction done
+suus panc_0408 transposed
+suus panc_0408 not saving softmax
+suus panc_0408 we moeten gekke ding doen met groot commentaar
+suus panc_0408 voeg toe aan pred_gt tuples voor later
+panc_0541 (2, 108, 440, 486)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 108, 440, 486)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 22, 44], [0, 70, 140, 210, 280], [0, 65, 130, 196, 261, 326]]
+number of tiles: 90
+using precomputed Gaussian
+prediction done
+suus panc_0541 transposed
+suus panc_0541 not saving softmax
+suus panc_0541 voeg toe aan pred_gt tuples voor later
+panc_0548 (2, 108, 393, 484)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 108, 393, 484)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 22, 44], [0, 78, 155, 233], [0, 65, 130, 194, 259, 324]]
+number of tiles: 72
+using precomputed Gaussian
+prediction done
+suus panc_0548 transposed
+suus panc_0548 not saving softmax
+suus panc_0548 voeg toe aan pred_gt tuples voor later
+panc_0554 (2, 177, 237, 538)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 177, 237, 538)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 85, 113], [0, 77], [0, 76, 151, 227, 302, 378]]
+number of tiles: 60
+using precomputed Gaussian
+prediction done
+suus panc_0554 transposed
+suus panc_0554 not saving softmax
+suus panc_0554 voeg toe aan pred_gt tuples voor later
+panc_0555 (2, 108, 409, 509)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 108, 409, 509)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 22, 44], [0, 62, 124, 187, 249], [0, 70, 140, 209, 279, 349]]
+number of tiles: 90
+using precomputed Gaussian
+prediction done
+suus panc_0555 transposed
+suus panc_0555 not saving softmax
+suus panc_0555 voeg toe aan pred_gt tuples voor later
+panc_0580 (2, 189, 231, 486)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 189, 231, 486)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125], [0, 71], [0, 65, 130, 196, 261, 326]]
+number of tiles: 60
+using precomputed Gaussian
+prediction done
+suus panc_0580 transposed
+suus panc_0580 not saving softmax
+suus panc_0580 voeg toe aan pred_gt tuples voor later
+panc_0591 (2, 108, 393, 486)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 108, 393, 486)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 22, 44], [0, 78, 155, 233], [0, 65, 130, 196, 261, 326]]
+number of tiles: 72
+using precomputed Gaussian
+prediction done
+suus panc_0591 transposed
+suus panc_0591 not saving softmax
+suus panc_0591 voeg toe aan pred_gt tuples voor later
+panc_0600 (2, 108, 393, 486)
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 108, 393, 486)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 22, 44], [0, 78, 155, 233], [0, 65, 130, 196, 261, 326]]
+number of tiles: 72
+using precomputed Gaussian
+prediction done
+suus panc_0600 transposed
+suus panc_0600 not saving softmax
+suus panc_0600 voeg toe aan pred_gt tuples voor later
+2022-07-06 00:32:31.229975: finished prediction
+2022-07-06 00:32:31.235467: evaluation of raw predictions
+2022-07-06 00:33:36.801733: determining postprocessing
+Foreground vs background
+before: 0.8714835432357797
+after:  0.6908202385813963
+1
+before: 0.9643681491065684
+after:  0.9643835565597598
+Removing all but the largest region for class 1 improved results!
+min_valid_object_sizes None
+10
+before: 0.848022653959421
+after:  0.8461243902353166
+11
+before: 0.7637259163017959
+after:  0.764062853712062
+Removing all but the largest region for class 11 improved results!
+min_valid_object_sizes None
+12
+before: 0.7873652808456347
+after:  0.7879136375868341
+Removing all but the largest region for class 12 improved results!
+min_valid_object_sizes None
+13
+before: 0.7851586957991419
+after:  0.7767826162861651
+14
+before: 0.8556119415655161
+after:  0.8574133426445195
+Removing all but the largest region for class 14 improved results!
+min_valid_object_sizes None
+15
+before: 0.8087219713566597
+after:  0.8118564785578251
+Removing all but the largest region for class 15 improved results!
+min_valid_object_sizes None
+2
+before: 0.9629121430490327
+after:  0.96387567714961
+Removing all but the largest region for class 2 improved results!
+min_valid_object_sizes None
+3
+before: 0.9621799666104959
+after:  0.9637009890697886
+Removing all but the largest region for class 3 improved results!
+min_valid_object_sizes None
+4
+before: 0.8607409486186405
+after:  0.8590767842438581
+5
+before: 0.800246580643979
+after:  0.7996644144010876
+6
+before: 0.9756267480025648
+after:  0.9760451610236579
+Removing all but the largest region for class 6 improved results!
+min_valid_object_sizes None
+7
+before: 0.8691728579167176
+after:  0.8767151714969422
+Removing all but the largest region for class 7 improved results!
+min_valid_object_sizes None
+8
+before: 0.9338235873346038
+after:  0.941438818140936
+Removing all but the largest region for class 8 improved results!
+min_valid_object_sizes None
+9
+before: 0.8945757074259234
+after:  0.8929549074850135
+done
+for which classes:
+[1, 11, 12, 14, 15, 2, 3, 6, 7, 8]
+min_object_sizes
+None
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0379.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0541.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0224.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0380.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0548.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0370.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0408.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0282.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0384.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0554.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0296.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0400.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0555.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0307.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0401.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0580.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0317.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0402.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0591.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0358.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0406.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task700/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/validation_raw/panc_0600.nii.gz
+done
+Program finished with exit code 0 at: Fri Jul  1 00:13:25 CEST 2022

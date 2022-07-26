@@ -1,0 +1,9 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job10969440/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-92sj2dsb/hiddenlayer_5e3f1f4adae44894bfce6bc6bb615f10
+slurmstepd: error: *** JOB 10969440 ON res-hpc-lkeb07 CANCELLED AT 2022-07-24T23:22:36 ***

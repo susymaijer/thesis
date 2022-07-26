@@ -1,0 +1,1285 @@
+Starting at Tue Jul  5 23:57:37 CEST 2022
+Running on hosts: res-hpc-lkeb08
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 6.
+Account: div2-lkeb
+Job ID: 10629949
+Job name: pred535H
+Node running script: res-hpc-lkeb08
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Thu Jul  7 08:01:11 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.103.01   Driver Version: 470.103.01   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA RTX A6000    On   | 00000000:D8:00.0 Off |                  Off |
+| 30%   25C    P8     8W / 300W |      0MiB / 48685MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-qvtzcp8x/hiddenlayer_b3fd1a60b8724ecb9e1fab03d9c17906
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Using legacy 'setup.py install' for hiddenlayer, since package 'wheel' is not installed.
+Installing collected packages: hiddenlayer
+    Running setup.py install for hiddenlayer: started
+    Running setup.py install for hiddenlayer: finished with status 'done'
+Successfully installed hiddenlayer-0.2
+Obtaining file:///home/smaijer/code/nnUNet
+Collecting torch>1.10.0
+  Using cached torch-1.12.0-cp310-cp310-manylinux1_x86_64.whl (776.3 MB)
+Collecting tqdm
+  Using cached tqdm-4.64.0-py2.py3-none-any.whl (78 kB)
+Collecting dicom2nifti
+  Using cached dicom2nifti-2.4.2-py3-none-any.whl (43 kB)
+Collecting scikit-image>=0.14
+  Using cached scikit_image-0.19.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.9 MB)
+Collecting medpy
+  Using cached MedPy-0.4.0-py3-none-any.whl
+Collecting scipy
+  Using cached scipy-1.8.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (42.2 MB)
+Collecting batchgenerators>=0.23
+  Using cached batchgenerators-0.24-py3-none-any.whl
+Collecting numpy
+  Using cached numpy-1.23.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.0 MB)
+Collecting sklearn
+  Using cached sklearn-0.0-py2.py3-none-any.whl
+Collecting SimpleITK
+  Using cached SimpleITK-2.1.1.2-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (48.4 MB)
+Collecting pandas
+  Using cached pandas-1.4.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.6 MB)
+Collecting requests
+  Using cached requests-2.28.1-py3-none-any.whl (62 kB)
+Collecting nibabel
+  Using cached nibabel-4.0.1-py3-none-any.whl (3.3 MB)
+Collecting tifffile
+  Using cached tifffile-2022.5.4-py3-none-any.whl (195 kB)
+Collecting matplotlib
+  Using cached matplotlib-3.5.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.9 MB)
+Collecting monai
+  Using cached monai-0.9.0-202206131636-py3-none-any.whl (939 kB)
+Collecting einops
+  Using cached einops-0.4.1-py3-none-any.whl (28 kB)
+Collecting ipython
+  Using cached ipython-8.4.0-py3-none-any.whl (750 kB)
+Collecting graphviz
+  Using cached graphviz-0.20-py3-none-any.whl (46 kB)
+Collecting unittest2
+  Using cached unittest2-1.1.0-py2.py3-none-any.whl (96 kB)
+Collecting threadpoolctl
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting pillow>=7.1.2
+  Using cached Pillow-9.2.0-cp310-cp310-manylinux_2_28_x86_64.whl (3.2 MB)
+Collecting future
+  Using cached future-0.18.2-py3-none-any.whl
+Collecting scikit-learn
+  Using cached scikit_learn-1.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (30.4 MB)
+Collecting PyWavelets>=1.1.1
+  Using cached PyWavelets-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.9 MB)
+Collecting packaging>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting networkx>=2.2
+  Using cached networkx-2.8.4-py3-none-any.whl (2.0 MB)
+Collecting imageio>=2.4.1
+  Using cached imageio-2.19.3-py3-none-any.whl (3.4 MB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Using cached pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Collecting typing-extensions
+  Using cached typing_extensions-4.3.0-py3-none-any.whl (25 kB)
+Collecting python-gdcm
+  Using cached python_gdcm-3.0.14-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.8 MB)
+Collecting pydicom>=2.2.0
+  Using cached pydicom-2.3.0-py3-none-any.whl (2.0 MB)
+Collecting traitlets>=5
+  Using cached traitlets-5.3.0-py3-none-any.whl (106 kB)
+Collecting pexpect>4.3
+  Using cached pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+Collecting matplotlib-inline
+  Using cached matplotlib_inline-0.1.3-py3-none-any.whl (8.2 kB)
+Collecting backcall
+  Using cached backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+Collecting jedi>=0.16
+  Using cached jedi-0.18.1-py2.py3-none-any.whl (1.6 MB)
+Collecting prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0
+  Using cached prompt_toolkit-3.0.30-py3-none-any.whl (381 kB)
+Collecting stack-data
+  Using cached stack_data-0.3.0-py3-none-any.whl (23 kB)
+Collecting decorator
+  Using cached decorator-5.1.1-py3-none-any.whl (9.1 kB)
+Collecting pickleshare
+  Using cached pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+Collecting setuptools>=18.5
+  Using cached setuptools-63.1.0-py3-none-any.whl (1.2 MB)
+Collecting pygments>=2.4.0
+  Using cached Pygments-2.12.0-py3-none-any.whl (1.1 MB)
+Collecting parso<0.9.0,>=0.8.0
+  Using cached parso-0.8.3-py2.py3-none-any.whl (100 kB)
+Collecting ptyprocess>=0.5
+  Using cached ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+Collecting kiwisolver>=1.0.1
+  Using cached kiwisolver-1.4.3-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+Collecting cycler>=0.10
+  Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting fonttools>=4.22.0
+  Using cached fonttools-4.34.2-py3-none-any.whl (944 kB)
+Collecting python-dateutil>=2.7
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Collecting six>=1.5
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting pytz>=2020.1
+  Using cached pytz-2022.1-py2.py3-none-any.whl (503 kB)
+Collecting idna<4,>=2.5
+  Using cached idna-3.3-py3-none-any.whl (61 kB)
+Collecting charset-normalizer<3,>=2
+  Using cached charset_normalizer-2.1.0-py3-none-any.whl (39 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Using cached urllib3-1.26.9-py2.py3-none-any.whl (138 kB)
+Collecting certifi>=2017.4.17
+  Using cached certifi-2022.6.15-py3-none-any.whl (160 kB)
+Collecting joblib>=1.0.0
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Collecting executing
+  Using cached executing-0.8.3-py2.py3-none-any.whl (16 kB)
+Collecting pure-eval
+  Using cached pure_eval-0.2.2-py3-none-any.whl (11 kB)
+Collecting asttokens
+  Using cached asttokens-2.0.5-py2.py3-none-any.whl (20 kB)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Collecting traceback2
+  Using cached traceback2-1.4.0-py2.py3-none-any.whl (16 kB)
+Collecting linecache2
+  Using cached linecache2-1.0.0-py2.py3-none-any.whl (12 kB)
+Installing collected packages: six, pyparsing, pillow, numpy, linecache2, wcwidth, typing-extensions, traitlets, traceback2, tifffile, threadpoolctl, setuptools, scipy, PyWavelets, pure-eval, ptyprocess, parso, packaging, networkx, joblib, imageio, executing, asttokens, argparse, urllib3, unittest2, torch, stack-data, SimpleITK, scikit-learn, scikit-image, pytz, python-gdcm, python-dateutil, pygments, pydicom, prompt-toolkit, pickleshare, pexpect, nibabel, matplotlib-inline, kiwisolver, jedi, idna, future, fonttools, decorator, cycler, charset-normalizer, certifi, backcall, tqdm, sklearn, requests, pandas, monai, medpy, matplotlib, ipython, graphviz, einops, dicom2nifti, batchgenerators, nnunet
+  Running setup.py develop for nnunet
+Successfully installed PyWavelets-1.3.0 SimpleITK-2.1.1.2 argparse-1.4.0 asttokens-2.0.5 backcall-0.2.0 batchgenerators-0.24 certifi-2022.6.15 charset-normalizer-2.1.0 cycler-0.11.0 decorator-5.1.1 dicom2nifti-2.4.2 einops-0.4.1 executing-0.8.3 fonttools-4.34.2 future-0.18.2 graphviz-0.20 idna-3.3 imageio-2.19.3 ipython-8.4.0 jedi-0.18.1 joblib-1.1.0 kiwisolver-1.4.3 linecache2-1.0.0 matplotlib-3.5.2 matplotlib-inline-0.1.3 medpy-0.4.0 monai-0.9.0 networkx-2.8.4 nibabel-4.0.1 nnunet numpy-1.23.0 packaging-21.3 pandas-1.4.3 parso-0.8.3 pexpect-4.8.0 pickleshare-0.7.5 pillow-9.2.0 prompt-toolkit-3.0.30 ptyprocess-0.7.0 pure-eval-0.2.2 pydicom-2.3.0 pygments-2.12.0 pyparsing-3.0.9 python-dateutil-2.8.2 python-gdcm-3.0.14 pytz-2022.1 requests-2.28.1 scikit-image-0.19.3 scikit-learn-1.1.1 scipy-1.8.1 setuptools-63.1.0 six-1.16.0 sklearn-0.0 stack-data-0.3.0 threadpoolctl-3.1.0 tifffile-2022.5.4 torch-1.12.0 tqdm-4.64.0 traceback2-1.4.0 traitlets-5.3.0 typing-extensions-4.3.0 unittest2-1.1.0 urllib3-1.26.9 wcwidth-0.2.5
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+using model stored in  /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2_Hybrid__nnUNetPlansv2.1
+This model expects 1 input modalities for each image
+Found 100 unique case ids, here are some examples: ['panc_0328' 'panc_0218' 'panc_0250' 'panc_0136' 'panc_0311' 'panc_0228'
+ 'panc_0063' 'panc_0216' 'panc_0364' 'panc_0090']
+If they don't look right, make sure to double check your filenames. They must end with _0000.nii.gz etc
+number of cases: 100
+number of cases that still need to be predicted: 13
+emptying cuda cache
+loading parameters for folds, [0, 1, 2, 3]
+Suus1 - Initialise de NetworkTrainer
+Suus2 - Initialise de nnUNetTrainer
+Suus3 - Initialise de nnUNetTrainerV2
+Suus5 - zet de plans properties
+Suus4 - Initialise de trainer echt
+Suus5 - zet de plans properties
+Suus6 - Zet de data augmentation params
+Suus7 - zet deep supervision weights die de meerdere outputs prioriteit geven
+Img size: [ 64 160 160]
+Patch size: (8, 16, 16)
+Feature size: (8, 10, 10)
+Suus10 - StackedConvLayers, input: 512 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 32 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Hybrid(
+  (encoder): UNETREncoder(
+    (vit): ViT(
+      (patch_embedding): PatchEmbeddingBlock(
+        (patch_embeddings): Sequential(
+          (0): Rearrange('b c (h p1) (w p2) (d p3) -> b (h w d) (p1 p2 p3 c)', p1=8, p2=16, p3=16)
+          (1): Linear(in_features=2048, out_features=768, bias=True)
+        )
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (blocks): ModuleList(
+        (0): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (1): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (2): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (3): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (4): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (5): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (6): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (7): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (8): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (9): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (10): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (11): TransformerBlock(
+          (mlp): MLPBlock(
+            (linear1): Linear(in_features=768, out_features=3072, bias=True)
+            (linear2): Linear(in_features=3072, out_features=768, bias=True)
+            (fn): GELU(approximate=none)
+            (drop1): Dropout(p=0.0, inplace=False)
+            (drop2): Dropout(p=0.0, inplace=False)
+          )
+          (norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): SABlock(
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (qkv): Linear(in_features=768, out_features=2304, bias=False)
+            (input_rearrange): Rearrange('b h (qkv l d) -> qkv b l h d', qkv=3, l=12)
+            (out_rearrange): Rearrange('b h l d -> b l (h d)')
+            (drop_output): Dropout(p=0.0, inplace=False)
+            (drop_weights): Dropout(p=0.0, inplace=False)
+          )
+          (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+      (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    )
+    (encoder1): UnetrBasicBlock(
+      (layer): UnetResBlock(
+        (conv1): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (conv2): Convolution(
+          (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        )
+        (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        (norm1): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (norm2): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+        (conv3): Convolution(
+          (conv): Conv3d(1, 32, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+        )
+        (norm3): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      )
+    )
+    (encoder2): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+        (1): Convolution(
+          (conv): ConvTranspose3d(64, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder3): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList(
+        (0): Convolution(
+          (conv): ConvTranspose3d(128, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+        )
+      )
+    )
+    (encoder4): UnetrPrUpBlock(
+      (transp_conv_init): Convolution(
+        (conv): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+      )
+      (blocks): ModuleList()
+    )
+  )
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (tu): ModuleList(
+    (0): ConvTranspose3d(768, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (1): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(64, 32, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(256, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(128, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(64, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(32, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+using the following model files:  ['/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2_Hybrid__nnUNetPlansv2.1/fold_0/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2_Hybrid__nnUNetPlansv2.1/fold_1/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2_Hybrid__nnUNetPlansv2.1/fold_2/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2_Hybrid__nnUNetPlansv2.1/fold_3/model_final_checkpoint.model']
+starting preprocessing generator
+starting prediction...
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0244.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 305, 512, 512) after crop: (1, 305, 512, 512) spacing: [2.         0.76757812 0.76757812] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.76757812, 0.76757812]), 'spacing_transposed': array([2.        , 0.76757812, 0.76757812]), 'data.shape (data is transposed)': (1, 305, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 305, 571, 571)} 
+
+(1, 305, 571, 571)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0377.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 92, 768, 768) after crop: (1, 92, 768, 768) spacing: [5.         0.44791666 0.44791666] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.44791666, 0.44791666]), 'spacing_transposed': array([5.        , 0.44791666, 0.44791666]), 'data.shape (data is transposed)': (1, 92, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 230, 500, 500)} 
+
+(1, 230, 500, 500)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0200.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 128, 512, 512) after crop: (1, 128, 512, 512) spacing: [5.         0.89999998 0.89999998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.89999998, 0.89999998]), 'spacing_transposed': array([5.        , 0.89999998, 0.89999998]), 'data.shape (data is transposed)': (1, 128, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 320, 670, 670)} 
+
+(1, 320, 670, 670)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0372.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 97, 768, 768) after crop: (1, 97, 768, 768) spacing: [5.         0.58072919 0.58072919] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.58072919, 0.58072919]), 'spacing_transposed': array([5.        , 0.58072919, 0.58072919]), 'data.shape (data is transposed)': (1, 97, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 242, 648, 648)} 
+
+(1, 242, 648, 648)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0233.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 307, 512, 512) after crop: (1, 307, 512, 512) spacing: [2.         0.70507812 0.70507812] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.70507812, 0.70507812]), 'spacing_transposed': array([2.        , 0.70507812, 0.70507812]), 'data.shape (data is transposed)': (1, 307, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 307, 525, 525)} 
+
+(1, 307, 525, 525)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0373.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 93, 768, 768) after crop: (1, 93, 768, 768) spacing: [5.         0.61588544 0.61588544] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.61588544, 0.61588544]), 'spacing_transposed': array([5.        , 0.61588544, 0.61588544]), 'data.shape (data is transposed)': (1, 93, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 232, 687, 687)} 
+
+(1, 232, 687, 687)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0132.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 131, 512, 512) after crop: (1, 131, 512, 512) spacing: [5.         0.96100003 0.96100003] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.96100003, 0.96100003]), 'spacing_transposed': array([5.        , 0.96100003, 0.96100003]), 'data.shape (data is transposed)': (1, 131, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 328, 715, 715)} 
+
+(1, 328, 715, 715)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0364.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 100, 768, 768) after crop: (1, 100, 768, 768) spacing: [5.         0.48046875 0.48046875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.48046875, 0.48046875]), 'spacing_transposed': array([5.        , 0.48046875, 0.48046875]), 'data.shape (data is transposed)': (1, 100, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 250, 536, 536)} 
+
+(1, 250, 536, 536)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0174.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 132, 512, 512) after crop: (1, 132, 512, 512) spacing: [5.         0.98000002 0.98000002] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.98000002, 0.98000002]), 'spacing_transposed': array([5.        , 0.98000002, 0.98000002]), 'data.shape (data is transposed)': (1, 132, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 330, 729, 729)} 
+
+(1, 330, 729, 729)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0365.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 96, 768, 768) after crop: (1, 96, 768, 768) spacing: [5.        0.6015625 0.6015625] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.       , 0.6015625, 0.6015625]), 'spacing_transposed': array([5.       , 0.6015625, 0.6015625]), 'data.shape (data is transposed)': (1, 96, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 240, 671, 671)} 
+
+(1, 240, 671, 671)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0106.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 105, 768, 768) after crop: (1, 105, 768, 768) spacing: [5.         0.64583331 0.64583331] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.64583331, 0.64583331]), 'spacing_transposed': array([5.        , 0.64583331, 0.64583331]), 'data.shape (data is transposed)': (1, 105, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 262, 721, 721)} 
+
+(1, 262, 721, 721)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0287.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 353, 512, 512) after crop: (1, 353, 512, 512) spacing: [1.25       0.97656202 0.97656202] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([1.25      , 0.97656202, 0.97656202]), 'spacing_transposed': array([1.25      , 0.97656202, 0.97656202]), 'data.shape (data is transposed)': (1, 353, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 221, 726, 726)} 
+
+(1, 221, 726, 726)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0385.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 89, 768, 768) after crop: (1, 89, 768, 768) spacing: [5.         0.64973956 0.64973956] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.64973956, 0.64973956]), 'spacing_transposed': array([5.        , 0.64973956, 0.64973956]), 'data.shape (data is transposed)': (1, 89, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 222, 725, 725)} 
+
+(1, 222, 725, 725)
+This worker has ended successfully, no errors to report
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0200.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0106.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0132.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0377.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0287.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0364.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0385.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0244.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0233.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0174.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0372.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0373.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0365.nii.gz
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0200.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 670, 670)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 73, 146, 219, 291, 364, 437, 510], [0, 73, 146, 219, 291, 364, 437, 510]]
+number of tiles: 576
+computing Gaussian
+done
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 670, 670)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 73, 146, 219, 291, 364, 437, 510], [0, 73, 146, 219, 291, 364, 437, 510]]
+number of tiles: 576
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 670, 670)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 73, 146, 219, 291, 364, 437, 510], [0, 73, 146, 219, 291, 364, 437, 510]]
+number of tiles: 576
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 670, 670)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 73, 146, 219, 291, 364, 437, 510], [0, 73, 146, 219, 291, 364, 437, 510]]
+number of tiles: 576
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0244.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 441
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 441
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 441
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 441
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0106.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 262, 721, 721)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 113, 141, 170, 198], [0, 70, 140, 210, 280, 351, 421, 491, 561], [0, 70, 140, 210, 280, 351, 421, 491, 561]]
+number of tiles: 648
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 262, 721, 721)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 113, 141, 170, 198], [0, 70, 140, 210, 280, 351, 421, 491, 561], [0, 70, 140, 210, 280, 351, 421, 491, 561]]
+number of tiles: 648
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 262, 721, 721)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 113, 141, 170, 198], [0, 70, 140, 210, 280, 351, 421, 491, 561], [0, 70, 140, 210, 280, 351, 421, 491, 561]]
+number of tiles: 648
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 262, 721, 721)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 113, 141, 170, 198], [0, 70, 140, 210, 280, 351, 421, 491, 561], [0, 70, 140, 210, 280, 351, 421, 491, 561]]
+number of tiles: 648
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0233.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 307, 525, 525)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152, 182, 213, 243], [0, 73, 146, 219, 292, 365], [0, 73, 146, 219, 292, 365]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 307, 525, 525)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152, 182, 213, 243], [0, 73, 146, 219, 292, 365], [0, 73, 146, 219, 292, 365]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 307, 525, 525)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152, 182, 213, 243], [0, 73, 146, 219, 292, 365], [0, 73, 146, 219, 292, 365]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 307, 525, 525)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152, 182, 213, 243], [0, 73, 146, 219, 292, 365], [0, 73, 146, 219, 292, 365]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0132.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 715, 715)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 79, 159, 238, 317, 396, 476, 555], [0, 79, 159, 238, 317, 396, 476, 555]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 715, 715)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 79, 159, 238, 317, 396, 476, 555], [0, 79, 159, 238, 317, 396, 476, 555]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 715, 715)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 79, 159, 238, 317, 396, 476, 555], [0, 79, 159, 238, 317, 396, 476, 555]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 715, 715)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 79, 159, 238, 317, 396, 476, 555], [0, 79, 159, 238, 317, 396, 476, 555]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0174.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 330, 729, 729)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148, 177, 207, 236, 266], [0, 71, 142, 213, 284, 356, 427, 498, 569], [0, 71, 142, 213, 284, 356, 427, 498, 569]]
+number of tiles: 810
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 330, 729, 729)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148, 177, 207, 236, 266], [0, 71, 142, 213, 284, 356, 427, 498, 569], [0, 71, 142, 213, 284, 356, 427, 498, 569]]
+number of tiles: 810
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 330, 729, 729)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148, 177, 207, 236, 266], [0, 71, 142, 213, 284, 356, 427, 498, 569], [0, 71, 142, 213, 284, 356, 427, 498, 569]]
+number of tiles: 810
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 330, 729, 729)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148, 177, 207, 236, 266], [0, 71, 142, 213, 284, 356, 427, 498, 569], [0, 71, 142, 213, 284, 356, 427, 498, 569]]
+number of tiles: 810
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0377.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 500, 500)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 68, 136, 204, 272, 340], [0, 68, 136, 204, 272, 340]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 500, 500)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 68, 136, 204, 272, 340], [0, 68, 136, 204, 272, 340]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 500, 500)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 68, 136, 204, 272, 340], [0, 68, 136, 204, 272, 340]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 500, 500)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 68, 136, 204, 272, 340], [0, 68, 136, 204, 272, 340]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0372.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 648, 648)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 70, 139, 209, 279, 349, 418, 488], [0, 70, 139, 209, 279, 349, 418, 488]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 648, 648)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 70, 139, 209, 279, 349, 418, 488], [0, 70, 139, 209, 279, 349, 418, 488]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 648, 648)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 70, 139, 209, 279, 349, 418, 488], [0, 70, 139, 209, 279, 349, 418, 488]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 648, 648)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 70, 139, 209, 279, 349, 418, 488], [0, 70, 139, 209, 279, 349, 418, 488]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0287.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 726, 726)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 71, 142, 212, 283, 354, 424, 495, 566], [0, 71, 142, 212, 283, 354, 424, 495, 566]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 726, 726)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 71, 142, 212, 283, 354, 424, 495, 566], [0, 71, 142, 212, 283, 354, 424, 495, 566]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 726, 726)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 71, 142, 212, 283, 354, 424, 495, 566], [0, 71, 142, 212, 283, 354, 424, 495, 566]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 726, 726)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 71, 142, 212, 283, 354, 424, 495, 566], [0, 71, 142, 212, 283, 354, 424, 495, 566]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0373.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 687, 687)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 75, 151, 226, 301, 376, 452, 527], [0, 75, 151, 226, 301, 376, 452, 527]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 687, 687)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 75, 151, 226, 301, 376, 452, 527], [0, 75, 151, 226, 301, 376, 452, 527]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 687, 687)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 75, 151, 226, 301, 376, 452, 527], [0, 75, 151, 226, 301, 376, 452, 527]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 687, 687)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 75, 151, 226, 301, 376, 452, 527], [0, 75, 151, 226, 301, 376, 452, 527]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0364.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 250, 536, 536)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155, 186], [0, 75, 150, 226, 301, 376], [0, 75, 150, 226, 301, 376]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 250, 536, 536)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155, 186], [0, 75, 150, 226, 301, 376], [0, 75, 150, 226, 301, 376]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 250, 536, 536)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155, 186], [0, 75, 150, 226, 301, 376], [0, 75, 150, 226, 301, 376]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 250, 536, 536)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155, 186], [0, 75, 150, 226, 301, 376], [0, 75, 150, 226, 301, 376]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0365.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 240, 671, 671)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176], [0, 73, 146, 219, 292, 365, 438, 511], [0, 73, 146, 219, 292, 365, 438, 511]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 240, 671, 671)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176], [0, 73, 146, 219, 292, 365, 438, 511], [0, 73, 146, 219, 292, 365, 438, 511]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 240, 671, 671)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176], [0, 73, 146, 219, 292, 365, 438, 511], [0, 73, 146, 219, 292, 365, 438, 511]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 240, 671, 671)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176], [0, 73, 146, 219, 292, 365, 438, 511], [0, 73, 146, 219, 292, 365, 438, 511]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs/panc_0385.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 725, 725)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 71, 141, 212, 282, 353, 424, 494, 565], [0, 71, 141, 212, 282, 353, 424, 494, 565]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 725, 725)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 71, 141, 212, 282, 353, 424, 494, 565], [0, 71, 141, 212, 282, 353, 424, 494, 565]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 725, 725)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 71, 141, 212, 282, 353, 424, 494, 565], [0, 71, 141, 212, 282, 353, 424, 494, 565]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 725, 725)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 71, 141, 212, 282, 353, 424, 494, 565], [0, 71, 141, 212, 282, 353, 424, 494, 565]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+inference done. Now waiting for the segmentation export to finish...
+postprocessing...

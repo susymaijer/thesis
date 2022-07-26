@@ -1,0 +1,4047 @@
+Starting at Tue Jul  5 23:57:02 CEST 2022
+Running on hosts: res-hpc-lkeb05
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 6.
+Account: div2-lkeb
+Job ID: 10628484
+Job name: pred535
+Node running script: res-hpc-lkeb05
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Wed Jul  6 09:16:53 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 6000     Off  | 00000000:AF:00.0 Off |                  Off |
+| 34%   35C    P0    61W / 260W |      0MiB / 24220MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-n9udzlen/hiddenlayer_c0c051afd55345228cbc702b369f486e
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Using legacy 'setup.py install' for hiddenlayer, since package 'wheel' is not installed.
+Installing collected packages: hiddenlayer
+    Running setup.py install for hiddenlayer: started
+    Running setup.py install for hiddenlayer: finished with status 'done'
+Successfully installed hiddenlayer-0.2
+Obtaining file:///home/smaijer/code/nnUNet
+Collecting torch>1.10.0
+  Using cached torch-1.12.0-cp310-cp310-manylinux1_x86_64.whl (776.3 MB)
+Collecting tqdm
+  Using cached tqdm-4.64.0-py2.py3-none-any.whl (78 kB)
+Collecting dicom2nifti
+  Using cached dicom2nifti-2.4.2-py3-none-any.whl (43 kB)
+Collecting scikit-image>=0.14
+  Using cached scikit_image-0.19.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.9 MB)
+Collecting medpy
+  Using cached MedPy-0.4.0-py3-none-any.whl
+Collecting scipy
+  Using cached scipy-1.8.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (42.2 MB)
+Collecting batchgenerators>=0.23
+  Using cached batchgenerators-0.24-py3-none-any.whl
+Collecting numpy
+  Using cached numpy-1.23.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.0 MB)
+Collecting sklearn
+  Using cached sklearn-0.0-py2.py3-none-any.whl
+Collecting SimpleITK
+  Using cached SimpleITK-2.1.1.2-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (48.4 MB)
+Collecting pandas
+  Using cached pandas-1.4.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.6 MB)
+Collecting requests
+  Using cached requests-2.28.1-py3-none-any.whl (62 kB)
+Collecting nibabel
+  Using cached nibabel-4.0.1-py3-none-any.whl (3.3 MB)
+Collecting tifffile
+  Using cached tifffile-2022.5.4-py3-none-any.whl (195 kB)
+Collecting matplotlib
+  Using cached matplotlib-3.5.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.9 MB)
+Collecting monai
+  Using cached monai-0.9.0-202206131636-py3-none-any.whl (939 kB)
+Collecting einops
+  Using cached einops-0.4.1-py3-none-any.whl (28 kB)
+Collecting ipython
+  Using cached ipython-8.4.0-py3-none-any.whl (750 kB)
+Collecting graphviz
+  Using cached graphviz-0.20-py3-none-any.whl (46 kB)
+Collecting unittest2
+  Using cached unittest2-1.1.0-py2.py3-none-any.whl (96 kB)
+Collecting scikit-learn
+  Using cached scikit_learn-1.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (30.4 MB)
+Collecting pillow>=7.1.2
+  Using cached Pillow-9.2.0-cp310-cp310-manylinux_2_28_x86_64.whl (3.2 MB)
+Collecting future
+  Using cached future-0.18.2-py3-none-any.whl
+Collecting threadpoolctl
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting networkx>=2.2
+  Using cached networkx-2.8.4-py3-none-any.whl (2.0 MB)
+Collecting imageio>=2.4.1
+  Using cached imageio-2.19.3-py3-none-any.whl (3.4 MB)
+Collecting packaging>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting PyWavelets>=1.1.1
+  Using cached PyWavelets-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.9 MB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Using cached pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Collecting typing-extensions
+  Using cached typing_extensions-4.3.0-py3-none-any.whl (25 kB)
+Collecting pydicom>=2.2.0
+  Using cached pydicom-2.3.0-py3-none-any.whl (2.0 MB)
+Collecting python-gdcm
+  Using cached python_gdcm-3.0.14-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.8 MB)
+Collecting setuptools>=18.5
+  Using cached setuptools-63.1.0-py3-none-any.whl (1.2 MB)
+Collecting jedi>=0.16
+  Using cached jedi-0.18.1-py2.py3-none-any.whl (1.6 MB)
+Collecting traitlets>=5
+  Using cached traitlets-5.3.0-py3-none-any.whl (106 kB)
+Collecting decorator
+  Using cached decorator-5.1.1-py3-none-any.whl (9.1 kB)
+Collecting pickleshare
+  Using cached pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+Collecting matplotlib-inline
+  Using cached matplotlib_inline-0.1.3-py3-none-any.whl (8.2 kB)
+Collecting stack-data
+  Using cached stack_data-0.3.0-py3-none-any.whl (23 kB)
+Collecting prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0
+  Using cached prompt_toolkit-3.0.30-py3-none-any.whl (381 kB)
+Collecting pygments>=2.4.0
+  Using cached Pygments-2.12.0-py3-none-any.whl (1.1 MB)
+Collecting pexpect>4.3
+  Using cached pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+Collecting backcall
+  Using cached backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+Collecting parso<0.9.0,>=0.8.0
+  Using cached parso-0.8.3-py2.py3-none-any.whl (100 kB)
+Collecting ptyprocess>=0.5
+  Using cached ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+Collecting fonttools>=4.22.0
+  Using cached fonttools-4.33.3-py3-none-any.whl (930 kB)
+Collecting python-dateutil>=2.7
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Collecting cycler>=0.10
+  Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting kiwisolver>=1.0.1
+  Using cached kiwisolver-1.4.3-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+Collecting six>=1.5
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting pytz>=2020.1
+  Using cached pytz-2022.1-py2.py3-none-any.whl (503 kB)
+Collecting idna<4,>=2.5
+  Using cached idna-3.3-py3-none-any.whl (61 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Using cached urllib3-1.26.9-py2.py3-none-any.whl (138 kB)
+Collecting certifi>=2017.4.17
+  Using cached certifi-2022.6.15-py3-none-any.whl (160 kB)
+Collecting charset-normalizer<3,>=2
+  Using cached charset_normalizer-2.1.0-py3-none-any.whl (39 kB)
+Collecting joblib>=1.0.0
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Collecting executing
+  Using cached executing-0.8.3-py2.py3-none-any.whl (16 kB)
+Collecting asttokens
+  Using cached asttokens-2.0.5-py2.py3-none-any.whl (20 kB)
+Collecting pure-eval
+  Using cached pure_eval-0.2.2-py3-none-any.whl (11 kB)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Collecting traceback2
+  Using cached traceback2-1.4.0-py2.py3-none-any.whl (16 kB)
+Collecting linecache2
+  Using cached linecache2-1.0.0-py2.py3-none-any.whl (12 kB)
+Installing collected packages: six, pyparsing, pillow, numpy, linecache2, wcwidth, typing-extensions, traitlets, traceback2, tifffile, threadpoolctl, setuptools, scipy, PyWavelets, pure-eval, ptyprocess, parso, packaging, networkx, joblib, imageio, executing, asttokens, argparse, urllib3, unittest2, torch, stack-data, SimpleITK, scikit-learn, scikit-image, pytz, python-gdcm, python-dateutil, pygments, pydicom, prompt-toolkit, pickleshare, pexpect, nibabel, matplotlib-inline, kiwisolver, jedi, idna, future, fonttools, decorator, cycler, charset-normalizer, certifi, backcall, tqdm, sklearn, requests, pandas, monai, medpy, matplotlib, ipython, graphviz, einops, dicom2nifti, batchgenerators, nnunet
+  Running setup.py develop for nnunet
+Successfully installed PyWavelets-1.3.0 SimpleITK-2.1.1.2 argparse-1.4.0 asttokens-2.0.5 backcall-0.2.0 batchgenerators-0.24 certifi-2022.6.15 charset-normalizer-2.1.0 cycler-0.11.0 decorator-5.1.1 dicom2nifti-2.4.2 einops-0.4.1 executing-0.8.3 fonttools-4.33.3 future-0.18.2 graphviz-0.20 idna-3.3 imageio-2.19.3 ipython-8.4.0 jedi-0.18.1 joblib-1.1.0 kiwisolver-1.4.3 linecache2-1.0.0 matplotlib-3.5.2 matplotlib-inline-0.1.3 medpy-0.4.0 monai-0.9.0 networkx-2.8.4 nibabel-4.0.1 nnunet numpy-1.23.0 packaging-21.3 pandas-1.4.3 parso-0.8.3 pexpect-4.8.0 pickleshare-0.7.5 pillow-9.2.0 prompt-toolkit-3.0.30 ptyprocess-0.7.0 pure-eval-0.2.2 pydicom-2.3.0 pygments-2.12.0 pyparsing-3.0.9 python-dateutil-2.8.2 python-gdcm-3.0.14 pytz-2022.1 requests-2.28.1 scikit-image-0.19.3 scikit-learn-1.1.1 scipy-1.8.1 setuptools-63.1.0 six-1.16.0 sklearn-0.0 stack-data-0.3.0 threadpoolctl-3.1.0 tifffile-2022.5.4 torch-1.12.0 tqdm-4.64.0 traceback2-1.4.0 traitlets-5.3.0 typing-extensions-4.3.0 unittest2-1.1.0 urllib3-1.26.9 wcwidth-0.2.5
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+using model stored in  /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2__nnUNetPlansv2.1
+This model expects 1 input modalities for each image
+Found 100 unique case ids, here are some examples: ['panc_0157' 'panc_0310' 'panc_0233' 'panc_0310' 'panc_0207' 'panc_0325'
+ 'panc_0061' 'panc_0342' 'panc_0308' 'panc_0328']
+If they don't look right, make sure to double check your filenames. They must end with _0000.nii.gz etc
+number of cases: 100
+number of cases that still need to be predicted: 69
+emptying cuda cache
+loading parameters for folds, [0, 1, 2, 3]
+Suus1 - Initialise de NetworkTrainer
+Suus2 - Initialise de nnUNetTrainer
+Suus3 - Initialise de nnUNetTrainerV2
+Suus5 - zet de plans properties
+Suus4 - Initialise de trainer echt
+Suus5 - zet de plans properties
+Suus6 - Zet de data augmentation params
+Suus7 - zet deep supervision weights die de meerdere outputs prioriteit geven
+Suus8 - Maak network aan (BELANGRIJK!)
+SuusB - first stride 
+Suus10 - StackedConvLayers, input: 1 en output: 32, first_stride: None, num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [1, 3, 3], 'padding': [0, 1, 1]}
+SuusA - first_stride [1, 2, 2]
+Suus10 - StackedConvLayers, input: 32 en output: 64, first_stride: [1, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 64 en output: 128, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 128 en output: 256, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 256 en output: 320, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: [2, 2, 2], num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 640 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 512 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 32 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Generic_UNet(
+  (encoder): Generic_UNETEncoder()
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(640, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (conv_blocks_context): ModuleList(
+    (0): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(1, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (1): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 64, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (2): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (3): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (4): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (5): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (td): ModuleList()
+  (tu): ModuleList(
+    (0): ConvTranspose3d(320, 320, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (1): ConvTranspose3d(320, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (4): ConvTranspose3d(64, 32, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(320, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(256, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(128, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(64, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (4): Conv3d(32, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+using the following model files:  ['/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task535/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/model_final_checkpoint.model']
+starting preprocessing generator
+starting prediction...
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0155.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 644, 644)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 69, 138, 207, 277, 346, 415, 484], [0, 69, 138, 207, 277, 346, 415, 484]]
+number of tiles: 640
+computing Gaussian
+done
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 644, 644)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 69, 138, 207, 277, 346, 415, 484], [0, 69, 138, 207, 277, 346, 415, 484]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 644, 644)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 69, 138, 207, 277, 346, 415, 484], [0, 69, 138, 207, 277, 346, 415, 484]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 644, 644)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 69, 138, 207, 277, 346, 415, 484], [0, 69, 138, 207, 277, 346, 415, 484]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0140.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 668, 668)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 139, 166, 194], [0, 73, 145, 218, 290, 363, 435, 508], [0, 73, 145, 218, 290, 363, 435, 508]]
+number of tiles: 512
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 668, 668)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 139, 166, 194], [0, 73, 145, 218, 290, 363, 435, 508], [0, 73, 145, 218, 290, 363, 435, 508]]
+number of tiles: 512
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 668, 668)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 139, 166, 194], [0, 73, 145, 218, 290, 363, 435, 508], [0, 73, 145, 218, 290, 363, 435, 508]]
+number of tiles: 512
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 258, 668, 668)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 139, 166, 194], [0, 73, 145, 218, 290, 363, 435, 508], [0, 73, 145, 218, 290, 363, 435, 508]]
+number of tiles: 512
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0150.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 248, 718, 718)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 61, 92, 123, 153, 184], [0, 80, 159, 239, 319, 399, 478, 558], [0, 80, 159, 239, 319, 399, 478, 558]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 248, 718, 718)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 61, 92, 123, 153, 184], [0, 80, 159, 239, 319, 399, 478, 558], [0, 80, 159, 239, 319, 399, 478, 558]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 248, 718, 718)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 61, 92, 123, 153, 184], [0, 80, 159, 239, 319, 399, 478, 558], [0, 80, 159, 239, 319, 399, 478, 558]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 248, 718, 718)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 61, 92, 123, 153, 184], [0, 80, 159, 239, 319, 399, 478, 558], [0, 80, 159, 239, 319, 399, 478, 558]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0106.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 262, 721, 721)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 113, 141, 170, 198], [0, 70, 140, 210, 280, 351, 421, 491, 561], [0, 70, 140, 210, 280, 351, 421, 491, 561]]
+number of tiles: 648
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 262, 721, 721)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 113, 141, 170, 198], [0, 70, 140, 210, 280, 351, 421, 491, 561], [0, 70, 140, 210, 280, 351, 421, 491, 561]]
+number of tiles: 648
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 262, 721, 721)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 113, 141, 170, 198], [0, 70, 140, 210, 280, 351, 421, 491, 561], [0, 70, 140, 210, 280, 351, 421, 491, 561]]
+number of tiles: 648
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 262, 721, 721)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 113, 141, 170, 198], [0, 70, 140, 210, 280, 351, 421, 491, 561], [0, 70, 140, 210, 280, 351, 421, 491, 561]]
+number of tiles: 648
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0132.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 715, 715)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 79, 159, 238, 317, 396, 476, 555], [0, 79, 159, 238, 317, 396, 476, 555]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 715, 715)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 79, 159, 238, 317, 396, 476, 555], [0, 79, 159, 238, 317, 396, 476, 555]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 715, 715)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 79, 159, 238, 317, 396, 476, 555], [0, 79, 159, 238, 317, 396, 476, 555]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 328, 715, 715)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176, 205, 235, 264], [0, 79, 159, 238, 317, 396, 476, 555], [0, 79, 159, 238, 317, 396, 476, 555]]
+number of tiles: 640
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0174.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 330, 729, 729)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148, 177, 207, 236, 266], [0, 71, 142, 213, 284, 356, 427, 498, 569], [0, 71, 142, 213, 284, 356, 427, 498, 569]]
+number of tiles: 810
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 330, 729, 729)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148, 177, 207, 236, 266], [0, 71, 142, 213, 284, 356, 427, 498, 569], [0, 71, 142, 213, 284, 356, 427, 498, 569]]
+number of tiles: 810
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 330, 729, 729)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148, 177, 207, 236, 266], [0, 71, 142, 213, 284, 356, 427, 498, 569], [0, 71, 142, 213, 284, 356, 427, 498, 569]]
+number of tiles: 810
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 330, 729, 729)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 118, 148, 177, 207, 236, 266], [0, 71, 142, 213, 284, 356, 427, 498, 569], [0, 71, 142, 213, 284, 356, 427, 498, 569]]
+number of tiles: 810
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0204.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 208, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115, 144], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 208, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115, 144], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 208, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115, 144], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 208, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115, 144], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0202.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 220, 572, 572)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156], [0, 69, 137, 206, 275, 343, 412], [0, 69, 137, 206, 275, 343, 412]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 220, 572, 572)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156], [0, 69, 137, 206, 275, 343, 412], [0, 69, 137, 206, 275, 343, 412]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 220, 572, 572)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156], [0, 69, 137, 206, 275, 343, 412], [0, 69, 137, 206, 275, 343, 412]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 220, 572, 572)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156], [0, 69, 137, 206, 275, 343, 412], [0, 69, 137, 206, 275, 343, 412]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0203.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 236, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 115, 143, 172], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 236, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 115, 143, 172], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 236, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 115, 143, 172], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 236, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 115, 143, 172], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0191.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 235, 567, 567)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 86, 114, 142, 171], [0, 68, 136, 204, 271, 339, 407], [0, 68, 136, 204, 271, 339, 407]]
+number of tiles: 343
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 235, 567, 567)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 86, 114, 142, 171], [0, 68, 136, 204, 271, 339, 407], [0, 68, 136, 204, 271, 339, 407]]
+number of tiles: 343
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 235, 567, 567)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 86, 114, 142, 171], [0, 68, 136, 204, 271, 339, 407], [0, 68, 136, 204, 271, 339, 407]]
+number of tiles: 343
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 235, 567, 567)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 86, 114, 142, 171], [0, 68, 136, 204, 271, 339, 407], [0, 68, 136, 204, 271, 339, 407]]
+number of tiles: 343
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0200.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 670, 670)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 73, 146, 219, 291, 364, 437, 510], [0, 73, 146, 219, 291, 364, 437, 510]]
+number of tiles: 576
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 670, 670)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 73, 146, 219, 291, 364, 437, 510], [0, 73, 146, 219, 291, 364, 437, 510]]
+number of tiles: 576
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 670, 670)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 73, 146, 219, 291, 364, 437, 510], [0, 73, 146, 219, 291, 364, 437, 510]]
+number of tiles: 576
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 670, 670)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 73, 146, 219, 291, 364, 437, 510], [0, 73, 146, 219, 291, 364, 437, 510]]
+number of tiles: 576
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0206.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 302, 455, 455)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 89, 119, 149, 178, 208, 238], [0, 74, 148, 221, 295], [0, 74, 148, 221, 295]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 302, 455, 455)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 89, 119, 149, 178, 208, 238], [0, 74, 148, 221, 295], [0, 74, 148, 221, 295]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 302, 455, 455)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 89, 119, 149, 178, 208, 238], [0, 74, 148, 221, 295], [0, 74, 148, 221, 295]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 302, 455, 455)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 89, 119, 149, 178, 208, 238], [0, 74, 148, 221, 295], [0, 74, 148, 221, 295]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0219.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 202, 475, 475)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 110, 138], [0, 79, 158, 236, 315], [0, 79, 158, 236, 315]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 202, 475, 475)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 110, 138], [0, 79, 158, 236, 315], [0, 79, 158, 236, 315]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 202, 475, 475)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 110, 138], [0, 79, 158, 236, 315], [0, 79, 158, 236, 315]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 202, 475, 475)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 110, 138], [0, 79, 158, 236, 315], [0, 79, 158, 236, 315]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0216.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0218.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 216, 562, 562)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152], [0, 67, 134, 201, 268, 335, 402], [0, 67, 134, 201, 268, 335, 402]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 216, 562, 562)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152], [0, 67, 134, 201, 268, 335, 402], [0, 67, 134, 201, 268, 335, 402]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 216, 562, 562)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152], [0, 67, 134, 201, 268, 335, 402], [0, 67, 134, 201, 268, 335, 402]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 216, 562, 562)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152], [0, 67, 134, 201, 268, 335, 402], [0, 67, 134, 201, 268, 335, 402]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0207.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 216, 590, 590)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152], [0, 72, 143, 215, 287, 358, 430], [0, 72, 143, 215, 287, 358, 430]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 216, 590, 590)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152], [0, 72, 143, 215, 287, 358, 430], [0, 72, 143, 215, 287, 358, 430]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 216, 590, 590)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152], [0, 72, 143, 215, 287, 358, 430], [0, 72, 143, 215, 287, 358, 430]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 216, 590, 590)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152], [0, 72, 143, 215, 287, 358, 430], [0, 72, 143, 215, 287, 358, 430]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0208.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 206, 477, 477)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 114, 142], [0, 79, 158, 238, 317], [0, 79, 158, 238, 317]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 206, 477, 477)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 114, 142], [0, 79, 158, 238, 317], [0, 79, 158, 238, 317]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 206, 477, 477)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 114, 142], [0, 79, 158, 238, 317], [0, 79, 158, 238, 317]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 206, 477, 477)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 114, 142], [0, 79, 158, 238, 317], [0, 79, 158, 238, 317]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0223.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 206, 484, 484)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 114, 142], [0, 65, 130, 194, 259, 324], [0, 65, 130, 194, 259, 324]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 206, 484, 484)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 114, 142], [0, 65, 130, 194, 259, 324], [0, 65, 130, 194, 259, 324]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 206, 484, 484)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 114, 142], [0, 65, 130, 194, 259, 324], [0, 65, 130, 194, 259, 324]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 206, 484, 484)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 85, 114, 142], [0, 65, 130, 194, 259, 324], [0, 65, 130, 194, 259, 324]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0247.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 314, 482, 482)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156, 188, 219, 250], [0, 64, 129, 193, 258, 322], [0, 64, 129, 193, 258, 322]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 314, 482, 482)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156, 188, 219, 250], [0, 64, 129, 193, 258, 322], [0, 64, 129, 193, 258, 322]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 314, 482, 482)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156, 188, 219, 250], [0, 64, 129, 193, 258, 322], [0, 64, 129, 193, 258, 322]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 314, 482, 482)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156, 188, 219, 250], [0, 64, 129, 193, 258, 322], [0, 64, 129, 193, 258, 322]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0238.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 213, 570, 570)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 89, 119, 149], [0, 68, 137, 205, 273, 342, 410], [0, 68, 137, 205, 273, 342, 410]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 213, 570, 570)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 89, 119, 149], [0, 68, 137, 205, 273, 342, 410], [0, 68, 137, 205, 273, 342, 410]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 213, 570, 570)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 89, 119, 149], [0, 68, 137, 205, 273, 342, 410], [0, 68, 137, 205, 273, 342, 410]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 213, 570, 570)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 89, 119, 149], [0, 68, 137, 205, 273, 342, 410], [0, 68, 137, 205, 273, 342, 410]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0244.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 441
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 441
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 441
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 441
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0228.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 297, 507, 507)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 146, 175, 204, 233], [0, 69, 139, 208, 278, 347], [0, 69, 139, 208, 278, 347]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 297, 507, 507)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 146, 175, 204, 233], [0, 69, 139, 208, 278, 347], [0, 69, 139, 208, 278, 347]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 297, 507, 507)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 146, 175, 204, 233], [0, 69, 139, 208, 278, 347], [0, 69, 139, 208, 278, 347]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 297, 507, 507)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 146, 175, 204, 233], [0, 69, 139, 208, 278, 347], [0, 69, 139, 208, 278, 347]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0233.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 307, 525, 525)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152, 182, 213, 243], [0, 73, 146, 219, 292, 365], [0, 73, 146, 219, 292, 365]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 307, 525, 525)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152, 182, 213, 243], [0, 73, 146, 219, 292, 365], [0, 73, 146, 219, 292, 365]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 307, 525, 525)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152, 182, 213, 243], [0, 73, 146, 219, 292, 365], [0, 73, 146, 219, 292, 365]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 307, 525, 525)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 122, 152, 182, 213, 243], [0, 73, 146, 219, 292, 365], [0, 73, 146, 219, 292, 365]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0250.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 284, 452, 452)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157, 189, 220], [0, 73, 146, 219, 292], [0, 73, 146, 219, 292]]
+number of tiles: 200
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 284, 452, 452)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157, 189, 220], [0, 73, 146, 219, 292], [0, 73, 146, 219, 292]]
+number of tiles: 200
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 284, 452, 452)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157, 189, 220], [0, 73, 146, 219, 292], [0, 73, 146, 219, 292]]
+number of tiles: 200
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 284, 452, 452)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157, 189, 220], [0, 73, 146, 219, 292], [0, 73, 146, 219, 292]]
+number of tiles: 200
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0280.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 209, 469, 469)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 145], [0, 77, 154, 232, 309], [0, 77, 154, 232, 309]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 209, 469, 469)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 145], [0, 77, 154, 232, 309], [0, 77, 154, 232, 309]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 209, 469, 469)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 145], [0, 77, 154, 232, 309], [0, 77, 154, 232, 309]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 209, 469, 469)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 145], [0, 77, 154, 232, 309], [0, 77, 154, 232, 309]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0258.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 456, 456)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 74, 148, 222, 296], [0, 74, 148, 222, 296]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 456, 456)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 74, 148, 222, 296], [0, 74, 148, 222, 296]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 456, 456)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 74, 148, 222, 296], [0, 74, 148, 222, 296]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 456, 456)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 74, 148, 222, 296], [0, 74, 148, 222, 296]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0278.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0255.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 276, 559, 559)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 121, 151, 182, 212], [0, 80, 160, 239, 319, 399], [0, 80, 160, 239, 319, 399]]
+number of tiles: 288
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 276, 559, 559)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 121, 151, 182, 212], [0, 80, 160, 239, 319, 399], [0, 80, 160, 239, 319, 399]]
+number of tiles: 288
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 276, 559, 559)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 121, 151, 182, 212], [0, 80, 160, 239, 319, 399], [0, 80, 160, 239, 319, 399]]
+number of tiles: 288
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 276, 559, 559)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 61, 91, 121, 151, 182, 212], [0, 80, 160, 239, 319, 399], [0, 80, 160, 239, 319, 399]]
+number of tiles: 288
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0257.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 252, 538, 538)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 125, 157, 188], [0, 76, 151, 227, 302, 378], [0, 76, 151, 227, 302, 378]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 252, 538, 538)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 125, 157, 188], [0, 76, 151, 227, 302, 378], [0, 76, 151, 227, 302, 378]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 252, 538, 538)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 125, 157, 188], [0, 76, 151, 227, 302, 378], [0, 76, 151, 227, 302, 378]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 252, 538, 538)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 125, 157, 188], [0, 76, 151, 227, 302, 378], [0, 76, 151, 227, 302, 378]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0283.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 466, 466)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 76, 153, 230, 306], [0, 76, 153, 230, 306]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 466, 466)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 76, 153, 230, 306], [0, 76, 153, 230, 306]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 466, 466)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 76, 153, 230, 306], [0, 76, 153, 230, 306]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 466, 466)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 76, 153, 230, 306], [0, 76, 153, 230, 306]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0290.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 207, 439, 439)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 114, 143], [0, 70, 140, 209, 279], [0, 70, 140, 209, 279]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 207, 439, 439)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 114, 143], [0, 70, 140, 209, 279], [0, 70, 140, 209, 279]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 207, 439, 439)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 114, 143], [0, 70, 140, 209, 279], [0, 70, 140, 209, 279]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 207, 439, 439)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 114, 143], [0, 70, 140, 209, 279], [0, 70, 140, 209, 279]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0287.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 726, 726)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 71, 142, 212, 283, 354, 424, 495, 566], [0, 71, 142, 212, 283, 354, 424, 495, 566]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 726, 726)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 71, 142, 212, 283, 354, 424, 495, 566], [0, 71, 142, 212, 283, 354, 424, 495, 566]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 726, 726)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 71, 142, 212, 283, 354, 424, 495, 566], [0, 71, 142, 212, 283, 354, 424, 495, 566]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 726, 726)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 71, 142, 212, 283, 354, 424, 495, 566], [0, 71, 142, 212, 283, 354, 424, 495, 566]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0289.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 219, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 219, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 219, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 219, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0284.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 192, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 180
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 192, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 180
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 192, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 180
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 192, 490, 490)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128], [0, 66, 132, 198, 264, 330], [0, 66, 132, 198, 264, 330]]
+number of tiles: 180
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0286.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 231, 523, 523)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 111, 139, 167], [0, 73, 145, 218, 290, 363], [0, 73, 145, 218, 290, 363]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 231, 523, 523)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 111, 139, 167], [0, 73, 145, 218, 290, 363], [0, 73, 145, 218, 290, 363]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 231, 523, 523)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 111, 139, 167], [0, 73, 145, 218, 290, 363], [0, 73, 145, 218, 290, 363]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 231, 523, 523)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 111, 139, 167], [0, 73, 145, 218, 290, 363], [0, 73, 145, 218, 290, 363]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0292.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 516, 516)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 71, 142, 214, 285, 356], [0, 71, 142, 214, 285, 356]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0310.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 280, 497, 497)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 123, 154, 185, 216], [0, 67, 135, 202, 270, 337], [0, 67, 135, 202, 270, 337]]
+number of tiles: 288
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 280, 497, 497)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 123, 154, 185, 216], [0, 67, 135, 202, 270, 337], [0, 67, 135, 202, 270, 337]]
+number of tiles: 288
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 280, 497, 497)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 123, 154, 185, 216], [0, 67, 135, 202, 270, 337], [0, 67, 135, 202, 270, 337]]
+number of tiles: 288
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 280, 497, 497)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 123, 154, 185, 216], [0, 67, 135, 202, 270, 337], [0, 67, 135, 202, 270, 337]]
+number of tiles: 288
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0308.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 210, 468, 468)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 88, 117, 146], [0, 77, 154, 231, 308], [0, 77, 154, 231, 308]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 210, 468, 468)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 88, 117, 146], [0, 77, 154, 231, 308], [0, 77, 154, 231, 308]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 210, 468, 468)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 88, 117, 146], [0, 77, 154, 231, 308], [0, 77, 154, 231, 308]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 210, 468, 468)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 88, 117, 146], [0, 77, 154, 231, 308], [0, 77, 154, 231, 308]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0309.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 235, 526, 526)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 86, 114, 142, 171], [0, 73, 146, 220, 293, 366], [0, 73, 146, 220, 293, 366]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 235, 526, 526)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 86, 114, 142, 171], [0, 73, 146, 220, 293, 366], [0, 73, 146, 220, 293, 366]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 235, 526, 526)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 86, 114, 142, 171], [0, 73, 146, 220, 293, 366], [0, 73, 146, 220, 293, 366]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 235, 526, 526)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 57, 86, 114, 142, 171], [0, 73, 146, 220, 293, 366], [0, 73, 146, 220, 293, 366]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0293.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 252, 497, 497)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 125, 157, 188], [0, 67, 135, 202, 270, 337], [0, 67, 135, 202, 270, 337]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 252, 497, 497)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 125, 157, 188], [0, 67, 135, 202, 270, 337], [0, 67, 135, 202, 270, 337]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 252, 497, 497)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 125, 157, 188], [0, 67, 135, 202, 270, 337], [0, 67, 135, 202, 270, 337]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 252, 497, 497)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 125, 157, 188], [0, 67, 135, 202, 270, 337], [0, 67, 135, 202, 270, 337]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0304.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 175, 479, 479)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 83, 111], [0, 80, 160, 239, 319], [0, 80, 160, 239, 319]]
+number of tiles: 125
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 175, 479, 479)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 83, 111], [0, 80, 160, 239, 319], [0, 80, 160, 239, 319]]
+number of tiles: 125
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 175, 479, 479)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 83, 111], [0, 80, 160, 239, 319], [0, 80, 160, 239, 319]]
+number of tiles: 125
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 175, 479, 479)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 83, 111], [0, 80, 160, 239, 319], [0, 80, 160, 239, 319]]
+number of tiles: 125
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0311.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 440, 440)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 70, 140, 210, 280], [0, 70, 140, 210, 280]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 440, 440)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 70, 140, 210, 280], [0, 70, 140, 210, 280]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 440, 440)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 70, 140, 210, 280], [0, 70, 140, 210, 280]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 440, 440)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 70, 140, 210, 280], [0, 70, 140, 210, 280]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0325.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 207, 574, 574)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 114, 143], [0, 69, 138, 207, 276, 345, 414], [0, 69, 138, 207, 276, 345, 414]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 207, 574, 574)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 114, 143], [0, 69, 138, 207, 276, 345, 414], [0, 69, 138, 207, 276, 345, 414]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 207, 574, 574)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 114, 143], [0, 69, 138, 207, 276, 345, 414], [0, 69, 138, 207, 276, 345, 414]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 207, 574, 574)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 57, 86, 114, 143], [0, 69, 138, 207, 276, 345, 414], [0, 69, 138, 207, 276, 345, 414]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0318.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 482, 482)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 64, 129, 193, 258, 322], [0, 64, 129, 193, 258, 322]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 482, 482)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 64, 129, 193, 258, 322], [0, 64, 129, 193, 258, 322]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 482, 482)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 64, 129, 193, 258, 322], [0, 64, 129, 193, 258, 322]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 482, 482)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 64, 129, 193, 258, 322], [0, 64, 129, 193, 258, 322]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0323.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 510, 510)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 70, 140, 210, 280, 350], [0, 70, 140, 210, 280, 350]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 510, 510)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 70, 140, 210, 280, 350], [0, 70, 140, 210, 280, 350]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 510, 510)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 70, 140, 210, 280, 350], [0, 70, 140, 210, 280, 350]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 221, 510, 510)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 63, 94, 126, 157], [0, 70, 140, 210, 280, 350], [0, 70, 140, 210, 280, 350]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0155.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 131, 512, 512) after crop: (1, 131, 512, 512) spacing: [5.    0.866 0.866] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.   , 0.866, 0.866]), 'spacing_transposed': array([5.   , 0.866, 0.866]), 'data.shape (data is transposed)': (1, 131, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 328, 644, 644)} 
+
+(1, 328, 644, 644)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0204.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 208, 512, 512) after crop: (1, 208, 512, 512) spacing: [2.         0.65820312 0.65820312] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.65820312, 0.65820312]), 'spacing_transposed': array([2.        , 0.65820312, 0.65820312]), 'data.shape (data is transposed)': (1, 208, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 208, 490, 490)} 
+
+(1, 208, 490, 490)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0219.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 202, 512, 512) after crop: (1, 202, 512, 512) spacing: [2.         0.63867188 0.63867188] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.63867188, 0.63867188]), 'spacing_transposed': array([2.        , 0.63867188, 0.63867188]), 'data.shape (data is transposed)': (1, 202, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 202, 475, 475)} 
+
+(1, 202, 475, 475)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0247.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 314, 512, 512) after crop: (1, 314, 512, 512) spacing: [2.        0.6484375 0.6484375] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.       , 0.6484375, 0.6484375]), 'spacing_transposed': array([2.       , 0.6484375, 0.6484375]), 'data.shape (data is transposed)': (1, 314, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 314, 482, 482)} 
+
+(1, 314, 482, 482)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0280.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 167, 512, 512) after crop: (1, 167, 512, 512) spacing: [2.5        0.63085902 0.63085902] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.63085902, 0.63085902]), 'spacing_transposed': array([2.5       , 0.63085902, 0.63085902]), 'data.shape (data is transposed)': (1, 167, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 209, 469, 469)} 
+
+(1, 209, 469, 469)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0290.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 207, 512, 512) after crop: (1, 207, 512, 512) spacing: [2.         0.58984375 0.58984375] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.58984375, 0.58984375]), 'spacing_transposed': array([2.        , 0.58984375, 0.58984375]), 'data.shape (data is transposed)': (1, 207, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 207, 439, 439)} 
+
+(1, 207, 439, 439)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0310.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 280, 512, 512) after crop: (1, 280, 512, 512) spacing: [2.         0.66796875 0.66796875] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.66796875, 0.66796875]), 'spacing_transposed': array([2.        , 0.66796875, 0.66796875]), 'data.shape (data is transposed)': (1, 280, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 280, 497, 497)} 
+
+(1, 280, 497, 497)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0325.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 207, 512, 512) after crop: (1, 207, 512, 512) spacing: [2.         0.77148438 0.77148438] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.77148438, 0.77148438]), 'spacing_transposed': array([2.        , 0.77148438, 0.77148438]), 'data.shape (data is transposed)': (1, 207, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 207, 574, 574)} 
+
+(1, 207, 574, 574)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0342.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 122, 512, 512) after crop: (1, 122, 512, 512) spacing: [5.         0.61523438 0.61523438] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.61523438, 0.61523438]), 'spacing_transposed': array([5.        , 0.61523438, 0.61523438]), 'data.shape (data is transposed)': (1, 122, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 305, 458, 458)} 
+
+(1, 305, 458, 458)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0363.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 79, 768, 768) after crop: (1, 79, 768, 768) spacing: [5.        0.5078125 0.5078125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.       , 0.5078125, 0.5078125]), 'spacing_transposed': array([5.       , 0.5078125, 0.5078125]), 'data.shape (data is transposed)': (1, 79, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 198, 567, 567)} 
+
+(1, 198, 567, 567)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0377.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 92, 768, 768) after crop: (1, 92, 768, 768) spacing: [5.         0.44791666 0.44791666] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.44791666, 0.44791666]), 'spacing_transposed': array([5.        , 0.44791666, 0.44791666]), 'data.shape (data is transposed)': (1, 92, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 230, 500, 500)} 
+
+(1, 230, 500, 500)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0150.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 99, 768, 768) after crop: (1, 99, 768, 768) spacing: [5.         0.64322919 0.64322919] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.64322919, 0.64322919]), 'spacing_transposed': array([5.        , 0.64322919, 0.64322919]), 'data.shape (data is transposed)': (1, 99, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 248, 718, 718)} 
+
+(1, 248, 718, 718)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0203.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 236, 512, 512) after crop: (1, 236, 512, 512) spacing: [2.         0.65820312 0.65820312] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.65820312, 0.65820312]), 'spacing_transposed': array([2.        , 0.65820312, 0.65820312]), 'data.shape (data is transposed)': (1, 236, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 236, 490, 490)} 
+
+(1, 236, 490, 490)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0218.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 173, 512, 512) after crop: (1, 173, 512, 512) spacing: [2.5        0.75585902 0.75585902] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5       , 0.75585902, 0.75585902]), 'spacing_transposed': array([2.5       , 0.75585902, 0.75585902]), 'data.shape (data is transposed)': (1, 173, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 216, 562, 562)} 
+
+(1, 216, 562, 562)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0244.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 305, 512, 512) after crop: (1, 305, 512, 512) spacing: [2.         0.76757812 0.76757812] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.76757812, 0.76757812]), 'spacing_transposed': array([2.        , 0.76757812, 0.76757812]), 'data.shape (data is transposed)': (1, 305, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 305, 571, 571)} 
+
+(1, 305, 571, 571)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0278.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 232, 512, 512) after crop: (1, 232, 512, 512) spacing: [2.         0.69335938 0.69335938] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.69335938, 0.69335938]), 'spacing_transposed': array([2.        , 0.69335938, 0.69335938]), 'data.shape (data is transposed)': (1, 232, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 232, 516, 516)} 
+
+(1, 232, 516, 516)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0289.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 219, 512, 512) after crop: (1, 219, 512, 512) spacing: [2.         0.69335938 0.69335938] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.69335938, 0.69335938]), 'spacing_transposed': array([2.        , 0.69335938, 0.69335938]), 'data.shape (data is transposed)': (1, 219, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 219, 516, 516)} 
+
+(1, 219, 516, 516)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0309.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 235, 512, 512) after crop: (1, 235, 512, 512) spacing: [2.         0.70703125 0.70703125] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.70703125, 0.70703125]), 'spacing_transposed': array([2.        , 0.70703125, 0.70703125]), 'data.shape (data is transposed)': (1, 235, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 235, 526, 526)} 
+
+(1, 235, 526, 526)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0323.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 221, 512, 512) after crop: (1, 221, 512, 512) spacing: [2.         0.68554688 0.68554688] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.68554688, 0.68554688]), 'spacing_transposed': array([2.        , 0.68554688, 0.68554688]), 'data.shape (data is transposed)': (1, 221, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 221, 510, 510)} 
+
+(1, 221, 510, 510)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0339.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 218, 512, 512) after crop: (1, 218, 512, 512) spacing: [2.         0.58398438 0.58398438] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.58398438, 0.58398438]), 'spacing_transposed': array([2.        , 0.58398438, 0.58398438]), 'data.shape (data is transposed)': (1, 218, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 218, 434, 434)} 
+
+(1, 218, 434, 434)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0357.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 306, 512, 512) after crop: (1, 306, 512, 512) spacing: [2.         0.61914062 0.61914062] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.61914062, 0.61914062]), 'spacing_transposed': array([2.        , 0.61914062, 0.61914062]), 'data.shape (data is transposed)': (1, 306, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 306, 461, 461)} 
+
+(1, 306, 461, 461)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0373.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 93, 768, 768) after crop: (1, 93, 768, 768) spacing: [5.         0.61588544 0.61588544] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.61588544, 0.61588544]), 'spacing_transposed': array([5.        , 0.61588544, 0.61588544]), 'data.shape (data is transposed)': (1, 93, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 232, 687, 687)} 
+
+(1, 232, 687, 687)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0174.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 132, 512, 512) after crop: (1, 132, 512, 512) spacing: [5.         0.98000002 0.98000002] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.98000002, 0.98000002]), 'spacing_transposed': array([5.        , 0.98000002, 0.98000002]), 'data.shape (data is transposed)': (1, 132, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 330, 729, 729)} 
+
+(1, 330, 729, 729)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0206.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 302, 512, 512) after crop: (1, 302, 512, 512) spacing: [2.         0.61132812 0.61132812] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.61132812, 0.61132812]), 'spacing_transposed': array([2.        , 0.61132812, 0.61132812]), 'data.shape (data is transposed)': (1, 302, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 302, 455, 455)} 
+
+(1, 302, 455, 455)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0223.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 206, 512, 512) after crop: (1, 206, 512, 512) spacing: [2.         0.65039062 0.65039062] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.65039062, 0.65039062]), 'spacing_transposed': array([2.        , 0.65039062, 0.65039062]), 'data.shape (data is transposed)': (1, 206, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 206, 484, 484)} 
+
+(1, 206, 484, 484)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0250.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 284, 512, 512) after crop: (1, 284, 512, 512) spacing: [2.         0.60742188 0.60742188] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.60742188, 0.60742188]), 'spacing_transposed': array([2.        , 0.60742188, 0.60742188]), 'data.shape (data is transposed)': (1, 284, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 284, 452, 452)} 
+
+(1, 284, 452, 452)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0283.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 218, 512, 512) after crop: (1, 218, 512, 512) spacing: [2.         0.62695312 0.62695312] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.62695312, 0.62695312]), 'spacing_transposed': array([2.        , 0.62695312, 0.62695312]), 'data.shape (data is transposed)': (1, 218, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 218, 466, 466)} 
+
+(1, 218, 466, 466)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0292.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 87, 512, 512) after crop: (1, 87, 512, 512) spacing: [5.         0.69335938 0.69335938] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.69335938, 0.69335938]), 'spacing_transposed': array([5.        , 0.69335938, 0.69335938]), 'data.shape (data is transposed)': (1, 87, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 218, 516, 516)} 
+
+(1, 218, 516, 516)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0311.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 198, 512, 512) after crop: (1, 198, 512, 512) spacing: [2.         0.59179688 0.59179688] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.59179688, 0.59179688]), 'spacing_transposed': array([2.        , 0.59179688, 0.59179688]), 'data.shape (data is transposed)': (1, 198, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 198, 440, 440)} 
+
+(1, 198, 440, 440)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0326.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 116, 512, 512) after crop: (1, 116, 512, 512) spacing: [5.        0.5859375 0.5859375] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.       , 0.5859375, 0.5859375]), 'spacing_transposed': array([5.       , 0.5859375, 0.5859375]), 'data.shape (data is transposed)': (1, 116, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 290, 436, 436)} 
+
+(1, 290, 436, 436)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0344.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 279, 512, 512) after crop: (1, 279, 512, 512) spacing: [2.        0.5859375 0.5859375] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.       , 0.5859375, 0.5859375]), 'spacing_transposed': array([2.       , 0.5859375, 0.5859375]), 'data.shape (data is transposed)': (1, 279, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 279, 436, 436)} 
+
+(1, 279, 436, 436)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0364.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 100, 768, 768) after crop: (1, 100, 768, 768) spacing: [5.         0.48046875 0.48046875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.48046875, 0.48046875]), 'spacing_transposed': array([5.        , 0.48046875, 0.48046875]), 'data.shape (data is transposed)': (1, 100, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 250, 536, 536)} 
+
+(1, 250, 536, 536)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0385.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 89, 768, 768) after crop: (1, 89, 768, 768) spacing: [5.         0.64973956 0.64973956] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.64973956, 0.64973956]), 'spacing_transposed': array([5.        , 0.64973956, 0.64973956]), 'data.shape (data is transposed)': (1, 89, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 222, 725, 725)} 
+
+(1, 222, 725, 725)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0140.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 103, 768, 768) after crop: (1, 103, 768, 768) spacing: [5.         0.59895831 0.59895831] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.59895831, 0.59895831]), 'spacing_transposed': array([5.        , 0.59895831, 0.59895831]), 'data.shape (data is transposed)': (1, 103, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 258, 668, 668)} 
+
+(1, 258, 668, 668)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0202.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 88, 512, 512) after crop: (1, 88, 512, 512) spacing: [5.         0.76953101 0.76953101] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.76953101, 0.76953101]), 'spacing_transposed': array([5.        , 0.76953101, 0.76953101]), 'data.shape (data is transposed)': (1, 88, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 220, 572, 572)} 
+
+(1, 220, 572, 572)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0216.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 242, 512, 512) after crop: (1, 242, 512, 512) spacing: [2.         0.65820312 0.65820312] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.65820312, 0.65820312]), 'spacing_transposed': array([2.        , 0.65820312, 0.65820312]), 'data.shape (data is transposed)': (1, 242, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 242, 490, 490)} 
+
+(1, 242, 490, 490)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0238.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 213, 512, 512) after crop: (1, 213, 512, 512) spacing: [2.       0.765625 0.765625] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.      , 0.765625, 0.765625]), 'spacing_transposed': array([2.      , 0.765625, 0.765625]), 'data.shape (data is transposed)': (1, 213, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 213, 570, 570)} 
+
+(1, 213, 570, 570)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0258.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 122, 512, 512) after crop: (1, 122, 512, 512) spacing: [5.         0.61328125 0.61328125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.61328125, 0.61328125]), 'spacing_transposed': array([5.        , 0.61328125, 0.61328125]), 'data.shape (data is transposed)': (1, 122, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 305, 456, 456)} 
+
+(1, 305, 456, 456)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0287.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 353, 512, 512) after crop: (1, 353, 512, 512) spacing: [1.25       0.97656202 0.97656202] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([1.25      , 0.97656202, 0.97656202]), 'spacing_transposed': array([1.25      , 0.97656202, 0.97656202]), 'data.shape (data is transposed)': (1, 353, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 221, 726, 726)} 
+
+(1, 221, 726, 726)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0308.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 84, 512, 512) after crop: (1, 84, 512, 512) spacing: [5.         0.62890625 0.62890625] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.62890625, 0.62890625]), 'spacing_transposed': array([5.        , 0.62890625, 0.62890625]), 'data.shape (data is transposed)': (1, 84, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 210, 468, 468)} 
+
+(1, 210, 468, 468)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0318.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 89, 512, 512) after crop: (1, 89, 512, 512) spacing: [5.        0.6484375 0.6484375] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.       , 0.6484375, 0.6484375]), 'spacing_transposed': array([5.       , 0.6484375, 0.6484375]), 'data.shape (data is transposed)': (1, 89, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 222, 482, 482)} 
+
+(1, 222, 482, 482)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0334.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 118, 512, 512) after crop: (1, 118, 512, 512) spacing: [5.         0.54492188 0.54492188] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.54492188, 0.54492188]), 'spacing_transposed': array([5.        , 0.54492188, 0.54492188]), 'data.shape (data is transposed)': (1, 118, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 295, 405, 405)} 
+
+(1, 295, 405, 405)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0356.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 143, 512, 512) after crop: (1, 143, 512, 512) spacing: [2.5      0.703125 0.703125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5     , 0.703125, 0.703125]), 'spacing_transposed': array([2.5     , 0.703125, 0.703125]), 'data.shape (data is transposed)': (1, 143, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 179, 523, 523)} 
+
+(1, 179, 523, 523)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0372.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 97, 768, 768) after crop: (1, 97, 768, 768) spacing: [5.         0.58072919 0.58072919] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.58072919, 0.58072919]), 'spacing_transposed': array([5.        , 0.58072919, 0.58072919]), 'data.shape (data is transposed)': (1, 97, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 242, 648, 648)} 
+
+(1, 242, 648, 648)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0409.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 83, 768, 768) after crop: (1, 83, 768, 768) spacing: [5.       0.609375 0.609375] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.      , 0.609375, 0.609375]), 'spacing_transposed': array([5.      , 0.609375, 0.609375]), 'data.shape (data is transposed)': (1, 83, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 208, 680, 680)} 
+
+(1, 208, 680, 680)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0106.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 105, 768, 768) after crop: (1, 105, 768, 768) spacing: [5.         0.64583331 0.64583331] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.64583331, 0.64583331]), 'spacing_transposed': array([5.        , 0.64583331, 0.64583331]), 'data.shape (data is transposed)': (1, 105, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 262, 721, 721)} 
+
+(1, 262, 721, 721)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0191.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 94, 768, 768) after crop: (1, 94, 768, 768) spacing: [5.        0.5078125 0.5078125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.       , 0.5078125, 0.5078125]), 'spacing_transposed': array([5.       , 0.5078125, 0.5078125]), 'data.shape (data is transposed)': (1, 94, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 235, 567, 567)} 
+
+(1, 235, 567, 567)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0207.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 345, 512, 512) after crop: (1, 345, 512, 512) spacing: [1.25       0.79296899 0.79296899] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([1.25      , 0.79296899, 0.79296899]), 'spacing_transposed': array([1.25      , 0.79296899, 0.79296899]), 'data.shape (data is transposed)': (1, 345, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 216, 590, 590)} 
+
+(1, 216, 590, 590)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0228.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 297, 512, 512) after crop: (1, 297, 512, 512) spacing: [2.         0.68164062 0.68164062] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.68164062, 0.68164062]), 'spacing_transposed': array([2.        , 0.68164062, 0.68164062]), 'data.shape (data is transposed)': (1, 297, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 297, 507, 507)} 
+
+(1, 297, 507, 507)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0255.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 276, 512, 512) after crop: (1, 276, 512, 512) spacing: [2.         0.75195312 0.75195312] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.75195312, 0.75195312]), 'spacing_transposed': array([2.        , 0.75195312, 0.75195312]), 'data.shape (data is transposed)': (1, 276, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 276, 559, 559)} 
+
+(1, 276, 559, 559)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0284.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 192, 512, 512) after crop: (1, 192, 512, 512) spacing: [2.         0.65820312 0.65820312] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.65820312, 0.65820312]), 'spacing_transposed': array([2.        , 0.65820312, 0.65820312]), 'data.shape (data is transposed)': (1, 192, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 192, 490, 490)} 
+
+(1, 192, 490, 490)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0293.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 252, 512, 512) after crop: (1, 252, 512, 512) spacing: [2.         0.66796875 0.66796875] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.66796875, 0.66796875]), 'spacing_transposed': array([2.        , 0.66796875, 0.66796875]), 'data.shape (data is transposed)': (1, 252, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 252, 497, 497)} 
+
+(1, 252, 497, 497)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0313.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 230, 512, 512) after crop: (1, 230, 512, 512) spacing: [2.         0.72460938 0.72460938] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.72460938, 0.72460938]), 'spacing_transposed': array([2.        , 0.72460938, 0.72460938]), 'data.shape (data is transposed)': (1, 230, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 230, 539, 539)} 
+
+(1, 230, 539, 539)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0328.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 128, 512, 512) after crop: (1, 128, 512, 512) spacing: [5.        0.6796875 0.6796875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.       , 0.6796875, 0.6796875]), 'spacing_transposed': array([5.       , 0.6796875, 0.6796875]), 'data.shape (data is transposed)': (1, 128, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 320, 506, 506)} 
+
+(1, 320, 506, 506)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0346.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 78, 512, 512) after crop: (1, 78, 512, 512) spacing: [5.         0.62109375 0.62109375] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.62109375, 0.62109375]), 'spacing_transposed': array([5.        , 0.62109375, 0.62109375]), 'data.shape (data is transposed)': (1, 78, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 195, 462, 462)} 
+
+(1, 195, 462, 462)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0365.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 96, 768, 768) after crop: (1, 96, 768, 768) spacing: [5.        0.6015625 0.6015625] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.       , 0.6015625, 0.6015625]), 'spacing_transposed': array([5.       , 0.6015625, 0.6015625]), 'data.shape (data is transposed)': (1, 96, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 240, 671, 671)} 
+
+(1, 240, 671, 671)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0397.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 81, 768, 768) after crop: (1, 81, 768, 768) spacing: [5.         0.51171875 0.51171875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.51171875, 0.51171875]), 'spacing_transposed': array([5.        , 0.51171875, 0.51171875]), 'data.shape (data is transposed)': (1, 81, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 202, 571, 571)} 
+
+(1, 202, 571, 571)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0132.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 131, 512, 512) after crop: (1, 131, 512, 512) spacing: [5.         0.96100003 0.96100003] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.96100003, 0.96100003]), 'spacing_transposed': array([5.        , 0.96100003, 0.96100003]), 'data.shape (data is transposed)': (1, 131, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 328, 715, 715)} 
+
+(1, 328, 715, 715)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0200.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 128, 512, 512) after crop: (1, 128, 512, 512) spacing: [5.         0.89999998 0.89999998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.89999998, 0.89999998]), 'spacing_transposed': array([5.        , 0.89999998, 0.89999998]), 'data.shape (data is transposed)': (1, 128, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 320, 670, 670)} 
+
+(1, 320, 670, 670)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0208.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 206, 512, 512) after crop: (1, 206, 512, 512) spacing: [2.       0.640625 0.640625] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.      , 0.640625, 0.640625]), 'spacing_transposed': array([2.      , 0.640625, 0.640625]), 'data.shape (data is transposed)': (1, 206, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 206, 477, 477)} 
+
+(1, 206, 477, 477)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0233.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 307, 512, 512) after crop: (1, 307, 512, 512) spacing: [2.         0.70507812 0.70507812] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.70507812, 0.70507812]), 'spacing_transposed': array([2.        , 0.70507812, 0.70507812]), 'data.shape (data is transposed)': (1, 307, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 307, 525, 525)} 
+
+(1, 307, 525, 525)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0257.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 101, 512, 512) after crop: (1, 101, 512, 512) spacing: [5.         0.72265625 0.72265625] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.72265625, 0.72265625]), 'spacing_transposed': array([5.        , 0.72265625, 0.72265625]), 'data.shape (data is transposed)': (1, 101, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 252, 538, 538)} 
+
+(1, 252, 538, 538)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0286.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 231, 512, 512) after crop: (1, 231, 512, 512) spacing: [2.       0.703125 0.703125] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.      , 0.703125, 0.703125]), 'spacing_transposed': array([2.      , 0.703125, 0.703125]), 'data.shape (data is transposed)': (1, 231, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 231, 523, 523)} 
+
+(1, 231, 523, 523)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0304.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 175, 512, 512) after crop: (1, 175, 512, 512) spacing: [2.         0.64453125 0.64453125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.        , 0.64453125, 0.64453125]), 'spacing_transposed': array([2.        , 0.64453125, 0.64453125]), 'data.shape (data is transposed)': (1, 175, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 175, 479, 479)} 
+
+(1, 175, 479, 479)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0316.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 225, 512, 512) after crop: (1, 225, 512, 512) spacing: [2.         0.74414062 0.74414062] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.74414062, 0.74414062]), 'spacing_transposed': array([2.        , 0.74414062, 0.74414062]), 'data.shape (data is transposed)': (1, 225, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 225, 554, 554)} 
+
+(1, 225, 554, 554)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0333.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 204, 512, 512) after crop: (1, 204, 512, 512) spacing: [2.         0.69921875 0.69921875] 
+
+no separate z, order 3
+no separate z, order 1
+before: {'spacing': array([2.        , 0.69921875, 0.69921875]), 'spacing_transposed': array([2.        , 0.69921875, 0.69921875]), 'data.shape (data is transposed)': (1, 204, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 204, 520, 520)} 
+
+(1, 204, 520, 520)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0352.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 88, 512, 512) after crop: (1, 88, 512, 512) spacing: [5.        0.6953125 0.6953125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.       , 0.6953125, 0.6953125]), 'spacing_transposed': array([5.       , 0.6953125, 0.6953125]), 'data.shape (data is transposed)': (1, 88, 512, 512)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 220, 517, 517)} 
+
+(1, 220, 517, 517)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0368.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 79, 768, 768) after crop: (1, 79, 768, 768) spacing: [5.         0.56640625 0.56640625] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.56640625, 0.56640625]), 'spacing_transposed': array([5.        , 0.56640625, 0.56640625]), 'data.shape (data is transposed)': (1, 79, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 198, 632, 632)} 
+
+(1, 198, 632, 632)
+preprocessing /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0399.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 89, 768, 768) after crop: (1, 89, 768, 768) spacing: [5.         0.47526041 0.47526041] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([5.        , 0.47526041, 0.47526041]), 'spacing_transposed': array([5.        , 0.47526041, 0.47526041]), 'data.shape (data is transposed)': (1, 89, 768, 768)} 
+after:  {'spacing': array([2.        , 0.68825001, 0.68825001]), 'data.shape (data is resampled)': (1, 222, 530, 530)} 
+
+(1, 222, 530, 530)
+This worker has ended successfully, no errors to report
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0155.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0150.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0132.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0204.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0203.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0200.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0219.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0218.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0208.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0247.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0244.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0233.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0280.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0278.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0257.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0290.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0289.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0286.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0310.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0309.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0304.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0325.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0323.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0316.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0342.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0339.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0333.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0363.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0357.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0352.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0377.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0373.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0368.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0409.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0399.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0140.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0106.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0174.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0202.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0191.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0206.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0216.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0207.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0223.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0238.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0228.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0250.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0258.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0255.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0283.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0287.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0284.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0292.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0308.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0293.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0311.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0318.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: False lowres axis None
+no separate z, order 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0313.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0326.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0334.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0328.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0344.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0356.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0346.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0364.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0372.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0365.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0385.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0397.nii.gz
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0313.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 539, 539)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 76, 152, 227, 303, 379], [0, 76, 152, 227, 303, 379]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 539, 539)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 76, 152, 227, 303, 379], [0, 76, 152, 227, 303, 379]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 539, 539)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 76, 152, 227, 303, 379], [0, 76, 152, 227, 303, 379]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 539, 539)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 76, 152, 227, 303, 379], [0, 76, 152, 227, 303, 379]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0316.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 225, 554, 554)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134, 161], [0, 79, 158, 236, 315, 394], [0, 79, 158, 236, 315, 394]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 225, 554, 554)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134, 161], [0, 79, 158, 236, 315, 394], [0, 79, 158, 236, 315, 394]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 225, 554, 554)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134, 161], [0, 79, 158, 236, 315, 394], [0, 79, 158, 236, 315, 394]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 225, 554, 554)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134, 161], [0, 79, 158, 236, 315, 394], [0, 79, 158, 236, 315, 394]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0326.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 290, 436, 436)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 85, 113, 141, 170, 198, 226], [0, 69, 138, 207, 276], [0, 69, 138, 207, 276]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 290, 436, 436)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 85, 113, 141, 170, 198, 226], [0, 69, 138, 207, 276], [0, 69, 138, 207, 276]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 290, 436, 436)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 85, 113, 141, 170, 198, 226], [0, 69, 138, 207, 276], [0, 69, 138, 207, 276]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 290, 436, 436)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 85, 113, 141, 170, 198, 226], [0, 69, 138, 207, 276], [0, 69, 138, 207, 276]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0342.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 458, 458)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 74, 149, 224, 298], [0, 74, 149, 224, 298]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 458, 458)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 74, 149, 224, 298], [0, 74, 149, 224, 298]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 458, 458)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 74, 149, 224, 298], [0, 74, 149, 224, 298]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 305, 458, 458)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 90, 120, 151, 181, 211, 241], [0, 74, 149, 224, 298], [0, 74, 149, 224, 298]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0334.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 295, 405, 405)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 144, 173, 202, 231], [0, 61, 122, 184, 245], [0, 61, 122, 184, 245]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 295, 405, 405)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 144, 173, 202, 231], [0, 61, 122, 184, 245], [0, 61, 122, 184, 245]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 295, 405, 405)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 144, 173, 202, 231], [0, 61, 122, 184, 245], [0, 61, 122, 184, 245]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 295, 405, 405)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 87, 116, 144, 173, 202, 231], [0, 61, 122, 184, 245], [0, 61, 122, 184, 245]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0339.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 434, 434)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 68, 137, 206, 274], [0, 68, 137, 206, 274]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 434, 434)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 68, 137, 206, 274], [0, 68, 137, 206, 274]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 434, 434)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 68, 137, 206, 274], [0, 68, 137, 206, 274]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 218, 434, 434)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 92, 123, 154], [0, 68, 137, 206, 274], [0, 68, 137, 206, 274]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0328.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 506, 506)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 69, 138, 208, 277, 346], [0, 69, 138, 208, 277, 346]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 506, 506)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 69, 138, 208, 277, 346], [0, 69, 138, 208, 277, 346]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 506, 506)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 69, 138, 208, 277, 346], [0, 69, 138, 208, 277, 346]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 320, 506, 506)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 64, 96, 128, 160, 192, 224, 256], [0, 69, 138, 208, 277, 346], [0, 69, 138, 208, 277, 346]]
+number of tiles: 324
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0333.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 204, 520, 520)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140], [0, 72, 144, 216, 288, 360], [0, 72, 144, 216, 288, 360]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 204, 520, 520)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140], [0, 72, 144, 216, 288, 360], [0, 72, 144, 216, 288, 360]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 204, 520, 520)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140], [0, 72, 144, 216, 288, 360], [0, 72, 144, 216, 288, 360]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 204, 520, 520)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140], [0, 72, 144, 216, 288, 360], [0, 72, 144, 216, 288, 360]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0344.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 279, 436, 436)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 61, 92, 123, 154, 184, 215], [0, 69, 138, 207, 276], [0, 69, 138, 207, 276]]
+number of tiles: 200
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 279, 436, 436)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 61, 92, 123, 154, 184, 215], [0, 69, 138, 207, 276], [0, 69, 138, 207, 276]]
+number of tiles: 200
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 279, 436, 436)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 61, 92, 123, 154, 184, 215], [0, 69, 138, 207, 276], [0, 69, 138, 207, 276]]
+number of tiles: 200
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 279, 436, 436)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 61, 92, 123, 154, 184, 215], [0, 69, 138, 207, 276], [0, 69, 138, 207, 276]]
+number of tiles: 200
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0363.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 567, 567)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 68, 136, 204, 271, 339, 407], [0, 68, 136, 204, 271, 339, 407]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 567, 567)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 68, 136, 204, 271, 339, 407], [0, 68, 136, 204, 271, 339, 407]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 567, 567)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 68, 136, 204, 271, 339, 407], [0, 68, 136, 204, 271, 339, 407]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 567, 567)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 68, 136, 204, 271, 339, 407], [0, 68, 136, 204, 271, 339, 407]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0356.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 523, 523)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115], [0, 73, 145, 218, 290, 363], [0, 73, 145, 218, 290, 363]]
+number of tiles: 180
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 523, 523)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115], [0, 73, 145, 218, 290, 363], [0, 73, 145, 218, 290, 363]]
+number of tiles: 180
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 523, 523)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115], [0, 73, 145, 218, 290, 363], [0, 73, 145, 218, 290, 363]]
+number of tiles: 180
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 523, 523)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115], [0, 73, 145, 218, 290, 363], [0, 73, 145, 218, 290, 363]]
+number of tiles: 180
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0357.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 306, 461, 461)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 91, 121, 151, 182, 212, 242], [0, 75, 150, 226, 301], [0, 75, 150, 226, 301]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 306, 461, 461)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 91, 121, 151, 182, 212, 242], [0, 75, 150, 226, 301], [0, 75, 150, 226, 301]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 306, 461, 461)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 91, 121, 151, 182, 212, 242], [0, 75, 150, 226, 301], [0, 75, 150, 226, 301]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 306, 461, 461)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 60, 91, 121, 151, 182, 212, 242], [0, 75, 150, 226, 301], [0, 75, 150, 226, 301]]
+number of tiles: 225
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0346.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 195, 462, 462)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 26, 52, 79, 105, 131], [0, 76, 151, 226, 302], [0, 76, 151, 226, 302]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 195, 462, 462)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 26, 52, 79, 105, 131], [0, 76, 151, 226, 302], [0, 76, 151, 226, 302]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 195, 462, 462)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 26, 52, 79, 105, 131], [0, 76, 151, 226, 302], [0, 76, 151, 226, 302]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 195, 462, 462)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 26, 52, 79, 105, 131], [0, 76, 151, 226, 302], [0, 76, 151, 226, 302]]
+number of tiles: 150
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0352.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 220, 517, 517)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156], [0, 71, 143, 214, 286, 357], [0, 71, 143, 214, 286, 357]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 220, 517, 517)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156], [0, 71, 143, 214, 286, 357], [0, 71, 143, 214, 286, 357]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 220, 517, 517)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156], [0, 71, 143, 214, 286, 357], [0, 71, 143, 214, 286, 357]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 220, 517, 517)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 94, 125, 156], [0, 71, 143, 214, 286, 357], [0, 71, 143, 214, 286, 357]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0364.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 250, 536, 536)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155, 186], [0, 75, 150, 226, 301, 376], [0, 75, 150, 226, 301, 376]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 250, 536, 536)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155, 186], [0, 75, 150, 226, 301, 376], [0, 75, 150, 226, 301, 376]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 250, 536, 536)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155, 186], [0, 75, 150, 226, 301, 376], [0, 75, 150, 226, 301, 376]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 250, 536, 536)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 31, 62, 93, 124, 155, 186], [0, 75, 150, 226, 301, 376], [0, 75, 150, 226, 301, 376]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0377.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 500, 500)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 68, 136, 204, 272, 340], [0, 68, 136, 204, 272, 340]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 500, 500)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 68, 136, 204, 272, 340], [0, 68, 136, 204, 272, 340]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 500, 500)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 68, 136, 204, 272, 340], [0, 68, 136, 204, 272, 340]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 230, 500, 500)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 111, 138, 166], [0, 68, 136, 204, 272, 340], [0, 68, 136, 204, 272, 340]]
+number of tiles: 252
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0372.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 648, 648)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 70, 139, 209, 279, 349, 418, 488], [0, 70, 139, 209, 279, 349, 418, 488]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 648, 648)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 70, 139, 209, 279, 349, 418, 488], [0, 70, 139, 209, 279, 349, 418, 488]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 648, 648)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 70, 139, 209, 279, 349, 418, 488], [0, 70, 139, 209, 279, 349, 418, 488]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 242, 648, 648)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 30, 59, 89, 119, 148, 178], [0, 70, 139, 209, 279, 349, 418, 488], [0, 70, 139, 209, 279, 349, 418, 488]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0373.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 687, 687)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 75, 151, 226, 301, 376, 452, 527], [0, 75, 151, 226, 301, 376, 452, 527]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 687, 687)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 75, 151, 226, 301, 376, 452, 527], [0, 75, 151, 226, 301, 376, 452, 527]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 687, 687)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 75, 151, 226, 301, 376, 452, 527], [0, 75, 151, 226, 301, 376, 452, 527]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 232, 687, 687)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 56, 84, 112, 140, 168], [0, 75, 151, 226, 301, 376, 452, 527], [0, 75, 151, 226, 301, 376, 452, 527]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0365.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 240, 671, 671)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176], [0, 73, 146, 219, 292, 365, 438, 511], [0, 73, 146, 219, 292, 365, 438, 511]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 240, 671, 671)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176], [0, 73, 146, 219, 292, 365, 438, 511], [0, 73, 146, 219, 292, 365, 438, 511]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 240, 671, 671)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176], [0, 73, 146, 219, 292, 365, 438, 511], [0, 73, 146, 219, 292, 365, 438, 511]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 240, 671, 671)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 59, 88, 117, 147, 176], [0, 73, 146, 219, 292, 365, 438, 511], [0, 73, 146, 219, 292, 365, 438, 511]]
+number of tiles: 448
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0368.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 632, 632)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 79, 157, 236, 315, 393, 472], [0, 79, 157, 236, 315, 393, 472]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 632, 632)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 79, 157, 236, 315, 393, 472], [0, 79, 157, 236, 315, 393, 472]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 632, 632)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 79, 157, 236, 315, 393, 472], [0, 79, 157, 236, 315, 393, 472]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 198, 632, 632)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 27, 54, 80, 107, 134], [0, 79, 157, 236, 315, 393, 472], [0, 79, 157, 236, 315, 393, 472]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0385.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 725, 725)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 71, 141, 212, 282, 353, 424, 494, 565], [0, 71, 141, 212, 282, 353, 424, 494, 565]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 725, 725)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 71, 141, 212, 282, 353, 424, 494, 565], [0, 71, 141, 212, 282, 353, 424, 494, 565]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 725, 725)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 71, 141, 212, 282, 353, 424, 494, 565], [0, 71, 141, 212, 282, 353, 424, 494, 565]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 725, 725)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 71, 141, 212, 282, 353, 424, 494, 565], [0, 71, 141, 212, 282, 353, 424, 494, 565]]
+number of tiles: 486
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0409.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 208, 680, 680)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115, 144], [0, 74, 149, 223, 297, 371, 446, 520], [0, 74, 149, 223, 297, 371, 446, 520]]
+number of tiles: 384
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 208, 680, 680)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115, 144], [0, 74, 149, 223, 297, 371, 446, 520], [0, 74, 149, 223, 297, 371, 446, 520]]
+number of tiles: 384
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 208, 680, 680)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115, 144], [0, 74, 149, 223, 297, 371, 446, 520], [0, 74, 149, 223, 297, 371, 446, 520]]
+number of tiles: 384
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 208, 680, 680)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 29, 58, 86, 115, 144], [0, 74, 149, 223, 297, 371, 446, 520], [0, 74, 149, 223, 297, 371, 446, 520]]
+number of tiles: 384
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0397.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 202, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 110, 138], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 202, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 110, 138], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 202, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 110, 138], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 202, 571, 571)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 28, 55, 83, 110, 138], [0, 68, 137, 206, 274, 342, 411], [0, 68, 137, 206, 274, 342, 411]]
+number of tiles: 294
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+predicting /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs/panc_0399.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 530, 530)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 74, 148, 222, 296, 370], [0, 74, 148, 222, 296, 370]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 530, 530)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 74, 148, 222, 296, 370], [0, 74, 148, 222, 296, 370]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 530, 530)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 74, 148, 222, 296, 370], [0, 74, 148, 222, 296, 370]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 222, 530, 530)
+patch size: [ 64 160 160]
+steps (x, y, and z): [[0, 32, 63, 95, 126, 158], [0, 74, 148, 222, 296, 370], [0, 74, 148, 222, 296, 370]]
+number of tiles: 216
+using precomputed Gaussian
+prediction done
+This output is too large for python process-process communication. Saving output temporarily to disk
+inference done. Now waiting for the segmentation export to finish...
+postprocessing...
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Program finished with exit code 0 at: Tue Jul  5 23:57:02 CEST 2022

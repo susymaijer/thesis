@@ -1,19 +1,19 @@
 #!/bin/bash
-#SBATCH -J pred535H
+#SBATCH -J PancreasTrain
 #SBATCH -p LKEBgpu
 #SBATCH -N 1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=6
-#SBATCH --time=16:00:00
-#SBATCH --mem=85GB
+#SBATCH --cpus-per-task=8
+#SBATCH --time=01:00:00
+#SBATCH --mem=64GB
 #SBATCH --gres=gpu:RTX6000:1
-#SBATCH --error=/home/smaijer/logs/inference/535/job.%J.err
-#SBATCH --output=/home/smaijer/logs/inference/535/job.%J.out
+#SBATCH --error=/home/smaijer/logs/train/900/job.%J.err
+#SBATCH --output=/home/smaijer/logs/train/900/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=susy.maijer@lumc.nl
 
 # Prepare nnUnet
-echo "Starting at Tue Jul  5 23:57:37 CEST 2022"
+echo "Starting at Wed Jul 20 10:02:58 CEST 2022"
 
 echo "Running on hosts: $SLURM_JOB_NODELIST"
 echo "Running on $SLURM_JOB_NUM_NODES nodes."
@@ -41,8 +41,10 @@ echo Installing hidden layer and nnUnet..
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install --editable /home/smaijer/code/nnUNet
 
-mkdir -p /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs
+python -c 'import torch;print(torch.__version__)'
+python -c 'import torch;print(torch.backends.cudnn.version())'
+python -c 'import torch;print(torch.__file__)'
 
-nnUNet_predict -i /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task535/imagesTs -o /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2_Hybrid/535/imagesTs -t 535 -m 3d_fullres -tr nnUNetTrainerV2_Hybrid -f 0 1 2 3
+nnUNet_train 3d_lowres nnUNetTrainerV2_Hybrid 900 0 -c --val_disable_overwrite
 
-
+echo "Program finished with exit code 0 at: Wed Jul 20 10:02:58 CEST 2022"

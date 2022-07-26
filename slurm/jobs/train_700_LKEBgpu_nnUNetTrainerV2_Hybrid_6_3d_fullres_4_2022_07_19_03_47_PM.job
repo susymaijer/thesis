@@ -1,19 +1,19 @@
 #!/bin/bash
-#SBATCH -J pred535
+#SBATCH -J PancreasTrain
 #SBATCH -p LKEBgpu
 #SBATCH -N 1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=6
-#SBATCH --time=16:00:00
-#SBATCH --mem=85GB
+#SBATCH --time=01:00:00
+#SBATCH --mem=64GB
 #SBATCH --gres=gpu:RTX6000:1
-#SBATCH --error=/home/smaijer/logs/inference/535/job.%J.err
-#SBATCH --output=/home/smaijer/logs/inference/535/job.%J.out
+#SBATCH --error=/home/smaijer/logs/train/700/job.%J.err
+#SBATCH --output=/home/smaijer/logs/train/700/job.%J.out
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=susy.maijer@lumc.nl
 
 # Prepare nnUnet
-echo "Starting at Tue Jul  5 23:57:02 CEST 2022"
+echo "Starting at Tue Jul 19 15:47:12 CEST 2022"
 
 echo "Running on hosts: $SLURM_JOB_NODELIST"
 echo "Running on $SLURM_JOB_NUM_NODES nodes."
@@ -38,13 +38,13 @@ source /exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate
 echo Verifying environment variables:
 conda env config vars list
 echo Installing hidden layer and nnUnet..
-python3 -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
-python3 -m pip install --editable /home/smaijer/code/nnUNet
+python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
+python -m pip install --editable /home/smaijer/code/nnUNet
 
-mkdir -p /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs
+python -c 'import torch;print(torch.__version__)'
+python -c 'import torch;print(torch.backends.cudnn.version())'
+python -c 'import torch;print(torch.__file__)'
 
-nnUNet_predict -i /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task535/imagesTs -o /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs -t 535 -m 3d_fullres -tr nnUNetTrainerV2 -f 0 1 2 3
+nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid 700 4 -c --val_disable_overwrite
 
-nnUNet_evaluate_folder -ref /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task535/labelsTs -pred /exports/lkeb-hpc/smaijer/output/535/3d_fullres/nnUNetTrainerV2/535/imagesTs -l 
-
-echo "Program finished with exit code 0 at: Tue Jul  5 23:57:02 CEST 2022"
+echo "Program finished with exit code 0 at: Tue Jul 19 15:47:12 CEST 2022"

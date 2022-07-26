@@ -1,0 +1,78 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job10969439/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-9x7uexqp/hiddenlayer_aa10fc6829ee433baaae24606f5fcdf6
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+ERROR: ditable is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
+WARNING: You are using pip version 21.2.4; however, version 22.1.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+/var/spool/slurmd/job10969439/slurm_script: line 45: [: ==: unary operator expected
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 59, in get_default_configuration
+    trainer_class = recursive_find_python_class([join(*search_in)], network_trainer,
+  File "/home/smaijer/code/nnUNet/nnunet/training/model_restore.py", line 28, in recursive_find_python_class
+    m = importlib.import_module(current_module + "." + modname)
+  File "/share/software/system/python/3.10.2/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainerV2_Hybrid2.py", line 16, in <module>
+    from nnunet.training.network_training.nnUNetTrainerV2 import nnUNetTrainerV2_Hybrid
+ImportError: cannot import name 'nnUNetTrainerV2_Hybrid' from 'nnunet.training.network_training.nnUNetTrainerV2' (/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py)
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 59, in get_default_configuration
+    trainer_class = recursive_find_python_class([join(*search_in)], network_trainer,
+  File "/home/smaijer/code/nnUNet/nnunet/training/model_restore.py", line 28, in recursive_find_python_class
+    m = importlib.import_module(current_module + "." + modname)
+  File "/share/software/system/python/3.10.2/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainerV2_Hybrid2.py", line 16, in <module>
+    from nnunet.training.network_training.nnUNetTrainerV2 import nnUNetTrainerV2_Hybrid
+ImportError: cannot import name 'nnUNetTrainerV2_Hybrid' from 'nnunet.training.network_training.nnUNetTrainerV2' (/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py)
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 59, in get_default_configuration
+    trainer_class = recursive_find_python_class([join(*search_in)], network_trainer,
+  File "/home/smaijer/code/nnUNet/nnunet/training/model_restore.py", line 28, in recursive_find_python_class
+    m = importlib.import_module(current_module + "." + modname)
+  File "/share/software/system/python/3.10.2/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainerV2_Hybrid2.py", line 16, in <module>
+    from nnunet.training.network_training.nnUNetTrainerV2 import nnUNetTrainerV2_Hybrid
+ImportError: cannot import name 'nnUNetTrainerV2_Hybrid' from 'nnunet.training.network_training.nnUNetTrainerV2' (/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainerV2.py)
+slurmstepd: error: *** JOB 10969439 ON res-hpc-lkeb07 CANCELLED AT 2022-07-24T23:22:32 ***
