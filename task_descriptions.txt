@@ -4,11 +4,12 @@
 510- MSD, pancreas
 511- MSD, pancreas, tumor 
 521- BTCV, pancreas
-530 - amos, pancreas
-535 - amos, all organs
+522- BTCV, all organs
+530- amos, pancreas
+535- amos, all organs
 ### cropped
 551- NIH, pancreas 
-
+561- MSD, pancreas
 ######## MRI
 600- amos, MRI only, pancreas only 
 605- amos, MRI only, all organs
