@@ -12,11 +12,17 @@ cpu=${cpu:-6}
 read -p "Default wall time is 00:30:00. If not desired, type other wall time:" t
 t=${t:-00:30:00}
 
-read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
-
+read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres], default 3d_fullres:" config
+config=${config:-3d_fullres}
 read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,empty]:" trainer
 
 read -p "Enter folder suffix [Ts, Tr]:" tstr
+
+read -p "Enter labels (default 1 2 3 4 5 6 7 8 9 10 11 12 13):" lab
+lab=${lab:-1 2 3 4 5 6 7 8 9 10 11 12 13}
+
+read -p "Enter 'y' if it's relabeled:" relabeled
+relabeled=${relabeled:-n}
 
 # lowres of fullres
 if [ $config != "3d_cascade_fullres" ];
@@ -42,6 +48,15 @@ then
       trainer="nnUNetTrainerV2CascadeFullRes"
    fi
 fi
+
+if [ $relabeled == "y" ]; 
+then 
+  path=$OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr/relabeled 
+fi
+if [ $relabeled != "y" ];
+then 
+ path=$OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr
+fi 
 
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
@@ -88,7 +103,7 @@ echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install -editable /home/smaijer/code/nnUNet
 
-nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/labels$tstr -pred $OUTPUT/$task/$config/$trainer/$taskPredict/images$tstr -l 1
+nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/labels$tstr -pred $path -l $lab
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file
