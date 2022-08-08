@@ -5,6 +5,7 @@
 511- MSD, pancreas, tumor 
 521- BTCV, pancreas
 522- BTCV, all organs
+523- BTCV, pancreas+veins+spleen+duodenum
 530- amos, pancreas
 535- amos, all organs
 ### cropped

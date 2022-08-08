@@ -1,0 +1,12 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job11040324/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-sgb9l4hn/hiddenlayer_14a8b27fbaca46c4b71b5ae3ed32fdbb
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+slurmstepd: error: *** JOB 11040324 ON res-hpc-lkeb04 CANCELLED AT 2022-07-29T12:23:41 ***

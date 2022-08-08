@@ -48,11 +48,7 @@ then
 fi
 
 echo Done preprocessing! Start training all the folds..
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR 521 0
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR 521 1
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR 521 2
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR 521 3
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR 521 4
+nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR 521 4 -c
 
 echo Done training all the folds! Now start the same command but with continue option, to generate log files
 nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR 521 0 -c --val_disable_overwrite

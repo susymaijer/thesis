@@ -32,3 +32,44 @@ IMPORTANT: This is not the actual error message! Look further up to see what cau
     raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
 RuntimeError: Abort event was set. So someone died and we should end this madness. 
 IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+slurmstepd: error: *** JOB 10969815 ON res-hpc-lkeb05 CANCELLED AT 2022-07-27T18:13:12 ***

@@ -1,0 +1,44 @@
+#!/bin/bash
+#SBATCH -J PancreasEvalFolder
+#SBATCH -N 1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=6
+#SBATCH --time=00:30:00
+#SBATCH --mem=12GB
+#SBATCH --error=/home/smaijer/logs/evalfolder/523/job.%J.err
+#SBATCH --output=/home/smaijer/logs/evalfolder/523/job.%J.out
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=susy.maijer@lumc.nl
+
+# Prepare nnUnet
+echo "Starting at Tue Aug  2 17:17:21 CEST 2022"
+
+echo "Running on hosts: $SLURM_JOB_NODELIST"
+echo "Running on $SLURM_JOB_NUM_NODES nodes."
+echo "Running $SLURM_NTASKS tasks."
+echo "CPUs on node: $SLURM_CPUS_ON_NODE."
+echo "Account: $SLURM_JOB_ACCOUNT"
+echo "Job ID: $SLURM_JOB_ID"
+echo "Job name: $SLURM_JOB_NAME"
+echo "Node running script: $SLURMD_NODENAME"
+echo "Submit host: $SLURM_SUBMIT_HOST"
+echo "GPUS: $CUDA_VISIBLE_DEVICES or $SLURM_STEP_GPUS"
+nvidia-smi
+echo "Current working directory is /home/smaijer"
+
+echo Load all modules..
+module purge
+module add system/python/3.10.2
+echo Done with loading all modules. Modules:
+module li
+echo Activate conda env nnunet..
+source /exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate
+echo Verifying environment variables:
+conda env config vars list
+echo Installing hidden layer and nnUnet..
+python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
+python -m pip install -editable /home/smaijer/code/nnUNet
+
+nnUNet_evaluate_folder -ref /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task523/labelsTr -pred /exports/lkeb-hpc/smaijer/output/523/3d_fullres/nnUNetTrainerV2/523/imagesTr -l 
+
+echo "Program finished with exit code 0 at: Tue Aug  2 17:17:21 CEST 2022"

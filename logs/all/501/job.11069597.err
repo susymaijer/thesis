@@ -1,0 +1,140 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job11069597/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-cqm9bqua/hiddenlayer_de457d92cdb342548f3c5160c5c15b6e
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.2.1 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+ERROR: ditable is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
+WARNING: You are using pip version 21.2.4; however, version 22.2.1 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+/var/spool/slurmd/job11069597/slurm_script: line 45: [: ==: unary operator expected
+Exception in thread Thread-5 (results_loop):
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:131: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:156: UserWarning: The epoch parameter in `scheduler.step()` was not necessary and is being deprecated where possible. Please use `scheduler.step()` to step the scheduler. During the deprecation, if epoch is different from None, the closed form is used instead of the new chainable form, where available. Please open an issue if you are unable to replicate your use case: https://github.com/pytorch/pytorch/issues/new/choose.
+  warnings.warn(EPOCH_DEPRECATION_WARNING, UserWarning)
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:131: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:156: UserWarning: The epoch parameter in `scheduler.step()` was not necessary and is being deprecated where possible. Please use `scheduler.step()` to step the scheduler. During the deprecation, if epoch is different from None, the closed form is used instead of the new chainable form, where available. Please open an issue if you are unable to replicate your use case: https://github.com/pytorch/pytorch/issues/new/choose.
+  warnings.warn(EPOCH_DEPRECATION_WARNING, UserWarning)
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:156: UserWarning: The epoch parameter in `scheduler.step()` was not necessary and is being deprecated where possible. Please use `scheduler.step()` to step the scheduler. During the deprecation, if epoch is different from None, the closed form is used instead of the new chainable form, where available. Please open an issue if you are unable to replicate your use case: https://github.com/pytorch/pytorch/issues/new/choose.
+  warnings.warn(EPOCH_DEPRECATION_WARNING, UserWarning)
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:156: UserWarning: The epoch parameter in `scheduler.step()` was not necessary and is being deprecated where possible. Please use `scheduler.step()` to step the scheduler. During the deprecation, if epoch is different from None, the closed form is used instead of the new chainable form, where available. Please open an issue if you are unable to replicate your use case: https://github.com/pytorch/pytorch/issues/new/choose.
+  warnings.warn(EPOCH_DEPRECATION_WARNING, UserWarning)
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:131: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:156: UserWarning: The epoch parameter in `scheduler.step()` was not necessary and is being deprecated where possible. Please use `scheduler.step()` to step the scheduler. During the deprecation, if epoch is different from None, the closed form is used instead of the new chainable form, where available. Please open an issue if you are unable to replicate your use case: https://github.com/pytorch/pytorch/issues/new/choose.
+  warnings.warn(EPOCH_DEPRECATION_WARNING, UserWarning)
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+OrderedDict([('all', [OrderedDict([('1', OrderedDict([('Accuracy', 0.9995888551076253), ('Dice', 0.823509344104583), ('False Discovery Rate', 0.11557288155465018), ('False Negative Rate', 0.22955737976994472), ('False Omission Rate', 0.00028611059936900686), ('False Positive Rate', 0.000125500843613624), ('Jaccard', 0.6999710027257438), ('Negative Predictive Value', 0.999713889400631), ('Precision', 0.8844271184453498), ('Recall', 0.7704426202300553), ('Total Positives Reference', 78329), ('Total Positives Test', 68234), ('True Negative Rate', 0.9998744991563864)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0001.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0001.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9990718413372429), ('Dice', 0.6133815434255648), ('False Discovery Rate', 0.10349076948598246), ('False Negative Rate', 0.53383773659306), ('False Omission Rate', 0.0008438579067325669), ('False Positive Rate', 8.512824559481214e-05), ('Jaccard', 0.4423578386089641), ('Negative Predictive Value', 0.9991561420932674), ('Precision', 0.8965092305140175), ('Recall', 0.46616226340694006), ('Total Positives Reference', 81152), ('Total Positives Test', 42197), ('True Negative Rate', 0.9999148717544052)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0009.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0009.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9996555574478642), ('Dice', 0.8791329317529201), ('False Discovery Rate', 0.173195474370741), ('False Negative Rate', 0.06146739932143386), ('False Omission Rate', 8.2165087395024e-05), ('False Positive Rate', 0.00026275264620645444), ('Jaccard', 0.7843329121336333), ('Negative Predictive Value', 0.999917834912605), ('Precision', 0.826804525629259), ('Recall', 0.9385326006785661), ('Total Positives Reference', 108464), ('Total Positives Test', 123121), ('True Negative Rate', 0.9997372473537935)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0017.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0017.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9996458484280494), ('Dice', 0.8982204492729021), ('False Discovery Rate', 0.0778223961775022), ('False Negative Rate', 0.12452346319033203), ('False Omission Rate', 0.00022265110022838408), ('False Positive Rate', 0.00013211359826637015), ('Jaccard', 0.8152451628641494), ('Negative Predictive Value', 0.9997773488997717), ('Precision', 0.9221776038224978), ('Recall', 0.875476536809668), ('Total Positives Reference', 145057), ('Total Positives Test', 137711), ('True Negative Rate', 0.9998678864017336)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0026.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0026.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9990878320509388), ('Dice', 0.6100938905399363), ('False Discovery Rate', 0.28491633888608037), ('False Negative Rate', 0.4680132826976352), ('False Omission Rate', 0.0006284525241009757), ('False Positive Rate', 0.00028472456117834), ('Jaccard', 0.43894611757404195), ('Negative Predictive Value', 0.9993715474758991), ('Precision', 0.7150836611139196), ('Recall', 0.5319867173023648), ('Total Positives Reference', 109014), ('Total Positives Test', 81101), ('True Negative Rate', 0.9997152754388217)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0033.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0033.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9995127005919122), ('Dice', 0.8136521712368818), ('False Discovery Rate', 0.15811127528404745), ('False Negative Rate', 0.2127517657848661), ('False Omission Rate', 0.0002878663882228449), ('False Positive Rate', 0.00020006714248788082), ('Jaccard', 0.6858462177026046), ('Negative Predictive Value', 0.9997121336117771), ('Precision', 0.8418887247159526), ('Recall', 0.7872482342151339), ('Total Positives Reference', 83957), ('Total Positives Test', 78508), ('True Negative Rate', 0.9997999328575121)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0041.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0041.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9994600141370619), ('Dice', 0.819875847600924), ('False Discovery Rate', 0.23519724530279218), ('False Negative Rate', 0.11650401482396544), ('False Omission Rate', 0.00016231672138466437), ('False Positive Rate', 0.0003784563914270844), ('Jaccard', 0.6947369443580976), ('Negative Predictive Value', 0.9998376832786153), ('Precision', 0.7648027546972078), ('Recall', 0.8834959851760346), ('Total Positives Reference', 80950), ('Total Positives Test', 93513), ('True Negative Rate', 0.9996215436085729)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0049.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0049.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9996754161098547), ('Dice', 0.8936391846401824), ('False Discovery Rate', 0.09615277978019054), ('False Negative Rate', 0.1163408472389379), ('False Omission Rate', 0.00017979625314327167), ('False Positive Rate', 0.000145283068474944), ('Jaccard', 0.8077285205998077), ('Negative Predictive Value', 0.9998202037468568), ('Precision', 0.9038472202198095), ('Recall', 0.8836591527610621), ('Total Positives Reference', 92229), ('Total Positives Test', 90169), ('True Negative Rate', 0.9998547169315251)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0057.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0057.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9996789826287164), ('Dice', 0.8692574930410202), ('False Discovery Rate', 0.17024607272327807), ('False Negative Rate', 0.08728947964655243), ('False Omission Rate', 0.00010219224378729867), ('False Positive Rate', 0.00021921286738157963), ('Jaccard', 0.7687492843784588), ('Negative Predictive Value', 0.9998978077562127), ('Precision', 0.8297539272767219), ('Recall', 0.9127105203534476), ('Total Positives Reference', 66205), ('Total Positives Test', 72824), ('True Negative Rate', 0.9997807871326184)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0065.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0065.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9991485103484123), ('Dice', 0.7726597715952848), ('False Discovery Rate', 0.21372116349047143), ('False Negative Rate', 0.24049553681001412), ('False Omission Rate', 0.0004590267976032573), ('False Positive Rate', 0.0003940583370560802), ('Jaccard', 0.6295400034264177), ('Negative Predictive Value', 0.9995409732023968), ('Precision', 0.7862788365095286), ('Recall', 0.7595044631899859), ('Total Positives Reference', 154822), ('Total Positives Test', 149550), ('True Negative Rate', 0.9996059416629439)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0073.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0073.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997107218327135), ('Dice', 0.8639909378781248), ('False Discovery Rate', 0.1314400082818593), ('False Negative Rate', 0.14053029656314553), ('False Omission Rate', 0.00015039245835630818), ('False Positive Rate', 0.0001391936071069022), ('Jaccard', 0.7605493359923854), ('Negative Predictive Value', 0.9998496075416436), ('Precision', 0.8685599917181407), ('Recall', 0.8594697034368545), ('Total Positives Reference', 58571), ('Total Positives Test', 57958), ('True Negative Rate', 0.9998608063928931)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0081.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0081.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9995088155290722), ('Dice', 0.824827536388919), ('False Discovery Rate', 0.2674657314543549), ('False Negative Rate', 0.05627031792385251), ('False Omission Rate', 6.906051895843957e-05), ('False Positive Rate', 0.0004227509968067755), ('Jaccard', 0.7018778621261947), ('Negative Predictive Value', 0.9999309394810416), ('Precision', 0.7325342685456451), ('Recall', 0.9437296820761475), ('Total Positives Reference', 72596), ('Total Positives Test', 93526), ('True Negative Rate', 0.9995772490031932)])), ('test', '/exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2_Hybrid2LR/501/imagesTs/panc_0082.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs/panc_0082.nii.gz')])]), ('mean', OrderedDict([('1', OrderedDict([('Accuracy', 0.9994787579624552), ('Dice', 0.8068534251231035), ('False Discovery Rate', 0.1689443447326625), ('False Negative Rate', 0.19896512669697833), ('False Omission Rate', 0.00028949071660683685), ('False Positive Rate', 0.00023243685880007062), ('Jaccard', 0.6858234335408749), ('Negative Predictive Value', 0.9997105092833931), ('Precision', 0.8310556552673374), ('Recall', 0.8010348733030218), ('Total Positives Reference', 94278.83333333333), ('Total Positives Test', 90701.0), ('True Negative Rate', 0.9997675631412001)]))]))])
