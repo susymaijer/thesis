@@ -12,7 +12,7 @@ t=${t:-01:00:00}
 read -p "Enter folds, like '0 1 2 3 4':" folds
 t=${t:-0 1 2 3 4}
 
-read -p "Enter name:"
+read -p "Enter name:" name
 
 trainer="nnUNetTrainerV2"
 config="3d_fullres"
@@ -65,11 +65,24 @@ echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install --editable /home/smaijer/code/nnUNet
 
-mkdir -p $TEST/$name
+mkdir -p $TEST/$name/small
+mkdir -p $TEST/$name/medium
+mkdir -p $TEST/$name/big
 
-nnUNet_predict -i $TEST/cases/images -o $TEST/$name -t $task -m $config -tr $trainer -f $folds
+echo "We start with small images"
+nnUNet_predict -i $TEST/cases/images/small -o $TEST/$name/small -t $task -m $config -tr $trainer -f $folds
+nnUNet_evaluate_folder -ref $TEST/cases/labels/small -pred $TEST/$name/small -l 1
 
-nnUNet_evaluate_folder -ref $TEST/cases/labels -pred $TEST/cases/images -l 1
+echo "Now onto medium images"
+nnUNet_predict -i $TEST/cases/images/medium -o $TEST/$name/medium -t $task -m $config -tr $trainer -f $folds
+nnUNet_evaluate_folder -ref $TEST/cases/labels/medium -pred $TEST/$name/medium -l 1
+
+echo "And finally big images"
+nnUNet_predict -i $TEST/cases/images/big -o $TEST/$name/big -t $task -m $config -tr $trainer -f $folds
+nnUNet_evaluate_folder -ref $TEST/cases/labels/big -pred $TEST/$name/big -l 1
+
+sstat $SLURM_JOB_ID
+sacct -l -j $SLURM_JOB_ID
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

@@ -1,0 +1,3450 @@
+Starting at Fri Aug 12 15:08:40 CEST 2022
+Running on hosts: res-hpc-lkeb08
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 8.
+Account: div2-lkeb
+Job ID: 11459993
+Job name: PancreasInferenceEval
+Node running script: res-hpc-lkeb08
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Fri Aug 12 15:08:41 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.103.01   Driver Version: 470.103.01   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA RTX A6000    On   | 00000000:AF:00.0 Off |                  Off |
+| 30%   28C    P8    32W / 300W |      0MiB / 48685MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-t3wx2fit/hiddenlayer_cdfd41e5591e428abf78fb77212f8423
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Using legacy 'setup.py install' for hiddenlayer, since package 'wheel' is not installed.
+Installing collected packages: hiddenlayer
+    Running setup.py install for hiddenlayer: started
+    Running setup.py install for hiddenlayer: finished with status 'done'
+Successfully installed hiddenlayer-0.2
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+using model stored in  /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1
+This model expects 1 input modalities for each image
+Found 34 unique case ids, here are some examples: ['panc_0555' 'panc_0555' 'panc_0599' 'panc_0586' 'panc_0548' 'panc_0589'
+ 'panc_0596' 'panc_0508' 'panc_0589' 'panc_0554']
+If they don't look right, make sure to double check your filenames. They must end with _0000.nii.gz etc
+number of cases: 34
+number of cases that still need to be predicted: 34
+emptying cuda cache
+loading parameters for folds, None
+folds is None so we will automatically look for output folders (not using 'all'!)
+found the following folds:  ['/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_4']
+Suus1 - Initialise de NetworkTrainer
+Suus2 - Initialise de nnUNetTrainer
+Suus3 - Initialise de nnUNetTrainerV2
+Suus5 - zet de plans properties
+Suus4 - Initialise de trainer echt
+Suus5 - zet de plans properties
+Suus6 - Zet de data augmentation params
+2022-08-12 15:08:53.872293: Using dummy2d data augmentation
+Suus7 - zet deep supervision weights die de meerdere outputs prioriteit geven
+Suus8 - Maak network aan (BELANGRIJK!)
+SuusB - first stride 
+Suus10 - StackedConvLayers, input: 1 en output: 32, first_stride: None, num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [1, 3, 3], 'padding': [0, 1, 1]}
+SuusA - first_stride [1, 2, 2]
+Suus10 - StackedConvLayers, input: 32 en output: 64, first_stride: [1, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 64 en output: 128, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 128 en output: 256, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 256 en output: 320, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: [1, 2, 2], num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 640 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 512 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 32 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Generic_UNet(
+  (encoder): Generic_UNETEncoder()
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(640, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (conv_blocks_context): ModuleList(
+    (0): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(1, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (1): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 64, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (2): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (3): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (4): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (5): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (td): ModuleList()
+  (tu): ModuleList(
+    (0): ConvTranspose3d(320, 320, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+    (1): ConvTranspose3d(320, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (4): ConvTranspose3d(64, 32, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(320, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(256, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(128, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(64, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (4): Conv3d(32, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+using the following model files:  ['/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_4/model_final_checkpoint.model']
+starting preprocessing generator
+preprocessing took 1.239776611328125e-05 seconds
+starting prediction...
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0507.nii.gz
+loading took 0.07582211494445801 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 72, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 16, 32], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 36
+computing Gaussian
+done
+prediction done
+fold 0 prediction took 23.382442712783813 seconds
+loading another fold took 0.034543752670288086 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 72, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 16, 32], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.51358413696289 seconds
+loading another fold took 0.03300929069519043 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 72, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 16, 32], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.564367771148682 seconds
+loading another fold took 0.034149885177612305 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 72, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 16, 32], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.513286113739014 seconds
+loading another fold took 0.03322911262512207 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 72, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 16, 32], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.554656505584717 seconds
+full prediction took 0.010994672775268555 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0508.nii.gz
+loading took 0.03739118576049805 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 10.865238428115845 seconds
+loading another fold took 0.03484320640563965 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.410953044891357 seconds
+loading another fold took 0.03403782844543457 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.547083139419556 seconds
+loading another fold took 0.033199310302734375 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.39787483215332 seconds
+loading another fold took 0.0328524112701416 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.572781562805176 seconds
+full prediction took 0.010384798049926758 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0530.nii.gz
+loading took 0.043059587478637695 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 426, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 101, 202], [0, 83, 165, 248]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 12.116709470748901 seconds
+loading another fold took 0.0374760627746582 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 426, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 101, 202], [0, 83, 165, 248]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.716245651245117 seconds
+loading another fold took 0.03390145301818848 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 426, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 101, 202], [0, 83, 165, 248]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.888970613479614 seconds
+loading another fold took 0.03296399116516113 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 426, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 101, 202], [0, 83, 165, 248]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.94515323638916 seconds
+loading another fold took 0.033327341079711914 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 426, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 101, 202], [0, 83, 165, 248]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.855165481567383 seconds
+full prediction took 0.015196084976196289 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0510.nii.gz
+loading took 0.03847622871398926 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 10.759211778640747 seconds
+loading another fold took 0.0338139533996582 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.64704442024231 seconds
+loading another fold took 0.03303790092468262 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.763614416122437 seconds
+loading another fold took 0.03262686729431152 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.599872827529907 seconds
+loading another fold took 0.03339815139770508 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.556620359420776 seconds
+full prediction took 0.011699438095092773 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0514.nii.gz
+loading took 0.044603824615478516 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 11.032835006713867 seconds
+loading another fold took 0.03400874137878418 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.936726808547974 seconds
+loading another fold took 0.0327763557434082 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.707307577133179 seconds
+loading another fold took 0.03308749198913574 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.635115146636963 seconds
+loading another fold took 0.03385019302368164 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 224, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0], [0, 77, 153, 230]]
+number of tiles: 32
+using precomputed Gaussian
+prediction done
+another fold took 10.587865591049194 seconds
+full prediction took 0.013924598693847656 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0532.nii.gz
+loading took 0.03772783279418945 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 417, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 96, 193], [0, 99, 199, 298]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 15.965003728866577 seconds
+loading another fold took 0.03507399559020996 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 417, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 96, 193], [0, 99, 199, 298]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.911938190460205 seconds
+loading another fold took 0.036675214767456055 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 417, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 96, 193], [0, 99, 199, 298]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.767079830169678 seconds
+loading another fold took 0.03323626518249512 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 417, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 96, 193], [0, 99, 199, 298]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.771656513214111 seconds
+loading another fold took 0.03541088104248047 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 417, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 96, 193], [0, 99, 199, 298]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.011979579925537 seconds
+full prediction took 0.013761281967163086 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0538.nii.gz
+loading took 0.03792309761047363 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 422, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 99, 198], [0, 99, 199, 298]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 12.299011707305908 seconds
+loading another fold took 0.03745913505554199 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 422, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 99, 198], [0, 99, 199, 298]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.863481521606445 seconds
+loading another fold took 0.03292703628540039 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 422, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 99, 198], [0, 99, 199, 298]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.96629023551941 seconds
+loading another fold took 0.033159732818603516 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 422, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 99, 198], [0, 99, 199, 298]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.988913774490356 seconds
+loading another fold took 0.03346967697143555 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 77, 422, 522)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37], [0, 99, 198], [0, 99, 199, 298]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 12.091211557388306 seconds
+full prediction took 0.012532472610473633 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0518.nii.gz
+loading took 0.0380406379699707 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 299, 439)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 75], [0, 108, 215]]
+number of tiles: 42
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 14.217377185821533 seconds
+loading another fold took 0.03714156150817871 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 299, 439)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 75], [0, 108, 215]]
+number of tiles: 42
+using precomputed Gaussian
+prediction done
+another fold took 13.94631552696228 seconds
+loading another fold took 0.03415799140930176 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 299, 439)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 75], [0, 108, 215]]
+number of tiles: 42
+using precomputed Gaussian
+prediction done
+another fold took 14.054599285125732 seconds
+loading another fold took 0.03314614295959473 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 299, 439)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 75], [0, 108, 215]]
+number of tiles: 42
+using precomputed Gaussian
+prediction done
+another fold took 13.892583131790161 seconds
+loading another fold took 0.03688359260559082 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 299, 439)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 75], [0, 108, 215]]
+number of tiles: 42
+using precomputed Gaussian
+prediction done
+another fold took 13.839752674102783 seconds
+full prediction took 0.01788616180419922 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0551.nii.gz
+loading took 0.0472874641418457 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.52764081954956 seconds
+loading another fold took 0.0354156494140625 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.791366338729858 seconds
+loading another fold took 0.03276777267456055 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.690398931503296 seconds
+loading another fold took 0.03276991844177246 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.816458463668823 seconds
+loading another fold took 0.03488659858703613 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.03372621536255 seconds
+full prediction took 0.013409137725830078 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0540.nii.gz
+loading took 0.034790992736816406 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 80, 370, 467)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40], [0, 73, 146], [0, 81, 162, 243]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 12.216334581375122 seconds
+loading another fold took 0.036411285400390625 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 80, 370, 467)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40], [0, 73, 146], [0, 81, 162, 243]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 12.034032821655273 seconds
+loading another fold took 0.033730268478393555 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 80, 370, 467)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40], [0, 73, 146], [0, 81, 162, 243]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.981335878372192 seconds
+loading another fold took 0.03289198875427246 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 80, 370, 467)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40], [0, 73, 146], [0, 81, 162, 243]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.939821481704712 seconds
+loading another fold took 0.03269076347351074 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 80, 370, 467)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40], [0, 73, 146], [0, 81, 162, 243]]
+number of tiles: 36
+using precomputed Gaussian
+prediction done
+another fold took 11.790088891983032 seconds
+full prediction took 0.010132074356079102 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0541.nii.gz
+loading took 0.05618453025817871 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.339306592941284 seconds
+loading another fold took 0.03445792198181152 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.897226810455322 seconds
+loading another fold took 0.034984588623046875 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.736465454101562 seconds
+loading another fold took 0.03391003608703613 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.910887479782104 seconds
+loading another fold took 0.033634185791015625 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 428, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 102, 204], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.762459993362427 seconds
+full prediction took 0.0160675048828125 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0554.nii.gz
+loading took 0.03503704071044922 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 18.59387755393982 seconds
+loading another fold took 0.03395676612854004 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.545451402664185 seconds
+loading another fold took 0.03360271453857422 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.221614837646484 seconds
+loading another fold took 0.03302359580993652 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.272031784057617 seconds
+loading another fold took 0.03327608108520508 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.57218289375305 seconds
+full prediction took 0.012603282928466797 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0555.nii.gz
+loading took 0.03785371780395508 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.10297417640686 seconds
+loading another fold took 0.03404641151428223 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.688244342803955 seconds
+loading another fold took 0.03379058837890625 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.94038987159729 seconds
+loading another fold took 0.03277254104614258 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.783438205718994 seconds
+loading another fold took 0.03350830078125 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.852645874023438 seconds
+full prediction took 0.01500558853149414 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0548.nii.gz
+loading took 0.0385279655456543 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.278022050857544 seconds
+loading another fold took 0.03735017776489258 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.86922812461853 seconds
+loading another fold took 0.03366589546203613 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.88987421989441 seconds
+loading another fold took 0.034017324447631836 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.693558931350708 seconds
+loading another fold took 0.033625125885009766 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.720337390899658 seconds
+full prediction took 0.011864662170410156 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0571.nii.gz
+loading took 0.04198098182678223 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 399, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 88, 175], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.13059091567993 seconds
+loading another fold took 0.03394818305969238 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 399, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 88, 175], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.74624514579773 seconds
+loading another fold took 0.03312373161315918 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 399, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 88, 175], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.838849544525146 seconds
+loading another fold took 0.03402900695800781 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 399, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 88, 175], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.95798110961914 seconds
+loading another fold took 0.03613996505737305 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 399, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 88, 175], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.701408624649048 seconds
+full prediction took 0.01265859603881836 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0557.nii.gz
+loading took 0.03538322448730469 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 147, 224, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 36, 54, 71, 89, 107], [0], [0, 99, 198, 297]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 9.757631778717041 seconds
+loading another fold took 0.03497171401977539 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 147, 224, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 36, 54, 71, 89, 107], [0], [0, 99, 198, 297]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.625314474105835 seconds
+loading another fold took 0.03291726112365723 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 147, 224, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 36, 54, 71, 89, 107], [0], [0, 99, 198, 297]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.447639465332031 seconds
+loading another fold took 0.033286333084106445 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 147, 224, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 36, 54, 71, 89, 107], [0], [0, 99, 198, 297]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.378325462341309 seconds
+loading another fold took 0.033583879470825195 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 147, 224, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 36, 54, 71, 89, 107], [0], [0, 99, 198, 297]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.330085277557373 seconds
+full prediction took 0.011841535568237305 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0558.nii.gz
+loading took 0.03822517395019531 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 18.745270252227783 seconds
+loading another fold took 0.03409385681152344 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.408008337020874 seconds
+loading another fold took 0.03338146209716797 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 523)
+patch size: [ 40 224 224]preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0530.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 64, 290, 320) after crop: (1, 64, 288, 319) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 64, 288, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 77, 426, 472)} 
+
+(1, 77, 426, 472)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0551.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 468, 576) after crop: (1, 72, 466, 574) spacing: [3.         0.69444442 0.69444442] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.69444442, 0.69444442]), 'spacing_transposed': array([3.        , 0.69444442, 0.69444442]), 'data.shape (data is transposed)': (1, 72, 466, 574)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 403, 497)} 
+
+(1, 86, 403, 497)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0571.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 258, 320) after crop: (1, 72, 256, 319) spacing: [3.   1.25 1.25] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.  , 1.25, 1.25]), 'spacing_transposed': array([3.  , 1.25, 1.25]), 'data.shape (data is transposed)': (1, 72, 256, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 399, 497)} 
+
+(1, 86, 399, 497)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0588.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 512, 168, 512) after crop: (1, 496, 168, 512) spacing: [0.82029998 1.10000002 0.82029998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([0.82029998, 1.10000002, 0.82029998]), 'spacing_transposed': array([0.82029998, 1.10000002, 0.82029998]), 'data.shape (data is transposed)': (1, 496, 168, 512)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 163, 230, 523)} 
+
+(1, 163, 230, 523)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0595.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 258, 319) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 258, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 382, 472)} 
+
+(1, 86, 382, 472)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0507.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 290, 320) after crop: (1, 72, 289, 319) spacing: [2.5    1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.5   , 1.1875, 1.1875]), 'spacing_transposed': array([2.5   , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 289, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 72, 428, 472)} 
+
+(1, 72, 428, 472)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0532.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 255, 319) spacing: [3.     1.3125 1.3125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.3125, 1.3125]), 'spacing_transposed': array([3.    , 1.3125, 1.3125]), 'data.shape (data is transposed)': (1, 72, 255, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 417, 522)} 
+
+(1, 86, 417, 522)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0554.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 512, 168, 512) after crop: (1, 432, 168, 512) spacing: [0.82029998 1.10000002 0.82029998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([0.82029998, 1.10000002, 0.82029998]), 'spacing_transposed': array([0.82029998, 1.10000002, 0.82029998]), 'data.shape (data is transposed)': (1, 432, 168, 512)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 142, 230, 523)} 
+
+(1, 142, 230, 523)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0578.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 512, 168, 512) after crop: (1, 456, 168, 512) spacing: [0.82029998 1.10000002 0.82029998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([0.82029998, 1.10000002, 0.82029998]), 'spacing_transposed': array([0.82029998, 1.10000002, 0.82029998]), 'data.shape (data is transposed)': (1, 456, 168, 512)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 150, 230, 523)} 
+
+(1, 150, 230, 523)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0589.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 320, 60, 320) after crop: (1, 319, 60, 319) spacing: [1.1875 3.     1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1.1875, 3.    , 1.1875]), 'spacing_transposed': array([1.1875, 3.    , 1.1875]), 'data.shape (data is transposed)': (1, 319, 60, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 152, 224, 472)} 
+
+(1, 152, 224, 472)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0596.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 512, 168, 512) after crop: (1, 432, 168, 508) spacing: [0.82029998 1.10000002 0.82029998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([0.82029998, 1.10000002, 0.82029998]), 'spacing_transposed': array([0.82029998, 1.10000002, 0.82029998]), 'data.shape (data is transposed)': (1, 432, 168, 508)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 142, 230, 519)} 
+
+(1, 142, 230, 519)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0508.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 320, 80, 260) after crop: (1, 319, 80, 259) spacing: [1.40625 1.5     1.40625] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1.40625, 1.5    , 1.40625]), 'spacing_transposed': array([1.40625, 1.5    , 1.40625]), 'data.shape (data is transposed)': (1, 319, 80, 259)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 179, 149, 454)} 
+
+(1, 179, 149, 454)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0538.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 64, 260, 320) after crop: (1, 64, 258, 319) spacing: [3.     1.3125 1.3125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.3125, 1.3125]), 'spacing_transposed': array([3.    , 1.3125, 1.3125]), 'data.shape (data is transposed)': (1, 64, 258, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 77, 422, 522)} 
+
+(1, 77, 422, 522)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0555.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 232, 288) after crop: (1, 72, 230, 286) spacing: [3.         1.38888884 1.38888884] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 1.38888884, 1.38888884]), 'spacing_transposed': array([3.        , 1.38888884, 1.38888884]), 'data.shape (data is transposed)': (1, 72, 230, 286)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 398, 495)} 
+
+(1, 86, 398, 495)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0580.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 320, 60, 320) after crop: (1, 319, 60, 319) spacing: [1.1875 3.     1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1.1875, 3.    , 1.1875]), 'spacing_transposed': array([1.1875, 3.    , 1.1875]), 'data.shape (data is transposed)': (1, 319, 60, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 152, 224, 472)} 
+
+(1, 152, 224, 472)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0590.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 512, 168, 512) after crop: (1, 497, 168, 510) spacing: [0.82029998 1.10000002 0.82029998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([0.82029998, 1.10000002, 0.82029998]), 'spacing_transposed': array([0.82029998, 1.10000002, 0.82029998]), 'data.shape (data is transposed)': (1, 497, 168, 510)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 163, 230, 521)} 
+
+(1, 163, 230, 521)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0597.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 320, 60, 320) after crop: (1, 319, 60, 319) spacing: [1.1875 3.     1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1.1875, 3.    , 1.1875]), 'spacing_transposed': array([1.1875, 3.    , 1.1875]), 'data.shape (data is transposed)': (1, 319, 60, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 152, 224, 472)} 
+
+(1, 152, 224, 472)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0518.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 400, 120, 400) after crop: (1, 400, 120, 352) spacing: [1. 2. 1.] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1., 2., 1.]), 'spacing_transposed': array([1., 2., 1.]), 'data.shape (data is transposed)': (1, 400, 120, 352)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 160, 299, 439)} 
+
+(1, 160, 299, 439)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0548.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 258, 318) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 258, 318)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 382, 470)} 
+
+(1, 86, 382, 470)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0570.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 258, 318) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 258, 318)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 382, 470)} 
+
+(1, 86, 382, 470)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0587.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 259, 319) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 259, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 383, 472)} 
+
+(1, 86, 383, 472)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0594.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 512, 168, 512) after crop: (1, 488, 168, 512) spacing: [0.82029998 1.10000002 0.82029998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([0.82029998, 1.10000002, 0.82029998]), 'spacing_transposed': array([0.82029998, 1.10000002, 0.82029998]), 'data.shape (data is transposed)': (1, 488, 168, 512)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 160, 230, 523)} 
+
+(1, 160, 230, 523)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0510.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 320, 104, 260) after crop: (1, 319, 104, 259) spacing: [1.40625 1.5     1.40625] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1.40625, 1.5    , 1.40625]), 'spacing_transposed': array([1.40625, 1.5    , 1.40625]), 'data.shape (data is transposed)': (1, 319, 104, 259)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 179, 194, 454)} 
+
+(1, 179, 194, 454)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0540.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 100, 192, 192) after crop: (1, 100, 152, 192) spacing: [2.       1.953125 1.953125] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([2.      , 1.953125, 1.953125]), 'spacing_transposed': array([2.      , 1.953125, 1.953125]), 'data.shape (data is transposed)': (1, 100, 152, 192)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 80, 370, 467)} 
+
+(1, 80, 370, 467)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0557.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 512, 152, 512) after crop: (1, 449, 152, 510) spacing: [0.82029998 1.10000002 0.82029998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([0.82029998, 1.10000002, 0.82029998]), 'spacing_transposed': array([0.82029998, 1.10000002, 0.82029998]), 'data.shape (data is transposed)': (1, 449, 152, 510)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 147, 208, 521)} 
+
+(1, 147, 208, 521)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0585.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 258, 319) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 258, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 382, 472)} 
+
+(1, 86, 382, 472)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0592.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 512, 168, 512) after crop: (1, 472, 168, 510) spacing: [0.82029998 1.10000002 0.82029998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([0.82029998, 1.10000002, 0.82029998]), 'spacing_transposed': array([0.82029998, 1.10000002, 0.82029998]), 'data.shape (data is transposed)': (1, 472, 168, 510)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 155, 230, 521)} 
+
+(1, 155, 230, 521)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0599.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 258, 319) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 258, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 382, 472)} 
+
+(1, 86, 382, 472)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0514.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 320, 112, 260) after crop: (1, 319, 112, 259) spacing: [1.40625 1.5     1.40625] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1.40625, 1.5    , 1.40625]), 'spacing_transposed': array([1.40625, 1.5    , 1.40625]), 'data.shape (data is transposed)': (1, 319, 112, 259)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 179, 209, 454)} 
+
+(1, 179, 209, 454)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0541.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 290, 320) after crop: (1, 72, 289, 319) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 289, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 428, 472)} 
+
+(1, 86, 428, 472)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0558.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 512, 168, 512) after crop: (1, 472, 168, 512) spacing: [0.82029998 1.10000002 0.82029998] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([0.82029998, 1.10000002, 0.82029998]), 'spacing_transposed': array([0.82029998, 1.10000002, 0.82029998]), 'data.shape (data is transposed)': (1, 472, 168, 512)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 155, 230, 523)} 
+
+(1, 155, 230, 523)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0586.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 320, 144, 260) after crop: (1, 319, 144, 259) spacing: [1.40629995 1.5        1.40629995] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1.40629995, 1.5       , 1.40629995]), 'spacing_transposed': array([1.40629995, 1.5       , 1.40629995]), 'data.shape (data is transposed)': (1, 319, 144, 259)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 179, 269, 454)} 
+
+(1, 179, 269, 454)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0593.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 468, 576) after crop: (1, 72, 466, 575) spacing: [3.         0.69444442 0.69444442] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 0.69444442, 0.69444442]), 'spacing_transposed': array([3.        , 0.69444442, 0.69444442]), 'data.shape (data is transposed)': (1, 72, 466, 575)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 403, 497)} 
+
+(1, 86, 403, 497)
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0600.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 258, 319) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 258, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 382, 472)} 
+
+(1, 86, 382, 472)
+This worker has ended successfully, no errors to report
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0507.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0530.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0514.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0538.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0551.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0541.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0555.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0571.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0558.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0580.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0588.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0586.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0590.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0595.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0593.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0597.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0599.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0508.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0510.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0532.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0518.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0540.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0554.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0548.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0557.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0578.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0570.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0585.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0589.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0587.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0592.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0596.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0594.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0600.nii.gz
+
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.35295295715332 seconds
+loading another fold took 0.032831668853759766 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.50285053253174 seconds
+loading another fold took 0.0328516960144043 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.329397916793823 seconds
+full prediction took 0.013785839080810547 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0578.nii.gz
+loading took 0.04759931564331055 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 150, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37, 55, 73, 92, 110], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 19.22939968109131 seconds
+loading another fold took 0.035893917083740234 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 150, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37, 55, 73, 92, 110], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.373361825942993 seconds
+loading another fold took 0.033605337142944336 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 150, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37, 55, 73, 92, 110], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.487793922424316 seconds
+loading another fold took 0.03349471092224121 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 150, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37, 55, 73, 92, 110], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.421647787094116 seconds
+loading another fold took 0.03342747688293457 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 150, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 37, 55, 73, 92, 110], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.4473717212677 seconds
+full prediction took 0.013350963592529297 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0580.nii.gz
+loading took 0.035849809646606445 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 10.033464908599854 seconds
+loading another fold took 0.034777164459228516 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.340547561645508 seconds
+loading another fold took 0.03290128707885742 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.43047571182251 seconds
+loading another fold took 0.03270673751831055 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.326521873474121 seconds
+loading another fold took 0.035829782485961914 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.44725751876831 seconds
+full prediction took 0.011747360229492188 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0570.nii.gz
+loading took 0.03694486618041992 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.02169156074524 seconds
+loading another fold took 0.03399395942687988 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.644157409667969 seconds
+loading another fold took 0.032816171646118164 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.739494562149048 seconds
+loading another fold took 0.0329127311706543 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.8350989818573 seconds
+loading another fold took 0.03272747993469238 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 470)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 82, 164, 246]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.695740938186646 seconds
+full prediction took 0.012293100357055664 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0588.nii.gz
+loading took 0.0369415283203125 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 100, 199, 299]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 21.49669361114502 seconds
+loading another fold took 0.03442025184631348 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 100, 199, 299]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 21.101682424545288 seconds
+loading another fold took 0.03415346145629883 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 100, 199, 299]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 20.887933254241943 seconds
+loading another fold took 0.03301119804382324 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 100, 199, 299]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 21.113147735595703 seconds
+loading another fold took 0.034136056900024414 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 100, 199, 299]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 20.93396496772766 seconds
+full prediction took 0.014417886734008789 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0585.nii.gz
+loading took 0.035742998123168945 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.066471338272095 seconds
+loading another fold took 0.034058332443237305 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.765149116516113 seconds
+loading another fold took 0.03384518623352051 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.909337282180786 seconds
+loading another fold took 0.03384232521057129 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.666790008544922 seconds
+loading another fold took 0.03268909454345703 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.686171770095825 seconds
+full prediction took 0.011448860168457031 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0586.nii.gz
+loading took 0.038184165954589844 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 269, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0, 45], [0, 77, 153, 230]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 21.869481801986694 seconds
+loading another fold took 0.03376483917236328 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 269, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0, 45], [0, 77, 153, 230]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 20.92805504798889 seconds
+loading another fold took 0.03285527229309082 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 269, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0, 45], [0, 77, 153, 230]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 21.09717869758606 seconds
+loading another fold took 0.03292536735534668 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 269, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0, 45], [0, 77, 153, 230]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 21.105470657348633 seconds
+loading another fold took 0.03257131576538086 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 179, 269, 454)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 79, 99, 119, 139], [0, 45], [0, 77, 153, 230]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 20.896424770355225 seconds
+full prediction took 0.019161701202392578 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0589.nii.gz
+loading took 0.035742759704589844 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 9.706338882446289 seconds
+loading another fold took 0.03435516357421875 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.518142938613892 seconds
+loading another fold took 0.0330049991607666 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.49130129814148 seconds
+loading another fold took 0.03302597999572754 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.346055030822754 seconds
+loading another fold took 0.033315181732177734 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.330317735671997 seconds
+full prediction took 0.014162302017211914 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0590.nii.gz
+loading took 0.045777320861816406 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 99, 198, 297]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 21.877761125564575 seconds
+loading another fold took 0.03472256660461426 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 99, 198, 297]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 20.994003772735596 seconds
+loading another fold took 0.03302907943725586 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 99, 198, 297]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 20.999245166778564 seconds
+loading another fold took 0.032738685607910156 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 99, 198, 297]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 21.01057457923889 seconds
+loading another fold took 0.0337984561920166 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 163, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 18, 35, 53, 70, 88, 105, 123], [0, 6], [0, 99, 198, 297]]
+number of tiles: 64
+using precomputed Gaussian
+prediction done
+another fold took 21.039924144744873 seconds
+full prediction took 0.018662452697753906 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0587.nii.gz
+loading took 0.03862357139587402 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 383, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 80, 159], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 15.989564418792725 seconds
+loading another fold took 0.03363299369812012 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 383, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 80, 159], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.79672360420227 seconds
+loading another fold took 0.03297305107116699 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 383, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 80, 159], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.766276597976685 seconds
+loading another fold took 0.0335390567779541 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 383, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 80, 159], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.672815084457397 seconds
+loading another fold took 0.033100128173828125 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 383, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 80, 159], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.840152978897095 seconds
+full prediction took 0.011776924133300781 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0595.nii.gz
+loading took 0.04691576957702637 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.046447038650513 seconds
+loading another fold took 0.03376507759094238 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.648210525512695 seconds
+loading another fold took 0.03282904624938965 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.668216466903687 seconds
+loading another fold took 0.03307604789733887 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.872833013534546 seconds
+loading another fold took 0.0326995849609375 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.72063422203064 seconds
+full prediction took 0.01439666748046875 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0592.nii.gz
+loading took 0.03854775428771973 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 99, 198, 297]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 18.512081623077393 seconds
+loading another fold took 0.03363847732543945 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 99, 198, 297]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.567612171173096 seconds
+loading another fold took 0.032881975173950195 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 99, 198, 297]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.34507727622986 seconds
+loading another fold took 0.0327000617980957 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 99, 198, 297]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.355305194854736 seconds
+loading another fold took 0.03275108337402344 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 155, 230, 521)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 38, 58, 77, 96, 115], [0, 6], [0, 99, 198, 297]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.67082715034485 seconds
+full prediction took 0.01574087142944336 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0593.nii.gz
+loading took 0.0481874942779541 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.026724100112915 seconds
+loading another fold took 0.03369259834289551 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.7961585521698 seconds
+loading another fold took 0.03285360336303711 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.912221908569336 seconds
+loading another fold took 0.03358745574951172 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.815051794052124 seconds
+loading another fold took 0.03690338134765625 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 403, 497)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 90, 179], [0, 91, 182, 273]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.872734785079956 seconds
+full prediction took 0.013083934783935547 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0596.nii.gz
+loading took 0.03466439247131348 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 519)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 98, 197, 295]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 18.49184799194336 seconds
+loading another fold took 0.033460378646850586 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 519)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 98, 197, 295]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.42011523246765 seconds
+loading another fold took 0.03275275230407715 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 519)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 98, 197, 295]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.200661182403564 seconds
+loading another fold took 0.03248786926269531 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 519)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 98, 197, 295]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.3453152179718 seconds
+loading another fold took 0.03250002861022949 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 142, 230, 519)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 34, 51, 68, 85, 102], [0, 6], [0, 98, 197, 295]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.436848402023315 seconds
+full prediction took 0.012481927871704102 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0597.nii.gz
+loading took 0.03455662727355957 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 9.592424869537354 seconds
+loading another fold took 0.0334017276763916 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.316447019577026 seconds
+loading another fold took 0.03258347511291504 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.415935516357422 seconds
+loading another fold took 0.0334014892578125 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.495413303375244 seconds
+loading another fold took 0.03273439407348633 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.571646213531494 seconds
+full prediction took 0.013469457626342773 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0594.nii.gz
+loading took 0.03501605987548828 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 18.417879104614258 seconds
+loading another fold took 0.03405880928039551 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.393921375274658 seconds
+loading another fold took 0.033954620361328125 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.46345806121826 seconds
+loading another fold took 0.03259778022766113 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.51123285293579 seconds
+loading another fold took 0.03293275833129883 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 160, 230, 523)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 20, 40, 60, 80, 100, 120], [0, 6], [0, 100, 199, 299]]
+number of tiles: 56
+using precomputed Gaussian
+prediction done
+another fold took 18.522513389587402 seconds
+full prediction took 0.014559745788574219 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0599.nii.gz
+loading took 0.034249305725097656 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.21458601951599 seconds
+loading another fold took 0.033458709716796875 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.82848596572876 seconds
+loading another fold took 0.0327150821685791 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.774091005325317 seconds
+loading another fold took 0.03294658660888672 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.682954549789429 seconds
+loading another fold took 0.032806396484375 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.894674062728882 seconds
+full prediction took 0.01472926139831543 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTr/panc_0600.nii.gz
+loading took 0.04610848426818848 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 15.760726690292358 seconds
+loading another fold took 0.033582210540771484 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.751315355300903 seconds
+loading another fold took 0.03281068801879883 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.798551321029663 seconds
+loading another fold took 0.032721519470214844 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.722412109375 seconds
+loading another fold took 0.03270721435546875 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.69763731956482 seconds
+full prediction took 0.014901876449584961 seconds
+inference done. Now waiting for the segmentation export to finish...
+postprocessing...
+postprocessing took 5.7037317752838135 seconds
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+using model stored in  /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1
+This model expects 1 input modalities for each image
+Found 6 unique case ids, here are some examples: ['panc_0517' 'panc_0582' 'panc_0591' 'panc_0584' 'panc_0583' 'panc_0583']
+If they don't look right, make sure to double check your filenames. They must end with _0000.nii.gz etc
+number of cases: 6
+number of cases that still need to be predicted: 6
+emptying cuda cache
+loading parameters for folds, None
+folds is None so we will automatically look for output folders (not using 'all'!)
+found the following folds:  ['/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_4']
+Suus1 - Initialise de NetworkTrainer
+Suus2 - Initialise de nnUNetTrainer
+Suus3 - Initialise de nnUNetTrainerV2
+Suus5 - zet de plans properties
+Suus4 - Initialise de trainer echt
+Suus5 - zet de plans properties
+Suus6 - Zet de data augmentation params
+2022-08-12 15:53:06.692744: Using dummy2d data augmentation
+Suus7 - zet deep supervision weights die de meerdere outputs prioriteit geven
+Suus8 - Maak network aan (BELANGRIJK!)
+SuusB - first stride 
+Suus10 - StackedConvLayers, input: 1 en output: 32, first_stride: None, num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [1, 3, 3], 'padding': [0, 1, 1]}
+SuusA - first_stride [1, 2, 2]
+Suus10 - StackedConvLayers, input: 32 en output: 64, first_stride: [1, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 64 en output: 128, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 128 en output: 256, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 256 en output: 320, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: [1, 2, 2], num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 640 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 512 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 32 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Generic_UNet(
+  (encoder): Generic_UNETEncoder()
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(640, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (conv_blocks_context): ModuleList(
+    (0): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(1, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (1): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 64, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (2): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (3): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (4): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (5): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (td): ModuleList()
+  (tu): ModuleList(
+    (0): ConvTranspose3d(320, 320, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+    (1): ConvTranspose3d(320, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (4): ConvTranspose3d(64, 32, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(320, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(256, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(128, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(64, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (4): Conv3d(32, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+using the following model files:  ['/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task510/nnUNetTrainerV2__nnUNetPlansv2.1/fold_4/model_final_checkpoint.model']
+starting preprocessing generator
+preprocessing took 1.4066696166992188e-05 seconds
+starting prediction...
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0522.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 257, 319) spacing: [3.    1.375 1.375] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.   , 1.375, 1.375]), 'spacing_transposed': array([3.   , 1.375, 1.375]), 'data.shape (data is transposed)': (1, 72, 257, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 440, 546)} 
+
+(1, 86, 440, 546)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0591.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 260, 320) after crop: (1, 72, 258, 319) spacing: [3.     1.1875 1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.    , 1.1875, 1.1875]), 'spacing_transposed': array([3.    , 1.1875, 1.1875]), 'data.shape (data is transposed)': (1, 72, 258, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 382, 472)} 
+
+(1, 86, 382, 472)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0582.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 320, 60, 320) after crop: (1, 319, 60, 319) spacing: [1.1875 3.     1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1.1875, 3.    , 1.1875]), 'spacing_transposed': array([1.1875, 3.    , 1.1875]), 'data.shape (data is transposed)': (1, 319, 60, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 152, 224, 472)} 
+
+(1, 152, 224, 472)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0584.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 72, 232, 288) after crop: (1, 72, 230, 286) spacing: [3.         1.38888884 1.38888884] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([3.        , 1.38888884, 1.38888884]), 'spacing_transposed': array([3.        , 1.38888884, 1.38888884]), 'data.shape (data is transposed)': (1, 72, 230, 286)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 86, 398, 495)} 
+
+(1, 86, 398, 495)
+This worker has ended successfully, no errors to report
+preprocessing /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0583.nii.gz
+using preprocessor GenericPreprocessor
+before crop: (1, 320, 60, 320) after crop: (1, 319, 60, 319) spacing: [1.1875 3.     1.1875] 
+
+separate z, order in z is 0 order inplane is 3
+separate z, order in z is 0 order inplane is 1
+before: {'spacing': array([1.1875, 3.    , 1.1875]), 'spacing_transposed': array([1.1875, 3.    , 1.1875]), 'data.shape (data is transposed)': (1, 319, 60, 319)} 
+after:  {'spacing': array([2.5       , 0.80273402, 0.80273402]), 'data.shape (data is resampled)': (1, 152, 224, 472)} 
+
+(1, 152, 224, 472)
+This worker has ended successfully, no errors to report
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0591.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0584.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0517.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0522.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0582.nii.gz
+force_separate_z: None interpolation order: 1
+separate z: True lowres axis [0]
+separate z, order in z is 0 order inplane is 1
+suus we gaan schrijven naar /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0583.nii.gz
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0522.nii.gz
+loading took 0.05284738540649414 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 440, 546)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 108, 216], [0, 107, 215, 322]]
+number of tiles: 48
+computing Gaussian
+done
+prediction done
+fold 0 prediction took 19.891149759292603 seconds
+loading another fold took 0.03494405746459961 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 440, 546)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 108, 216], [0, 107, 215, 322]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.006650924682617 seconds
+loading another fold took 0.03837871551513672 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 440, 546)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 108, 216], [0, 107, 215, 322]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.880785942077637 seconds
+loading another fold took 0.03997039794921875 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 440, 546)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 108, 216], [0, 107, 215, 322]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.896390914916992 seconds
+loading another fold took 0.036289215087890625 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 440, 546)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 108, 216], [0, 107, 215, 322]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.9740629196167 seconds
+full prediction took 0.01669454574584961 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0591.nii.gz
+loading took 0.03581976890563965 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 15.7140052318573 seconds
+loading another fold took 0.03613114356994629 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.9123694896698 seconds
+loading another fold took 0.03457331657409668 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.978494644165039 seconds
+loading another fold took 0.0379486083984375 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.951605319976807 seconds
+loading another fold took 0.03901815414428711 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 382, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 79, 158], [0, 83, 165, 248]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.896700620651245 seconds
+full prediction took 0.012179374694824219 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0582.nii.gz
+loading took 0.033991336822509766 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 9.371623992919922 seconds
+loading another fold took 0.03699779510498047 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.366577863693237 seconds
+loading another fold took 0.03467702865600586 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.464896440505981 seconds
+loading another fold took 0.03528475761413574 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.640117645263672 seconds
+loading another fold took 0.04079461097717285 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.85691785812378 seconds
+full prediction took 0.012894630432128906 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0584.nii.gz
+loading took 0.03769254684448242 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.25353455543518 seconds
+loading another fold took 0.036894798278808594 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.20251774787903 seconds
+loading another fold took 0.039846181869506836 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.301862955093384 seconds
+loading another fold took 0.04163765907287598 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.140209674835205 seconds
+loading another fold took 0.042627811431884766 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 86, 398, 495)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 15, 31, 46], [0, 87, 174], [0, 90, 181, 271]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.151867866516113 seconds
+full prediction took 0.01586008071899414 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0583.nii.gz
+loading took 0.038158416748046875 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 9.670597791671753 seconds
+loading another fold took 0.04291987419128418 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.440545082092285 seconds
+loading another fold took 0.03783988952636719 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.547683715820312 seconds
+loading another fold took 0.03721046447753906 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.534024238586426 seconds
+loading another fold took 0.036010026931762695 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 152, 224, 472)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 19, 37, 56, 75, 93, 112], [0], [0, 83, 165, 248]]
+number of tiles: 28
+using precomputed Gaussian
+prediction done
+another fold took 9.6687650680542 seconds
+full prediction took 0.01983499526977539 seconds
+predicting /exports/lkeb-hpc/smaijer/output/510/3d_fullres/nnUNetTrainerV2/600/imagesTs/panc_0517.nii.gz
+loading took 0.04523587226867676 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 92, 439, 498)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 35, 52], [0, 108, 215], [0, 91, 183, 274]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+fold 0 prediction took 16.14788556098938 seconds
+loading another fold took 0.03531074523925781 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 92, 439, 498)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 35, 52], [0, 108, 215], [0, 91, 183, 274]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.074055910110474 seconds
+loading another fold took 0.040694236755371094 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 92, 439, 498)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 35, 52], [0, 108, 215], [0, 91, 183, 274]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 15.998562097549438 seconds
+loading another fold took 0.03734254837036133 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 92, 439, 498)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 35, 52], [0, 108, 215], [0, 91, 183, 274]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.130339860916138 seconds
+loading another fold took 0.038817644119262695 seconds
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+data shape: (1, 92, 439, 498)
+patch size: [ 40 224 224]
+steps (x, y, and z): [[0, 17, 35, 52], [0, 108, 215], [0, 91, 183, 274]]
+number of tiles: 48
+using precomputed Gaussian
+prediction done
+another fold took 16.134938955307007 seconds
+full prediction took 0.01702141761779785 seconds
+inference done. Now waiting for the segmentation export to finish...
+postprocessing...
+postprocessing took 4.7438578605651855 seconds
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Program finished with exit code 0 at: Fri Aug 12 15:08:40 CEST 2022

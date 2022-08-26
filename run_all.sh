@@ -13,7 +13,7 @@ cpu=${cpu:-8}
 
 read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
-read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,empty]:" trainer
+read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,Loss_DC_CE_weight0X,empty]:" trainer
 
 read -p "Perform preprocessing? [y,]" prep
 

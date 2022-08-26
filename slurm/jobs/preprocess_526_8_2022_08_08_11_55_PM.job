@@ -1,5 +1,6 @@
 #!/bin/bash
 #SBATCH -J PancreasPreprocess
+#SBATCH -p LKEBgpu
 #SBATCH -N 1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8

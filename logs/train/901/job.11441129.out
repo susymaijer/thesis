@@ -1,0 +1,2143 @@
+Starting at Wed Aug 10 12:02:15 CEST 2022
+Running on hosts: res-hpc-lkeb04
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 8.
+Account: div2-lkeb
+Job ID: 11441129
+Job name: PancreasTrain
+Node running script: res-hpc-lkeb04
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS: 0 or 
+Wed Aug 10 13:09:58 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 495.29.05    Driver Version: 495.29.05    CUDA Version: 11.5     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  On   | 00000000:06:00.0 Off |                  N/A |
+| 32%   58C    P8    11W / 250W |      0MiB / 11178MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-hxgya1nw/hiddenlayer_96a02275d88b4ed5a902fc61b419d231
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Using legacy 'setup.py install' for hiddenlayer, since package 'wheel' is not installed.
+Installing collected packages: hiddenlayer
+    Running setup.py install for hiddenlayer: started
+    Running setup.py install for hiddenlayer: finished with status 'done'
+Successfully installed hiddenlayer-0.2
+Obtaining file:///home/smaijer/code/nnUNet
+Collecting torch==1.12.0
+  Using cached torch-1.12.0-cp310-cp310-manylinux1_x86_64.whl (776.3 MB)
+Collecting tqdm
+  Using cached tqdm-4.64.0-py2.py3-none-any.whl (78 kB)
+Collecting dicom2nifti
+  Using cached dicom2nifti-2.4.3-py3-none-any.whl (43 kB)
+Collecting scikit-image>=0.14
+  Using cached scikit_image-0.19.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.9 MB)
+Collecting medpy
+  Using cached MedPy-0.4.0-py3-none-any.whl
+Collecting scipy
+  Using cached scipy-1.9.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (43.9 MB)
+Collecting batchgenerators>=0.23
+  Using cached batchgenerators-0.24-py3-none-any.whl
+Collecting numpy
+  Using cached numpy-1.23.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.0 MB)
+Collecting sklearn
+  Using cached sklearn-0.0-py2.py3-none-any.whl
+Collecting SimpleITK
+  Using cached SimpleITK-2.1.1.2-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (48.4 MB)
+Collecting pandas
+  Using cached pandas-1.4.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.6 MB)
+Collecting requests
+  Using cached requests-2.28.1-py3-none-any.whl (62 kB)
+Collecting nibabel
+  Using cached nibabel-4.0.1-py3-none-any.whl (3.3 MB)
+Collecting tifffile
+  Using cached tifffile-2022.8.8-py3-none-any.whl (208 kB)
+Collecting matplotlib
+  Using cached matplotlib-3.5.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.9 MB)
+Collecting monai
+  Using cached monai-0.9.1-202207251608-py3-none-any.whl (990 kB)
+Collecting einops
+  Using cached einops-0.4.1-py3-none-any.whl (28 kB)
+Collecting ipython
+  Using cached ipython-8.4.0-py3-none-any.whl (750 kB)
+Collecting graphviz
+  Using cached graphviz-0.20.1-py3-none-any.whl (47 kB)
+Collecting typing-extensions
+  Using cached typing_extensions-4.3.0-py3-none-any.whl (25 kB)
+Collecting future
+  Using cached future-0.18.2-py3-none-any.whl
+Collecting scikit-learn
+  Using cached scikit_learn-1.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (30.5 MB)
+Collecting pillow>=7.1.2
+  Using cached Pillow-9.2.0-cp310-cp310-manylinux_2_28_x86_64.whl (3.2 MB)
+Collecting unittest2
+  Using cached unittest2-1.1.0-py2.py3-none-any.whl (96 kB)
+Collecting threadpoolctl
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting packaging>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting PyWavelets>=1.1.1
+  Using cached PyWavelets-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.9 MB)
+Collecting networkx>=2.2
+  Using cached networkx-2.8.5-py3-none-any.whl (2.0 MB)
+Collecting imageio>=2.4.1
+  Using cached imageio-2.21.1-py3-none-any.whl (3.4 MB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Using cached pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Collecting python-gdcm
+  Using cached python_gdcm-3.0.14-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.8 MB)
+Collecting pydicom>=2.2.0
+  Using cached pydicom-2.3.0-py3-none-any.whl (2.0 MB)
+Collecting decorator
+  Using cached decorator-5.1.1-py3-none-any.whl (9.1 kB)
+Collecting stack-data
+  Using cached stack_data-0.3.0-py3-none-any.whl (23 kB)
+Collecting jedi>=0.16
+  Using cached jedi-0.18.1-py2.py3-none-any.whl (1.6 MB)
+Collecting pickleshare
+  Using cached pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+Collecting pygments>=2.4.0
+  Using cached Pygments-2.12.0-py3-none-any.whl (1.1 MB)
+Collecting prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0
+  Using cached prompt_toolkit-3.0.30-py3-none-any.whl (381 kB)
+Collecting traitlets>=5
+  Using cached traitlets-5.3.0-py3-none-any.whl (106 kB)
+Collecting setuptools>=18.5
+  Using cached setuptools-63.4.2-py3-none-any.whl (1.2 MB)
+Collecting pexpect>4.3
+  Using cached pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+Collecting matplotlib-inline
+  Using cached matplotlib_inline-0.1.3-py3-none-any.whl (8.2 kB)
+Collecting backcall
+  Using cached backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+Collecting parso<0.9.0,>=0.8.0
+  Using cached parso-0.8.3-py2.py3-none-any.whl (100 kB)
+Collecting ptyprocess>=0.5
+  Using cached ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+Collecting fonttools>=4.22.0
+  Using cached fonttools-4.34.4-py3-none-any.whl (944 kB)
+Collecting kiwisolver>=1.0.1
+  Using cached kiwisolver-1.4.4-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+Collecting cycler>=0.10
+  Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting python-dateutil>=2.7
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Collecting six>=1.5
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting pytz>=2020.1
+  Using cached pytz-2022.1-py2.py3-none-any.whl (503 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Using cached urllib3-1.26.11-py2.py3-none-any.whl (139 kB)
+Collecting certifi>=2017.4.17
+  Using cached certifi-2022.6.15-py3-none-any.whl (160 kB)
+Collecting charset-normalizer<3,>=2
+  Using cached charset_normalizer-2.1.0-py3-none-any.whl (39 kB)
+Collecting idna<4,>=2.5
+  Using cached idna-3.3-py3-none-any.whl (61 kB)
+Collecting joblib>=1.0.0
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Collecting executing
+  Using cached executing-0.9.1-py2.py3-none-any.whl (16 kB)
+Collecting asttokens
+  Using cached asttokens-2.0.7-py2.py3-none-any.whl (23 kB)
+Collecting pure-eval
+  Using cached pure_eval-0.2.2-py3-none-any.whl (11 kB)
+Collecting traceback2
+  Using cached traceback2-1.4.0-py2.py3-none-any.whl (16 kB)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Collecting linecache2
+  Using cached linecache2-1.0.0-py2.py3-none-any.whl (12 kB)
+Installing collected packages: six, pyparsing, pillow, numpy, linecache2, wcwidth, typing-extensions, traitlets, traceback2, tifffile, threadpoolctl, setuptools, scipy, PyWavelets, pure-eval, ptyprocess, parso, packaging, networkx, joblib, imageio, executing, asttokens, argparse, urllib3, unittest2, torch, stack-data, SimpleITK, scikit-learn, scikit-image, pytz, python-gdcm, python-dateutil, pygments, pydicom, prompt-toolkit, pickleshare, pexpect, nibabel, matplotlib-inline, kiwisolver, jedi, idna, future, fonttools, decorator, cycler, charset-normalizer, certifi, backcall, tqdm, sklearn, requests, pandas, monai, medpy, matplotlib, ipython, graphviz, einops, dicom2nifti, batchgenerators, nnunet
+  Running setup.py develop for nnunet
+Successfully installed PyWavelets-1.3.0 SimpleITK-2.1.1.2 argparse-1.4.0 asttokens-2.0.7 backcall-0.2.0 batchgenerators-0.24 certifi-2022.6.15 charset-normalizer-2.1.0 cycler-0.11.0 decorator-5.1.1 dicom2nifti-2.4.3 einops-0.4.1 executing-0.9.1 fonttools-4.34.4 future-0.18.2 graphviz-0.20.1 idna-3.3 imageio-2.21.1 ipython-8.4.0 jedi-0.18.1 joblib-1.1.0 kiwisolver-1.4.4 linecache2-1.0.0 matplotlib-3.5.2 matplotlib-inline-0.1.3 medpy-0.4.0 monai-0.9.1 networkx-2.8.5 nibabel-4.0.1 nnunet numpy-1.23.1 packaging-21.3 pandas-1.4.3 parso-0.8.3 pexpect-4.8.0 pickleshare-0.7.5 pillow-9.2.0 prompt-toolkit-3.0.30 ptyprocess-0.7.0 pure-eval-0.2.2 pydicom-2.3.0 pygments-2.12.0 pyparsing-3.0.9 python-dateutil-2.8.2 python-gdcm-3.0.14 pytz-2022.1 requests-2.28.1 scikit-image-0.19.3 scikit-learn-1.1.2 scipy-1.9.0 setuptools-63.4.2 six-1.16.0 sklearn-0.0 stack-data-0.3.0 threadpoolctl-3.1.0 tifffile-2022.8.8 torch-1.12.0 tqdm-4.64.0 traceback2-1.4.0 traitlets-5.3.0 typing-extensions-4.3.0 unittest2-1.1.0 urllib3-1.26.11 wcwidth-0.2.5
+1.12.0+cu116
+8302
+/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/torch/__init__.py
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+Suus0 - run_training. Args:
+Namespace(network='3d_fullres', network_trainer='nnUNetTrainerV2_Loss_DC_CE_weight1', task='901', fold='0', validation_only=False, continue_training=False, p='nnUNetPlansv2.1', use_compressed_data=False, deterministic=False, npz=False, find_lr=False, valbest=False, fp32=False, val_folder='validation_raw', disable_saving=False, disable_postprocessing_on_folds=False, val_disable_overwrite=False, disable_next_stage_pred=False, pretrained_weights=None)
+###############################################
+I am running the following nnUNet: 3d_fullres
+My trainer class is:  <class 'nnunet.training.network_training.nnUNet_variants.loss_function.nnUNetTrainerV2_Loss_DC_CE_weight1.nnUNetTrainerV2_Loss_DC_CE_weight1'>
+For that I will be using the following configuration:
+num_classes:  4
+modalities:  {0: 'CT'}
+use_mask_for_norm OrderedDict([(0, False)])
+keep_only_largest_region None
+min_region_size_per_class None
+min_size_per_class None
+normalization_schemes OrderedDict([(0, 'CT')])
+stages...
+
+stage:  0
+{'batch_size': 2, 'num_pool_per_axis': [4, 5, 5], 'patch_size': array([ 96, 160, 160]), 'median_patient_size_in_voxels': array([147, 255, 255]), 'current_spacing': array([3.03      , 1.52075025, 1.52075025]), 'original_spacing': array([3.        , 0.75781244, 0.75781244]), 'do_dummy_2D_data_aug': False, 'pool_op_kernel_sizes': [[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [1, 2, 2]], 'conv_kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+stage:  1
+{'batch_size': 2, 'num_pool_per_axis': [3, 5, 5], 'patch_size': array([ 48, 192, 192]), 'median_patient_size_in_voxels': array([148, 512, 512]), 'current_spacing': array([3.        , 0.75781244, 0.75781244]), 'original_spacing': array([3.        , 0.75781244, 0.75781244]), 'do_dummy_2D_data_aug': True, 'pool_op_kernel_sizes': [[1, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [1, 2, 2]], 'conv_kernel_sizes': [[1, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]}
+
+I am using stage 1 from these plans
+I am using batch dice + CE loss
+
+I am using data from this folder:  /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task901/nnUNetData_plans_v2.1
+###############################################
+Suus1 - Initialise de NetworkTrainer
+Suus2 - Initialise de nnUNetTrainer
+Suus3 - Initialise de nnUNetTrainerV2
+Suus4 - Initialise de trainer echt
+Suus5 - zet de plans properties
+Suus6 - Zet de data augmentation params
+2022-08-10 13:11:44.493815: Using dummy2d data augmentation
+Suus7 - zet deep supervision weights die de meerdere outputs prioriteit geven
+loading dataset
+loading all case properties
+2022-08-10 13:11:44.557079: Using splits from existing split file: /exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task901/splits_final.pkl
+2022-08-10 13:11:44.561046: The split file contains 5 splits.
+2022-08-10 13:11:44.563194: Desired fold for training: 0
+2022-08-10 13:11:44.565148: This split has 20 training and 6 validation cases.
+unpacking dataset
+done
+Suus8 - Maak network aan (BELANGRIJK!)
+SuusB - first stride 
+Suus10 - StackedConvLayers, input: 1 en output: 32, first_stride: None, num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [1, 3, 3], 'padding': [0, 1, 1]}
+SuusA - first_stride [1, 2, 2]
+Suus10 - StackedConvLayers, input: 32 en output: 64, first_stride: [1, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 64 en output: 128, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 128 en output: 256, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 256 en output: 320, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: [1, 2, 2], num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 640 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 512 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 32 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Generic_UNet(
+  (encoder): Generic_UNETEncoder()
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(640, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (conv_blocks_context): ModuleList(
+    (0): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(1, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (1): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 64, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (2): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (3): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (4): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (5): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (td): ModuleList()
+  (tu): ModuleList(
+    (0): ConvTranspose3d(320, 320, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+    (1): ConvTranspose3d(320, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (4): ConvTranspose3d(64, 32, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(320, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(256, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(128, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(64, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (4): Conv3d(32, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+SuusB run_training - zet learning rate als  
+2022-08-10 13:11:46.207038: Suus1 maybe_update_lr lr: 0.01
+SuusC - run_training!
+using pin_memory on device 0
+using pin_memory on device 0
+Suus for now disable cause it breaks the logs
+2022-08-10 13:11:57.805645: Unable to plot network architecture:
+2022-08-10 13:11:57.808327: local variable 'g' referenced before assignment
+2022-08-10 13:11:57.810711: 
+printing the network instead:
+
+2022-08-10 13:11:57.813019: Generic_UNet(
+  (encoder): Generic_UNETEncoder()
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(640, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (conv_blocks_context): ModuleList(
+    (0): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(1, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 32, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (1): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 64, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (2): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (3): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (4): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (5): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (td): ModuleList()
+  (tu): ModuleList(
+    (0): ConvTranspose3d(320, 320, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+    (1): ConvTranspose3d(320, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (4): ConvTranspose3d(64, 32, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(320, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(256, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(128, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(64, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (4): Conv3d(32, 5, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+2022-08-10 13:11:57.819469: 
+
+2022-08-10 13:11:57.822041: 
+epoch:  0
+DC uitgerekend: tensor([0.0176, 0.0509, 0.0003, 0.0032], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0176, 0.0509, 0.0003, 0.0032], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.017965976148843765, zelfde als eerst: True
+DC uitgerekend: tensor([0.0164, 0.0800, 0.0003, 0.0031], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0164, 0.0800, 0.0003, 0.0031], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02492152899503708, zelfde als eerst: True
+DC uitgerekend: tensor([0.0199, 0.0794, 0.0002, 0.0034], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0199, 0.0794, 0.0002, 0.0034], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.025721648707985878, zelfde als eerst: True
+DC uitgerekend: tensor([0.0215, 0.0885, 0.0002, 0.0028], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0215, 0.0885, 0.0002, 0.0028], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02825467474758625, zelfde als eerst: True
+DC uitgerekend: tensor([0.0179, 0.0043, 0.0106, 0.0062], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0179, 0.0043, 0.0106, 0.0062], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009753754362463951, zelfde als eerst: True
+DC uitgerekend: tensor([0.0189, 0.0056, 0.0130, 0.0062], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0189, 0.0056, 0.0130, 0.0062], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.010932919569313526, zelfde als eerst: True
+DC uitgerekend: tensor([0.0220, 0.0035, 0.0159, 0.0064], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0220, 0.0035, 0.0159, 0.0064], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01197012234479189, zelfde als eerst: True
+DC uitgerekend: tensor([0.0179, 0.0036, 0.0146, 0.0058], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0179, 0.0036, 0.0146, 0.0058], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.010454162955284119, zelfde als eerst: True
+DC uitgerekend: tensor([0.0174, 0.0324, 0.0129, 0.0127], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0174, 0.0324, 0.0129, 0.0127], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.018848229199647903, zelfde als eerst: True
+DC uitgerekend: tensor([0.0188, 0.0565, 0.0118, 0.0115], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0188, 0.0565, 0.0118, 0.0115], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02465619333088398, zelfde als eerst: True
+DC uitgerekend: tensor([0.0187, 0.0573, 0.0182, 0.0117], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0187, 0.0573, 0.0182, 0.0117], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.026474343612790108, zelfde als eerst: True
+DC uitgerekend: tensor([0.0203, 0.0775, 0.0133, 0.0093], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0203, 0.0775, 0.0133, 0.0093], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03010043129324913, zelfde als eerst: True
+DC uitgerekend: tensor([0.0306, 0.0500, 0.0098, 0.0162], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0306, 0.0500, 0.0098, 0.0162], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.026617469266057014, zelfde als eerst: True
+DC uitgerekend: tensor([0.0251, 0.0509, 0.0103, 0.0138], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0251, 0.0509, 0.0103, 0.0138], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.025017302483320236, zelfde als eerst: True
+DC uitgerekend: tensor([0.0299, 0.0446, 0.0150, 0.0126], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0299, 0.0446, 0.0150, 0.0126], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.025537636131048203, zelfde als eerst: True
+DC uitgerekend: tensor([0.0261, 0.0472, 0.0110, 0.0080], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0261, 0.0472, 0.0110, 0.0080], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.023059476166963577, zelfde als eerst: True
+DC uitgerekend: tensor([2.1773e-02, 2.5156e-11, 2.2698e-02, 7.4350e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.1773e-02, 2.5156e-11, 2.2698e-02, 7.4350e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012976409867405891, zelfde als eerst: True
+DC uitgerekend: tensor([2.0070e-02, 8.2692e-11, 1.4801e-02, 6.7562e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.0070e-02, 8.2692e-11, 1.4801e-02, 6.7562e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.010406678542494774, zelfde als eerst: True
+DC uitgerekend: tensor([2.2216e-02, 6.0223e-10, 2.2430e-02, 6.5402e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.2216e-02, 6.0223e-10, 2.2430e-02, 6.5402e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012796523049473763, zelfde als eerst: True
+DC uitgerekend: tensor([2.0507e-02, 3.7987e-09, 2.3722e-02, 7.3464e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.0507e-02, 3.7987e-09, 2.3722e-02, 7.3464e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012893971055746078, zelfde als eerst: True
+DC uitgerekend: tensor([0.0045, 0.1747, 0.0148, 0.0185], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0045, 0.1747, 0.0148, 0.0185], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.05311853066086769, zelfde als eerst: True
+DC uitgerekend: tensor([0.0038, 0.1916, 0.0096, 0.0175], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0038, 0.1916, 0.0096, 0.0175], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.05559711903333664, zelfde als eerst: True
+DC uitgerekend: tensor([0.0038, 0.1918, 0.0131, 0.0144], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0038, 0.1918, 0.0131, 0.0144], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.05575200170278549, zelfde als eerst: True
+DC uitgerekend: tensor([0.0034, 0.2154, 0.0147, 0.0152], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0034, 0.2154, 0.0147, 0.0152], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.062188319861888885, zelfde als eerst: True
+DC uitgerekend: tensor([0.0055, 0.1142, 0.0028, 0.0036], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0055, 0.1142, 0.0028, 0.0036], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03151945397257805, zelfde als eerst: True
+DC uitgerekend: tensor([0.0049, 0.1107, 0.0024, 0.0029], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0049, 0.1107, 0.0024, 0.0029], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.030229005962610245, zelfde als eerst: True
+DC uitgerekend: tensor([0.0057, 0.0940, 0.0031, 0.0031], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0057, 0.0940, 0.0031, 0.0031], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.026481514796614647, zelfde als eerst: True
+DC uitgerekend: tensor([0.0036, 0.1042, 0.0021, 0.0035], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0036, 0.1042, 0.0021, 0.0035], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.028359655290842056, zelfde als eerst: True
+DC uitgerekend: tensor([0.0266, 0.0156, 0.0170, 0.0142], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0266, 0.0156, 0.0170, 0.0142], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.018334344029426575, zelfde als eerst: True
+DC uitgerekend: tensor([0.0235, 0.0133, 0.0123, 0.0129], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0235, 0.0133, 0.0123, 0.0129], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015484767965972424, zelfde als eerst: True
+DC uitgerekend: tensor([0.0253, 0.0106, 0.0162, 0.0135], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0253, 0.0106, 0.0162, 0.0135], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.016403425484895706, zelfde als eerst: True
+DC uitgerekend: tensor([0.0195, 0.0096, 0.0157, 0.0097], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0195, 0.0096, 0.0157, 0.0097], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013624722138047218, zelfde als eerst: True
+DC uitgerekend: tensor([0.0327, 0.0033, 0.0272, 0.0202], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0327, 0.0033, 0.0272, 0.0202], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.020842889323830605, zelfde als eerst: True
+DC uitgerekend: tensor([0.0297, 0.0033, 0.0166, 0.0188], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0297, 0.0033, 0.0166, 0.0188], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.017087522894144058, zelfde als eerst: True
+DC uitgerekend: tensor([0.0292, 0.0018, 0.0217, 0.0158], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0292, 0.0018, 0.0217, 0.0158], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.017126377671957016, zelfde als eerst: True
+DC uitgerekend: tensor([0.0255, 0.0022, 0.0210, 0.0149], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0255, 0.0022, 0.0210, 0.0149], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015897981822490692, zelfde als eerst: True
+DC uitgerekend: tensor([3.5093e-03, 2.7228e-11, 1.0485e-02, 2.7251e-11], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([3.5093e-03, 2.7228e-11, 1.0485e-02, 2.7251e-11], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0034985365346074104, zelfde als eerst: True
+DC uitgerekend: tensor([3.0913e-03, 9.8618e-11, 8.5164e-03, 8.7506e-11], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([3.0913e-03, 9.8618e-11, 8.5164e-03, 8.7506e-11], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0029019408393651247, zelfde als eerst: True
+DC uitgerekend: tensor([2.7652e-03, 6.9885e-10, 8.3962e-03, 1.0105e-09], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.7652e-03, 6.9885e-10, 8.3962e-03, 1.0105e-09], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0027903704904019833, zelfde als eerst: True
+DC uitgerekend: tensor([2.8271e-03, 4.5756e-09, 1.1826e-02, 6.1665e-09], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.8271e-03, 4.5756e-09, 1.1826e-02, 6.1665e-09], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.003663240931928158, zelfde als eerst: True
+DC uitgerekend: tensor([1.9177e-03, 2.9079e-11, 6.1308e-03, 3.9082e-04], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.9177e-03, 2.9079e-11, 6.1308e-03, 3.9082e-04], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0021098225843161345, zelfde als eerst: True
+DC uitgerekend: tensor([2.0739e-03, 1.0725e-10, 5.0392e-03, 8.5044e-04], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.0739e-03, 1.0725e-10, 5.0392e-03, 8.5044e-04], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0019908950198441744, zelfde als eerst: True
+DC uitgerekend: tensor([1.7037e-03, 7.2369e-10, 5.4243e-03, 1.1970e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.7037e-03, 7.2369e-10, 5.4243e-03, 1.1970e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.002081227255985141, zelfde als eerst: True
+DC uitgerekend: tensor([1.2674e-03, 4.8664e-09, 7.7204e-03, 8.0591e-04], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.2674e-03, 4.8664e-09, 7.7204e-03, 8.0591e-04], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0024484163150191307, zelfde als eerst: True
+DC uitgerekend: tensor([1.7685e-02, 2.7966e-11, 2.6736e-03, 7.5070e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.7685e-02, 2.7966e-11, 2.6736e-03, 7.5070e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0069662947207689285, zelfde als eerst: True
+DC uitgerekend: tensor([1.3975e-02, 1.0760e-10, 2.1230e-03, 9.3752e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.3975e-02, 1.0760e-10, 2.1230e-03, 9.3752e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0063683269545435905, zelfde als eerst: True
+DC uitgerekend: tensor([1.7290e-02, 7.8313e-10, 2.2773e-03, 9.3531e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.7290e-02, 7.8313e-10, 2.2773e-03, 9.3531e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.007230158429592848, zelfde als eerst: True
+DC uitgerekend: tensor([1.5647e-02, 5.2178e-09, 2.5712e-03, 5.4957e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.5647e-02, 5.2178e-09, 2.5712e-03, 5.4957e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0059285350143909454, zelfde als eerst: True
+DC uitgerekend: tensor([1.7935e-02, 3.3978e-11, 2.6841e-02, 5.5191e-04], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.7935e-02, 3.3978e-11, 2.6841e-02, 5.5191e-04], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.011332105845212936, zelfde als eerst: True
+DC uitgerekend: tensor([1.9784e-02, 1.2311e-10, 1.8541e-02, 4.2306e-04], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.9784e-02, 1.2311e-10, 1.8541e-02, 4.2306e-04], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009686990641057491, zelfde als eerst: True
+DC uitgerekend: tensor([1.9680e-02, 8.5733e-10, 2.3928e-02, 4.9117e-04], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.9680e-02, 8.5733e-10, 2.3928e-02, 4.9117e-04], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.011024732142686844, zelfde als eerst: True
+DC uitgerekend: tensor([1.8006e-02, 5.7897e-09, 3.9666e-02, 7.4859e-04], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.8006e-02, 5.7897e-09, 3.9666e-02, 7.4859e-04], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.014604998752474785, zelfde als eerst: True
+DC uitgerekend: tensor([0.0177, 0.0633, 0.0188, 0.0063], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0177, 0.0633, 0.0188, 0.0063], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.026557864621281624, zelfde als eerst: True
+DC uitgerekend: tensor([0.0236, 0.0502, 0.0173, 0.0077], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0236, 0.0502, 0.0173, 0.0077], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.024705149233341217, zelfde als eerst: True
+DC uitgerekend: tensor([0.0214, 0.0378, 0.0178, 0.0066], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0214, 0.0378, 0.0178, 0.0066], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.020888224244117737, zelfde als eerst: True
+DC uitgerekend: tensor([0.0178, 0.0317, 0.0169, 0.0051], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0178, 0.0317, 0.0169, 0.0051], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.017873968929052353, zelfde als eerst: True
+DC uitgerekend: tensor([0.0135, 0.0017, 0.0100, 0.0037], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0135, 0.0017, 0.0100, 0.0037], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.007239652797579765, zelfde als eerst: True
+DC uitgerekend: tensor([0.0134, 0.0011, 0.0093, 0.0038], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0134, 0.0011, 0.0093, 0.0038], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.006901565007865429, zelfde als eerst: True
+DC uitgerekend: tensor([0.0141, 0.0020, 0.0094, 0.0034], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0141, 0.0020, 0.0094, 0.0034], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.00722942128777504, zelfde als eerst: True
+DC uitgerekend: tensor([0.0143, 0.0023, 0.0089, 0.0022], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0143, 0.0023, 0.0089, 0.0022], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.006945351604372263, zelfde als eerst: True
+DC uitgerekend: tensor([0.0102, 0.1225, 0.0002, 0.0029], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0102, 0.1225, 0.0002, 0.0029], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03393242508172989, zelfde als eerst: True
+DC uitgerekend: tensor([1.4660e-02, 1.2805e-01, 8.7888e-05, 3.3845e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.4660e-02, 1.2805e-01, 8.7888e-05, 3.3845e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03654615581035614, zelfde als eerst: True
+DC uitgerekend: tensor([1.3225e-02, 1.0424e-01, 5.4084e-05, 2.9279e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.3225e-02, 1.0424e-01, 5.4084e-05, 2.9279e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03011089190840721, zelfde als eerst: True
+DC uitgerekend: tensor([1.1391e-02, 9.6055e-02, 9.2589e-09, 1.2269e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.1391e-02, 9.6055e-02, 9.2589e-09, 1.2269e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.027168191969394684, zelfde als eerst: True
+DC uitgerekend: tensor([3.9313e-03, 3.4170e-02, 5.3871e-11, 1.0855e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([3.9313e-03, 3.4170e-02, 5.3871e-11, 1.0855e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009796833619475365, zelfde als eerst: True
+DC uitgerekend: tensor([6.6766e-03, 7.7864e-02, 3.1501e-10, 2.2654e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([6.6766e-03, 7.7864e-02, 3.1501e-10, 2.2654e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02170160785317421, zelfde als eerst: True
+DC uitgerekend: tensor([6.9338e-03, 8.0092e-02, 1.3816e-09, 2.9206e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([6.9338e-03, 8.0092e-02, 1.3816e-09, 2.9206e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.022486679255962372, zelfde als eerst: True
+DC uitgerekend: tensor([5.3605e-03, 6.2592e-02, 1.0657e-08, 9.6878e-04], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([5.3605e-03, 6.2592e-02, 1.0657e-08, 9.6878e-04], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01723019964993, zelfde als eerst: True
+DC uitgerekend: tensor([0.0235, 0.0011, 0.0190, 0.0118], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0235, 0.0011, 0.0190, 0.0118], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013828886672854424, zelfde als eerst: True
+DC uitgerekend: tensor([0.0291, 0.0007, 0.0203, 0.0129], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0291, 0.0007, 0.0203, 0.0129], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01576884463429451, zelfde als eerst: True
+DC uitgerekend: tensor([0.0283, 0.0002, 0.0136, 0.0078], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0283, 0.0002, 0.0136, 0.0078], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012475668452680111, zelfde als eerst: True
+DC uitgerekend: tensor([0.0264, 0.0005, 0.0140, 0.0077], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0264, 0.0005, 0.0140, 0.0077], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012142338789999485, zelfde als eerst: True
+DC uitgerekend: tensor([1.7767e-02, 7.0606e-11, 1.5678e-02, 1.0346e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.7767e-02, 7.0606e-11, 1.5678e-02, 1.0346e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.010947948321700096, zelfde als eerst: True
+DC uitgerekend: tensor([2.7955e-02, 2.3145e-10, 1.8296e-02, 1.7048e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.7955e-02, 2.3145e-10, 1.8296e-02, 1.7048e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015824761241674423, zelfde als eerst: True
+DC uitgerekend: tensor([2.8261e-02, 2.0285e-09, 1.7760e-02, 1.3181e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.8261e-02, 2.0285e-09, 1.7760e-02, 1.3181e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.014800500124692917, zelfde als eerst: True
+DC uitgerekend: tensor([2.3056e-02, 1.4084e-08, 1.8613e-02, 1.3168e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.3056e-02, 1.4084e-08, 1.8613e-02, 1.3168e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013709207996726036, zelfde als eerst: True
+DC uitgerekend: tensor([0.0244, 0.0390, 0.0257, 0.0128], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0244, 0.0390, 0.0257, 0.0128], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02546348050236702, zelfde als eerst: True
+DC uitgerekend: tensor([0.0441, 0.0327, 0.0291, 0.0189], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0441, 0.0327, 0.0291, 0.0189], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03119416907429695, zelfde als eerst: True
+DC uitgerekend: tensor([0.0404, 0.0279, 0.0233, 0.0156], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0404, 0.0279, 0.0233, 0.0156], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.026797767728567123, zelfde als eerst: True
+DC uitgerekend: tensor([0.0386, 0.0219, 0.0213, 0.0125], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0386, 0.0219, 0.0213, 0.0125], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02361314371228218, zelfde als eerst: True
+DC uitgerekend: tensor([1.4923e-02, 7.1046e-11, 1.0441e-02, 1.0694e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.4923e-02, 7.1046e-11, 1.0441e-02, 1.0694e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009014585986733437, zelfde als eerst: True
+DC uitgerekend: tensor([1.3643e-02, 2.8043e-10, 9.6184e-03, 1.3284e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.3643e-02, 2.8043e-10, 9.6184e-03, 1.3284e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009136293083429337, zelfde als eerst: True
+DC uitgerekend: tensor([1.4792e-02, 2.7188e-09, 9.0950e-03, 9.7367e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.4792e-02, 2.7188e-09, 9.0950e-03, 9.7367e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.008405856788158417, zelfde als eerst: True
+DC uitgerekend: tensor([9.1125e-03, 1.9284e-08, 9.9622e-03, 8.7340e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([9.1125e-03, 1.9284e-08, 9.9622e-03, 8.7340e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0069521632976830006, zelfde als eerst: True
+DC uitgerekend: tensor([0.0119, 0.0015, 0.0144, 0.0055], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0119, 0.0015, 0.0144, 0.0055], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.008316531777381897, zelfde als eerst: True
+DC uitgerekend: tensor([0.0157, 0.0014, 0.0164, 0.0078], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0157, 0.0014, 0.0164, 0.0078], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.010336078703403473, zelfde als eerst: True
+DC uitgerekend: tensor([0.0150, 0.0006, 0.0129, 0.0067], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0150, 0.0006, 0.0129, 0.0067], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.008810622617602348, zelfde als eerst: True
+DC uitgerekend: tensor([0.0108, 0.0010, 0.0210, 0.0078], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0108, 0.0010, 0.0210, 0.0078], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01013600267469883, zelfde als eerst: True
+DC uitgerekend: tensor([0.0168, 0.0049, 0.0198, 0.0127], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0168, 0.0049, 0.0198, 0.0127], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013563196174800396, zelfde als eerst: True
+DC uitgerekend: tensor([0.0235, 0.0035, 0.0315, 0.0161], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0235, 0.0035, 0.0315, 0.0161], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.018621090799570084, zelfde als eerst: True
+DC uitgerekend: tensor([0.0213, 0.0017, 0.0229, 0.0117], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0213, 0.0017, 0.0229, 0.0117], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01438700407743454, zelfde als eerst: True
+DC uitgerekend: tensor([0.0209, 0.0020, 0.0305, 0.0112], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0209, 0.0020, 0.0305, 0.0112], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.016157381236553192, zelfde als eerst: True
+DC uitgerekend: tensor([0.0030, 0.0227, 0.0254, 0.0058], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0030, 0.0227, 0.0254, 0.0058], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01420997641980648, zelfde als eerst: True
+DC uitgerekend: tensor([0.0032, 0.0170, 0.0281, 0.0047], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0032, 0.0170, 0.0281, 0.0047], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013249589130282402, zelfde als eerst: True
+DC uitgerekend: tensor([0.0018, 0.0163, 0.0179, 0.0034], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0018, 0.0163, 0.0179, 0.0034], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009861031547188759, zelfde als eerst: True
+DC uitgerekend: tensor([0.0030, 0.0142, 0.0194, 0.0036], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0030, 0.0142, 0.0194, 0.0036], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.010031944140791893, zelfde als eerst: True
+DC uitgerekend: tensor([0.0103, 0.0382, 0.0200, 0.0108], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0103, 0.0382, 0.0200, 0.0108], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01982453092932701, zelfde als eerst: True
+DC uitgerekend: tensor([0.0117, 0.0309, 0.0343, 0.0104], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0117, 0.0309, 0.0343, 0.0104], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.021826956421136856, zelfde als eerst: True
+DC uitgerekend: tensor([0.0095, 0.0188, 0.0222, 0.0073], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0095, 0.0188, 0.0222, 0.0073], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01442158967256546, zelfde als eerst: True
+DC uitgerekend: tensor([0.0107, 0.0172, 0.0285, 0.0057], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0107, 0.0172, 0.0285, 0.0057], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015500887297093868, zelfde als eerst: True
+DC uitgerekend: tensor([0.0103, 0.0366, 0.0184, 0.0068], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0103, 0.0366, 0.0184, 0.0068], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01801237091422081, zelfde als eerst: True
+DC uitgerekend: tensor([0.0249, 0.0648, 0.0329, 0.0092], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0249, 0.0648, 0.0329, 0.0092], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03292088210582733, zelfde als eerst: True
+DC uitgerekend: tensor([0.0186, 0.0415, 0.0203, 0.0061], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0186, 0.0415, 0.0203, 0.0061], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.021614007651805878, zelfde als eerst: True
+DC uitgerekend: tensor([0.0136, 0.0377, 0.0149, 0.0072], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0136, 0.0377, 0.0149, 0.0072], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01834794506430626, zelfde als eerst: True
+DC uitgerekend: tensor([0.0088, 0.0244, 0.0143, 0.0068], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0088, 0.0244, 0.0143, 0.0068], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013552450574934483, zelfde als eerst: True
+DC uitgerekend: tensor([0.0215, 0.0235, 0.0195, 0.0101], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0215, 0.0235, 0.0195, 0.0101], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.018653636798262596, zelfde als eerst: True
+DC uitgerekend: tensor([0.0174, 0.0199, 0.0167, 0.0086], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0174, 0.0199, 0.0167, 0.0086], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015664713457226753, zelfde als eerst: True
+DC uitgerekend: tensor([0.0161, 0.0142, 0.0185, 0.0076], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0161, 0.0142, 0.0185, 0.0076], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.014087185263633728, zelfde als eerst: True
+DC uitgerekend: tensor([0.0054, 0.0442, 0.0173, 0.0067], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0054, 0.0442, 0.0173, 0.0067], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.018392760306596756, zelfde als eerst: True
+DC uitgerekend: tensor([0.0166, 0.0453, 0.0270, 0.0063], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0166, 0.0453, 0.0270, 0.0063], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02381376177072525, zelfde als eerst: True
+DC uitgerekend: tensor([0.0151, 0.0240, 0.0143, 0.0049], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0151, 0.0240, 0.0143, 0.0049], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01455237902700901, zelfde als eerst: True
+DC uitgerekend: tensor([0.0129, 0.0223, 0.0131, 0.0052], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0129, 0.0223, 0.0131, 0.0052], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013347571715712547, zelfde als eerst: True
+DC uitgerekend: tensor([0.0050, 0.0023, 0.0188, 0.0154], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0050, 0.0023, 0.0188, 0.0154], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.010367948561906815, zelfde als eerst: True
+DC uitgerekend: tensor([0.0143, 0.0016, 0.0317, 0.0151], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0143, 0.0016, 0.0317, 0.0151], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01567535102367401, zelfde als eerst: True
+DC uitgerekend: tensor([0.0106, 0.0017, 0.0115, 0.0083], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0106, 0.0017, 0.0115, 0.0083], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.008022545836865902, zelfde als eerst: True
+DC uitgerekend: tensor([0.0100, 0.0014, 0.0131, 0.0060], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0100, 0.0014, 0.0131, 0.0060], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.007634439505636692, zelfde als eerst: True
+DC uitgerekend: tensor([2.4760e-03, 3.1404e-10, 4.1485e-03, 9.3051e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.4760e-03, 3.1404e-10, 4.1485e-03, 9.3051e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.003982375375926495, zelfde als eerst: True
+DC uitgerekend: tensor([9.6056e-03, 9.6832e-10, 2.5287e-03, 1.0365e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([9.6056e-03, 9.6832e-10, 2.5287e-03, 1.0365e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.005624810233712196, zelfde als eerst: True
+DC uitgerekend: tensor([8.8963e-03, 1.3404e-08, 1.1584e-03, 8.8483e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([8.8963e-03, 1.3404e-08, 1.1584e-03, 8.8483e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.004725745879113674, zelfde als eerst: True
+DC uitgerekend: tensor([4.4134e-03, 1.2518e-07, 2.2990e-04, 9.0935e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([4.4134e-03, 1.2518e-07, 2.2990e-04, 9.0935e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0034342389553785324, zelfde als eerst: True
+DC uitgerekend: tensor([0.0038, 0.0259, 0.0142, 0.0126], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0038, 0.0259, 0.0142, 0.0126], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.014121392741799355, zelfde als eerst: True
+DC uitgerekend: tensor([0.0055, 0.0240, 0.0123, 0.0099], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0055, 0.0240, 0.0123, 0.0099], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01290331594645977, zelfde als eerst: True
+DC uitgerekend: tensor([0.0033, 0.0148, 0.0062, 0.0047], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0033, 0.0148, 0.0062, 0.0047], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.007284090388566256, zelfde als eerst: True
+DC uitgerekend: tensor([0.0040, 0.0153, 0.0067, 0.0034], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0040, 0.0153, 0.0067, 0.0034], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.00734706362709403, zelfde als eerst: True
+DC uitgerekend: tensor([0.0007, 0.0361, 0.0167, 0.0011], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0007, 0.0361, 0.0167, 0.0011], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013663768768310547, zelfde als eerst: True
+DC uitgerekend: tensor([0.0011, 0.0321, 0.0166, 0.0019], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0011, 0.0321, 0.0166, 0.0019], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012914950028061867, zelfde als eerst: True
+DC uitgerekend: tensor([0.0015, 0.0132, 0.0089, 0.0011], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0015, 0.0132, 0.0089, 0.0011], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.006189946085214615, zelfde als eerst: True
+DC uitgerekend: tensor([0.0019, 0.0155, 0.0074, 0.0011], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0019, 0.0155, 0.0074, 0.0011], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.006491487845778465, zelfde als eerst: True
+DC uitgerekend: tensor([0.0027, 0.0007, 0.0058, 0.0080], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0027, 0.0007, 0.0058, 0.0080], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.004313466139137745, zelfde als eerst: True
+DC uitgerekend: tensor([0.0111, 0.0007, 0.0127, 0.0107], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0111, 0.0007, 0.0127, 0.0107], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.008805816993117332, zelfde als eerst: True
+DC uitgerekend: tensor([0.0084, 0.0025, 0.0059, 0.0068], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0084, 0.0025, 0.0059, 0.0068], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.005896533839404583, zelfde als eerst: True
+DC uitgerekend: tensor([0.0053, 0.0005, 0.0041, 0.0043], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0053, 0.0005, 0.0041, 0.0043], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.003563546808436513, zelfde als eerst: True
+DC uitgerekend: tensor([0.0029, 0.0344, 0.0221, 0.0082], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0029, 0.0344, 0.0221, 0.0082], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01690286211669445, zelfde als eerst: True
+DC uitgerekend: tensor([0.0095, 0.0411, 0.0262, 0.0069], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0095, 0.0411, 0.0262, 0.0069], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02092181332409382, zelfde als eerst: True
+DC uitgerekend: tensor([0.0071, 0.0271, 0.0079, 0.0020], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0071, 0.0271, 0.0079, 0.0020], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.011049606837332249, zelfde als eerst: True
+DC uitgerekend: tensor([0.0042, 0.0107, 0.0040, 0.0009], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0042, 0.0107, 0.0040, 0.0009], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.004938481375575066, zelfde als eerst: True
+DC uitgerekend: tensor([0.0055, 0.0303, 0.0235, 0.0124], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0055, 0.0303, 0.0235, 0.0124], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.017928745597600937, zelfde als eerst: True
+DC uitgerekend: tensor([0.0135, 0.0224, 0.0257, 0.0097], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0135, 0.0224, 0.0257, 0.0097], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.017824530601501465, zelfde als eerst: True
+DC uitgerekend: tensor([0.0065, 0.0135, 0.0067, 0.0052], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0065, 0.0135, 0.0067, 0.0052], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0079722311347723, zelfde als eerst: True
+DC uitgerekend: tensor([0.0055, 0.0053, 0.0059, 0.0031], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0055, 0.0053, 0.0059, 0.0031], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0049467021599411964, zelfde als eerst: True
+DC uitgerekend: tensor([1.0433e-03, 2.0066e-10, 6.5065e-03, 2.6520e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.0433e-03, 2.0066e-10, 6.5065e-03, 2.6520e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0025504385121166706, zelfde als eerst: True
+DC uitgerekend: tensor([3.1592e-03, 1.1086e-09, 7.5838e-03, 5.2607e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([3.1592e-03, 1.1086e-09, 7.5838e-03, 5.2607e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0040009357035160065, zelfde als eerst: True
+DC uitgerekend: tensor([1.9230e-03, 2.4257e-08, 3.5769e-03, 2.7057e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.9230e-03, 2.4257e-08, 3.5769e-03, 2.7057e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0020514000207185745, zelfde als eerst: True
+DC uitgerekend: tensor([1.4932e-03, 3.3310e-07, 4.9564e-03, 2.7382e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.4932e-03, 3.3310e-07, 4.9564e-03, 2.7382e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.002297058003023267, zelfde als eerst: True
+DC uitgerekend: tensor([0.0020, 0.0027, 0.0169, 0.0161], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0020, 0.0027, 0.0169, 0.0161], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009440825320780277, zelfde als eerst: True
+DC uitgerekend: tensor([0.0048, 0.0010, 0.0216, 0.0116], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0048, 0.0010, 0.0216, 0.0116], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009737102314829826, zelfde als eerst: True
+DC uitgerekend: tensor([0.0024, 0.0005, 0.0037, 0.0044], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0024, 0.0005, 0.0037, 0.0044], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0027444700244814157, zelfde als eerst: True
+DC uitgerekend: tensor([0.0015, 0.0007, 0.0026, 0.0025], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0015, 0.0007, 0.0026, 0.0025], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0018222491489723325, zelfde als eerst: True
+DC uitgerekend: tensor([0.0031, 0.0049, 0.0100, 0.0117], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0031, 0.0049, 0.0100, 0.0117], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0074427565559744835, zelfde als eerst: True
+DC uitgerekend: tensor([0.0126, 0.0050, 0.0196, 0.0123], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0126, 0.0050, 0.0196, 0.0123], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012368300929665565, zelfde als eerst: True
+DC uitgerekend: tensor([0.0049, 0.0080, 0.0044, 0.0053], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0049, 0.0080, 0.0044, 0.0053], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.005654952023178339, zelfde als eerst: True
+DC uitgerekend: tensor([0.0027, 0.0021, 0.0022, 0.0037], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0027, 0.0021, 0.0022, 0.0037], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0026776734739542007, zelfde als eerst: True
+DC uitgerekend: tensor([6.9279e-03, 2.8742e-10, 1.7990e-02, 1.0831e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([6.9279e-03, 2.8742e-10, 1.7990e-02, 1.0831e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.008937237784266472, zelfde als eerst: True
+DC uitgerekend: tensor([1.0997e-02, 1.4176e-09, 2.7675e-02, 9.2082e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.0997e-02, 1.4176e-09, 2.7675e-02, 9.2082e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.011969962157309055, zelfde als eerst: True
+DC uitgerekend: tensor([4.9550e-03, 2.3427e-08, 5.7225e-03, 3.4037e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([4.9550e-03, 2.3427e-08, 5.7225e-03, 3.4037e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0035203248262405396, zelfde als eerst: True
+DC uitgerekend: tensor([1.9804e-03, 5.3660e-07, 3.0936e-03, 1.6812e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.9804e-03, 5.3660e-07, 3.0936e-03, 1.6812e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0016889444086700678, zelfde als eerst: True
+DC uitgerekend: tensor([0.0062, 0.0356, 0.0192, 0.0029], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0062, 0.0356, 0.0192, 0.0029], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015988439321517944, zelfde als eerst: True
+DC uitgerekend: tensor([0.0045, 0.0435, 0.0268, 0.0009], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0045, 0.0435, 0.0268, 0.0009], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.018911542370915413, zelfde als eerst: True
+DC uitgerekend: tensor([0.0033, 0.0223, 0.0041, 0.0016], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0033, 0.0223, 0.0041, 0.0016], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.007831620052456856, zelfde als eerst: True
+DC uitgerekend: tensor([0.0005, 0.0065, 0.0017, 0.0006], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0005, 0.0065, 0.0017, 0.0006], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0023290629032999277, zelfde als eerst: True
+DC uitgerekend: tensor([0.0089, 0.0908, 0.0336, 0.0239], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0089, 0.0908, 0.0336, 0.0239], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03929781913757324, zelfde als eerst: True
+DC uitgerekend: tensor([0.0174, 0.0498, 0.0285, 0.0145], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0174, 0.0498, 0.0285, 0.0145], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02755177952349186, zelfde als eerst: True
+DC uitgerekend: tensor([0.0053, 0.0406, 0.0050, 0.0034], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0053, 0.0406, 0.0050, 0.0034], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01356392353773117, zelfde als eerst: True
+DC uitgerekend: tensor([0.0026, 0.0091, 0.0011, 0.0019], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0026, 0.0091, 0.0011, 0.0019], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.003671573707833886, zelfde als eerst: True
+DC uitgerekend: tensor([0.0264, 0.0427, 0.0004, 0.0097], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0264, 0.0427, 0.0004, 0.0097], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01980265974998474, zelfde als eerst: True
+DC uitgerekend: tensor([0.0166, 0.0435, 0.0002, 0.0048], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0166, 0.0435, 0.0002, 0.0048], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01627270318567753, zelfde als eerst: True
+DC uitgerekend: tensor([0.0068, 0.0094, 0.0001, 0.0024], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0068, 0.0094, 0.0001, 0.0024], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0046867975033819675, zelfde als eerst: True
+DC uitgerekend: tensor([0.0022, 0.0031, 0.0002, 0.0011], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0022, 0.0031, 0.0002, 0.0011], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0016374229453504086, zelfde als eerst: True
+DC uitgerekend: tensor([0.0019, 0.0471, 0.0106, 0.0032], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0019, 0.0471, 0.0106, 0.0032], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015707675367593765, zelfde als eerst: True
+DC uitgerekend: tensor([0.0040, 0.0574, 0.0189, 0.0047], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0040, 0.0574, 0.0189, 0.0047], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.021226447075605392, zelfde als eerst: True
+DC uitgerekend: tensor([0.0011, 0.0269, 0.0051, 0.0027], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0011, 0.0269, 0.0051, 0.0027], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.00893703568726778, zelfde als eerst: True
+DC uitgerekend: tensor([0.0003, 0.0083, 0.0018, 0.0010], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0003, 0.0083, 0.0018, 0.0010], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0028610723093152046, zelfde als eerst: True
+DC uitgerekend: tensor([0.0127, 0.0055, 0.0092, 0.0111], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0127, 0.0055, 0.0092, 0.0111], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009622985497117043, zelfde als eerst: True
+DC uitgerekend: tensor([0.0190, 0.0031, 0.0180, 0.0066], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0190, 0.0031, 0.0180, 0.0066], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.011688800528645515, zelfde als eerst: True
+DC uitgerekend: tensor([0.0083, 0.0007, 0.0034, 0.0045], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0083, 0.0007, 0.0034, 0.0045], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.004232755862176418, zelfde als eerst: True
+DC uitgerekend: tensor([0.0018, 0.0003, 0.0012, 0.0021], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0018, 0.0003, 0.0012, 0.0021], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0013395743444561958, zelfde als eerst: True
+DC uitgerekend: tensor([1.8826e-02, 5.4855e-02, 3.7550e-10, 5.0463e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.8826e-02, 5.4855e-02, 3.7550e-10, 5.0463e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0196819007396698, zelfde als eerst: True
+DC uitgerekend: tensor([1.4019e-02, 5.2979e-02, 9.6124e-10, 3.5674e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.4019e-02, 5.2979e-02, 9.6124e-10, 3.5674e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.017641238868236542, zelfde als eerst: True
+DC uitgerekend: tensor([8.4271e-03, 2.8162e-02, 4.7400e-08, 1.9799e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([8.4271e-03, 2.8162e-02, 4.7400e-08, 1.9799e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009642344899475574, zelfde als eerst: True
+DC uitgerekend: tensor([2.6221e-03, 6.8126e-03, 1.2835e-06, 1.2720e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.6221e-03, 6.8126e-03, 1.2835e-06, 1.2720e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0026770003605633974, zelfde als eerst: True
+DC uitgerekend: tensor([0.0446, 0.0300, 0.0119, 0.0127], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0446, 0.0300, 0.0119, 0.0127], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.024830341339111328, zelfde als eerst: True
+DC uitgerekend: tensor([0.0249, 0.0240, 0.0197, 0.0063], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0249, 0.0240, 0.0197, 0.0063], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.018693655729293823, zelfde als eerst: True
+DC uitgerekend: tensor([0.0100, 0.0274, 0.0041, 0.0064], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0100, 0.0274, 0.0041, 0.0064], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.011974459514021873, zelfde als eerst: True
+DC uitgerekend: tensor([0.0013, 0.0049, 0.0013, 0.0021], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0013, 0.0049, 0.0013, 0.0021], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.002404754515737295, zelfde als eerst: True
+DC uitgerekend: tensor([1.1254e-02, 7.5625e-11, 2.0692e-02, 3.2724e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.1254e-02, 7.5625e-11, 2.0692e-02, 3.2724e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.016167566180229187, zelfde als eerst: True
+DC uitgerekend: tensor([2.1631e-02, 4.6759e-10, 1.9659e-02, 2.1758e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.1631e-02, 4.6759e-10, 1.9659e-02, 2.1758e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015762027353048325, zelfde als eerst: True
+DC uitgerekend: tensor([5.7665e-03, 7.0949e-09, 4.2884e-03, 5.6523e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([5.7665e-03, 7.0949e-09, 4.2884e-03, 5.6523e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0039268066175282, zelfde als eerst: True
+DC uitgerekend: tensor([1.0641e-03, 4.8587e-07, 1.6325e-03, 1.3053e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.0641e-03, 4.8587e-07, 1.6325e-03, 1.3053e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0010005827061831951, zelfde als eerst: True
+DC uitgerekend: tensor([0.0112, 0.0774, 0.0585, 0.0514], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0112, 0.0774, 0.0585, 0.0514], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0496286004781723, zelfde als eerst: True
+DC uitgerekend: tensor([0.0341, 0.0782, 0.0381, 0.0262], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0341, 0.0782, 0.0381, 0.0262], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.04416831582784653, zelfde als eerst: True
+DC uitgerekend: tensor([0.0122, 0.0779, 0.0046, 0.0067], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0122, 0.0779, 0.0046, 0.0067], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.025329159572720528, zelfde als eerst: True
+DC uitgerekend: tensor([0.0017, 0.0074, 0.0011, 0.0016], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0017, 0.0074, 0.0011, 0.0016], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0029552094638347626, zelfde als eerst: True
+DC uitgerekend: tensor([0.0127, 0.0795, 0.0169, 0.0226], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0127, 0.0795, 0.0169, 0.0226], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03293924033641815, zelfde als eerst: True
+DC uitgerekend: tensor([0.0264, 0.0664, 0.0222, 0.0157], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0264, 0.0664, 0.0222, 0.0157], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03270789235830307, zelfde als eerst: True
+DC uitgerekend: tensor([0.0109, 0.0634, 0.0032, 0.0062], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0109, 0.0634, 0.0032, 0.0062], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.020933780819177628, zelfde als eerst: True
+DC uitgerekend: tensor([0.0014, 0.0065, 0.0006, 0.0014], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0014, 0.0065, 0.0006, 0.0014], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0024994390551000834, zelfde als eerst: True
+DC uitgerekend: tensor([0.0078, 0.1801, 0.0742, 0.0060], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0078, 0.1801, 0.0742, 0.0060], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.06704395264387131, zelfde als eerst: True
+DC uitgerekend: tensor([0.0193, 0.1330, 0.0553, 0.0046], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0193, 0.1330, 0.0553, 0.0046], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.05304351821541786, zelfde als eerst: True
+DC uitgerekend: tensor([0.0085, 0.1206, 0.0109, 0.0015], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0085, 0.1206, 0.0109, 0.0015], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03538160398602486, zelfde als eerst: True
+DC uitgerekend: tensor([0.0008, 0.0093, 0.0021, 0.0004], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0008, 0.0093, 0.0021, 0.0004], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0031528035178780556, zelfde als eerst: True
+DC uitgerekend: tensor([0.0062, 0.0002, 0.0109, 0.0085], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0062, 0.0002, 0.0109, 0.0085], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.006416344083845615, zelfde als eerst: True
+DC uitgerekend: tensor([0.0131, 0.0002, 0.0033, 0.0104], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0131, 0.0002, 0.0033, 0.0104], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.006732959300279617, zelfde als eerst: True
+DC uitgerekend: tensor([1.1833e-02, 3.8206e-09, 6.9035e-04, 1.0541e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.1833e-02, 3.8206e-09, 6.9035e-04, 1.0541e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0057662660256028175, zelfde als eerst: True
+DC uitgerekend: tensor([2.1352e-03, 2.9445e-07, 9.1593e-05, 2.0158e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.1352e-03, 2.9445e-07, 9.1593e-05, 2.0158e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.001060730079188943, zelfde als eerst: True
+DC uitgerekend: tensor([9.0238e-03, 9.7245e-02, 1.0555e-10, 2.0946e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([9.0238e-03, 9.7245e-02, 1.0555e-10, 2.0946e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02709077298641205, zelfde als eerst: True
+DC uitgerekend: tensor([1.1109e-02, 1.1088e-01, 5.5190e-10, 1.2349e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.1109e-02, 1.1088e-01, 5.5190e-10, 1.2349e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03080652840435505, zelfde als eerst: True
+DC uitgerekend: tensor([8.1245e-03, 9.2170e-02, 2.0844e-08, 1.7278e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([8.1245e-03, 9.2170e-02, 2.0844e-08, 1.7278e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.025505637750029564, zelfde als eerst: True
+DC uitgerekend: tensor([2.1164e-03, 1.4810e-02, 9.3568e-07, 1.2514e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.1164e-03, 1.4810e-02, 9.3568e-07, 1.2514e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.004544591531157494, zelfde als eerst: True
+DC uitgerekend: tensor([0.0134, 0.0288, 0.0022, 0.0185], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0134, 0.0288, 0.0022, 0.0185], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015749134123325348, zelfde als eerst: True
+DC uitgerekend: tensor([0.0180, 0.0460, 0.0054, 0.0156], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0180, 0.0460, 0.0054, 0.0156], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.021252088248729706, zelfde als eerst: True
+DC uitgerekend: tensor([0.0084, 0.0644, 0.0022, 0.0061], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0084, 0.0644, 0.0022, 0.0061], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.020268134772777557, zelfde als eerst: True
+DC uitgerekend: tensor([0.0010, 0.0099, 0.0007, 0.0014], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0010, 0.0099, 0.0007, 0.0014], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0032612401992082596, zelfde als eerst: True
+DC uitgerekend: tensor([9.1365e-03, 1.0960e-10, 3.8034e-02, 2.4241e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([9.1365e-03, 1.0960e-10, 3.8034e-02, 2.4241e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01785295642912388, zelfde als eerst: True
+DC uitgerekend: tensor([2.6167e-02, 4.1029e-10, 2.3037e-02, 1.9496e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.6167e-02, 4.1029e-10, 2.3037e-02, 1.9496e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.017174823209643364, zelfde als eerst: True
+DC uitgerekend: tensor([5.2897e-03, 3.7377e-09, 3.8832e-03, 8.1903e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([5.2897e-03, 3.7377e-09, 3.8832e-03, 8.1903e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.004340795800089836, zelfde als eerst: True
+DC uitgerekend: tensor([6.5836e-04, 3.6756e-07, 5.5680e-04, 1.0187e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([6.5836e-04, 3.6756e-07, 5.5680e-04, 1.0187e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0005585513426922262, zelfde als eerst: True
+DC uitgerekend: tensor([0.0162, 0.1247, 0.0374, 0.0013], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0162, 0.1247, 0.0374, 0.0013], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.04488169401884079, zelfde als eerst: True
+DC uitgerekend: tensor([0.0170, 0.1283, 0.0345, 0.0024], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0170, 0.1283, 0.0345, 0.0024], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0455641895532608, zelfde als eerst: True
+DC uitgerekend: tensor([0.0120, 0.0941, 0.0113, 0.0004], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0120, 0.0941, 0.0113, 0.0004], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02943958155810833, zelfde als eerst: True
+DC uitgerekend: tensor([1.5994e-03, 4.0551e-03, 1.2628e-03, 8.4671e-05], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.5994e-03, 4.0551e-03, 1.2628e-03, 8.4671e-05], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0017504934221506119, zelfde als eerst: True
+DC uitgerekend: tensor([0.0165, 0.0121, 0.0130, 0.0072], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0165, 0.0121, 0.0130, 0.0072], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012219426222145557, zelfde als eerst: True
+DC uitgerekend: tensor([0.0258, 0.0118, 0.0342, 0.0122], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0258, 0.0118, 0.0342, 0.0122], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.021027132868766785, zelfde als eerst: True
+DC uitgerekend: tensor([0.0139, 0.0047, 0.0069, 0.0058], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0139, 0.0047, 0.0069, 0.0058], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.007811699062585831, zelfde als eerst: True
+DC uitgerekend: tensor([0.0009, 0.0002, 0.0005, 0.0006], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0009, 0.0002, 0.0005, 0.0006], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0005507822497747838, zelfde als eerst: True
+DC uitgerekend: tensor([1.5541e-02, 1.2725e-10, 6.6716e-02, 6.0368e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.5541e-02, 1.2725e-10, 6.6716e-02, 6.0368e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.035656362771987915, zelfde als eerst: True
+DC uitgerekend: tensor([3.9979e-02, 3.0336e-10, 3.3455e-02, 3.4252e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([3.9979e-02, 3.0336e-10, 3.3455e-02, 3.4252e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.026921536773443222, zelfde als eerst: True
+DC uitgerekend: tensor([2.3055e-02, 2.1309e-09, 1.4711e-02, 1.2758e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.3055e-02, 2.1309e-09, 1.4711e-02, 1.2758e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012631021440029144, zelfde als eerst: True
+DC uitgerekend: tensor([2.3518e-03, 1.6983e-07, 1.2758e-03, 1.6852e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.3518e-03, 1.6983e-07, 1.2758e-03, 1.6852e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0013282548170536757, zelfde als eerst: True
+DC uitgerekend: tensor([0.0087, 0.1063, 0.0115, 0.0015], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0087, 0.1063, 0.0115, 0.0015], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.031998246908187866, zelfde als eerst: True
+DC uitgerekend: tensor([0.0162, 0.1090, 0.0094, 0.0018], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0162, 0.1090, 0.0094, 0.0018], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03407657891511917, zelfde als eerst: True
+DC uitgerekend: tensor([0.0200, 0.1346, 0.0048, 0.0035], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0200, 0.1346, 0.0048, 0.0035], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.04071226716041565, zelfde als eerst: True
+DC uitgerekend: tensor([4.9888e-03, 4.7178e-02, 9.2415e-05, 3.0066e-04], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([4.9888e-03, 4.7178e-02, 9.2415e-05, 3.0066e-04], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013139975257217884, zelfde als eerst: True
+DC uitgerekend: tensor([0.0098, 0.0343, 0.0268, 0.0294], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0098, 0.0343, 0.0268, 0.0294], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.025048352777957916, zelfde als eerst: True
+DC uitgerekend: tensor([0.0240, 0.0387, 0.0236, 0.0129], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0240, 0.0387, 0.0236, 0.0129], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.024809876456856728, zelfde als eerst: True
+DC uitgerekend: tensor([0.0152, 0.0272, 0.0086, 0.0047], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0152, 0.0272, 0.0086, 0.0047], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013904398307204247, zelfde als eerst: True
+DC uitgerekend: tensor([0.0003, 0.0015, 0.0006, 0.0002], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0003, 0.0015, 0.0006, 0.0002], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0006476689595729113, zelfde als eerst: True
+DC uitgerekend: tensor([0.0174, 0.0601, 0.0448, 0.0208], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0174, 0.0601, 0.0448, 0.0208], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03576977550983429, zelfde als eerst: True
+DC uitgerekend: tensor([0.0379, 0.0679, 0.0305, 0.0202], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0379, 0.0679, 0.0305, 0.0202], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03911621496081352, zelfde als eerst: True
+DC uitgerekend: tensor([0.0463, 0.0529, 0.0146, 0.0158], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0463, 0.0529, 0.0146, 0.0158], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.032386794686317444, zelfde als eerst: True
+DC uitgerekend: tensor([0.0062, 0.0018, 0.0024, 0.0047], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0062, 0.0018, 0.0024, 0.0047], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.00377415819093585, zelfde als eerst: True
+DC uitgerekend: tensor([0.0191, 0.0041, 0.0279, 0.0241], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0191, 0.0041, 0.0279, 0.0241], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01880578324198723, zelfde als eerst: True
+DC uitgerekend: tensor([0.0218, 0.0044, 0.0344, 0.0287], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0218, 0.0044, 0.0344, 0.0287], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.022312816232442856, zelfde als eerst: True
+DC uitgerekend: tensor([0.0250, 0.0016, 0.0210, 0.0148], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0250, 0.0016, 0.0210, 0.0148], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.01559392735362053, zelfde als eerst: True
+DC uitgerekend: tensor([3.9030e-03, 9.6306e-06, 4.8381e-03, 4.5770e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([3.9030e-03, 9.6306e-06, 4.8381e-03, 4.5770e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.003331924555823207, zelfde als eerst: True
+DC uitgerekend: tensor([2.1999e-02, 1.1095e-01, 3.7324e-10, 9.4803e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.1999e-02, 1.1095e-01, 3.7324e-10, 9.4803e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.035606224089860916, zelfde als eerst: True
+DC uitgerekend: tensor([1.4011e-02, 1.9124e-01, 1.0727e-09, 7.4219e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.4011e-02, 1.9124e-01, 1.0727e-09, 7.4219e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.053169406950473785, zelfde als eerst: True
+DC uitgerekend: tensor([1.7589e-02, 1.9993e-01, 2.3778e-08, 7.8165e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.7589e-02, 1.9993e-01, 2.3778e-08, 7.8165e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.05633489787578583, zelfde als eerst: True
+DC uitgerekend: tensor([1.3696e-02, 7.4928e-02, 7.3436e-07, 4.8629e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.3696e-02, 7.4928e-02, 7.3436e-07, 4.8629e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.023371880874037743, zelfde als eerst: True
+DC uitgerekend: tensor([6.4791e-03, 4.1393e-09, 3.1965e-02, 3.3825e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([6.4791e-03, 4.1393e-09, 3.1965e-02, 3.3825e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.018067404627799988, zelfde als eerst: True
+DC uitgerekend: tensor([2.3556e-02, 2.6684e-09, 2.6018e-02, 2.9642e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.3556e-02, 2.6684e-09, 2.6018e-02, 2.9642e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.019803829491138458, zelfde als eerst: True
+DC uitgerekend: tensor([1.0562e-02, 1.9157e-09, 1.1644e-02, 1.0551e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.0562e-02, 1.9157e-09, 1.1644e-02, 1.0551e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.00818935688585043, zelfde als eerst: True
+DC uitgerekend: tensor([3.7586e-04, 9.6476e-08, 8.8616e-04, 1.6722e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([3.7586e-04, 9.6476e-08, 8.8616e-04, 1.6722e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0007335831760428846, zelfde als eerst: True
+DC uitgerekend: tensor([0.0281, 0.1554, 0.0011, 0.0182], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0281, 0.1554, 0.0011, 0.0182], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.05068662762641907, zelfde als eerst: True
+DC uitgerekend: tensor([0.0214, 0.1602, 0.0014, 0.0297], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0214, 0.1602, 0.0014, 0.0297], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.05317876487970352, zelfde als eerst: True
+DC uitgerekend: tensor([0.0381, 0.1744, 0.0002, 0.0232], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0381, 0.1744, 0.0002, 0.0232], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.058984506875276566, zelfde als eerst: True
+DC uitgerekend: tensor([1.0124e-02, 3.7462e-02, 1.1277e-05, 7.6278e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.0124e-02, 3.7462e-02, 1.1277e-05, 7.6278e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013806321658194065, zelfde als eerst: True
+DC uitgerekend: tensor([1.0025e-02, 1.5296e-10, 2.0486e-02, 2.0090e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.0025e-02, 1.5296e-10, 2.0486e-02, 2.0090e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012650182470679283, zelfde als eerst: True
+DC uitgerekend: tensor([2.6842e-02, 3.6751e-10, 2.5526e-02, 1.7382e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.6842e-02, 3.6751e-10, 2.5526e-02, 1.7382e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.017437387257814407, zelfde als eerst: True
+DC uitgerekend: tensor([4.7954e-03, 2.2180e-09, 1.2448e-02, 1.0662e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([4.7954e-03, 2.2180e-09, 1.2448e-02, 1.0662e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0069764526560902596, zelfde als eerst: True
+DC uitgerekend: tensor([2.4975e-04, 1.0328e-07, 1.1934e-03, 1.8050e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.4975e-04, 1.0328e-07, 1.1934e-03, 1.8050e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0008120684651657939, zelfde als eerst: True
+DC uitgerekend: tensor([5.0515e-10, 1.4545e-10, 6.5396e-03, 5.5170e-10], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([5.0515e-10, 1.4545e-10, 6.5396e-03, 5.5170e-10], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0016348884673789144, zelfde als eerst: True
+DC uitgerekend: tensor([1.0447e-09, 3.9465e-10, 2.2795e-02, 1.8781e-09], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.0447e-09, 3.9465e-10, 2.2795e-02, 1.8781e-09], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.005698841996490955, zelfde als eerst: True
+DC uitgerekend: tensor([1.0508e-08, 2.2371e-09, 1.9029e-02, 1.7538e-08], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.0508e-08, 2.2371e-09, 1.9029e-02, 1.7538e-08], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.004757305141538382, zelfde als eerst: True
+DC uitgerekend: tensor([7.7937e-07, 1.1224e-07, 2.6591e-03, 7.7621e-07], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([7.7937e-07, 1.1224e-07, 2.6591e-03, 7.7621e-07], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0006651801522821188, zelfde als eerst: True
+DC uitgerekend: tensor([0.0198, 0.0600, 0.0278, 0.0279], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0198, 0.0600, 0.0278, 0.0279], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03386930376291275, zelfde als eerst: True
+DC uitgerekend: tensor([0.0220, 0.0563, 0.0452, 0.0226], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0220, 0.0563, 0.0452, 0.0226], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.036538511514663696, zelfde als eerst: True
+DC uitgerekend: tensor([0.0308, 0.0542, 0.0343, 0.0136], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0308, 0.0542, 0.0343, 0.0136], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.033225156366825104, zelfde als eerst: True
+DC uitgerekend: tensor([0.0044, 0.0138, 0.0136, 0.0053], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0044, 0.0138, 0.0136, 0.0053], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.009273296222090721, zelfde als eerst: True
+DC uitgerekend: tensor([0.0079, 0.0353, 0.0426, 0.0053], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0079, 0.0353, 0.0426, 0.0053], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.022793972864747047, zelfde als eerst: True
+DC uitgerekend: tensor([0.0163, 0.0516, 0.0488, 0.0102], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0163, 0.0516, 0.0488, 0.0102], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03171399608254433, zelfde als eerst: True
+DC uitgerekend: tensor([0.0138, 0.0571, 0.0216, 0.0053], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0138, 0.0571, 0.0216, 0.0053], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.02445480227470398, zelfde als eerst: True
+DC uitgerekend: tensor([0.0012, 0.0074, 0.0034, 0.0061], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0012, 0.0074, 0.0034, 0.0061], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.004528965801000595, zelfde als eerst: True
+DC uitgerekend: tensor([0.0184, 0.1546, 0.0264, 0.0227], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0184, 0.1546, 0.0264, 0.0227], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.055530428886413574, zelfde als eerst: True
+DC uitgerekend: tensor([0.0159, 0.1498, 0.0340, 0.0213], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0159, 0.1498, 0.0340, 0.0213], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.055230628699064255, zelfde als eerst: True
+DC uitgerekend: tensor([0.0227, 0.1697, 0.0298, 0.0116], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0227, 0.1697, 0.0298, 0.0116], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.058432817459106445, zelfde als eerst: True
+DC uitgerekend: tensor([0.0063, 0.1014, 0.0130, 0.0027], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0063, 0.1014, 0.0130, 0.0027], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03083086386322975, zelfde als eerst: True
+DC uitgerekend: tensor([1.9116e-02, 1.2887e-01, 2.8063e-10, 5.9315e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.9116e-02, 1.2887e-01, 2.8063e-10, 5.9315e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.03847920149564743, zelfde als eerst: True
+DC uitgerekend: tensor([1.4867e-02, 1.9409e-01, 1.2726e-09, 6.8239e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.4867e-02, 1.9409e-01, 1.2726e-09, 6.8239e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0539444163441658, zelfde als eerst: True
+DC uitgerekend: tensor([1.5109e-02, 2.2033e-01, 1.6983e-08, 2.4963e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.5109e-02, 2.2033e-01, 1.6983e-08, 2.4963e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.05948316678404808, zelfde als eerst: True
+DC uitgerekend: tensor([2.8856e-03, 2.4417e-01, 2.0885e-07, 1.3885e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.8856e-03, 2.4417e-01, 2.0885e-07, 1.3885e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.06211003288626671, zelfde als eerst: True
+DC uitgerekend: tensor([0.0067, 0.0002, 0.0219, 0.0275], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0067, 0.0002, 0.0219, 0.0275], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.014079536311328411, zelfde als eerst: True
+DC uitgerekend: tensor([7.4102e-03, 7.1461e-05, 3.3337e-02, 2.3020e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([7.4102e-03, 7.1461e-05, 3.3337e-02, 2.3020e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.015959585085511208, zelfde als eerst: True
+DC uitgerekend: tensor([1.0507e-03, 9.9429e-08, 2.7580e-02, 2.1412e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.0507e-03, 9.9429e-08, 2.7580e-02, 2.1412e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.012510699220001698, zelfde als eerst: True
+DC uitgerekend: tensor([8.7202e-05, 4.2741e-08, 1.7921e-03, 3.9429e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([8.7202e-05, 4.2741e-08, 1.7921e-03, 3.9429e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.0014555518282577395, zelfde als eerst: True
+DC uitgerekend: tensor([0.0166, 0.0002, 0.0168, 0.0246], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([0.0166, 0.0002, 0.0168, 0.0246], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.014548677951097488, zelfde als eerst: True
+DC uitgerekend: tensor([2.9845e-02, 4.8332e-06, 2.1929e-02, 2.3581e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.9845e-02, 4.8332e-06, 2.1929e-02, 2.3581e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.018840013071894646, zelfde als eerst: True
+DC uitgerekend: tensor([1.6457e-02, 2.9968e-09, 2.2032e-02, 1.6858e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([1.6457e-02, 2.9968e-09, 2.2032e-02, 1.6858e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.013836968690156937, zelfde als eerst: True
+DC uitgerekend: tensor([8.6684e-03, 2.9733e-08, 9.2002e-03, 7.3305e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([8.6684e-03, 2.9733e-08, 9.2002e-03, 7.3305e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.006299793254584074, zelfde als eerst: True
+DC uitgerekend: tensor([4.8331e-03, 1.5483e-01, 3.1087e-10, 1.1335e-02], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([4.8331e-03, 1.5483e-01, 3.1087e-10, 1.1335e-02], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.04274938255548477, zelfde als eerst: True
+DC uitgerekend: tensor([2.6013e-03, 1.8309e-01, 1.2757e-09, 6.6061e-03], device='cuda:0',
+       grad_fn=<SliceBackward0>)
+DC na weighting: tensor([2.6013e-03, 1.8309e-01, 1.2757e-09, 6.6061e-03], device='cuda:0',
+       grad_fn=<MulBackward0>)
+DC na mean: 0.04807407408952713, zelfde als eerst: True

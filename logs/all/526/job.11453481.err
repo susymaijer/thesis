@@ -1,0 +1,20 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job11453481/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-va2fk712/hiddenlayer_92a96d4e1683435cbe7443c1838f5089
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.2.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+ERROR: ditable is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
+WARNING: You are using pip version 21.2.4; however, version 22.2.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+/var/spool/slurmd/job11453481/slurm_script: line 45: [: ==: unary operator expected
+/home/smaijer/code/nnUNet/nnunet/training/network_training/nnUNetTrainer.py:729: RuntimeWarning: invalid value encountered in double_scalars
+  global_dc_per_class = [i for i in [2 * i / (2 * i + j + k) for i, j, k in
+slurmstepd: error: *** JOB 11453481 ON res-hpc-lkeb08 CANCELLED AT 2022-08-12T09:20:17 ***
