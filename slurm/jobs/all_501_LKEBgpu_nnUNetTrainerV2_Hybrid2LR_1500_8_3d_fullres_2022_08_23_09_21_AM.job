@@ -48,8 +48,8 @@ then
 fi
 
 echo Done preprocessing! Start training all the folds..
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR_1500 501 0
-nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR_1500 501 1
+#nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR_1500 501 0
+#nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR_1500 501 1
 nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR_1500 501 2
 nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR_1500 501 3
 nnUNet_train 3d_fullres nnUNetTrainerV2_Hybrid2LR_1500 501 4

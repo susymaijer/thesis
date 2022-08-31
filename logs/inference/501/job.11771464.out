@@ -1,0 +1,3344 @@
+Starting at Tue Aug 30 10:12:31 CEST 2022
+Running on hosts: res-hpc-gpu02
+Running on 1 nodes.
+Running 1 tasks.
+CPUs on node: 8.
+Account: div2-lkeb
+Job ID: 11771464
+Job name: PancreasExp
+Node running script: res-hpc-gpu02
+Submit host: res-hpc-lo02.researchlumc.nl
+GPUS:  or 
+No devices were found
+Current working directory is /home/smaijer
+Load all modules..
+Done with loading all modules. Modules:
+Activate conda env nnunet..
+Verifying environment variables:
+Installing hidden layer and nnUnet..
+Collecting hiddenlayer
+  Cloning https://github.com/FabianIsensee/hiddenlayer.git (to revision more_plotted_details) to /tmp/pip-install-vtpydjek/hiddenlayer_f0204ce4637c48d084dbd35081eb597d
+  Resolved https://github.com/FabianIsensee/hiddenlayer.git to commit 4b98f9e5cccebac67368f02b95f4700b522345b1
+Using legacy 'setup.py install' for hiddenlayer, since package 'wheel' is not installed.
+Installing collected packages: hiddenlayer
+    Running setup.py install for hiddenlayer: started
+    Running setup.py install for hiddenlayer: finished with status 'done'
+Successfully installed hiddenlayer-0.2
+Obtaining file:///home/smaijer/code/nnUNet
+Collecting torch==1.12.0
+  Using cached torch-1.12.0-cp310-cp310-manylinux1_x86_64.whl (776.3 MB)
+Collecting tqdm
+  Using cached tqdm-4.64.0-py2.py3-none-any.whl (78 kB)
+Collecting dicom2nifti
+  Using cached dicom2nifti-2.4.3-py3-none-any.whl (43 kB)
+Collecting scikit-image>=0.14
+  Using cached scikit_image-0.19.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.9 MB)
+Collecting medpy
+  Using cached MedPy-0.4.0-py3-none-any.whl
+Collecting scipy
+  Using cached scipy-1.9.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (43.9 MB)
+Collecting batchgenerators>=0.23
+  Using cached batchgenerators-0.24-py3-none-any.whl
+Collecting numpy
+  Using cached numpy-1.23.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.0 MB)
+Collecting sklearn
+  Using cached sklearn-0.0-py2.py3-none-any.whl
+Collecting SimpleITK
+  Using cached SimpleITK-2.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (52.8 MB)
+Collecting pandas
+  Using cached pandas-1.4.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.6 MB)
+Collecting requests
+  Using cached requests-2.28.1-py3-none-any.whl (62 kB)
+Collecting nibabel
+  Using cached nibabel-4.0.1-py3-none-any.whl (3.3 MB)
+Collecting tifffile
+  Using cached tifffile-2022.8.12-py3-none-any.whl (208 kB)
+Collecting matplotlib
+  Using cached matplotlib-3.5.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.9 MB)
+Collecting monai
+  Using cached monai-0.9.1-202207251608-py3-none-any.whl (990 kB)
+Collecting einops
+  Using cached einops-0.4.1-py3-none-any.whl (28 kB)
+Collecting ipython
+  Using cached ipython-8.4.0-py3-none-any.whl (750 kB)
+Collecting graphviz
+  Using cached graphviz-0.20.1-py3-none-any.whl (47 kB)
+Collecting typing-extensions
+  Using cached typing_extensions-4.3.0-py3-none-any.whl (25 kB)
+Collecting future
+  Using cached future-0.18.2-py3-none-any.whl
+Collecting unittest2
+  Using cached unittest2-1.1.0-py2.py3-none-any.whl (96 kB)
+Collecting pillow>=7.1.2
+  Using cached Pillow-9.2.0-cp310-cp310-manylinux_2_28_x86_64.whl (3.2 MB)
+Collecting scikit-learn
+  Using cached scikit_learn-1.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (30.5 MB)
+Collecting threadpoolctl
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting packaging>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting PyWavelets>=1.1.1
+  Using cached PyWavelets-1.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.9 MB)
+Collecting networkx>=2.2
+  Using cached networkx-2.8.6-py3-none-any.whl (2.0 MB)
+Collecting imageio>=2.4.1
+  Using cached imageio-2.21.2-py3-none-any.whl (3.4 MB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Using cached pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Collecting pydicom>=2.2.0
+  Using cached pydicom-2.3.0-py3-none-any.whl (2.0 MB)
+Collecting python-gdcm
+  Using cached python_gdcm-3.0.15-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.9 MB)
+Collecting prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0
+  Using cached prompt_toolkit-3.0.30-py3-none-any.whl (381 kB)
+Collecting matplotlib-inline
+  Using cached matplotlib_inline-0.1.6-py3-none-any.whl (9.4 kB)
+Collecting jedi>=0.16
+  Using cached jedi-0.18.1-py2.py3-none-any.whl (1.6 MB)
+Collecting stack-data
+  Using cached stack_data-0.5.0-py3-none-any.whl (24 kB)
+Collecting traitlets>=5
+  Using cached traitlets-5.3.0-py3-none-any.whl (106 kB)
+Collecting setuptools>=18.5
+  Using cached setuptools-65.3.0-py3-none-any.whl (1.2 MB)
+Collecting decorator
+  Using cached decorator-5.1.1-py3-none-any.whl (9.1 kB)
+Collecting pexpect>4.3
+  Using cached pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+Collecting backcall
+  Using cached backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+Collecting pickleshare
+  Using cached pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+Collecting pygments>=2.4.0
+  Using cached Pygments-2.13.0-py3-none-any.whl (1.1 MB)
+Collecting parso<0.9.0,>=0.8.0
+  Using cached parso-0.8.3-py2.py3-none-any.whl (100 kB)
+Collecting ptyprocess>=0.5
+  Using cached ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+Collecting kiwisolver>=1.0.1
+  Using cached kiwisolver-1.4.4-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+Collecting fonttools>=4.22.0
+  Using cached fonttools-4.37.1-py3-none-any.whl (957 kB)
+Collecting cycler>=0.10
+  Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting python-dateutil>=2.7
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Collecting six>=1.5
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting pytz>=2020.1
+  Using cached pytz-2022.2.1-py2.py3-none-any.whl (500 kB)
+Collecting certifi>=2017.4.17
+  Using cached certifi-2022.6.15-py3-none-any.whl (160 kB)
+Collecting charset-normalizer<3,>=2
+  Using cached charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Collecting idna<4,>=2.5
+  Using cached idna-3.3-py3-none-any.whl (61 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Using cached urllib3-1.26.12-py2.py3-none-any.whl (140 kB)
+Collecting joblib>=1.0.0
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Collecting executing
+  Using cached executing-1.0.0-py2.py3-none-any.whl (16 kB)
+Collecting asttokens
+  Using cached asttokens-2.0.8-py2.py3-none-any.whl (23 kB)
+Collecting pure-eval
+  Using cached pure_eval-0.2.2-py3-none-any.whl (11 kB)
+Collecting traceback2
+  Using cached traceback2-1.4.0-py2.py3-none-any.whl (16 kB)
+Collecting argparse
+  Using cached argparse-1.4.0-py2.py3-none-any.whl (23 kB)
+Collecting linecache2
+  Using cached linecache2-1.0.0-py2.py3-none-any.whl (12 kB)
+Installing collected packages: six, pyparsing, pillow, numpy, linecache2, wcwidth, typing-extensions, traitlets, traceback2, tifffile, threadpoolctl, setuptools, scipy, PyWavelets, pure-eval, ptyprocess, parso, packaging, networkx, joblib, imageio, executing, asttokens, argparse, urllib3, unittest2, torch, stack-data, SimpleITK, scikit-learn, scikit-image, pytz, python-gdcm, python-dateutil, pygments, pydicom, prompt-toolkit, pickleshare, pexpect, nibabel, matplotlib-inline, kiwisolver, jedi, idna, future, fonttools, decorator, cycler, charset-normalizer, certifi, backcall, tqdm, sklearn, requests, pandas, monai, medpy, matplotlib, ipython, graphviz, einops, dicom2nifti, batchgenerators, nnunet
+  Running setup.py develop for nnunet
+Successfully installed PyWavelets-1.3.0 SimpleITK-2.2.0 argparse-1.4.0 asttokens-2.0.8 backcall-0.2.0 batchgenerators-0.24 certifi-2022.6.15 charset-normalizer-2.1.1 cycler-0.11.0 decorator-5.1.1 dicom2nifti-2.4.3 einops-0.4.1 executing-1.0.0 fonttools-4.37.1 future-0.18.2 graphviz-0.20.1 idna-3.3 imageio-2.21.2 ipython-8.4.0 jedi-0.18.1 joblib-1.1.0 kiwisolver-1.4.4 linecache2-1.0.0 matplotlib-3.5.3 matplotlib-inline-0.1.6 medpy-0.4.0 monai-0.9.1 networkx-2.8.6 nibabel-4.0.1 nnunet numpy-1.23.2 packaging-21.3 pandas-1.4.3 parso-0.8.3 pexpect-4.8.0 pickleshare-0.7.5 pillow-9.2.0 prompt-toolkit-3.0.30 ptyprocess-0.7.0 pure-eval-0.2.2 pydicom-2.3.0 pygments-2.13.0 pyparsing-3.0.9 python-dateutil-2.8.2 python-gdcm-3.0.15 pytz-2022.2.1 requests-2.28.1 scikit-image-0.19.3 scikit-learn-1.1.2 scipy-1.9.1 setuptools-65.3.0 six-1.16.0 sklearn-0.0 stack-data-0.5.0 threadpoolctl-3.1.0 tifffile-2022.8.12 torch-1.12.0 tqdm-4.64.0 traceback2-1.4.0 traitlets-5.3.0 typing-extensions-4.3.0 unittest2-1.1.0 urllib3-1.26.12 wcwidth-0.2.5
+
+
+Please cite the following paper when using nnUNet:
+
+Isensee, F., Jaeger, P.F., Kohl, S.A.A. et al. "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation." Nat Methods (2020). https://doi.org/10.1038/s41592-020-01008-z
+
+
+If you have questions or suggestions, feel free to open an issue at https://github.com/MIC-DKFZ/nnUNet
+
+using model stored in  /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1
+This model expects 1 input modalities for each image
+Found 12 unique case ids, here are some examples: ['panc_0041' 'panc_0082' 'panc_0009' 'panc_0041' 'panc_0017' 'panc_0065'
+ 'panc_0057' 'panc_0082' 'panc_0065' 'panc_0065']
+If they don't look right, make sure to double check your filenames. They must end with _0000.nii.gz etc
+number of cases: 12
+number of cases that still need to be predicted: 12
+emptying cuda cache
+loading parameters for folds, [0, 1, 2, 3, 4]
+Suus1 - Initialise de NetworkTrainer
+Suus2 - Initialise de nnUNetTrainer
+Suus3 - Initialise de nnUNetTrainerV2
+Suus5 - zet de plans properties
+Suus4 - Initialise de trainer echt
+Suus5 - zet de plans properties
+Suus6 - Zet de data augmentation params
+Suus7 - zet deep supervision weights die de meerdere outputs prioriteit geven
+Suus8 - Maak network aan (BELANGRIJK!)
+SuusB - first stride 
+Suus10 - StackedConvLayers, input: 1 en output: 32, first_stride: None, num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 32 en output: 64, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 64 en output: 128, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 128 en output: 256, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+SuusA - first_stride [2, 2, 2]
+Suus10 - StackedConvLayers, input: 256 en output: 320, first_stride: [2, 2, 2], num_convs: 2, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: [1, 2, 2], num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 640 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 320 en output: 320, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 512 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 256, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 256 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 128, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 128 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 64, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 64 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Suus10 - StackedConvLayers, input: 32 en output: 32, first_stride: None, num_convs: 1, conv_kwargs: {'stride': 1, 'dilation': 1, 'bias': True, 'kernel_size': [3, 3, 3], 'padding': [1, 1, 1]}
+Generic_UNet(
+  (encoder): Generic_UNETEncoder()
+  (decoder): Generic_UNETDecoder()
+  (conv_blocks_localization): ModuleList(
+    (0): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(640, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(256, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(128, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(64, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (conv_blocks_context): ModuleList(
+    (0): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(1, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 32, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (1): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(32, 64, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (2): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (3): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (4): StackedConvLayers(
+      (blocks): Sequential(
+        (0): ConvDropoutNormNonlin(
+          (conv): Conv3d(256, 320, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+        (1): ConvDropoutNormNonlin(
+          (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+          (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+          (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+        )
+      )
+    )
+    (5): Sequential(
+      (0): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+      (1): StackedConvLayers(
+        (blocks): Sequential(
+          (0): ConvDropoutNormNonlin(
+            (conv): Conv3d(320, 320, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+            (instnorm): InstanceNorm3d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False)
+            (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+          )
+        )
+      )
+    )
+  )
+  (td): ModuleList()
+  (tu): ModuleList(
+    (0): ConvTranspose3d(320, 320, kernel_size=(1, 2, 2), stride=(1, 2, 2), bias=False)
+    (1): ConvTranspose3d(320, 256, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (2): ConvTranspose3d(256, 128, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (3): ConvTranspose3d(128, 64, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    (4): ConvTranspose3d(64, 32, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+  )
+  (seg_outputs): ModuleList(
+    (0): Conv3d(320, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (1): Conv3d(256, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (2): Conv3d(128, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (3): Conv3d(64, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+    (4): Conv3d(32, 2, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+  )
+)
+using the following model files:  ['/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/model_final_checkpoint.model', '/exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task501/nnUNetTrainerV2__nnUNetPlansv2.1/fold_4/model_final_checkpoint.model']
+starting preprocessing generator
+starting prediction...
+Preprocessing with 6 multithreads
+getting data from preprocessor
+got something
+predicting /exports/lkeb-hpc/smaijer/output/501/3d_fullres/nnUNetTrainerV2/501/cpu/imagesTs/panc_0001.nii.gz
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+[Timing prediction] padding took 0.00022292137145996094 seconds, computing steps took 0.00023627281188964844
+data shape: (1, 240, 512, 512)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 40, 80, 120, 160], [0, 80, 160, 240, 320], [0, 70, 141, 211, 282, 352]]
+number of tiles: 150
+computing Gaussian
+done
+[Timing prediction] Gaussian stuff took 0.6846523284912109 secnds
+[Timing prediction] weird stuff took 5.054473876953125e-05 seconds.
+[Timing prediction] Moving to torch took 0.049889326095581055 seconds
+[Timing prediction] Moving to cuda took 2.6226043701171875e-05 seconds
+[Timing prediction] Multshit took 1.4781951904296875e-05 seconds
+[Timing prediction] - m0 took 10.075698137283325
+[Timing prediction] - m1 took 9.914894819259644
+[Timing prediction] - m2 took 9.820046424865723
+[Timing prediction] - m3 took 9.258506298065186
+[Timing prediction] - m4 took 9.056437969207764
+[Timing prediction] - m5 took 6.310866594314575
+[Timing prediction] - m6 took 2.5984692573547363
+[Timing prediction] - m7 took 2.5698189735412598
+[Timing prediction] - Total m-predictions took 59.6049907207489 seconds
+[Timing prediction] - Final mult took 0.0022852420806884766
+[Timing prediction] Moving to torch took 0.001196146011352539 seconds
+[Timing prediction] Moving to cuda took 3.838539123535156e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.585083484649658
+[Timing prediction] - m1 took 2.6706228256225586
+[Timing prediction] - m2 took 2.571868896484375
+[Timing prediction] - m3 took 2.572960376739502
+[Timing prediction] - m4 took 2.567051887512207
+[Timing prediction] - m5 took 2.644102096557617
+[Timing prediction] - m6 took 2.563051223754883
+[Timing prediction] - m7 took 2.5852935314178467
+[Timing prediction] - Total m-predictions took 20.76022958755493 seconds
+[Timing prediction] - Final mult took 0.0019631385803222656
+[Timing prediction] Moving to torch took 0.0011463165283203125 seconds
+[Timing prediction] Moving to cuda took 3.552436828613281e-05 seconds
+[Timing prediction] Multshit took 1.1444091796875e-05 seconds
+[Timing prediction] - m0 took 2.577395439147949
+[Timing prediction] - m1 took 2.6150360107421875
+[Timing prediction] - m2 took 2.6190199851989746
+[Timing prediction] - m3 took 2.632798671722412
+[Timing prediction] - m4 took 2.649242639541626
+[Timing prediction] - m5 took 2.6162333488464355
+[Timing prediction] - m6 took 2.615879774093628
+[Timing prediction] - m7 took 2.6114323139190674
+[Timing prediction] - Total m-predictions took 20.937227725982666 seconds
+[Timing prediction] - Final mult took 0.0013701915740966797
+[Timing prediction] Moving to torch took 0.0011456012725830078 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.5983681678771973
+[Timing prediction] - m1 took 2.640899181365967
+[Timing prediction] - m2 took 2.6335341930389404
+[Timing prediction] - m3 took 2.711430311203003
+[Timing prediction] - m4 took 2.6120591163635254
+[Timing prediction] - m5 took 2.6709048748016357
+[Timing prediction] - m6 took 2.63767671585083
+[Timing prediction] - m7 took 2.6295201778411865
+[Timing prediction] - Total m-predictions took 21.13458752632141 seconds
+[Timing prediction] - Final mult took 0.001987457275390625
+[Timing prediction] Moving to torch took 0.0011417865753173828 seconds
+[Timing prediction] Moving to cuda took 3.4332275390625e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.606440544128418
+[Timing prediction] - m1 took 2.6927876472473145
+[Timing prediction] - m2 took 2.6406567096710205
+[Timing prediction] - m3 took 2.5797080993652344
+[Timing prediction] - m4 took 2.5745365619659424
+[Timing prediction] - m5 took 2.606398344039917
+[Timing prediction] - m6 took 2.6374123096466064
+[Timing prediction] - m7 took 2.6477649211883545
+[Timing prediction] - Total m-predictions took 20.985904455184937 seconds
+[Timing prediction] - Final mult took 0.001994609832763672
+[Timing prediction] Moving to torch took 0.0012927055358886719 seconds
+[Timing prediction] Moving to cuda took 3.528594970703125e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.6001760959625244
+[Timing prediction] - m1 took 2.6022191047668457
+[Timing prediction] - m2 took 2.5923075675964355
+[Timing prediction] - m3 took 2.6008059978485107
+[Timing prediction] - m4 took 2.596365451812744
+[Timing prediction] - m5 took 2.6251280307769775
+[Timing prediction] - m6 took 2.6173036098480225
+[Timing prediction] - m7 took 2.6032612323760986
+[Timing prediction] - Total m-predictions took 20.83775234222412 seconds
+[Timing prediction] - Final mult took 0.0015287399291992188
+[Timing prediction] Moving to torch took 0.0013599395751953125 seconds
+[Timing prediction] Moving to cuda took 1.9073486328125e-05 seconds
+[Timing prediction] Multshit took 1.1682510375976562e-05 seconds
+[Timing prediction] - m0 took 2.6094818115234375
+[Timing prediction] - m1 took 2.626166343688965
+[Timing prediction] - m2 took 2.6302411556243896
+[Timing prediction] - m3 took 2.6530396938323975
+[Timing prediction] - m4 took 2.6538684368133545
+[Timing prediction] - m5 took 2.6575217247009277
+[Timing prediction] - m6 took 2.644268035888672
+[Timing prediction] - m7 took 2.6718671321868896
+[Timing prediction] - Total m-predictions took 21.14665198326111 seconds
+[Timing prediction] - Final mult took 0.0019161701202392578
+[Timing prediction] Moving to torch took 0.0013060569763183594 seconds
+[Timing prediction] Moving to cuda took 5.078315734863281e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.6261818408966064
+[Timing prediction] - m1 took 2.6394035816192627
+[Timing prediction] - m2 took 2.621509552001953
+[Timing prediction] - m3 took 2.6732192039489746
+[Timing prediction] - m4 took 2.6185741424560547
+[Timing prediction] - m5 took 2.6412153244018555
+[Timing prediction] - m6 took 2.6222167015075684
+[Timing prediction] - m7 took 2.650705575942993
+[Timing prediction] - Total m-predictions took 21.093199491500854 seconds
+[Timing prediction] - Final mult took 0.0016942024230957031
+[Timing prediction] Moving to torch took 0.0011227130889892578 seconds
+[Timing prediction] Moving to cuda took 1.8596649169921875e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.618589401245117
+[Timing prediction] - m1 took 2.6184802055358887
+[Timing prediction] - m2 took 2.631190061569214
+[Timing prediction] - m3 took 2.621718168258667
+[Timing prediction] - m4 took 2.657965898513794
+[Timing prediction] - m5 took 2.632822036743164
+[Timing prediction] - m6 took 2.626783609390259
+[Timing prediction] - m7 took 2.6249945163726807
+[Timing prediction] - Total m-predictions took 21.03274893760681 seconds
+[Timing prediction] - Final mult took 0.0019655227661132812
+[Timing prediction] Moving to torch took 0.001313924789428711 seconds
+[Timing prediction] Moving to cuda took 3.361701965332031e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.720658302307129
+[Timing prediction] - m1 took 2.6165244579315186
+[Timing prediction] - m2 took 2.6867194175720215
+[Timing prediction] - m3 took 2.61971116065979
+[Timing prediction] - m4 took 2.6977274417877197
+[Timing prediction] - m5 took 2.6398582458496094
+[Timing prediction] - m6 took 2.6647067070007324
+[Timing prediction] - m7 took 2.6301307678222656
+[Timing prediction] - Total m-predictions took 21.276212692260742 seconds
+[Timing prediction] - Final mult took 0.0015408992767333984
+[Timing prediction] Moving to torch took 0.001157999038696289 seconds
+[Timing prediction] Moving to cuda took 1.9788742065429688e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.6196742057800293
+[Timing prediction] - m1 took 2.617825746536255
+[Timing prediction] - m2 took 2.6168158054351807
+[Timing prediction] - m3 took 2.6421337127685547
+[Timing prediction] - m4 took 2.611515998840332
+[Timing prediction] - m5 took 2.6194581985473633
+[Timing prediction] - m6 took 2.6138055324554443
+[Timing prediction] - m7 took 2.6044344902038574
+[Timing prediction] - Total m-predictions took 20.945966005325317 seconds
+[Timing prediction] - Final mult took 0.002132415771484375
+[Timing prediction] Moving to torch took 0.0012054443359375 seconds
+[Timing prediction] Moving to cuda took 3.361701965332031e-05 seconds
+[Timing prediction] Multshit took 1.3828277587890625e-05 seconds
+[Timing prediction] - m0 took 2.622044801712036
+[Timing prediction] - m1 took 2.6098015308380127
+[Timing prediction] - m2 took 2.6187989711761475
+[Timing prediction] - m3 took 2.6647942066192627
+[Timing prediction] - m4 took 2.5980894565582275
+[Timing prediction] - m5 took 2.608741044998169
+[Timing prediction] - m6 took 2.595388889312744
+[Timing prediction] - m7 took 2.6842637062072754
+[Timing prediction] - Total m-predictions took 21.00212287902832 seconds
+[Timing prediction] - Final mult took 0.0015506744384765625
+[Timing prediction] Moving to torch took 0.0016579627990722656 seconds
+[Timing prediction] Moving to cuda took 1.9788742065429688e-05 seconds
+[Timing prediction] Multshit took 1.1920928955078125e-05 seconds
+[Timing prediction] - m0 took 2.6224846839904785
+[Timing prediction] - m1 took 2.7085866928100586
+[Timing prediction] - m2 took 2.6136083602905273
+[Timing prediction] - m3 took 2.691920757293701
+[Timing prediction] - m4 took 2.611332893371582
+[Timing prediction] - m5 took 2.6601128578186035
+[Timing prediction] - m6 took 2.6077582836151123
+[Timing prediction] - m7 took 2.6039068698883057
+[Timing prediction] - Total m-predictions took 21.11989736557007 seconds
+[Timing prediction] - Final mult took 0.0015685558319091797
+[Timing prediction] Moving to torch took 0.0011837482452392578 seconds
+[Timing prediction] Moving to cuda took 2.288818359375e-05 seconds
+[Timing prediction] Multshit took 1.1682510375976562e-05 seconds
+[Timing prediction] - m0 took 2.5997474193573
+[Timing prediction] - m1 took 2.658327102661133
+[Timing prediction] - m2 took 2.6145684719085693
+[Timing prediction] - m3 took 2.609694004058838
+[Timing prediction] - m4 took 2.5938992500305176
+[Timing prediction] - m5 took 2.6044342517852783
+[Timing prediction] - m6 took 2.6091530323028564
+[Timing prediction] - m7 took 2.573763847351074
+[Timing prediction] - Total m-predictions took 20.86376428604126 seconds
+[Timing prediction] - Final mult took 0.0016286373138427734
+[Timing prediction] Moving to torch took 0.0011470317840576172 seconds
+[Timing prediction] Moving to cuda took 1.9073486328125e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.56207537651062
+[Timing prediction] - m1 took 2.5864169597625732
+[Timing prediction] - m2 took 2.619168996810913
+[Timing prediction] - m3 took 2.6006104946136475
+[Timing prediction] - m4 took 2.6096315383911133
+[Timing prediction] - m5 took 2.6011061668395996
+[Timing prediction] - m6 took 2.6717426776885986
+[Timing prediction] - m7 took 2.583195447921753
+[Timing prediction] - Total m-predictions took 20.834139585494995 seconds
+[Timing prediction] - Final mult took 0.0019240379333496094
+[Timing prediction] Moving to torch took 0.0010979175567626953 seconds
+[Timing prediction] Moving to cuda took 3.361701965332031e-05 seconds
+[Timing prediction] Multshit took 1.1920928955078125e-05 seconds
+[Timing prediction] - m0 took 2.695722818374634
+[Timing prediction] - m1 took 2.6089797019958496
+[Timing prediction] - m2 took 2.670974016189575
+[Timing prediction] - m3 took 2.6024842262268066
+[Timing prediction] - m4 took 2.670654773712158
+[Timing prediction] - m5 took 2.5914664268493652
+[Timing prediction] - m6 took 2.5964226722717285
+[Timing prediction] - m7 took 2.5979738235473633
+[Timing prediction] - Total m-predictions took 21.034853219985962 seconds
+[Timing prediction] - Final mult took 0.0017879009246826172
+[Timing prediction] Moving to torch took 0.0016207695007324219 seconds
+[Timing prediction] Moving to cuda took 2.2649765014648438e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.597870349884033
+[Timing prediction] - m1 took 2.631258010864258
+[Timing prediction] - m2 took 2.6041259765625
+[Timing prediction] - m3 took 2.64658260345459
+[Timing prediction] - m4 took 2.605802297592163
+[Timing prediction] - m5 took 2.6258161067962646
+[Timing prediction] - m6 took 2.608673572540283
+[Timing prediction] - m7 took 2.595160484313965
+[Timing prediction] - Total m-predictions took 20.915470600128174 seconds
+[Timing prediction] - Final mult took 0.0017964839935302734
+[Timing prediction] Moving to torch took 0.0011754035949707031 seconds
+[Timing prediction] Moving to cuda took 3.361701965332031e-05 seconds
+[Timing prediction] Multshit took 2.09808349609375e-05 seconds
+[Timing prediction] - m0 took 2.7193429470062256
+[Timing prediction] - m1 took 2.7367358207702637
+[Timing prediction] - m2 took 2.7168941497802734
+[Timing prediction] - m3 took 2.6904990673065186
+[Timing prediction] - m4 took 2.677037000656128
+[Timing prediction] - m5 took 2.7377824783325195
+[Timing prediction] - m6 took 2.736480474472046
+[Timing prediction] - m7 took 2.710969924926758
+[Timing prediction] - Total m-predictions took 21.725931406021118 seconds
+[Timing prediction] - Final mult took 0.001972198486328125
+[Timing prediction] Moving to torch took 0.00124359130859375 seconds
+[Timing prediction] Moving to cuda took 2.2411346435546875e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.713653564453125
+[Timing prediction] - m1 took 2.696546792984009
+[Timing prediction] - m2 took 2.695632219314575
+[Timing prediction] - m3 took 2.6935513019561768
+[Timing prediction] - m4 took 2.6664750576019287
+[Timing prediction] - m5 took 2.695525646209717
+[Timing prediction] - m6 took 2.6861395835876465
+[Timing prediction] - m7 took 2.6823008060455322
+[Timing prediction] - Total m-predictions took 21.529998779296875 seconds
+[Timing prediction] - Final mult took 0.0015842914581298828
+[Timing prediction] Moving to torch took 0.0011975765228271484 seconds
+[Timing prediction] Moving to cuda took 2.1457672119140625e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.676445722579956
+[Timing prediction] - m1 took 2.700438976287842
+[Timing prediction] - m2 took 2.7137222290039062
+[Timing prediction] - m3 took 2.697767972946167
+[Timing prediction] - m4 took 2.704106330871582
+[Timing prediction] - m5 took 2.7118732929229736
+[Timing prediction] - m6 took 2.682159662246704
+[Timing prediction] - m7 took 2.7111032009124756
+[Timing prediction] - Total m-predictions took 21.59780263900757 seconds
+[Timing prediction] - Final mult took 0.001531362533569336
+[Timing prediction] Moving to torch took 0.0010859966278076172 seconds
+[Timing prediction] Moving to cuda took 3.600120544433594e-05 seconds
+[Timing prediction] Multshit took 1.2159347534179688e-05 seconds
+[Timing prediction] - m0 took 2.6999387741088867
+[Timing prediction] - m1 took 2.703728675842285
+[Timing prediction] - m2 took 2.69903302192688
+[Timing prediction] - m3 took 2.7153732776641846
+[Timing prediction] - m4 took 2.743947744369507
+[Timing prediction] - m5 took 2.7523128986358643
+[Timing prediction] - m6 took 2.7244982719421387
+[Timing prediction] - m7 took 2.7044947147369385
+[Timing prediction] - Total m-predictions took 21.743513822555542 seconds
+[Timing prediction] - Final mult took 0.0018646717071533203
+[Timing prediction] Moving to torch took 0.0013175010681152344 seconds
+[Timing prediction] Moving to cuda took 1.9311904907226562e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7211523056030273
+[Timing prediction] - m1 took 2.6999905109405518
+[Timing prediction] - m2 took 2.6975390911102295
+[Timing prediction] - m3 took 2.7028071880340576
+[Timing prediction] - m4 took 2.7028534412384033
+[Timing prediction] - m5 took 2.7004151344299316
+[Timing prediction] - m6 took 2.6851351261138916
+[Timing prediction] - m7 took 2.690058469772339
+[Timing prediction] - Total m-predictions took 21.60017490386963 seconds
+[Timing prediction] - Final mult took 0.001806497573852539
+[Timing prediction] Moving to torch took 0.0011739730834960938 seconds
+[Timing prediction] Moving to cuda took 2.288818359375e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.7025811672210693
+[Timing prediction] - m1 took 2.708453416824341
+[Timing prediction] - m2 took 2.710453748703003
+[Timing prediction] - m3 took 2.7315189838409424
+[Timing prediction] - m4 took 2.709629535675049
+[Timing prediction] - m5 took 2.7110087871551514
+[Timing prediction] - m6 took 2.7111268043518066
+[Timing prediction] - m7 took 2.7045938968658447
+[Timing prediction] - Total m-predictions took 21.689577341079712 seconds
+[Timing prediction] - Final mult took 0.002187013626098633
+[Timing prediction] Moving to torch took 0.0012459754943847656 seconds
+[Timing prediction] Moving to cuda took 3.361701965332031e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.6983838081359863
+[Timing prediction] - m1 took 2.732145071029663
+[Timing prediction] - m2 took 2.7107431888580322
+[Timing prediction] - m3 took 2.732255458831787
+[Timing prediction] - m4 took 2.7039127349853516
+[Timing prediction] - m5 took 2.708237886428833
+[Timing prediction] - m6 took 2.7297520637512207
+[Timing prediction] - m7 took 2.7064781188964844
+[Timing prediction] - Total m-predictions took 21.72209668159485 seconds
+[Timing prediction] - Final mult took 0.0014748573303222656
+[Timing prediction] Moving to torch took 0.0014083385467529297 seconds
+[Timing prediction] Moving to cuda took 2.0742416381835938e-05 seconds
+[Timing prediction] Multshit took 1.4066696166992188e-05 seconds
+[Timing prediction] - m0 took 2.714406728744507
+[Timing prediction] - m1 took 2.6933720111846924
+[Timing prediction] - m2 took 2.697622776031494
+[Timing prediction] - m3 took 2.7028298377990723
+[Timing prediction] - m4 took 2.6960813999176025
+[Timing prediction] - m5 took 2.70064640045166
+[Timing prediction] - m6 took 2.7027335166931152
+[Timing prediction] - m7 took 2.6984009742736816
+[Timing prediction] - Total m-predictions took 21.606276988983154 seconds
+[Timing prediction] - Final mult took 0.0015439987182617188
+[Timing prediction] Moving to torch took 0.0012195110321044922 seconds
+[Timing prediction] Moving to cuda took 3.790855407714844e-05 seconds
+[Timing prediction] Multshit took 1.3828277587890625e-05 seconds
+[Timing prediction] - m0 took 2.6917011737823486
+[Timing prediction] - m1 took 2.704160213470459
+[Timing prediction] - m2 took 2.7052764892578125
+[Timing prediction] - m3 took 2.69854474067688
+[Timing prediction] - m4 took 2.702768564224243
+[Timing prediction] - m5 took 2.709502696990967
+[Timing prediction] - m6 took 2.7007455825805664
+[Timing prediction] - m7 took 2.7390806674957275
+[Timing prediction] - Total m-predictions took 21.651968002319336 seconds
+[Timing prediction] - Final mult took 0.0020296573638916016
+[Timing prediction] Moving to torch took 0.0010962486267089844 seconds
+[Timing prediction] Moving to cuda took 1.9788742065429688e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.7048468589782715
+[Timing prediction] - m1 took 2.723231792449951
+[Timing prediction] - m2 took 2.7134170532226562
+[Timing prediction] - m3 took 2.759274482727051
+[Timing prediction] - m4 took 2.706275701522827
+[Timing prediction] - m5 took 2.7182679176330566
+[Timing prediction] - m6 took 2.7052063941955566
+[Timing prediction] - m7 took 2.670825481414795
+[Timing prediction] - Total m-predictions took 21.701522827148438 seconds
+[Timing prediction] - Final mult took 0.0018482208251953125
+[Timing prediction] Moving to torch took 0.0011782646179199219 seconds
+[Timing prediction] Moving to cuda took 2.2172927856445312e-05 seconds
+[Timing prediction] Multshit took 1.1444091796875e-05 seconds
+[Timing prediction] - m0 took 2.7005903720855713
+[Timing prediction] - m1 took 2.7086358070373535
+[Timing prediction] - m2 took 2.7278475761413574
+[Timing prediction] - m3 took 2.714245557785034
+[Timing prediction] - m4 took 2.707930564880371
+[Timing prediction] - m5 took 2.6993191242218018
+[Timing prediction] - m6 took 2.6989359855651855
+[Timing prediction] - m7 took 2.6821892261505127
+[Timing prediction] - Total m-predictions took 21.63989758491516 seconds
+[Timing prediction] - Final mult took 0.0022857189178466797
+[Timing prediction] Moving to torch took 0.0011868476867675781 seconds
+[Timing prediction] Moving to cuda took 3.3855438232421875e-05 seconds
+[Timing prediction] Multshit took 2.4557113647460938e-05 seconds
+[Timing prediction] - m0 took 2.7000486850738525
+[Timing prediction] - m1 took 2.6997013092041016
+[Timing prediction] - m2 took 2.699843645095825
+[Timing prediction] - m3 took 2.6997299194335938
+[Timing prediction] - m4 took 2.7100989818573
+[Timing prediction] - m5 took 2.7191431522369385
+[Timing prediction] - m6 took 2.685260057449341
+[Timing prediction] - m7 took 2.754312753677368
+[Timing prediction] - Total m-predictions took 21.66831684112549 seconds
+[Timing prediction] - Final mult took 0.001665353775024414
+[Timing prediction] Moving to torch took 0.0011737346649169922 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.7026467323303223
+[Timing prediction] - m1 took 2.7512590885162354
+[Timing prediction] - m2 took 2.7067432403564453
+[Timing prediction] - m3 took 2.721938371658325
+[Timing prediction] - m4 took 2.7044084072113037
+[Timing prediction] - m5 took 2.7153666019439697
+[Timing prediction] - m6 took 2.717559814453125
+[Timing prediction] - m7 took 2.6930060386657715
+[Timing prediction] - Total m-predictions took 21.713133573532104 seconds
+[Timing prediction] - Final mult took 0.0015377998352050781
+[Timing prediction] Moving to torch took 0.0011975765228271484 seconds
+[Timing prediction] Moving to cuda took 3.361701965332031e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.706510305404663
+[Timing prediction] - m1 took 2.697528600692749
+[Timing prediction] - m2 took 2.7133686542510986
+[Timing prediction] - m3 took 2.7000632286071777
+[Timing prediction] - m4 took 2.696840763092041
+[Timing prediction] - m5 took 2.7133185863494873
+[Timing prediction] - m6 took 2.6987853050231934
+[Timing prediction] - m7 took 2.707732677459717
+[Timing prediction] - Total m-predictions took 21.63434147834778 seconds
+[Timing prediction] - Final mult took 0.0019440650939941406
+[Timing prediction] Moving to torch took 0.0012166500091552734 seconds
+[Timing prediction] Moving to cuda took 2.4318695068359375e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.6994516849517822
+[Timing prediction] - m1 took 2.710439920425415
+[Timing prediction] - m2 took 2.727912425994873
+[Timing prediction] - m3 took 2.735234498977661
+[Timing prediction] - m4 took 2.7451744079589844
+[Timing prediction] - m5 took 2.7647275924682617
+[Timing prediction] - m6 took 2.719285011291504
+[Timing prediction] - m7 took 2.754694938659668
+[Timing prediction] - Total m-predictions took 21.857101917266846 seconds
+[Timing prediction] - Final mult took 0.001983165740966797
+[Timing prediction] Moving to torch took 0.0012209415435791016 seconds
+[Timing prediction] Moving to cuda took 3.4332275390625e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.7179949283599854
+[Timing prediction] - m1 took 2.7874250411987305
+[Timing prediction] - m2 took 2.728642463684082
+[Timing prediction] - m3 took 2.7373924255371094
+[Timing prediction] - m4 took 2.745840072631836
+[Timing prediction] - m5 took 2.7432825565338135
+[Timing prediction] - m6 took 2.7340128421783447
+[Timing prediction] - m7 took 2.7285091876983643
+[Timing prediction] - Total m-predictions took 21.923295736312866 seconds
+[Timing prediction] - Final mult took 0.0020415782928466797
+[Timing prediction] Moving to torch took 0.0012295246124267578 seconds
+[Timing prediction] Moving to cuda took 2.574920654296875e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.762115240097046
+[Timing prediction] - m1 took 2.7414119243621826
+[Timing prediction] - m2 took 2.734313488006592
+[Timing prediction] - m3 took 2.7197299003601074
+[Timing prediction] - m4 took 2.7293055057525635
+[Timing prediction] - m5 took 2.7443556785583496
+[Timing prediction] - m6 took 2.753126859664917
+[Timing prediction] - m7 took 2.7164735794067383
+[Timing prediction] - Total m-predictions took 21.901013374328613 seconds
+[Timing prediction] - Final mult took 0.0015766620635986328
+[Timing prediction] Moving to torch took 0.0011696815490722656 seconds
+[Timing prediction] Moving to cuda took 2.09808349609375e-05 seconds
+[Timing prediction] Multshit took 1.52587890625e-05 seconds
+[Timing prediction] - m0 took 2.729914665222168
+[Timing prediction] - m1 took 2.765087604522705
+[Timing prediction] - m2 took 2.73296856880188
+[Timing prediction] - m3 took 2.7546722888946533
+[Timing prediction] - m4 took 2.72674298286438
+[Timing prediction] - m5 took 2.761458396911621
+[Timing prediction] - m6 took 2.755687713623047
+[Timing prediction] - m7 took 2.754080057144165
+[Timing prediction] - Total m-predictions took 21.98084807395935 seconds
+[Timing prediction] - Final mult took 0.0020284652709960938
+[Timing prediction] Moving to torch took 0.0012116432189941406 seconds
+[Timing prediction] Moving to cuda took 3.457069396972656e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.728660821914673
+[Timing prediction] - m1 took 2.7374017238616943
+[Timing prediction] - m2 took 2.73736572265625
+[Timing prediction] - m3 took 2.758249521255493
+[Timing prediction] - m4 took 2.7321979999542236
+[Timing prediction] - m5 took 2.741469144821167
+[Timing prediction] - m6 took 2.74385666847229
+[Timing prediction] - m7 took 2.751765251159668
+[Timing prediction] - Total m-predictions took 21.931147813796997 seconds
+[Timing prediction] - Final mult took 0.0016541481018066406
+[Timing prediction] Moving to torch took 0.0013082027435302734 seconds
+[Timing prediction] Moving to cuda took 2.6464462280273438e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.740558385848999
+[Timing prediction] - m1 took 2.7284984588623047
+[Timing prediction] - m2 took 2.7389132976531982
+[Timing prediction] - m3 took 2.7350621223449707
+[Timing prediction] - m4 took 2.7445967197418213
+[Timing prediction] - m5 took 2.7566654682159424
+[Timing prediction] - m6 took 2.738334894180298
+[Timing prediction] - m7 took 2.763075113296509
+[Timing prediction] - Total m-predictions took 21.945913314819336 seconds
+[Timing prediction] - Final mult took 0.0020389556884765625
+[Timing prediction] Moving to torch took 0.0012350082397460938 seconds
+[Timing prediction] Moving to cuda took 3.910064697265625e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.7489538192749023
+[Timing prediction] - m1 took 2.7645387649536133
+[Timing prediction] - m2 took 2.734776496887207
+[Timing prediction] - m3 took 2.7470595836639404
+[Timing prediction] - m4 took 2.771937608718872
+[Timing prediction] - m5 took 2.7410054206848145
+[Timing prediction] - m6 took 2.7289464473724365
+[Timing prediction] - m7 took 2.727219581604004
+[Timing prediction] - Total m-predictions took 21.96462106704712 seconds
+[Timing prediction] - Final mult took 0.0015628337860107422
+[Timing prediction] Moving to torch took 0.0014307498931884766 seconds
+[Timing prediction] Moving to cuda took 3.1948089599609375e-05 seconds
+[Timing prediction] Multshit took 1.4066696166992188e-05 seconds
+[Timing prediction] - m0 took 2.7265427112579346
+[Timing prediction] - m1 took 2.740492105484009
+[Timing prediction] - m2 took 2.7348475456237793
+[Timing prediction] - m3 took 2.730983257293701
+[Timing prediction] - m4 took 2.7227957248687744
+[Timing prediction] - m5 took 2.751561164855957
+[Timing prediction] - m6 took 2.745162010192871
+[Timing prediction] - m7 took 2.7305572032928467
+[Timing prediction] - Total m-predictions took 21.883121728897095 seconds
+[Timing prediction] - Final mult took 0.0017871856689453125
+[Timing prediction] Moving to torch took 0.0011801719665527344 seconds
+[Timing prediction] Moving to cuda took 2.0503997802734375e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.7406387329101562
+[Timing prediction] - m1 took 2.739363670349121
+[Timing prediction] - m2 took 2.7556536197662354
+[Timing prediction] - m3 took 2.7395730018615723
+[Timing prediction] - m4 took 2.7373032569885254
+[Timing prediction] - m5 took 2.7413740158081055
+[Timing prediction] - m6 took 2.751033067703247
+[Timing prediction] - m7 took 2.794069528579712
+[Timing prediction] - Total m-predictions took 21.999218225479126 seconds
+[Timing prediction] - Final mult took 0.0021164417266845703
+[Timing prediction] Moving to torch took 0.0017359256744384766 seconds
+[Timing prediction] Moving to cuda took 3.695487976074219e-05 seconds
+[Timing prediction] Multshit took 1.5735626220703125e-05 seconds
+[Timing prediction] - m0 took 2.791062116622925
+[Timing prediction] - m1 took 2.7271053791046143
+[Timing prediction] - m2 took 2.7498230934143066
+[Timing prediction] - m3 took 2.7359511852264404
+[Timing prediction] - m4 took 2.7471301555633545
+[Timing prediction] - m5 took 2.7272591590881348
+[Timing prediction] - m6 took 2.7340941429138184
+[Timing prediction] - m7 took 2.7453665733337402
+[Timing prediction] - Total m-predictions took 21.957974433898926 seconds
+[Timing prediction] - Final mult took 0.0015337467193603516
+[Timing prediction] Moving to torch took 0.0012319087982177734 seconds
+[Timing prediction] Moving to cuda took 2.384185791015625e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7492289543151855
+[Timing prediction] - m1 took 2.7448220252990723
+[Timing prediction] - m2 took 2.7280166149139404
+[Timing prediction] - m3 took 2.7394216060638428
+[Timing prediction] - m4 took 2.74872088432312
+[Timing prediction] - m5 took 2.751883029937744
+[Timing prediction] - m6 took 2.7276062965393066
+[Timing prediction] - m7 took 2.7348814010620117
+[Timing prediction] - Total m-predictions took 21.92478370666504 seconds
+[Timing prediction] - Final mult took 0.002005338668823242
+[Timing prediction] Moving to torch took 0.0013327598571777344 seconds
+[Timing prediction] Moving to cuda took 3.3855438232421875e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.7418267726898193
+[Timing prediction] - m1 took 2.7649714946746826
+[Timing prediction] - m2 took 2.749498128890991
+[Timing prediction] - m3 took 2.772581100463867
+[Timing prediction] - m4 took 2.754345178604126
+[Timing prediction] - m5 took 2.743062973022461
+[Timing prediction] - m6 took 2.7773473262786865
+[Timing prediction] - m7 took 2.7337706089019775
+[Timing prediction] - Total m-predictions took 22.037585496902466 seconds
+[Timing prediction] - Final mult took 0.0016112327575683594
+[Timing prediction] Moving to torch took 0.001192331314086914 seconds
+[Timing prediction] Moving to cuda took 2.3365020751953125e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.756084442138672
+[Timing prediction] - m1 took 2.7275032997131348
+[Timing prediction] - m2 took 2.748981237411499
+[Timing prediction] - m3 took 2.716078758239746
+[Timing prediction] - m4 took 2.7221641540527344
+[Timing prediction] - m5 took 2.7352378368377686
+[Timing prediction] - m6 took 2.737642288208008
+[Timing prediction] - m7 took 2.7280185222625732
+[Timing prediction] - Total m-predictions took 21.871909856796265 seconds
+[Timing prediction] - Final mult took 0.002069234848022461
+[Timing prediction] Moving to torch took 0.0012362003326416016 seconds
+[Timing prediction] Moving to cuda took 7.200241088867188e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.7330100536346436
+[Timing prediction] - m1 took 2.720701217651367
+[Timing prediction] - m2 took 2.7316763401031494
+[Timing prediction] - m3 took 2.751131296157837
+[Timing prediction] - m4 took 2.7353477478027344
+[Timing prediction] - m5 took 2.7273144721984863
+[Timing prediction] - m6 took 2.727335214614868
+[Timing prediction] - m7 took 2.7441341876983643
+[Timing prediction] - Total m-predictions took 21.870828866958618 seconds
+[Timing prediction] - Final mult took 0.0015926361083984375
+[Timing prediction] Moving to torch took 0.0011777877807617188 seconds
+[Timing prediction] Moving to cuda took 2.1219253540039062e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.754924774169922
+[Timing prediction] - m1 took 2.7267813682556152
+[Timing prediction] - m2 took 2.7653684616088867
+[Timing prediction] - m3 took 2.739734172821045
+[Timing prediction] - m4 took 2.7708473205566406
+[Timing prediction] - m5 took 2.7640585899353027
+[Timing prediction] - m6 took 2.7587649822235107
+[Timing prediction] - m7 took 2.725018262863159
+[Timing prediction] - Total m-predictions took 22.00569224357605 seconds
+[Timing prediction] - Final mult took 0.0016872882843017578
+[Timing prediction] Moving to torch took 0.0012013912200927734 seconds
+[Timing prediction] Moving to cuda took 3.0040740966796875e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.7358763217926025
+[Timing prediction] - m1 took 2.7473039627075195
+[Timing prediction] - m2 took 2.7521584033966064
+[Timing prediction] - m3 took 2.7085652351379395
+[Timing prediction] - m4 took 2.7357285022735596
+[Timing prediction] - m5 took 2.743300437927246
+[Timing prediction] - m6 took 2.7337005138397217
+[Timing prediction] - m7 took 2.729948043823242
+[Timing prediction] - Total m-predictions took 21.886797428131104 seconds
+[Timing prediction] - Final mult took 0.0019626617431640625
+[Timing prediction] Moving to torch took 0.0012619495391845703 seconds
+[Timing prediction] Moving to cuda took 3.409385681152344e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.7301933765411377
+[Timing prediction] - m1 took 2.7372074127197266
+[Timing prediction] - m2 took 2.7467072010040283
+[Timing prediction] - m3 took 2.730222225189209
+[Timing prediction] - m4 took 2.727800130844116
+[Timing prediction] - m5 took 2.733421564102173
+[Timing prediction] - m6 took 2.7557218074798584
+[Timing prediction] - m7 took 2.743314266204834
+[Timing prediction] - Total m-predictions took 21.90477705001831 seconds
+[Timing prediction] - Final mult took 0.0016121864318847656
+[Timing prediction] Moving to torch took 0.0011570453643798828 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.770174980163574
+[Timing prediction] - m1 took 2.7297122478485107
+[Timing prediction] - m2 took 2.756389617919922
+[Timing prediction] - m3 took 2.7591655254364014
+[Timing prediction] - m4 took 2.7458674907684326
+[Timing prediction] - m5 took 2.727786064147949
+[Timing prediction] - m6 took 2.7273082733154297
+[Timing prediction] - m7 took 2.7894985675811768
+[Timing prediction] - Total m-predictions took 22.006091833114624 seconds
+[Timing prediction] - Final mult took 0.001608133316040039
+[Timing prediction] Moving to torch took 0.0012316703796386719 seconds
+[Timing prediction] Moving to cuda took 3.8623809814453125e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.748134136199951
+[Timing prediction] - m1 took 2.7295985221862793
+[Timing prediction] - m2 took 2.737260341644287
+[Timing prediction] - m3 took 2.738086700439453
+[Timing prediction] - m4 took 2.740313768386841
+[Timing prediction] - m5 took 2.7063324451446533
+[Timing prediction] - m6 took 2.7302632331848145
+[Timing prediction] - m7 took 2.7292895317077637
+[Timing prediction] - Total m-predictions took 21.859474182128906 seconds
+[Timing prediction] - Final mult took 0.00200653076171875
+[Timing prediction] Moving to torch took 0.0014157295227050781 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.743378162384033
+[Timing prediction] - m1 took 2.719810962677002
+[Timing prediction] - m2 took 2.729912042617798
+[Timing prediction] - m3 took 2.7191598415374756
+[Timing prediction] - m4 took 2.770878791809082
+[Timing prediction] - m5 took 2.7459449768066406
+[Timing prediction] - m6 took 2.7602531909942627
+[Timing prediction] - m7 took 2.7153170108795166
+[Timing prediction] - Total m-predictions took 21.904834032058716 seconds
+[Timing prediction] - Final mult took 0.0016503334045410156
+[Timing prediction] Moving to torch took 0.0011832714080810547 seconds
+[Timing prediction] Moving to cuda took 2.2172927856445312e-05 seconds
+[Timing prediction] Multshit took 1.7881393432617188e-05 seconds
+[Timing prediction] - m0 took 2.749847888946533
+[Timing prediction] - m1 took 2.756892442703247
+[Timing prediction] - m2 took 2.736274480819702
+[Timing prediction] - m3 took 2.737277030944824
+[Timing prediction] - m4 took 2.7361931800842285
+[Timing prediction] - m5 took 2.7458560466766357
+[Timing prediction] - m6 took 2.747218370437622
+[Timing prediction] - m7 took 2.723799705505371
+[Timing prediction] - Total m-predictions took 21.93356442451477 seconds
+[Timing prediction] - Final mult took 0.0020241737365722656
+[Timing prediction] Moving to torch took 0.0014297962188720703 seconds
+[Timing prediction] Moving to cuda took 3.695487976074219e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7237799167633057
+[Timing prediction] - m1 took 2.7558341026306152
+[Timing prediction] - m2 took 2.717146158218384
+[Timing prediction] - m3 took 2.7500922679901123
+[Timing prediction] - m4 took 2.737727403640747
+[Timing prediction] - m5 took 2.738757371902466
+[Timing prediction] - m6 took 2.730933904647827
+[Timing prediction] - m7 took 2.7420966625213623
+[Timing prediction] - Total m-predictions took 21.896551370620728 seconds
+[Timing prediction] - Final mult took 0.0015659332275390625
+[Timing prediction] Moving to torch took 0.0012042522430419922 seconds
+[Timing prediction] Moving to cuda took 2.2172927856445312e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.733654260635376
+[Timing prediction] - m1 took 2.717848777770996
+[Timing prediction] - m2 took 2.745283365249634
+[Timing prediction] - m3 took 2.73526930809021
+[Timing prediction] - m4 took 2.7648565769195557
+[Timing prediction] - m5 took 2.718092679977417
+[Timing prediction] - m6 took 2.75459885597229
+[Timing prediction] - m7 took 2.736379623413086
+[Timing prediction] - Total m-predictions took 21.906163692474365 seconds
+[Timing prediction] - Final mult took 0.0018188953399658203
+[Timing prediction] Moving to torch took 0.0012536048889160156 seconds
+[Timing prediction] Moving to cuda took 2.4318695068359375e-05 seconds
+[Timing prediction] Multshit took 1.2159347534179688e-05 seconds
+[Timing prediction] - m0 took 2.745530366897583
+[Timing prediction] - m1 took 2.73799204826355
+[Timing prediction] - m2 took 2.7323405742645264
+[Timing prediction] - m3 took 2.723358631134033
+[Timing prediction] - m4 took 2.7355496883392334
+[Timing prediction] - m5 took 2.749598264694214
+[Timing prediction] - m6 took 2.7238612174987793
+[Timing prediction] - m7 took 2.7228517532348633
+[Timing prediction] - Total m-predictions took 21.87128734588623 seconds
+[Timing prediction] - Final mult took 0.0019922256469726562
+[Timing prediction] Moving to torch took 0.0012786388397216797 seconds
+[Timing prediction] Moving to cuda took 3.719329833984375e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.732818126678467
+[Timing prediction] - m1 took 2.7602698802948
+[Timing prediction] - m2 took 2.736011028289795
+[Timing prediction] - m3 took 2.7287373542785645
+[Timing prediction] - m4 took 2.7262890338897705
+[Timing prediction] - m5 took 2.7412216663360596
+[Timing prediction] - m6 took 2.739539861679077
+[Timing prediction] - m7 took 2.7303991317749023
+[Timing prediction] - Total m-predictions took 21.93053889274597 seconds
+[Timing prediction] - Final mult took 0.0015478134155273438
+[Timing prediction] Moving to torch took 0.0011906623840332031 seconds
+[Timing prediction] Moving to cuda took 2.288818359375e-05 seconds
+[Timing prediction] Multshit took 2.5033950805664062e-05 seconds
+[Timing prediction] - m0 took 2.7400455474853516
+[Timing prediction] - m1 took 2.7427499294281006
+[Timing prediction] - m2 took 2.7868456840515137
+[Timing prediction] - m3 took 2.733111619949341
+[Timing prediction] - m4 took 2.7387263774871826
+[Timing prediction] - m5 took 2.779277801513672
+[Timing prediction] - m6 took 2.7477519512176514
+[Timing prediction] - m7 took 2.745460033416748
+[Timing prediction] - Total m-predictions took 22.014196395874023 seconds
+[Timing prediction] - Final mult took 0.0020051002502441406
+[Timing prediction] Moving to torch took 0.0013594627380371094 seconds
+[Timing prediction] Moving to cuda took 3.8623809814453125e-05 seconds
+[Timing prediction] Multshit took 1.4066696166992188e-05 seconds
+[Timing prediction] - m0 took 2.727773904800415
+[Timing prediction] - m1 took 2.7070655822753906
+[Timing prediction] - m2 took 2.7181015014648438
+[Timing prediction] - m3 took 2.7400169372558594
+[Timing prediction] - m4 took 2.737877130508423
+[Timing prediction] - m5 took 2.7254440784454346
+[Timing prediction] - m6 took 2.719419240951538
+[Timing prediction] - m7 took 2.7363662719726562
+[Timing prediction] - Total m-predictions took 21.812251091003418 seconds
+[Timing prediction] - Final mult took 0.0016770362854003906
+[Timing prediction] Moving to torch took 0.0017406940460205078 seconds
+[Timing prediction] Moving to cuda took 2.4557113647460938e-05 seconds
+[Timing prediction] Multshit took 1.5735626220703125e-05 seconds
+[Timing prediction] - m0 took 2.7476139068603516
+[Timing prediction] - m1 took 2.7330920696258545
+[Timing prediction] - m2 took 2.7150888442993164
+[Timing prediction] - m3 took 2.710944890975952
+[Timing prediction] - m4 took 2.7384462356567383
+[Timing prediction] - m5 took 2.7464232444763184
+[Timing prediction] - m6 took 2.7507126331329346
+[Timing prediction] - m7 took 2.7594902515411377
+[Timing prediction] - Total m-predictions took 21.901997089385986 seconds
+[Timing prediction] - Final mult took 0.001538991928100586
+[Timing prediction] Moving to torch took 0.0012154579162597656 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 1.0967254638671875e-05 seconds
+[Timing prediction] - m0 took 2.7980973720550537
+[Timing prediction] - m1 took 2.8111631870269775
+[Timing prediction] - m2 took 2.7304842472076416
+[Timing prediction] - m3 took 2.775663375854492
+[Timing prediction] - m4 took 2.737928628921509
+[Timing prediction] - m5 took 2.729888677597046
+[Timing prediction] - m6 took 2.7285661697387695
+[Timing prediction] - m7 took 2.7250356674194336
+[Timing prediction] - Total m-predictions took 22.037023544311523 seconds
+[Timing prediction] - Final mult took 0.0020303726196289062
+[Timing prediction] Moving to torch took 0.0012969970703125 seconds
+[Timing prediction] Moving to cuda took 3.457069396972656e-05 seconds
+[Timing prediction] Multshit took 1.430511474609375e-05 seconds
+[Timing prediction] - m0 took 2.7235794067382812
+[Timing prediction] - m1 took 2.730238437652588
+[Timing prediction] - m2 took 2.7614731788635254
+[Timing prediction] - m3 took 2.727996587753296
+[Timing prediction] - m4 took 2.7054238319396973
+[Timing prediction] - m5 took 2.7565739154815674
+[Timing prediction] - m6 took 2.738926410675049
+[Timing prediction] - m7 took 2.7062828540802
+[Timing prediction] - Total m-predictions took 21.850674390792847 seconds
+[Timing prediction] - Final mult took 0.0015087127685546875
+[Timing prediction] Moving to torch took 0.0011663436889648438 seconds
+[Timing prediction] Moving to cuda took 3.600120544433594e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.729506015777588
+[Timing prediction] - m1 took 2.724581480026245
+[Timing prediction] - m2 took 2.7434628009796143
+[Timing prediction] - m3 took 2.762896776199341
+[Timing prediction] - m4 took 2.7483890056610107
+[Timing prediction] - m5 took 2.7547335624694824
+[Timing prediction] - m6 took 2.7485432624816895
+[Timing prediction] - m7 took 2.7704949378967285
+[Timing prediction] - Total m-predictions took 21.9828200340271 seconds
+[Timing prediction] - Final mult took 0.0021562576293945312
+[Timing prediction] Moving to torch took 0.0013833045959472656 seconds
+[Timing prediction] Moving to cuda took 3.647804260253906e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.718158006668091
+[Timing prediction] - m1 took 2.7584545612335205
+[Timing prediction] - m2 took 2.735107898712158
+[Timing prediction] - m3 took 2.746198892593384
+[Timing prediction] - m4 took 2.733388662338257
+[Timing prediction] - m5 took 2.7299981117248535
+[Timing prediction] - m6 took 2.7220778465270996
+[Timing prediction] - m7 took 2.766252279281616
+[Timing prediction] - Total m-predictions took 21.90982174873352 seconds
+[Timing prediction] - Final mult took 0.0017552375793457031
+[Timing prediction] Moving to torch took 0.0011548995971679688 seconds
+[Timing prediction] Moving to cuda took 2.6941299438476562e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7371461391448975
+[Timing prediction] - m1 took 2.7352542877197266
+[Timing prediction] - m2 took 2.72574520111084
+[Timing prediction] - m3 took 2.744170665740967
+[Timing prediction] - m4 took 2.749361276626587
+[Timing prediction] - m5 took 2.7202305793762207
+[Timing prediction] - m6 took 2.7631490230560303
+[Timing prediction] - m7 took 2.7603604793548584
+[Timing prediction] - Total m-predictions took 21.93561315536499 seconds
+[Timing prediction] - Final mult took 0.0018973350524902344
+[Timing prediction] Moving to torch took 0.0012476444244384766 seconds
+[Timing prediction] Moving to cuda took 3.886222839355469e-05 seconds
+[Timing prediction] Multshit took 1.3828277587890625e-05 seconds
+[Timing prediction] - m0 took 2.7453694343566895
+[Timing prediction] - m1 took 2.782411813735962
+[Timing prediction] - m2 took 2.723836660385132
+[Timing prediction] - m3 took 2.7785534858703613
+[Timing prediction] - m4 took 2.7415571212768555
+[Timing prediction] - m5 took 2.769179344177246
+[Timing prediction] - m6 took 2.7291884422302246
+[Timing prediction] - m7 took 2.775421619415283
+[Timing prediction] - Total m-predictions took 22.045711755752563 seconds
+[Timing prediction] - Final mult took 0.0019414424896240234
+[Timing prediction] Moving to torch took 0.0012111663818359375 seconds
+[Timing prediction] Moving to cuda took 1.9311904907226562e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7396697998046875
+[Timing prediction] - m1 took 2.7253358364105225
+[Timing prediction] - m2 took 2.7074174880981445
+[Timing prediction] - m3 took 2.7263076305389404
+[Timing prediction] - m4 took 2.7405474185943604
+[Timing prediction] - m5 took 2.7416510581970215
+[Timing prediction] - m6 took 2.7290241718292236
+[Timing prediction] - m7 took 2.734257698059082
+[Timing prediction] - Total m-predictions took 21.84439444541931 seconds
+[Timing prediction] - Final mult took 0.001641988754272461
+[Timing prediction] Moving to torch took 0.0012218952178955078 seconds
+[Timing prediction] Moving to cuda took 2.2649765014648438e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.728259563446045
+[Timing prediction] - m1 took 2.7433829307556152
+[Timing prediction] - m2 took 2.7405142784118652
+[Timing prediction] - m3 took 2.7465567588806152
+[Timing prediction] - m4 took 2.7279369831085205
+[Timing prediction] - m5 took 2.731506109237671
+[Timing prediction] - m6 took 2.7430126667022705
+[Timing prediction] - m7 took 2.785360097885132
+[Timing prediction] - Total m-predictions took 21.94678807258606 seconds
+[Timing prediction] - Final mult took 0.0018808841705322266
+[Timing prediction] Moving to torch took 0.0012469291687011719 seconds
+[Timing prediction] Moving to cuda took 3.933906555175781e-05 seconds
+[Timing prediction] Multshit took 1.4066696166992188e-05 seconds
+[Timing prediction] - m0 took 2.736766815185547
+[Timing prediction] - m1 took 2.795457124710083
+[Timing prediction] - m2 took 2.7472431659698486
+[Timing prediction] - m3 took 2.8148810863494873
+[Timing prediction] - m4 took 2.7263572216033936
+[Timing prediction] - m5 took 2.7908051013946533
+[Timing prediction] - m6 took 2.743694543838501
+[Timing prediction] - m7 took 2.770059585571289
+[Timing prediction] - Total m-predictions took 22.125476360321045 seconds
+[Timing prediction] - Final mult took 0.0016474723815917969
+[Timing prediction] Moving to torch took 0.0012001991271972656 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7349603176116943
+[Timing prediction] - m1 took 2.732043743133545
+[Timing prediction] - m2 took 2.7318315505981445
+[Timing prediction] - m3 took 2.7547335624694824
+[Timing prediction] - m4 took 2.73846435546875
+[Timing prediction] - m5 took 2.7468302249908447
+[Timing prediction] - m6 took 2.725442886352539
+[Timing prediction] - m7 took 2.747838020324707
+[Timing prediction] - Total m-predictions took 21.91234302520752 seconds
+[Timing prediction] - Final mult took 0.001718759536743164
+[Timing prediction] Moving to torch took 0.0011992454528808594 seconds
+[Timing prediction] Moving to cuda took 3.314018249511719e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.738827705383301
+[Timing prediction] - m1 took 2.732459783554077
+[Timing prediction] - m2 took 2.7274463176727295
+[Timing prediction] - m3 took 2.7381343841552734
+[Timing prediction] - m4 took 2.7353219985961914
+[Timing prediction] - m5 took 2.7594516277313232
+[Timing prediction] - m6 took 2.744016647338867
+[Timing prediction] - m7 took 2.763767957687378
+[Timing prediction] - Total m-predictions took 21.939617156982422 seconds
+[Timing prediction] - Final mult took 0.0020253658294677734
+[Timing prediction] Moving to torch took 0.0013480186462402344 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.731581449508667
+[Timing prediction] - m1 took 2.768771171569824
+[Timing prediction] - m2 took 2.7410004138946533
+[Timing prediction] - m3 took 2.734516143798828
+[Timing prediction] - m4 took 2.74202561378479
+[Timing prediction] - m5 took 2.729273557662964
+[Timing prediction] - m6 took 2.7272286415100098
+[Timing prediction] - m7 took 2.738018035888672
+[Timing prediction] - Total m-predictions took 21.912594318389893 seconds
+[Timing prediction] - Final mult took 0.0015490055084228516
+[Timing prediction] Moving to torch took 0.0012183189392089844 seconds
+[Timing prediction] Moving to cuda took 2.3365020751953125e-05 seconds
+[Timing prediction] Multshit took 1.1682510375976562e-05 seconds
+[Timing prediction] - m0 took 2.765148162841797
+[Timing prediction] - m1 took 2.722466230392456
+[Timing prediction] - m2 took 2.7454893589019775
+[Timing prediction] - m3 took 2.734673261642456
+[Timing prediction] - m4 took 2.7644245624542236
+[Timing prediction] - m5 took 2.7460687160491943
+[Timing prediction] - m6 took 2.737287759780884
+[Timing prediction] - m7 took 2.7350759506225586
+[Timing prediction] - Total m-predictions took 21.95082950592041 seconds
+[Timing prediction] - Final mult took 0.0021352767944335938
+[Timing prediction] Moving to torch took 0.001417398452758789 seconds
+[Timing prediction] Moving to cuda took 3.695487976074219e-05 seconds
+[Timing prediction] Multshit took 1.430511474609375e-05 seconds
+[Timing prediction] - m0 took 2.7300796508789062
+[Timing prediction] - m1 took 2.7419004440307617
+[Timing prediction] - m2 took 2.739997386932373
+[Timing prediction] - m3 took 2.7836785316467285
+[Timing prediction] - m4 took 2.7320096492767334
+[Timing prediction] - m5 took 2.784550428390503
+[Timing prediction] - m6 took 2.755585193634033
+[Timing prediction] - m7 took 2.7617006301879883
+[Timing prediction] - Total m-predictions took 22.02969002723694 seconds
+[Timing prediction] - Final mult took 0.0015997886657714844
+[Timing prediction] Moving to torch took 0.001203775405883789 seconds
+[Timing prediction] Moving to cuda took 2.2411346435546875e-05 seconds
+[Timing prediction] Multshit took 1.430511474609375e-05 seconds
+[Timing prediction] - m0 took 2.7684385776519775
+[Timing prediction] - m1 took 2.7344865798950195
+[Timing prediction] - m2 took 2.747119665145874
+[Timing prediction] - m3 took 2.7379519939422607
+[Timing prediction] - m4 took 2.7257027626037598
+[Timing prediction] - m5 took 2.7258667945861816
+[Timing prediction] - m6 took 2.7370591163635254
+[Timing prediction] - m7 took 2.747213840484619
+[Timing prediction] - Total m-predictions took 21.924018144607544 seconds
+[Timing prediction] - Final mult took 0.0015337467193603516
+[Timing prediction] Moving to torch took 0.0011565685272216797 seconds
+[Timing prediction] Moving to cuda took 2.3126602172851562e-05 seconds
+[Timing prediction] Multshit took 1.52587890625e-05 seconds
+[Timing prediction] - m0 took 2.7650740146636963
+[Timing prediction] - m1 took 2.756610870361328
+[Timing prediction] - m2 took 2.729599952697754
+[Timing prediction] - m3 took 2.7395284175872803
+[Timing prediction] - m4 took 2.772736072540283
+[Timing prediction] - m5 took 2.738090991973877
+[Timing prediction] - m6 took 2.728628396987915
+[Timing prediction] - m7 took 2.724440097808838
+[Timing prediction] - Total m-predictions took 21.95491600036621 seconds
+[Timing prediction] - Final mult took 0.002096414566040039
+[Timing prediction] Moving to torch took 0.001294851303100586 seconds
+[Timing prediction] Moving to cuda took 3.504753112792969e-05 seconds
+[Timing prediction] Multshit took 1.3828277587890625e-05 seconds
+[Timing prediction] - m0 took 2.7311246395111084
+[Timing prediction] - m1 took 2.7862143516540527
+[Timing prediction] - m2 took 2.7747180461883545
+[Timing prediction] - m3 took 2.744885206222534
+[Timing prediction] - m4 took 2.7859628200531006
+[Timing prediction] - m5 took 2.744115114212036
+[Timing prediction] - m6 took 2.7590534687042236
+[Timing prediction] - m7 took 2.7339210510253906
+[Timing prediction] - Total m-predictions took 22.06018328666687 seconds
+[Timing prediction] - Final mult took 0.0017828941345214844
+[Timing prediction] Moving to torch took 0.0011277198791503906 seconds
+[Timing prediction] Moving to cuda took 2.3126602172851562e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.734609603881836
+[Timing prediction] - m1 took 2.745743989944458
+[Timing prediction] - m2 took 2.735130548477173
+[Timing prediction] - m3 took 2.7427332401275635
+[Timing prediction] - m4 took 2.7218692302703857
+[Timing prediction] - m5 took 2.732684373855591
+[Timing prediction] - m6 took 2.754495143890381
+[Timing prediction] - m7 took 2.7378015518188477
+[Timing prediction] - Total m-predictions took 21.90527057647705 seconds
+[Timing prediction] - Final mult took 0.0017876625061035156
+[Timing prediction] Moving to torch took 0.001260995864868164 seconds
+[Timing prediction] Moving to cuda took 3.600120544433594e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.719467878341675
+[Timing prediction] - m1 took 2.7629308700561523
+[Timing prediction] - m2 took 2.669715642929077
+[Timing prediction] - m3 took 2.6014888286590576
+[Timing prediction] - m4 took 2.609848737716675
+[Timing prediction] - m5 took 2.589402437210083
+[Timing prediction] - m6 took 2.607131004333496
+[Timing prediction] - m7 took 2.6686911582946777
+[Timing prediction] - Total m-predictions took 21.22889280319214 seconds
+[Timing prediction] - Final mult took 0.0017693042755126953
+[Timing prediction] Moving to torch took 0.0013272762298583984 seconds
+[Timing prediction] Moving to cuda took 2.2649765014648438e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.6163716316223145
+[Timing prediction] - m1 took 2.5981099605560303
+[Timing prediction] - m2 took 2.613510847091675
+[Timing prediction] - m3 took 2.6090028285980225
+[Timing prediction] - m4 took 2.627054452896118
+[Timing prediction] - m5 took 2.5827476978302
+[Timing prediction] - m6 took 2.596026659011841
+[Timing prediction] - m7 took 2.5911874771118164
+[Timing prediction] - Total m-predictions took 20.83422088623047 seconds
+[Timing prediction] - Final mult took 0.0015707015991210938
+[Timing prediction] Moving to torch took 0.001220703125 seconds
+[Timing prediction] Moving to cuda took 3.695487976074219e-05 seconds
+[Timing prediction] Multshit took 1.4543533325195312e-05 seconds
+[Timing prediction] - m0 took 2.6215929985046387
+[Timing prediction] - m1 took 2.5958945751190186
+[Timing prediction] - m2 took 2.5994625091552734
+[Timing prediction] - m3 took 2.5919582843780518
+[Timing prediction] - m4 took 2.580169200897217
+[Timing prediction] - m5 took 2.5853497982025146
+[Timing prediction] - m6 took 2.615370273590088
+[Timing prediction] - m7 took 2.594230890274048
+[Timing prediction] - Total m-predictions took 20.784228801727295 seconds
+[Timing prediction] - Final mult took 0.0022733211517333984
+[Timing prediction] Moving to torch took 0.0013077259063720703 seconds
+[Timing prediction] Moving to cuda took 2.09808349609375e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.688415765762329
+[Timing prediction] - m1 took 2.7922158241271973
+[Timing prediction] - m2 took 2.9070613384246826
+[Timing prediction] - m3 took 2.796682596206665
+[Timing prediction] - m4 took 2.8900859355926514
+[Timing prediction] - m5 took 2.7728688716888428
+[Timing prediction] - m6 took 2.910869836807251
+[Timing prediction] - m7 took 2.874499797821045
+[Timing prediction] - Total m-predictions took 22.632893085479736 seconds
+[Timing prediction] - Final mult took 0.0016217231750488281
+[Timing prediction] Moving to torch took 0.0011832714080810547 seconds
+[Timing prediction] Moving to cuda took 4.00543212890625e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.907517433166504
+[Timing prediction] - m1 took 3.0328807830810547
+[Timing prediction] - m2 took 2.9033923149108887
+[Timing prediction] - m3 took 2.902329683303833
+[Timing prediction] - m4 took 2.8803653717041016
+[Timing prediction] - m5 took 2.903657913208008
+[Timing prediction] - m6 took 2.833618640899658
+[Timing prediction] - m7 took 2.900355339050293
+[Timing prediction] - Total m-predictions took 23.264325380325317 seconds
+[Timing prediction] - Final mult took 0.0021250247955322266
+[Timing prediction] Moving to torch took 0.001348257064819336 seconds
+[Timing prediction] Moving to cuda took 3.5762786865234375e-05 seconds
+[Timing prediction] Multshit took 1.3828277587890625e-05 seconds
+[Timing prediction] - m0 took 2.859431743621826
+[Timing prediction] - m1 took 2.7974417209625244
+[Timing prediction] - m2 took 2.915480852127075
+[Timing prediction] - m3 took 2.8231873512268066
+[Timing prediction] - m4 took 2.9306800365448
+[Timing prediction] - m5 took 2.7367329597473145
+[Timing prediction] - m6 took 2.952941417694092
+[Timing prediction] - m7 took 2.897007942199707
+[Timing prediction] - Total m-predictions took 22.9130916595459 seconds
+[Timing prediction] - Final mult took 0.0014545917510986328
+[Timing prediction] Moving to torch took 0.001201629638671875 seconds
+[Timing prediction] Moving to cuda took 2.3365020751953125e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.8580918312072754
+[Timing prediction] - m1 took 2.880772113800049
+[Timing prediction] - m2 took 2.7768332958221436
+[Timing prediction] - m3 took 2.7911345958709717
+[Timing prediction] - m4 took 2.931015729904175
+[Timing prediction] - m5 took 2.8414664268493652
+[Timing prediction] - m6 took 2.877967596054077
+[Timing prediction] - m7 took 2.7922451496124268
+[Timing prediction] - Total m-predictions took 22.749732732772827 seconds
+[Timing prediction] - Final mult took 0.0020704269409179688
+[Timing prediction] Moving to torch took 0.0011110305786132812 seconds
+[Timing prediction] Moving to cuda took 3.910064697265625e-05 seconds
+[Timing prediction] Multshit took 1.9788742065429688e-05 seconds
+[Timing prediction] - m0 took 2.897273540496826
+[Timing prediction] - m1 took 2.779860019683838
+[Timing prediction] - m2 took 2.9068737030029297
+[Timing prediction] - m3 took 2.8384382724761963
+[Timing prediction] - m4 took 2.8783762454986572
+[Timing prediction] - m5 took 2.9262309074401855
+[Timing prediction] - m6 took 2.903674364089966
+[Timing prediction] - m7 took 2.8346307277679443
+[Timing prediction] - Total m-predictions took 22.9655442237854 seconds
+[Timing prediction] - Final mult took 0.0015881061553955078
+[Timing prediction] Moving to torch took 0.0012235641479492188 seconds
+[Timing prediction] Moving to cuda took 2.47955322265625e-05 seconds
+[Timing prediction] Multshit took 1.8835067749023438e-05 seconds
+[Timing prediction] - m0 took 2.8354709148406982
+[Timing prediction] - m1 took 2.794764518737793
+[Timing prediction] - m2 took 2.8308067321777344
+[Timing prediction] - m3 took 2.8625481128692627
+[Timing prediction] - m4 took 2.8419406414031982
+[Timing prediction] - m5 took 2.8702213764190674
+[Timing prediction] - m6 took 2.8215816020965576
+[Timing prediction] - m7 took 2.9267055988311768
+[Timing prediction] - Total m-predictions took 22.78424644470215 seconds
+[Timing prediction] - Final mult took 0.001971721649169922
+[Timing prediction] Moving to torch took 0.0011203289031982422 seconds
+[Timing prediction] Moving to cuda took 3.933906555175781e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.9858241081237793
+[Timing prediction] - m1 took 2.9105148315429688
+[Timing prediction] - m2 took 2.9513278007507324
+[Timing prediction] - m3 took 2.897756814956665
+[Timing prediction] - m4 took 2.9817333221435547
+[Timing prediction] - m5 took 2.94702410697937
+[Timing prediction] - m6 took 2.844024419784546
+[Timing prediction] - m7 took 2.8609514236450195
+[Timing prediction] - Total m-predictions took 23.3793466091156 seconds
+[Timing prediction] - Final mult took 0.0013921260833740234
+[Timing prediction] Moving to torch took 0.0012693405151367188 seconds
+[Timing prediction] Moving to cuda took 2.2649765014648438e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.782212495803833
+[Timing prediction] - m1 took 2.898310899734497
+[Timing prediction] - m2 took 2.8762378692626953
+[Timing prediction] - m3 took 2.8933005332946777
+[Timing prediction] - m4 took 3.0000271797180176
+[Timing prediction] - m5 took 2.9361541271209717
+[Timing prediction] - m6 took 2.8717665672302246
+[Timing prediction] - m7 took 2.866373300552368
+[Timing prediction] - Total m-predictions took 23.124591827392578 seconds
+[Timing prediction] - Final mult took 0.001889944076538086
+[Timing prediction] Moving to torch took 0.0010137557983398438 seconds
+[Timing prediction] Moving to cuda took 3.910064697265625e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.8594584465026855
+[Timing prediction] - m1 took 2.828303337097168
+[Timing prediction] - m2 took 2.8464362621307373
+[Timing prediction] - m3 took 2.874194622039795
+[Timing prediction] - m4 took 2.9518144130706787
+[Timing prediction] - m5 took 2.8347439765930176
+[Timing prediction] - m6 took 2.8026106357574463
+[Timing prediction] - m7 took 2.839010238647461
+[Timing prediction] - Total m-predictions took 22.836758136749268 seconds
+[Timing prediction] - Final mult took 0.0018475055694580078
+[Timing prediction] Moving to torch took 0.001191854476928711 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7532060146331787
+[Timing prediction] - m1 took 2.831272840499878
+[Timing prediction] - m2 took 2.857588291168213
+[Timing prediction] - m3 took 2.768296957015991
+[Timing prediction] - m4 took 2.8687551021575928
+[Timing prediction] - m5 took 2.8959603309631348
+[Timing prediction] - m6 took 2.7767093181610107
+[Timing prediction] - m7 took 2.8277430534362793
+[Timing prediction] - Total m-predictions took 22.579734086990356 seconds
+[Timing prediction] - Final mult took 0.0018858909606933594
+[Timing prediction] Moving to torch took 0.001234292984008789 seconds
+[Timing prediction] Moving to cuda took 3.933906555175781e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.825636148452759
+[Timing prediction] - m1 took 2.81396484375
+[Timing prediction] - m2 took 2.934576988220215
+[Timing prediction] - m3 took 2.874404191970825
+[Timing prediction] - m4 took 2.7356584072113037
+[Timing prediction] - m5 took 2.7625248432159424
+[Timing prediction] - m6 took 2.7169010639190674
+[Timing prediction] - m7 took 2.8309035301208496
+[Timing prediction] - Total m-predictions took 22.49475932121277 seconds
+[Timing prediction] - Final mult took 0.0017087459564208984
+[Timing prediction] Moving to torch took 0.0012621879577636719 seconds
+[Timing prediction] Moving to cuda took 2.2411346435546875e-05 seconds
+[Timing prediction] Multshit took 1.3828277587890625e-05 seconds
+[Timing prediction] - m0 took 2.7336642742156982
+[Timing prediction] - m1 took 2.8372931480407715
+[Timing prediction] - m2 took 2.8521711826324463
+[Timing prediction] - m3 took 2.8328428268432617
+[Timing prediction] - m4 took 2.812352180480957
+[Timing prediction] - m5 took 2.773159980773926
+[Timing prediction] - m6 took 2.8114428520202637
+[Timing prediction] - m7 took 2.7759318351745605
+[Timing prediction] - Total m-predictions took 22.42907166481018 seconds
+[Timing prediction] - Final mult took 0.0018513202667236328
+[Timing prediction] Moving to torch took 0.0012524127960205078 seconds
+[Timing prediction] Moving to cuda took 3.7670135498046875e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.8264615535736084
+[Timing prediction] - m1 took 2.814954996109009
+[Timing prediction] - m2 took 2.8089420795440674
+[Timing prediction] - m3 took 2.778744697570801
+[Timing prediction] - m4 took 2.7601332664489746
+[Timing prediction] - m5 took 2.782931327819824
+[Timing prediction] - m6 took 2.8299996852874756
+[Timing prediction] - m7 took 2.804697036743164
+[Timing prediction] - Total m-predictions took 22.40704870223999 seconds
+[Timing prediction] - Final mult took 0.0017948150634765625
+[Timing prediction] Moving to torch took 0.0010540485382080078 seconds
+[Timing prediction] Moving to cuda took 2.1457672119140625e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7993526458740234
+[Timing prediction] - m1 took 2.8025031089782715
+[Timing prediction] - m2 took 2.8343632221221924
+[Timing prediction] - m3 took 2.781510591506958
+[Timing prediction] - m4 took 2.8215601444244385
+[Timing prediction] - m5 took 2.787424325942993
+[Timing prediction] - m6 took 2.88843035697937
+[Timing prediction] - m7 took 2.839344024658203
+[Timing prediction] - Total m-predictions took 22.5546772480011 seconds
+[Timing prediction] - Final mult took 0.0018544197082519531
+[Timing prediction] Moving to torch took 0.0011467933654785156 seconds
+[Timing prediction] Moving to cuda took 2.2411346435546875e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.749150514602661
+[Timing prediction] - m1 took 2.889266014099121
+[Timing prediction] - m2 took 2.822056293487549
+[Timing prediction] - m3 took 2.7921998500823975
+[Timing prediction] - m4 took 2.9098896980285645
+[Timing prediction] - m5 took 2.8543899059295654
+[Timing prediction] - m6 took 2.841444253921509
+[Timing prediction] - m7 took 2.8108701705932617
+[Timing prediction] - Total m-predictions took 22.669479370117188 seconds
+[Timing prediction] - Final mult took 0.0017876625061035156
+[Timing prediction] Moving to torch took 0.001165151596069336 seconds
+[Timing prediction] Moving to cuda took 3.552436828613281e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.820913314819336
+[Timing prediction] - m1 took 2.832134246826172
+[Timing prediction] - m2 took 2.7269749641418457
+[Timing prediction] - m3 took 2.925137758255005
+[Timing prediction] - m4 took 2.8623297214508057
+[Timing prediction] - m5 took 2.77917742729187
+[Timing prediction] - m6 took 2.814110279083252
+[Timing prediction] - m7 took 2.764704942703247
+[Timing prediction] - Total m-predictions took 22.525668621063232 seconds
+[Timing prediction] - Final mult took 0.001775503158569336
+[Timing prediction] Moving to torch took 0.00119781494140625 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 1.4781951904296875e-05 seconds
+[Timing prediction] - m0 took 2.822704792022705
+[Timing prediction] - m1 took 2.864827871322632
+[Timing prediction] - m2 took 2.8099000453948975
+[Timing prediction] - m3 took 2.8639888763427734
+[Timing prediction] - m4 took 2.782557487487793
+[Timing prediction] - m5 took 2.849076986312866
+[Timing prediction] - m6 took 2.760014295578003
+[Timing prediction] - m7 took 2.904407024383545
+[Timing prediction] - Total m-predictions took 22.657681226730347 seconds
+[Timing prediction] - Final mult took 0.001767873764038086
+[Timing prediction] Moving to torch took 0.001239776611328125 seconds
+[Timing prediction] Moving to cuda took 4.2438507080078125e-05 seconds
+[Timing prediction] Multshit took 1.4543533325195312e-05 seconds
+[Timing prediction] - m0 took 2.772498369216919
+[Timing prediction] - m1 took 2.7910430431365967
+[Timing prediction] - m2 took 2.9350056648254395
+[Timing prediction] - m3 took 2.7561373710632324
+[Timing prediction] - m4 took 2.8187265396118164
+[Timing prediction] - m5 took 2.7474257946014404
+[Timing prediction] - m6 took 2.7707576751708984
+[Timing prediction] - m7 took 2.832916259765625
+[Timing prediction] - Total m-predictions took 22.424703121185303 seconds
+[Timing prediction] - Final mult took 0.0021839141845703125
+[Timing prediction] Moving to torch took 0.0014255046844482422 seconds
+[Timing prediction] Moving to cuda took 2.1457672119140625e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.78011417388916
+[Timing prediction] - m1 took 2.852376699447632
+[Timing prediction] - m2 took 2.8377373218536377
+[Timing prediction] - m3 took 2.7736194133758545
+[Timing prediction] - m4 took 2.8212838172912598
+[Timing prediction] - m5 took 2.8149678707122803
+[Timing prediction] - m6 took 2.8250908851623535
+[Timing prediction] - m7 took 2.832151412963867
+[Timing prediction] - Total m-predictions took 22.537528038024902 seconds
+[Timing prediction] - Final mult took 0.001483917236328125
+[Timing prediction] Moving to torch took 0.0012364387512207031 seconds
+[Timing prediction] Moving to cuda took 2.3603439331054688e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.79486083984375
+[Timing prediction] - m1 took 2.829502582550049
+[Timing prediction] - m2 took 2.7941763401031494
+[Timing prediction] - m3 took 2.804633378982544
+[Timing prediction] - m4 took 2.720004081726074
+[Timing prediction] - m5 took 2.84497332572937
+[Timing prediction] - m6 took 2.742356538772583
+[Timing prediction] - m7 took 2.784977912902832
+[Timing prediction] - Total m-predictions took 22.31569004058838 seconds
+[Timing prediction] - Final mult took 0.0022346973419189453
+[Timing prediction] Moving to torch took 0.001375436782836914 seconds
+[Timing prediction] Moving to cuda took 3.314018249511719e-05 seconds
+[Timing prediction] Multshit took 1.3828277587890625e-05 seconds
+[Timing prediction] - m0 took 2.7817742824554443
+[Timing prediction] - m1 took 2.8281548023223877
+[Timing prediction] - m2 took 2.7535574436187744
+[Timing prediction] - m3 took 2.852412700653076
+[Timing prediction] - m4 took 2.7701802253723145
+[Timing prediction] - m5 took 2.797173023223877
+[Timing prediction] - m6 took 2.7990305423736572
+[Timing prediction] - m7 took 2.8538830280303955
+[Timing prediction] - Total m-predictions took 22.465911626815796 seconds
+[Timing prediction] - Final mult took 0.0019145011901855469
+[Timing prediction] Moving to torch took 0.0011899471282958984 seconds
+[Timing prediction] Moving to cuda took 2.0742416381835938e-05 seconds
+[Timing prediction] Multshit took 2.4557113647460938e-05 seconds
+[Timing prediction] - m0 took 2.784512519836426
+[Timing prediction] - m1 took 2.7313156127929688
+[Timing prediction] - m2 took 2.780803680419922
+[Timing prediction] - m3 took 2.782658100128174
+[Timing prediction] - m4 took 2.8881170749664307
+[Timing prediction] - m5 took 2.866645336151123
+[Timing prediction] - m6 took 2.7847421169281006
+[Timing prediction] - m7 took 2.797029972076416
+[Timing prediction] - Total m-predictions took 22.416059970855713 seconds
+[Timing prediction] - Final mult took 0.002309083938598633
+[Timing prediction] Moving to torch took 0.0012423992156982422 seconds
+[Timing prediction] Moving to cuda took 3.790855407714844e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.817094564437866
+[Timing prediction] - m1 took 2.7556207180023193
+[Timing prediction] - m2 took 2.7533061504364014
+[Timing prediction] - m3 took 2.6824331283569336
+[Timing prediction] - m4 took 2.7953951358795166
+[Timing prediction] - m5 took 2.6507630348205566
+[Timing prediction] - m6 took 2.5671913623809814
+[Timing prediction] - m7 took 2.5654115676879883
+[Timing prediction] - Total m-predictions took 21.58739972114563 seconds
+[Timing prediction] - Final mult took 0.001447439193725586
+[Timing prediction] Moving to torch took 0.0012428760528564453 seconds
+[Timing prediction] Moving to cuda took 2.2172927856445312e-05 seconds
+[Timing prediction] Multshit took 1.5497207641601562e-05 seconds
+[Timing prediction] - m0 took 2.579543113708496
+[Timing prediction] - m1 took 2.5785374641418457
+[Timing prediction] - m2 took 2.7228434085845947
+[Timing prediction] - m3 took 2.746239423751831
+[Timing prediction] - m4 took 2.759110689163208
+[Timing prediction] - m5 took 2.7772297859191895
+[Timing prediction] - m6 took 2.783540964126587
+[Timing prediction] - m7 took 2.7611300945281982
+[Timing prediction] - Total m-predictions took 21.70837664604187 seconds
+[Timing prediction] - Final mult took 0.002041339874267578
+[Timing prediction] Moving to torch took 0.0011818408966064453 seconds
+[Timing prediction] Moving to cuda took 3.337860107421875e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7671241760253906
+[Timing prediction] - m1 took 2.745368242263794
+[Timing prediction] - m2 took 2.7777764797210693
+[Timing prediction] - m3 took 2.785623073577881
+[Timing prediction] - m4 took 2.906561851501465
+[Timing prediction] - m5 took 2.8398609161376953
+[Timing prediction] - m6 took 2.864959478378296
+[Timing prediction] - m7 took 2.831768035888672
+[Timing prediction] - Total m-predictions took 22.519228219985962 seconds
+[Timing prediction] - Final mult took 0.0015659332275390625
+[Timing prediction] Moving to torch took 0.0012011528015136719 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 1.5735626220703125e-05 seconds
+[Timing prediction] - m0 took 2.7845921516418457
+[Timing prediction] - m1 took 2.8312952518463135
+[Timing prediction] - m2 took 2.7902772426605225
+[Timing prediction] - m3 took 2.8013195991516113
+[Timing prediction] - m4 took 2.7680861949920654
+[Timing prediction] - m5 took 2.8029065132141113
+[Timing prediction] - m6 took 2.769665002822876
+[Timing prediction] - m7 took 2.8292505741119385
+[Timing prediction] - Total m-predictions took 22.37759828567505 seconds
+[Timing prediction] - Final mult took 0.0020165443420410156
+[Timing prediction] Moving to torch took 0.0017397403717041016 seconds
+[Timing prediction] Moving to cuda took 3.8623809814453125e-05 seconds
+[Timing prediction] Multshit took 1.4066696166992188e-05 seconds
+[Timing prediction] - m0 took 2.7677934169769287
+[Timing prediction] - m1 took 2.8112106323242188
+[Timing prediction] - m2 took 2.7834737300872803
+[Timing prediction] - m3 took 2.7900819778442383
+[Timing prediction] - m4 took 2.803353786468506
+[Timing prediction] - m5 took 2.773672103881836
+[Timing prediction] - m6 took 2.824099540710449
+[Timing prediction] - m7 took 2.757847547531128
+[Timing prediction] - Total m-predictions took 22.311723232269287 seconds
+[Timing prediction] - Final mult took 0.0016934871673583984
+[Timing prediction] Moving to torch took 0.0012164115905761719 seconds
+[Timing prediction] Moving to cuda took 2.2649765014648438e-05 seconds
+[Timing prediction] Multshit took 1.2159347534179688e-05 seconds
+[Timing prediction] - m0 took 2.797961473464966
+[Timing prediction] - m1 took 2.777857780456543
+[Timing prediction] - m2 took 2.80964994430542
+[Timing prediction] - m3 took 2.8311612606048584
+[Timing prediction] - m4 took 2.610455274581909
+[Timing prediction] - m5 took 2.6621570587158203
+[Timing prediction] - m6 took 2.586137056350708
+[Timing prediction] - m7 took 2.616062879562378
+[Timing prediction] - Total m-predictions took 21.691640377044678 seconds
+[Timing prediction] - Final mult took 0.0018815994262695312
+[Timing prediction] Moving to torch took 0.001371622085571289 seconds
+[Timing prediction] Moving to cuda took 3.147125244140625e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.570805072784424
+[Timing prediction] - m1 took 2.5667755603790283
+[Timing prediction] - m2 took 2.5422704219818115
+[Timing prediction] - m3 took 2.5694968700408936
+[Timing prediction] - m4 took 2.5750133991241455
+[Timing prediction] - m5 took 2.5779647827148438
+[Timing prediction] - m6 took 2.5615735054016113
+[Timing prediction] - m7 took 2.5441677570343018
+[Timing prediction] - Total m-predictions took 20.508244037628174 seconds
+[Timing prediction] - Final mult took 0.0014815330505371094
+[Timing prediction] Moving to torch took 0.0012388229370117188 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.5722811222076416
+[Timing prediction] - m1 took 2.5736677646636963
+[Timing prediction] - m2 took 2.5475237369537354
+[Timing prediction] - m3 took 2.5661818981170654
+[Timing prediction] - m4 took 2.5659196376800537
+[Timing prediction] - m5 took 2.579103469848633
+[Timing prediction] - m6 took 2.565063238143921
+[Timing prediction] - m7 took 2.5766983032226562
+[Timing prediction] - Total m-predictions took 20.546615839004517 seconds
+[Timing prediction] - Final mult took 0.0015842914581298828
+[Timing prediction] Moving to torch took 0.0012438297271728516 seconds
+[Timing prediction] Moving to cuda took 3.361701965332031e-05 seconds
+[Timing prediction] Multshit took 1.1205673217773438e-05 seconds
+[Timing prediction] - m0 took 2.574739456176758
+[Timing prediction] - m1 took 2.5814874172210693
+[Timing prediction] - m2 took 2.640789747238159
+[Timing prediction] - m3 took 2.598409414291382
+[Timing prediction] - m4 took 2.596085786819458
+[Timing prediction] - m5 took 2.5675830841064453
+[Timing prediction] - m6 took 2.610743284225464
+[Timing prediction] - m7 took 2.5642752647399902
+[Timing prediction] - Total m-predictions took 20.734302043914795 seconds
+[Timing prediction] - Final mult took 0.0018124580383300781
+[Timing prediction] Moving to torch took 0.00118255615234375 seconds
+[Timing prediction] Moving to cuda took 2.3126602172851562e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.5766055583953857
+[Timing prediction] - m1 took 2.5426864624023438
+[Timing prediction] - m2 took 2.5661160945892334
+[Timing prediction] - m3 took 2.5638575553894043
+[Timing prediction] - m4 took 2.578481435775757
+[Timing prediction] - m5 took 2.5477294921875
+[Timing prediction] - m6 took 2.558014154434204
+[Timing prediction] - m7 took 2.5648555755615234
+[Timing prediction] - Total m-predictions took 20.498557329177856 seconds
+[Timing prediction] - Final mult took 0.0017008781433105469
+[Timing prediction] Moving to torch took 0.0012340545654296875 seconds
+[Timing prediction] Moving to cuda took 2.2172927856445312e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.5744378566741943
+[Timing prediction] - m1 took 2.5706746578216553
+[Timing prediction] - m2 took 2.565901756286621
+[Timing prediction] - m3 took 2.5651373863220215
+[Timing prediction] - m4 took 2.5509889125823975
+[Timing prediction] - m5 took 2.5778157711029053
+[Timing prediction] - m6 took 2.567803144454956
+[Timing prediction] - m7 took 2.5690743923187256
+[Timing prediction] - Total m-predictions took 20.542049407958984 seconds
+[Timing prediction] - Final mult took 0.0015642642974853516
+[Timing prediction] Moving to torch took 0.001255035400390625 seconds
+[Timing prediction] Moving to cuda took 3.7670135498046875e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.6010565757751465
+[Timing prediction] - m1 took 2.590303897857666
+[Timing prediction] - m2 took 2.656393527984619
+[Timing prediction] - m3 took 2.5714263916015625
+[Timing prediction] - m4 took 2.601935625076294
+[Timing prediction] - m5 took 2.5743069648742676
+[Timing prediction] - m6 took 2.5895352363586426
+[Timing prediction] - m7 took 2.549126625061035
+[Timing prediction] - Total m-predictions took 20.734272718429565 seconds
+[Timing prediction] - Final mult took 0.002052783966064453
+[Timing prediction] Moving to torch took 0.0011222362518310547 seconds
+[Timing prediction] Moving to cuda took 2.0503997802734375e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.567455530166626
+[Timing prediction] - m1 took 2.5698952674865723
+[Timing prediction] - m2 took 2.571551561355591
+[Timing prediction] - m3 took 2.5697827339172363
+[Timing prediction] - m4 took 2.571045160293579
+[Timing prediction] - m5 took 2.562922477722168
+[Timing prediction] - m6 took 2.5698561668395996
+[Timing prediction] - m7 took 2.5781350135803223
+[Timing prediction] - Total m-predictions took 20.560821056365967 seconds
+[Timing prediction] - Final mult took 0.0017399787902832031
+[Timing prediction] Moving to torch took 0.0012428760528564453 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.5768415927886963
+[Timing prediction] - m1 took 2.5727453231811523
+[Timing prediction] - m2 took 2.563171625137329
+[Timing prediction] - m3 took 2.5711309909820557
+[Timing prediction] - m4 took 2.568723678588867
+[Timing prediction] - m5 took 2.5691049098968506
+[Timing prediction] - m6 took 2.5670766830444336
+[Timing prediction] - m7 took 2.5614209175109863
+[Timing prediction] - Total m-predictions took 20.550405979156494 seconds
+[Timing prediction] - Final mult took 0.0021119117736816406
+[Timing prediction] Moving to torch took 0.001409769058227539 seconds
+[Timing prediction] Moving to cuda took 3.457069396972656e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.5759425163269043
+[Timing prediction] - m1 took 2.5861551761627197
+[Timing prediction] - m2 took 2.5695228576660156
+[Timing prediction] - m3 took 2.603407382965088
+[Timing prediction] - m4 took 2.5668785572052
+[Timing prediction] - m5 took 2.5858840942382812
+[Timing prediction] - m6 took 2.57485294342041
+[Timing prediction] - m7 took 2.566744804382324
+[Timing prediction] - Total m-predictions took 20.62956142425537 seconds
+[Timing prediction] - Final mult took 0.0014731884002685547
+[Timing prediction] Moving to torch took 0.0012433528900146484 seconds
+[Timing prediction] Moving to cuda took 1.9073486328125e-05 seconds
+[Timing prediction] Multshit took 1.4066696166992188e-05 seconds
+[Timing prediction] - m0 took 2.5712552070617676
+[Timing prediction] - m1 took 2.5626699924468994
+[Timing prediction] - m2 took 2.5728697776794434
+[Timing prediction] - m3 took 2.5832579135894775
+[Timing prediction] - m4 took 2.566305160522461
+[Timing prediction] - m5 took 2.570405960083008
+[Timing prediction] - m6 took 2.568457841873169
+[Timing prediction] - m7 took 2.5687999725341797
+[Timing prediction] - Total m-predictions took 20.564208269119263 seconds
+[Timing prediction] - Final mult took 0.002064228057861328
+[Timing prediction] Moving to torch took 0.0012500286102294922 seconds
+[Timing prediction] Moving to cuda took 3.647804260253906e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.5750153064727783
+[Timing prediction] - m1 took 2.5643563270568848
+[Timing prediction] - m2 took 2.5634047985076904
+[Timing prediction] - m3 took 2.5685579776763916
+[Timing prediction] - m4 took 2.5695834159851074
+[Timing prediction] - m5 took 2.5706069469451904
+[Timing prediction] - m6 took 2.6097495555877686
+[Timing prediction] - m7 took 2.5647354125976562
+[Timing prediction] - Total m-predictions took 20.586185932159424 seconds
+[Timing prediction] - Final mult took 0.0015447139739990234
+[Timing prediction] Moving to torch took 0.00125885009765625 seconds
+[Timing prediction] Moving to cuda took 2.6702880859375e-05 seconds
+[Timing prediction] Multshit took 1.4781951904296875e-05 seconds
+[Timing prediction] - m0 took 2.602421283721924
+[Timing prediction] - m1 took 2.5712943077087402
+[Timing prediction] - m2 took 2.579930543899536
+[Timing prediction] - m3 took 2.5580358505249023
+[Timing prediction] - m4 took 2.6105892658233643
+[Timing prediction] - m5 took 2.5681374073028564
+[Timing prediction] - m6 took 2.5829267501831055
+[Timing prediction] - m7 took 2.5582528114318848
+[Timing prediction] - Total m-predictions took 20.631761074066162 seconds
+[Timing prediction] - Final mult took 0.0016818046569824219
+[Timing prediction] Moving to torch took 0.001232147216796875 seconds
+[Timing prediction] Moving to cuda took 1.8835067749023438e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.563056468963623
+[Timing prediction] - m1 took 2.5688390731811523
+[Timing prediction] - m2 took 2.5741147994995117
+[Timing prediction] - m3 took 2.5714542865753174
+[Timing prediction] - m4 took 2.5675601959228516
+[Timing prediction] - m5 took 2.5655975341796875
+[Timing prediction] - m6 took 2.576857805252075
+[Timing prediction] - m7 took 2.5729517936706543
+[Timing prediction] - Total m-predictions took 20.56062340736389 seconds
+[Timing prediction] - Final mult took 0.0018677711486816406
+[Timing prediction] Moving to torch took 0.0012748241424560547 seconds
+[Timing prediction] Moving to cuda took 3.647804260253906e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.5649120807647705
+[Timing prediction] - m1 took 2.566016912460327
+[Timing prediction] - m2 took 2.5679047107696533
+[Timing prediction] - m3 took 2.6189396381378174
+[Timing prediction] - m4 took 2.627610445022583
+[Timing prediction] - m5 took 2.6210978031158447
+[Timing prediction] - m6 took 2.67051362991333
+[Timing prediction] - m7 took 2.7527878284454346
+[Timing prediction] - Total m-predictions took 20.9899582862854 seconds
+[Timing prediction] - Final mult took 0.0017125606536865234
+[Timing prediction] Moving to torch took 0.0012021064758300781 seconds
+[Timing prediction] Moving to cuda took 2.5987625122070312e-05 seconds
+[Timing prediction] Multshit took 1.1920928955078125e-05 seconds
+[Timing prediction] - m0 took 2.726820707321167
+[Timing prediction] - m1 took 2.7640633583068848
+[Timing prediction] - m2 took 2.722778558731079
+[Timing prediction] - m3 took 2.7314648628234863
+[Timing prediction] - m4 took 2.744610548019409
+[Timing prediction] - m5 took 2.750690460205078
+[Timing prediction] - m6 took 2.830385446548462
+[Timing prediction] - m7 took 2.895078182220459
+[Timing prediction] - Total m-predictions took 22.16612982749939 seconds
+[Timing prediction] - Final mult took 0.0020139217376708984
+[Timing prediction] Moving to torch took 0.0012853145599365234 seconds
+[Timing prediction] Moving to cuda took 3.457069396972656e-05 seconds
+[Timing prediction] Multshit took 1.1444091796875e-05 seconds
+[Timing prediction] - m0 took 2.9045982360839844
+[Timing prediction] - m1 took 2.885496139526367
+[Timing prediction] - m2 took 2.90290904045105
+[Timing prediction] - m3 took 2.908900737762451
+[Timing prediction] - m4 took 2.867159843444824
+[Timing prediction] - m5 took 2.8834383487701416
+[Timing prediction] - m6 took 2.9662036895751953
+[Timing prediction] - m7 took 2.8698434829711914
+[Timing prediction] - Total m-predictions took 23.18874454498291 seconds
+[Timing prediction] - Final mult took 0.001741170883178711
+[Timing prediction] Moving to torch took 0.0013077259063720703 seconds
+[Timing prediction] Moving to cuda took 2.2411346435546875e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.884794235229492
+[Timing prediction] - m1 took 2.9656386375427246
+[Timing prediction] - m2 took 2.9675076007843018
+[Timing prediction] - m3 took 2.9196767807006836
+[Timing prediction] - m4 took 2.8731610774993896
+[Timing prediction] - m5 took 2.8152711391448975
+[Timing prediction] - m6 took 2.819193124771118
+[Timing prediction] - m7 took 2.784013032913208
+[Timing prediction] - Total m-predictions took 23.02945852279663 seconds
+[Timing prediction] - Final mult took 0.0019507408142089844
+[Timing prediction] Moving to torch took 0.00130462646484375 seconds
+[Timing prediction] Moving to cuda took 3.3855438232421875e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.779439926147461
+[Timing prediction] - m1 took 2.772831916809082
+[Timing prediction] - m2 took 2.7825868129730225
+[Timing prediction] - m3 took 2.816338062286377
+[Timing prediction] - m4 took 2.7946345806121826
+[Timing prediction] - m5 took 2.795621633529663
+[Timing prediction] - m6 took 2.826322078704834
+[Timing prediction] - m7 took 2.8460850715637207
+[Timing prediction] - Total m-predictions took 22.41404104232788 seconds
+[Timing prediction] - Final mult took 0.0018362998962402344
+[Timing prediction] Moving to torch took 0.0014524459838867188 seconds
+[Timing prediction] Moving to cuda took 2.384185791015625e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.9086947441101074
+[Timing prediction] - m1 took 2.916256904602051
+[Timing prediction] - m2 took 2.824145555496216
+[Timing prediction] - m3 took 2.81087589263916
+[Timing prediction] - m4 took 2.7767717838287354
+[Timing prediction] - m5 took 2.7734949588775635
+[Timing prediction] - m6 took 2.847522497177124
+[Timing prediction] - m7 took 2.7445223331451416
+[Timing prediction] - Total m-predictions took 22.60247254371643 seconds
+[Timing prediction] - Final mult took 0.0015673637390136719
+[Timing prediction] Moving to torch took 0.0013263225555419922 seconds
+[Timing prediction] Moving to cuda took 2.3126602172851562e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7681996822357178
+[Timing prediction] - m1 took 2.74060320854187
+[Timing prediction] - m2 took 2.717337131500244
+[Timing prediction] - m3 took 2.7895452976226807
+[Timing prediction] - m4 took 2.6958518028259277
+[Timing prediction] - m5 took 2.757246255874634
+[Timing prediction] - m6 took 2.732335090637207
+[Timing prediction] - m7 took 2.665656566619873
+[Timing prediction] - Total m-predictions took 21.866971731185913 seconds
+[Timing prediction] - Final mult took 0.0018537044525146484
+[Timing prediction] Moving to torch took 0.0012943744659423828 seconds
+[Timing prediction] Moving to cuda took 3.4809112548828125e-05 seconds
+[Timing prediction] Multshit took 1.1444091796875e-05 seconds
+[Timing prediction] - m0 took 2.6012446880340576
+[Timing prediction] - m1 took 2.599285125732422
+[Timing prediction] - m2 took 2.6263861656188965
+[Timing prediction] - m3 took 2.5965423583984375
+[Timing prediction] - m4 took 2.6739842891693115
+[Timing prediction] - m5 took 2.5957067012786865
+[Timing prediction] - m6 took 2.7060935497283936
+[Timing prediction] - m7 took 2.7394771575927734
+[Timing prediction] - Total m-predictions took 21.138899087905884 seconds
+[Timing prediction] - Final mult took 0.0015463829040527344
+[Timing prediction] Moving to torch took 0.0012383460998535156 seconds
+[Timing prediction] Moving to cuda took 2.2411346435546875e-05 seconds
+[Timing prediction] Multshit took 1.1920928955078125e-05 seconds
+[Timing prediction] - m0 took 2.7436575889587402
+[Timing prediction] - m1 took 2.714351177215576
+[Timing prediction] - m2 took 2.706218719482422
+[Timing prediction] - m3 took 2.741163492202759
+[Timing prediction] - m4 took 2.713719606399536
+[Timing prediction] - m5 took 2.7149884700775146
+[Timing prediction] - m6 took 2.7342567443847656
+[Timing prediction] - m7 took 2.709958791732788
+[Timing prediction] - Total m-predictions took 21.778510570526123 seconds
+[Timing prediction] - Final mult took 0.002053499221801758
+[Timing prediction] Moving to torch took 0.0011508464813232422 seconds
+[Timing prediction] Moving to cuda took 3.4809112548828125e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7510905265808105
+[Timing prediction] - m1 took 2.7154111862182617
+[Timing prediction] - m2 took 2.7209436893463135
+[Timing prediction] - m3 took 2.7040088176727295
+[Timing prediction] - m4 took 2.7272849082946777
+[Timing prediction] - m5 took 2.695432424545288
+[Timing prediction] - m6 took 2.679393768310547
+[Timing prediction] - m7 took 2.719355821609497
+[Timing prediction] - Total m-predictions took 21.713095903396606 seconds
+[Timing prediction] - Final mult took 0.001600503921508789
+[Timing prediction] Moving to torch took 0.0013151168823242188 seconds
+[Timing prediction] Moving to cuda took 2.7179718017578125e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.703190803527832
+[Timing prediction] - m1 took 2.7107880115509033
+[Timing prediction] - m2 took 2.7076516151428223
+[Timing prediction] - m3 took 2.702636957168579
+[Timing prediction] - m4 took 2.706611156463623
+[Timing prediction] - m5 took 2.7096986770629883
+[Timing prediction] - m6 took 2.711552858352661
+[Timing prediction] - m7 took 2.685842990875244
+[Timing prediction] - Total m-predictions took 21.638147115707397 seconds
+[Timing prediction] - Final mult took 0.0016639232635498047
+[Timing prediction] Moving to torch took 0.0011703968048095703 seconds
+[Timing prediction] Moving to cuda took 2.1219253540039062e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.7237536907196045
+[Timing prediction] - m1 took 2.7292466163635254
+[Timing prediction] - m2 took 2.7247440814971924
+[Timing prediction] - m3 took 2.748117208480835
+[Timing prediction] - m4 took 2.67865252494812
+[Timing prediction] - m5 took 2.6828436851501465
+[Timing prediction] - m6 took 2.71813702583313
+[Timing prediction] - m7 took 2.723264455795288
+[Timing prediction] - Total m-predictions took 21.728949069976807 seconds
+[Timing prediction] - Final mult took 0.0021162033081054688
+[Timing prediction] Moving to torch took 0.0013003349304199219 seconds
+[Timing prediction] Moving to cuda took 3.552436828613281e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7387423515319824
+[Timing prediction] - m1 took 2.695996046066284
+[Timing prediction] - m2 took 2.714719533920288
+[Timing prediction] - m3 took 2.700068473815918
+[Timing prediction] - m4 took 2.727252721786499
+[Timing prediction] - m5 took 2.7038838863372803
+[Timing prediction] - m6 took 2.7032458782196045
+[Timing prediction] - m7 took 2.7091379165649414
+[Timing prediction] - Total m-predictions took 21.69322657585144 seconds
+[Timing prediction] - Final mult took 0.0020456314086914062
+[Timing prediction] Moving to torch took 0.001184225082397461 seconds
+[Timing prediction] Moving to cuda took 3.075599670410156e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.702697277069092
+[Timing prediction] - m1 took 2.6895668506622314
+[Timing prediction] - m2 took 2.718035936355591
+[Timing prediction] - m3 took 2.7024154663085938
+[Timing prediction] - m4 took 2.710998296737671
+[Timing prediction] - m5 took 2.7167463302612305
+[Timing prediction] - m6 took 2.7890005111694336
+[Timing prediction] - m7 took 2.8052778244018555
+[Timing prediction] - Total m-predictions took 21.834931135177612 seconds
+[Timing prediction] - Final mult took 0.0016787052154541016
+[Timing prediction] Moving to torch took 0.0012662410736083984 seconds
+[Timing prediction] Moving to cuda took 3.123283386230469e-05 seconds
+[Timing prediction] Multshit took 1.7404556274414062e-05 seconds
+[Timing prediction] - m0 took 2.761368751525879
+[Timing prediction] - m1 took 2.7365801334381104
+[Timing prediction] - m2 took 2.848125696182251
+[Timing prediction] - m3 took 2.8844316005706787
+[Timing prediction] - m4 took 2.9482152462005615
+[Timing prediction] - m5 took 2.969583511352539
+[Timing prediction] - m6 took 2.8758432865142822
+[Timing prediction] - m7 took 2.875264883041382
+[Timing prediction] - Total m-predictions took 22.899617433547974 seconds
+[Timing prediction] - Final mult took 0.0023620128631591797
+[Timing prediction] Moving to torch took 0.0012722015380859375 seconds
+[Timing prediction] Moving to cuda took 2.86102294921875e-05 seconds
+[Timing prediction] Multshit took 1.5020370483398438e-05 seconds
+[Timing prediction] - m0 took 2.832271099090576
+[Timing prediction] - m1 took 2.779294013977051
+[Timing prediction] - m2 took 2.760049343109131
+[Timing prediction] - m3 took 2.7613093852996826
+[Timing prediction] - m4 took 2.776008367538452
+[Timing prediction] - m5 took 2.8728694915771484
+[Timing prediction] - m6 took 2.865510940551758
+[Timing prediction] - m7 took 2.795487642288208
+[Timing prediction] - Total m-predictions took 22.443000316619873 seconds
+[Timing prediction] - Final mult took 0.0018165111541748047
+[Timing prediction] Moving to torch took 0.0012390613555908203 seconds
+[Timing prediction] Moving to cuda took 3.790855407714844e-05 seconds
+[Timing prediction] Multshit took 1.430511474609375e-05 seconds
+[Timing prediction] - m0 took 2.948704242706299
+[Timing prediction] - m1 took 2.849400043487549
+[Timing prediction] - m2 took 2.8740110397338867
+[Timing prediction] - m3 took 2.871990442276001
+[Timing prediction] - m4 took 2.872166633605957
+[Timing prediction] - m5 took 2.8859360218048096
+[Timing prediction] - m6 took 2.8892533779144287
+[Timing prediction] - m7 took 2.92873215675354
+[Timing prediction] - Total m-predictions took 23.1203773021698 seconds
+[Timing prediction] - Final mult took 0.001758575439453125
+[Timing prediction] Moving to torch took 0.0012352466583251953 seconds
+[Timing prediction] Moving to cuda took 2.3365020751953125e-05 seconds
+[Timing prediction] Multshit took 1.4781951904296875e-05 seconds
+[Timing prediction] - m0 took 2.9176440238952637
+[Timing prediction] - m1 took 2.967061996459961
+[Timing prediction] - m2 took 3.000486135482788
+[Timing prediction] - m3 took 2.936250925064087
+[Timing prediction] - m4 took 2.965597629547119
+[Timing prediction] - m5 took 2.9014103412628174
+[Timing prediction] - m6 took 2.8817050457000732
+[Timing prediction] - m7 took 2.8643991947174072
+[Timing prediction] - Total m-predictions took 23.434746503829956 seconds
+[Timing prediction] - Final mult took 0.0015439987182617188
+[Timing prediction] Moving to torch took 0.0012385845184326172 seconds
+[Timing prediction] Moving to cuda took 2.3126602172851562e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.81363844871521
+[Timing prediction] - m1 took 2.835081100463867
+[Timing prediction] - m2 took 2.8797898292541504
+[Timing prediction] - m3 took 2.9398882389068604
+[Timing prediction] - m4 took 2.9013686180114746
+[Timing prediction] - m5 took 2.881680727005005
+[Timing prediction] - m6 took 2.8807361125946045
+[Timing prediction] - m7 took 2.928725481033325
+[Timing prediction] - Total m-predictions took 23.061112642288208 seconds
+[Timing prediction] - Final mult took 0.0021724700927734375
+[Timing prediction] Moving to torch took 0.0013885498046875 seconds
+[Timing prediction] Moving to cuda took 3.790855407714844e-05 seconds
+[Timing prediction] Multshit took 1.0728836059570312e-05 seconds
+[Timing prediction] - m0 took 2.9493558406829834
+[Timing prediction] - m1 took 2.926032781600952
+[Timing prediction] - m2 took 2.921459674835205
+[Timing prediction] - m3 took 2.9064571857452393
+[Timing prediction] - m4 took 2.89631986618042
+[Timing prediction] - m5 took 2.913501501083374
+[Timing prediction] - m6 took 2.8795297145843506
+[Timing prediction] - m7 took 2.918384552001953
+[Timing prediction] - Total m-predictions took 23.31122660636902 seconds
+[Timing prediction] - Final mult took 0.001550436019897461
+[Timing prediction] Moving to torch took 0.0012683868408203125 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.8857085704803467
+[Timing prediction] - m1 took 2.9065701961517334
+[Timing prediction] - m2 took 2.8696532249450684
+[Timing prediction] - m3 took 2.862175941467285
+[Timing prediction] - m4 took 2.8574607372283936
+[Timing prediction] - m5 took 2.857578992843628
+[Timing prediction] - m6 took 2.891465663909912
+[Timing prediction] - m7 took 2.8575236797332764
+[Timing prediction] - Total m-predictions took 22.988333702087402 seconds
+[Timing prediction] - Final mult took 0.002061128616333008
+[Timing prediction] Moving to torch took 0.0013165473937988281 seconds
+[Timing prediction] Moving to cuda took 3.9577484130859375e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.8693809509277344
+[Timing prediction] - m1 took 2.8687615394592285
+[Timing prediction] - m2 took 2.8451220989227295
+[Timing prediction] - m3 took 2.8606112003326416
+[Timing prediction] - m4 took 2.8688595294952393
+[Timing prediction] - m5 took 2.8714492321014404
+[Timing prediction] - m6 took 2.84199857711792
+[Timing prediction] - m7 took 2.8653218746185303
+[Timing prediction] - Total m-predictions took 22.89168381690979 seconds
+[Timing prediction] - Final mult took 0.001680135726928711
+[Timing prediction] Moving to torch took 0.0012755393981933594 seconds
+[Timing prediction] Moving to cuda took 2.3603439331054688e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.821977376937866
+[Timing prediction] - m1 took 2.7822484970092773
+[Timing prediction] - m2 took 2.869374990463257
+[Timing prediction] - m3 took 2.869658946990967
+[Timing prediction] - m4 took 2.8894758224487305
+[Timing prediction] - m5 took 2.918954849243164
+[Timing prediction] - m6 took 2.8324942588806152
+[Timing prediction] - m7 took 2.849256753921509
+[Timing prediction] - Total m-predictions took 22.833646535873413 seconds
+[Timing prediction] - Final mult took 0.002324342727661133
+[Timing prediction] Moving to torch took 0.001373291015625 seconds
+[Timing prediction] Moving to cuda took 3.981590270996094e-05 seconds
+[Timing prediction] Multshit took 1.4066696166992188e-05 seconds
+[Timing prediction] - m0 took 2.838470458984375
+[Timing prediction] - m1 took 2.868656873703003
+[Timing prediction] - m2 took 2.8749237060546875
+[Timing prediction] - m3 took 2.8831980228424072
+[Timing prediction] - m4 took 2.8490805625915527
+[Timing prediction] - m5 took 2.868192195892334
+[Timing prediction] - m6 took 2.881049633026123
+[Timing prediction] - m7 took 2.8364357948303223
+[Timing prediction] - Total m-predictions took 22.900200128555298 seconds
+[Timing prediction] - Final mult took 0.0018320083618164062
+[Timing prediction] Moving to torch took 0.0012218952178955078 seconds
+[Timing prediction] Moving to cuda took 2.384185791015625e-05 seconds
+[Timing prediction] Multshit took 0.005191326141357422 seconds
+[Timing prediction] - m0 took 2.814202070236206
+[Timing prediction] - m1 took 2.8084523677825928
+[Timing prediction] - m2 took 2.8389101028442383
+[Timing prediction] - m3 took 2.8241801261901855
+[Timing prediction] - m4 took 2.8168234825134277
+[Timing prediction] - m5 took 2.8372299671173096
+[Timing prediction] - m6 took 2.8131706714630127
+[Timing prediction] - m7 took 2.9236841201782227
+[Timing prediction] - Total m-predictions took 22.67686629295349 seconds
+[Timing prediction] - Final mult took 0.0024001598358154297
+[Timing prediction] Moving to torch took 0.0015082359313964844 seconds
+[Timing prediction] Moving to cuda took 5.030632019042969e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.9189250469207764
+[Timing prediction] - m1 took 2.9311959743499756
+[Timing prediction] - m2 took 2.918609380722046
+[Timing prediction] - m3 took 2.956848621368408
+[Timing prediction] - m4 took 2.94429087638855
+[Timing prediction] - m5 took 2.9517555236816406
+[Timing prediction] - m6 took 2.9112801551818848
+[Timing prediction] - m7 took 2.856428384780884
+[Timing prediction] - Total m-predictions took 23.389546632766724 seconds
+[Timing prediction] - Final mult took 0.0016570091247558594
+[Timing prediction] Moving to torch took 0.0013110637664794922 seconds
+[Timing prediction] Moving to cuda took 3.337860107421875e-05 seconds
+[Timing prediction] Multshit took 1.6689300537109375e-05 seconds
+[Timing prediction] - m0 took 2.8830294609069824
+[Timing prediction] - m1 took 2.88187313079834
+[Timing prediction] - m2 took 2.849547863006592
+[Timing prediction] - m3 took 2.8641304969787598
+[Timing prediction] - m4 took 2.881089925765991
+[Timing prediction] - m5 took 2.8726398944854736
+[Timing prediction] - m6 took 2.8584587574005127
+[Timing prediction] - m7 took 2.8612804412841797
+[Timing prediction] - Total m-predictions took 22.952248573303223 seconds
+[Timing prediction] - Final mult took 0.0021855831146240234
+[Timing prediction] Moving to torch took 0.0014560222625732422 seconds
+[Timing prediction] Moving to cuda took 2.8133392333984375e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.8731276988983154
+[Timing prediction] - m1 took 2.8784830570220947
+[Timing prediction] - m2 took 2.867480993270874
+[Timing prediction] - m3 took 2.852574586868286
+[Timing prediction] - m4 took 2.8855552673339844
+[Timing prediction] - m5 took 2.8497910499572754
+[Timing prediction] - m6 took 2.8598721027374268
+[Timing prediction] - m7 took 2.858246088027954
+[Timing prediction] - Total m-predictions took 22.925314903259277 seconds
+[Timing prediction] - Final mult took 0.0018033981323242188
+[Timing prediction] Moving to torch took 0.0012712478637695312 seconds
+[Timing prediction] Moving to cuda took 2.1457672119140625e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.862067937850952
+[Timing prediction] - m1 took 2.866786241531372
+[Timing prediction] - m2 took 2.8664731979370117
+[Timing prediction] - m3 took 2.857635021209717
+[Timing prediction] - m4 took 2.867640256881714
+[Timing prediction] - m5 took 2.8776803016662598
+[Timing prediction] - m6 took 2.8641629219055176
+[Timing prediction] - m7 took 2.8711955547332764
+[Timing prediction] - Total m-predictions took 22.933847904205322 seconds
+[Timing prediction] - Final mult took 0.0019986629486083984
+[Timing prediction] mean of all patch predictions is 22.152419834136964, std is 3.1582131787040755.
+[Timing prediction] mean of stuff after each patch pred is 0.036162036259969076, std is 0.01774524057593324 
+[Timing prediction] Total patch predictions is 3328.2897169589996 seconds.
+[Timing prediction] Final stuff took 1.3739593029022217 seconds
+prediction done
+debug: mirroring True mirror_axes (0, 1, 2)
+step_size: 0.5
+do mirror: True
+[Timing prediction] padding took 0.00014090538024902344 seconds, computing steps took 0.0001766681671142578
+data shape: (1, 240, 512, 512)
+patch size: [ 80 192 160]
+steps (x, y, and z): [[0, 40, 80, 120, 160], [0, 80, 160, 240, 320], [0, 70, 141, 211, 282, 352]]
+number of tiles: 150
+using precomputed Gaussian
+[Timing prediction] Gaussian stuff took 0.00023746490478515625 secnds
+[Timing prediction] weird stuff took 3.361701965332031e-05 seconds.
+[Timing prediction] Moving to torch took 0.0012106895446777344 seconds
+[Timing prediction] Moving to cuda took 1.1205673217773438e-05 seconds
+[Timing prediction] Multshit took 7.152557373046875e-06 seconds
+[Timing prediction] - m0 took 2.823296308517456
+[Timing prediction] - m1 took 2.787926197052002
+[Timing prediction] - m2 took 2.7687366008758545
+[Timing prediction] - m3 took 2.7666666507720947
+[Timing prediction] - m4 took 2.7707557678222656
+[Timing prediction] - m5 took 2.8503706455230713
+[Timing prediction] - m6 took 2.765752077102661
+[Timing prediction] - m7 took 2.8349201679229736
+[Timing prediction] - Total m-predictions took 22.368595361709595 seconds
+[Timing prediction] - Final mult took 0.001605987548828125
+[Timing prediction] Moving to torch took 0.0011246204376220703 seconds
+[Timing prediction] Moving to cuda took 2.47955322265625e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.7554843425750732
+[Timing prediction] - m1 took 2.784245491027832
+[Timing prediction] - m2 took 2.725309371948242
+[Timing prediction] - m3 took 2.7159316539764404
+[Timing prediction] - m4 took 2.7871782779693604
+[Timing prediction] - m5 took 2.6972744464874268
+[Timing prediction] - m6 took 2.687183141708374
+[Timing prediction] - m7 took 2.796351909637451
+[Timing prediction] - Total m-predictions took 21.949161767959595 seconds
+[Timing prediction] - Final mult took 0.0017333030700683594
+[Timing prediction] Moving to torch took 0.0012440681457519531 seconds
+[Timing prediction] Moving to cuda took 3.600120544433594e-05 seconds
+[Timing prediction] Multshit took 1.5497207641601562e-05 seconds
+[Timing prediction] - m0 took 2.7191646099090576
+[Timing prediction] - m1 took 2.799978494644165
+[Timing prediction] - m2 took 2.8368232250213623
+[Timing prediction] - m3 took 2.8403055667877197
+[Timing prediction] - m4 took 2.8341121673583984
+[Timing prediction] - m5 took 2.844005823135376
+[Timing prediction] - m6 took 2.834198236465454
+[Timing prediction] - m7 took 2.813692569732666
+[Timing prediction] - Total m-predictions took 22.522457361221313 seconds
+[Timing prediction] - Final mult took 0.0018162727355957031
+[Timing prediction] Moving to torch took 0.0011627674102783203 seconds
+[Timing prediction] Moving to cuda took 2.5987625122070312e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.82651948928833
+[Timing prediction] - m1 took 2.844736337661743
+[Timing prediction] - m2 took 2.8316433429718018
+[Timing prediction] - m3 took 2.8201520442962646
+[Timing prediction] - m4 took 2.864542007446289
+[Timing prediction] - m5 took 2.8332765102386475
+[Timing prediction] - m6 took 2.843907356262207
+[Timing prediction] - m7 took 2.8408467769622803
+[Timing prediction] - Total m-predictions took 22.705825805664062 seconds
+[Timing prediction] - Final mult took 0.0020127296447753906
+[Timing prediction] Moving to torch took 0.0012707710266113281 seconds
+[Timing prediction] Moving to cuda took 3.4809112548828125e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.873835563659668
+[Timing prediction] - m1 took 2.8580844402313232
+[Timing prediction] - m2 took 2.8429946899414062
+[Timing prediction] - m3 took 2.823498487472534
+[Timing prediction] - m4 took 2.827606678009033
+[Timing prediction] - m5 took 2.8364367485046387
+[Timing prediction] - m6 took 2.7959721088409424
+[Timing prediction] - m7 took 2.7707631587982178
+[Timing prediction] - Total m-predictions took 22.62937307357788 seconds
+[Timing prediction] - Final mult took 0.0021703243255615234
+[Timing prediction] Moving to torch took 0.0011348724365234375 seconds
+[Timing prediction] Moving to cuda took 2.5033950805664062e-05 seconds
+[Timing prediction] Multshit took 5.7697296142578125e-05 seconds
+[Timing prediction] - m0 took 2.8259918689727783
+[Timing prediction] - m1 took 2.835895538330078
+[Timing prediction] - m2 took 2.828188419342041
+[Timing prediction] - m3 took 2.833897352218628
+[Timing prediction] - m4 took 2.826265335083008
+[Timing prediction] - m5 took 2.8357532024383545
+[Timing prediction] - m6 took 2.8200485706329346
+[Timing prediction] - m7 took 2.816154718399048
+[Timing prediction] - Total m-predictions took 22.62241554260254 seconds
+[Timing prediction] - Final mult took 0.0018970966339111328
+[Timing prediction] Moving to torch took 0.0012717247009277344 seconds
+[Timing prediction] Moving to cuda took 4.2438507080078125e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.8640799522399902
+[Timing prediction] - m1 took 2.856128454208374
+[Timing prediction] - m2 took 2.842617988586426
+[Timing prediction] - m3 took 2.8778231143951416
+[Timing prediction] - m4 took 2.861839532852173
+[Timing prediction] - m5 took 2.8587493896484375
+[Timing prediction] - m6 took 2.8444488048553467
+[Timing prediction] - m7 took 2.834200859069824
+[Timing prediction] - Total m-predictions took 22.840104579925537 seconds
+[Timing prediction] - Final mult took 0.0018835067749023438
+[Timing prediction] Moving to torch took 0.0012235641479492188 seconds
+[Timing prediction] Moving to cuda took 3.838539123535156e-05 seconds
+[Timing prediction] Multshit took 1.811981201171875e-05 seconds
+[Timing prediction] - m0 took 2.8095450401306152
+[Timing prediction] - m1 took 2.8476879596710205
+[Timing prediction] - m2 took 2.8035459518432617
+[Timing prediction] - m3 took 2.8120052814483643
+[Timing prediction] - m4 took 2.7881548404693604
+[Timing prediction] - m5 took 2.7872231006622314
+[Timing prediction] - m6 took 2.770895481109619
+[Timing prediction] - m7 took 2.765369415283203
+[Timing prediction] - Total m-predictions took 22.384621143341064 seconds
+[Timing prediction] - Final mult took 0.001767873764038086
+[Timing prediction] Moving to torch took 0.0012562274932861328 seconds
+[Timing prediction] Moving to cuda took 2.0742416381835938e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7595512866973877
+[Timing prediction] - m1 took 2.754002571105957
+[Timing prediction] - m2 took 2.7734973430633545
+[Timing prediction] - m3 took 2.794499397277832
+[Timing prediction] - m4 took 2.751089096069336
+[Timing prediction] - m5 took 2.817891836166382
+[Timing prediction] - m6 took 2.7831408977508545
+[Timing prediction] - m7 took 2.79193377494812
+[Timing prediction] - Total m-predictions took 22.22580099105835 seconds
+[Timing prediction] - Final mult took 0.0019245147705078125
+[Timing prediction] Moving to torch took 0.0011098384857177734 seconds
+[Timing prediction] Moving to cuda took 3.5762786865234375e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.810898542404175
+[Timing prediction] - m1 took 2.788111448287964
+[Timing prediction] - m2 took 2.8879706859588623
+[Timing prediction] - m3 took 2.839171886444092
+[Timing prediction] - m4 took 2.811537265777588
+[Timing prediction] - m5 took 2.7607662677764893
+[Timing prediction] - m6 took 2.6616291999816895
+[Timing prediction] - m7 took 2.7659809589385986
+[Timing prediction] - Total m-predictions took 22.32626509666443 seconds
+[Timing prediction] - Final mult took 0.001741647720336914
+[Timing prediction] Moving to torch took 0.0012097358703613281 seconds
+[Timing prediction] Moving to cuda took 2.5510787963867188e-05 seconds
+[Timing prediction] Multshit took 1.1682510375976562e-05 seconds
+[Timing prediction] - m0 took 2.6895339488983154
+[Timing prediction] - m1 took 2.762228488922119
+[Timing prediction] - m2 took 2.7787766456604004
+[Timing prediction] - m3 took 2.7957170009613037
+[Timing prediction] - m4 took 2.8073041439056396
+[Timing prediction] - m5 took 2.8246679306030273
+[Timing prediction] - m6 took 2.798872232437134
+[Timing prediction] - m7 took 2.804166316986084
+[Timing prediction] - Total m-predictions took 22.261462450027466 seconds
+[Timing prediction] - Final mult took 0.002087831497192383
+[Timing prediction] Moving to torch took 0.0012173652648925781 seconds
+[Timing prediction] Moving to cuda took 3.647804260253906e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.8153798580169678
+[Timing prediction] - m1 took 2.8104429244995117
+[Timing prediction] - m2 took 2.8251585960388184
+[Timing prediction] - m3 took 2.805079698562622
+[Timing prediction] - m4 took 2.831589937210083
+[Timing prediction] - m5 took 2.8050811290740967
+[Timing prediction] - m6 took 2.8199055194854736
+[Timing prediction] - m7 took 2.8269076347351074
+[Timing prediction] - Total m-predictions took 22.539753198623657 seconds
+[Timing prediction] - Final mult took 0.0017442703247070312
+[Timing prediction] Moving to torch took 0.0011949539184570312 seconds
+[Timing prediction] Moving to cuda took 4.1961669921875e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.724686861038208
+[Timing prediction] - m1 took 2.6943914890289307
+[Timing prediction] - m2 took 2.7034709453582764
+[Timing prediction] - m3 took 2.6986303329467773
+[Timing prediction] - m4 took 2.6855227947235107
+[Timing prediction] - m5 took 2.7471675872802734
+[Timing prediction] - m6 took 2.6786086559295654
+[Timing prediction] - m7 took 2.7030529975891113
+[Timing prediction] - Total m-predictions took 21.635706901550293 seconds
+[Timing prediction] - Final mult took 0.0016508102416992188
+[Timing prediction] Moving to torch took 0.0011475086212158203 seconds
+[Timing prediction] Moving to cuda took 2.1457672119140625e-05 seconds
+[Timing prediction] Multshit took 1.6927719116210938e-05 seconds
+[Timing prediction] - m0 took 2.7046091556549072
+[Timing prediction] - m1 took 2.795549154281616
+[Timing prediction] - m2 took 2.776456832885742
+[Timing prediction] - m3 took 2.8635807037353516
+[Timing prediction] - m4 took 2.688551425933838
+[Timing prediction] - m5 took 2.6716537475585938
+[Timing prediction] - m6 took 2.696234941482544
+[Timing prediction] - m7 took 2.871936082839966
+[Timing prediction] - Total m-predictions took 22.068760871887207 seconds
+[Timing prediction] - Final mult took 0.0019066333770751953
+[Timing prediction] Moving to torch took 0.0012516975402832031 seconds
+[Timing prediction] Moving to cuda took 4.1484832763671875e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.911254644393921
+[Timing prediction] - m1 took 2.9000086784362793
+[Timing prediction] - m2 took 2.9190871715545654
+[Timing prediction] - m3 took 2.9019229412078857
+[Timing prediction] - m4 took 2.8303868770599365
+[Timing prediction] - m5 took 2.8621973991394043
+[Timing prediction] - m6 took 2.8756518363952637
+[Timing prediction] - m7 took 2.8601269721984863
+[Timing prediction] - Total m-predictions took 23.06082010269165 seconds
+[Timing prediction] - Final mult took 0.0015637874603271484
+[Timing prediction] Moving to torch took 0.0011067390441894531 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 9.5367431640625e-06 seconds
+[Timing prediction] - m0 took 2.6785848140716553
+[Timing prediction] - m1 took 2.7271852493286133
+[Timing prediction] - m2 took 2.7854607105255127
+[Timing prediction] - m3 took 2.9044899940490723
+[Timing prediction] - m4 took 2.9061472415924072
+[Timing prediction] - m5 took 2.913998603820801
+[Timing prediction] - m6 took 2.8780298233032227
+[Timing prediction] - m7 took 2.848034620285034
+[Timing prediction] - Total m-predictions took 22.64213466644287 seconds
+[Timing prediction] - Final mult took 0.0018734931945800781
+[Timing prediction] Moving to torch took 0.0012378692626953125 seconds
+[Timing prediction] Moving to cuda took 3.62396240234375e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.8483450412750244
+[Timing prediction] - m1 took 2.7806339263916016
+[Timing prediction] - m2 took 2.8528499603271484
+[Timing prediction] - m3 took 2.8891704082489014
+[Timing prediction] - m4 took 2.8924949169158936
+[Timing prediction] - m5 took 2.9009406566619873
+[Timing prediction] - m6 took 2.8851499557495117
+[Timing prediction] - m7 took 2.90773868560791
+[Timing prediction] - Total m-predictions took 22.957549571990967 seconds
+[Timing prediction] - Final mult took 0.0017087459564208984
+[Timing prediction] Moving to torch took 0.0011034011840820312 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.9131734371185303
+[Timing prediction] - m1 took 2.8861382007598877
+[Timing prediction] - m2 took 2.9245357513427734
+[Timing prediction] - m3 took 2.8915727138519287
+[Timing prediction] - m4 took 2.8793113231658936
+[Timing prediction] - m5 took 2.8917973041534424
+[Timing prediction] - m6 took 2.8863232135772705
+[Timing prediction] - m7 took 2.883364677429199
+[Timing prediction] - Total m-predictions took 23.15644097328186 seconds
+[Timing prediction] - Final mult took 0.0018744468688964844
+[Timing prediction] Moving to torch took 0.0012199878692626953 seconds
+[Timing prediction] Moving to cuda took 3.886222839355469e-05 seconds
+[Timing prediction] Multshit took 1.049041748046875e-05 seconds
+[Timing prediction] - m0 took 2.7660534381866455
+[Timing prediction] - m1 took 2.6977415084838867
+[Timing prediction] - m2 took 2.685366153717041
+[Timing prediction] - m3 took 2.721423625946045
+[Timing prediction] - m4 took 2.741140365600586
+[Timing prediction] - m5 took 2.750753164291382
+[Timing prediction] - m6 took 2.746817111968994
+[Timing prediction] - m7 took 2.7518365383148193
+[Timing prediction] - Total m-predictions took 21.86133360862732 seconds
+[Timing prediction] - Final mult took 0.001744985580444336
+[Timing prediction] Moving to torch took 0.0011889934539794922 seconds
+[Timing prediction] Moving to cuda took 3.552436828613281e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7439346313476562
+[Timing prediction] - m1 took 2.76902174949646
+[Timing prediction] - m2 took 2.785460948944092
+[Timing prediction] - m3 took 2.782449722290039
+[Timing prediction] - m4 took 2.7940597534179688
+[Timing prediction] - m5 took 2.7596259117126465
+[Timing prediction] - m6 took 2.7880501747131348
+[Timing prediction] - m7 took 2.785122871398926
+[Timing prediction] - Total m-predictions took 22.20791482925415 seconds
+[Timing prediction] - Final mult took 0.0018146038055419922
+[Timing prediction] Moving to torch took 0.001216888427734375 seconds
+[Timing prediction] Moving to cuda took 1.9788742065429688e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.7668564319610596
+[Timing prediction] - m1 took 2.7682244777679443
+[Timing prediction] - m2 took 2.76324200630188
+[Timing prediction] - m3 took 2.743903875350952
+[Timing prediction] - m4 took 2.8521459102630615
+[Timing prediction] - m5 took 2.855623483657837
+[Timing prediction] - m6 took 2.827573776245117
+[Timing prediction] - m7 took 2.7836997509002686
+[Timing prediction] - Total m-predictions took 22.361468076705933 seconds
+[Timing prediction] - Final mult took 0.001821279525756836
+[Timing prediction] Moving to torch took 0.0013537406921386719 seconds
+[Timing prediction] Moving to cuda took 3.62396240234375e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.7760772705078125
+[Timing prediction] - m1 took 2.814148426055908
+[Timing prediction] - m2 took 2.809467077255249
+[Timing prediction] - m3 took 2.8140788078308105
+[Timing prediction] - m4 took 2.836303472518921
+[Timing prediction] - m5 took 2.781386137008667
+[Timing prediction] - m6 took 2.786457061767578
+[Timing prediction] - m7 took 2.7734036445617676
+[Timing prediction] - Total m-predictions took 22.391500234603882 seconds
+[Timing prediction] - Final mult took 0.001554727554321289
+[Timing prediction] Moving to torch took 0.0012049674987792969 seconds
+[Timing prediction] Moving to cuda took 2.3603439331054688e-05 seconds
+[Timing prediction] Multshit took 1.1920928955078125e-05 seconds
+[Timing prediction] - m0 took 2.83940052986145
+[Timing prediction] - m1 took 2.786649227142334
+[Timing prediction] - m2 took 2.80092191696167
+[Timing prediction] - m3 took 2.795976161956787
+[Timing prediction] - m4 took 2.8208935260772705
+[Timing prediction] - m5 took 2.8858730792999268
+[Timing prediction] - m6 took 2.8652210235595703
+[Timing prediction] - m7 took 2.843280553817749
+[Timing prediction] - Total m-predictions took 22.63842749595642 seconds
+[Timing prediction] - Final mult took 0.0019655227661132812
+[Timing prediction] Moving to torch took 0.0011234283447265625 seconds
+[Timing prediction] Moving to cuda took 3.790855407714844e-05 seconds
+[Timing prediction] Multshit took 1.0728836059570312e-05 seconds
+[Timing prediction] - m0 took 2.8424696922302246
+[Timing prediction] - m1 took 2.812969446182251
+[Timing prediction] - m2 took 2.8219656944274902
+[Timing prediction] - m3 took 2.8271772861480713
+[Timing prediction] - m4 took 2.796825408935547
+[Timing prediction] - m5 took 2.761573553085327
+[Timing prediction] - m6 took 2.780242919921875
+[Timing prediction] - m7 took 2.764355182647705
+[Timing prediction] - Total m-predictions took 22.40775775909424 seconds
+[Timing prediction] - Final mult took 0.0017611980438232422
+[Timing prediction] Moving to torch took 0.0012259483337402344 seconds
+[Timing prediction] Moving to cuda took 2.4318695068359375e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7615296840667725
+[Timing prediction] - m1 took 2.7631068229675293
+[Timing prediction] - m2 took 2.768078327178955
+[Timing prediction] - m3 took 2.8073134422302246
+[Timing prediction] - m4 took 2.774094820022583
+[Timing prediction] - m5 took 2.7777204513549805
+[Timing prediction] - m6 took 2.753183364868164
+[Timing prediction] - m7 took 2.8102846145629883
+[Timing prediction] - Total m-predictions took 22.215530157089233 seconds
+[Timing prediction] - Final mult took 0.0021009445190429688
+[Timing prediction] Moving to torch took 0.0011548995971679688 seconds
+[Timing prediction] Moving to cuda took 3.695487976074219e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.7664146423339844
+[Timing prediction] - m1 took 2.7879538536071777
+[Timing prediction] - m2 took 2.776085615158081
+[Timing prediction] - m3 took 2.7756550312042236
+[Timing prediction] - m4 took 2.7742655277252197
+[Timing prediction] - m5 took 2.7703640460968018
+[Timing prediction] - m6 took 2.796546220779419
+[Timing prediction] - m7 took 2.7892370223999023
+[Timing prediction] - Total m-predictions took 22.236704349517822 seconds
+[Timing prediction] - Final mult took 0.001611471176147461
+[Timing prediction] Moving to torch took 0.0012543201446533203 seconds
+[Timing prediction] Moving to cuda took 2.6941299438476562e-05 seconds
+[Timing prediction] Multshit took 1.2159347534179688e-05 seconds
+[Timing prediction] - m0 took 2.7614052295684814
+[Timing prediction] - m1 took 2.818162202835083
+[Timing prediction] - m2 took 2.8139662742614746
+[Timing prediction] - m3 took 2.792505979537964
+[Timing prediction] - m4 took 2.7462074756622314
+[Timing prediction] - m5 took 2.769768476486206
+[Timing prediction] - m6 took 2.7889015674591064
+[Timing prediction] - m7 took 2.7656056880950928
+[Timing prediction] - Total m-predictions took 22.256725072860718 seconds
+[Timing prediction] - Final mult took 0.0018644332885742188
+[Timing prediction] Moving to torch took 0.0012094974517822266 seconds
+[Timing prediction] Moving to cuda took 3.9577484130859375e-05 seconds
+[Timing prediction] Multshit took 1.4066696166992188e-05 seconds
+[Timing prediction] - m0 took 2.717580795288086
+[Timing prediction] - m1 took 2.7451393604278564
+[Timing prediction] - m2 took 2.7426228523254395
+[Timing prediction] - m3 took 2.757589101791382
+[Timing prediction] - m4 took 2.746126651763916
+[Timing prediction] - m5 took 2.730140209197998
+[Timing prediction] - m6 took 2.7421529293060303
+[Timing prediction] - m7 took 2.7349958419799805
+[Timing prediction] - Total m-predictions took 21.91659379005432 seconds
+[Timing prediction] - Final mult took 0.0018045902252197266
+[Timing prediction] Moving to torch took 0.0012118816375732422 seconds
+[Timing prediction] Moving to cuda took 3.695487976074219e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7142319679260254
+[Timing prediction] - m1 took 2.7172319889068604
+[Timing prediction] - m2 took 2.7016336917877197
+[Timing prediction] - m3 took 2.7170114517211914
+[Timing prediction] - m4 took 2.710296154022217
+[Timing prediction] - m5 took 2.74428653717041
+[Timing prediction] - m6 took 2.7144064903259277
+[Timing prediction] - m7 took 2.7190465927124023
+[Timing prediction] - Total m-predictions took 21.738329887390137 seconds
+[Timing prediction] - Final mult took 0.0017693042755126953
+[Timing prediction] Moving to torch took 0.0011014938354492188 seconds
+[Timing prediction] Moving to cuda took 2.2172927856445312e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.7116005420684814
+[Timing prediction] - m1 took 2.714763641357422
+[Timing prediction] - m2 took 2.7054531574249268
+[Timing prediction] - m3 took 2.7076523303985596
+[Timing prediction] - m4 took 2.7192728519439697
+[Timing prediction] - m5 took 2.72101092338562
+[Timing prediction] - m6 took 2.7466611862182617
+[Timing prediction] - m7 took 2.799654483795166
+[Timing prediction] - Total m-predictions took 21.826271772384644 seconds
+[Timing prediction] - Final mult took 0.0020689964294433594
+[Timing prediction] Moving to torch took 0.0012080669403076172 seconds
+[Timing prediction] Moving to cuda took 3.409385681152344e-05 seconds
+[Timing prediction] Multshit took 1.430511474609375e-05 seconds
+[Timing prediction] - m0 took 2.8302977085113525
+[Timing prediction] - m1 took 2.815890073776245
+[Timing prediction] - m2 took 2.8254244327545166
+[Timing prediction] - m3 took 2.7519328594207764
+[Timing prediction] - m4 took 2.746490716934204
+[Timing prediction] - m5 took 2.7289156913757324
+[Timing prediction] - m6 took 2.775865077972412
+[Timing prediction] - m7 took 2.733210563659668
+[Timing prediction] - Total m-predictions took 22.208207845687866 seconds
+[Timing prediction] - Final mult took 0.0017380714416503906
+[Timing prediction] Moving to torch took 0.0011119842529296875 seconds
+[Timing prediction] Moving to cuda took 2.288818359375e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.736684560775757
+[Timing prediction] - m1 took 2.7406527996063232
+[Timing prediction] - m2 took 2.7439956665039062
+[Timing prediction] - m3 took 2.7444825172424316
+[Timing prediction] - m4 took 2.7345848083496094
+[Timing prediction] - m5 took 2.785257577896118
+[Timing prediction] - m6 took 2.7442173957824707
+[Timing prediction] - m7 took 2.7287850379943848
+[Timing prediction] - Total m-predictions took 21.958869695663452 seconds
+[Timing prediction] - Final mult took 0.0018613338470458984
+[Timing prediction] Moving to torch took 0.0012242794036865234 seconds
+[Timing prediction] Moving to cuda took 3.3855438232421875e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.7306790351867676
+[Timing prediction] - m1 took 2.7409698963165283
+[Timing prediction] - m2 took 2.7357070446014404
+[Timing prediction] - m3 took 2.7341396808624268
+[Timing prediction] - m4 took 2.7322499752044678
+[Timing prediction] - m5 took 2.7741923332214355
+[Timing prediction] - m6 took 2.818664312362671
+[Timing prediction] - m7 took 2.7943150997161865
+[Timing prediction] - Total m-predictions took 22.061089515686035 seconds
+[Timing prediction] - Final mult took 0.0016942024230957031
+[Timing prediction] Moving to torch took 0.0011146068572998047 seconds
+[Timing prediction] Moving to cuda took 2.47955322265625e-05 seconds
+[Timing prediction] Multshit took 9.059906005859375e-06 seconds
+[Timing prediction] - m0 took 2.830974578857422
+[Timing prediction] - m1 took 2.7445077896118164
+[Timing prediction] - m2 took 2.7366318702697754
+[Timing prediction] - m3 took 2.722818613052368
+[Timing prediction] - m4 took 2.7524774074554443
+[Timing prediction] - m5 took 2.7249317169189453
+[Timing prediction] - m6 took 2.7503273487091064
+[Timing prediction] - m7 took 2.73638916015625
+[Timing prediction] - Total m-predictions took 21.99925422668457 seconds
+[Timing prediction] - Final mult took 0.0018181800842285156
+[Timing prediction] Moving to torch took 0.0012569427490234375 seconds
+[Timing prediction] Moving to cuda took 3.314018249511719e-05 seconds
+[Timing prediction] Multshit took 2.288818359375e-05 seconds
+[Timing prediction] - m0 took 2.6856186389923096
+[Timing prediction] - m1 took 2.7531192302703857
+[Timing prediction] - m2 took 2.704392433166504
+[Timing prediction] - m3 took 2.7476747035980225
+[Timing prediction] - m4 took 2.722785234451294
+[Timing prediction] - m5 took 2.707829475402832
+[Timing prediction] - m6 took 2.701277732849121
+[Timing prediction] - m7 took 2.7051711082458496
+[Timing prediction] - Total m-predictions took 21.728055000305176 seconds
+[Timing prediction] - Final mult took 0.0015671253204345703
+[Timing prediction] Moving to torch took 0.001127004623413086 seconds
+[Timing prediction] Moving to cuda took 2.193450927734375e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.6949923038482666
+[Timing prediction] - m1 took 2.712458848953247
+[Timing prediction] - m2 took 2.7177650928497314
+[Timing prediction] - m3 took 2.7101550102233887
+[Timing prediction] - m4 took 2.740055561065674
+[Timing prediction] - m5 took 2.7487411499023438
+[Timing prediction] - m6 took 2.753833293914795
+[Timing prediction] - m7 took 2.7213258743286133
+[Timing prediction] - Total m-predictions took 21.799520015716553 seconds
+[Timing prediction] - Final mult took 0.0018155574798583984
+[Timing prediction] Moving to torch took 0.0012164115905761719 seconds
+[Timing prediction] Moving to cuda took 3.457069396972656e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.712700128555298
+[Timing prediction] - m1 took 2.7175424098968506
+[Timing prediction] - m2 took 2.712510585784912
+[Timing prediction] - m3 took 2.758512258529663
+[Timing prediction] - m4 took 2.787060499191284
+[Timing prediction] - m5 took 2.8026845455169678
+[Timing prediction] - m6 took 2.7426674365997314
+[Timing prediction] - m7 took 2.8168439865112305
+[Timing prediction] - Total m-predictions took 22.05072283744812 seconds
+[Timing prediction] - Final mult took 0.0020380020141601562
+[Timing prediction] Moving to torch took 0.0011944770812988281 seconds
+[Timing prediction] Moving to cuda took 3.8623809814453125e-05 seconds
+[Timing prediction] Multshit took 9.5367431640625e-06 seconds
+[Timing prediction] - m0 took 2.8040897846221924
+[Timing prediction] - m1 took 2.7741055488586426
+[Timing prediction] - m2 took 2.7976560592651367
+[Timing prediction] - m3 took 2.7318828105926514
+[Timing prediction] - m4 took 2.7312917709350586
+[Timing prediction] - m5 took 2.720731735229492
+[Timing prediction] - m6 took 2.7276456356048584
+[Timing prediction] - m7 took 2.7304611206054688
+[Timing prediction] - Total m-predictions took 22.018048763275146 seconds
+[Timing prediction] - Final mult took 0.0017805099487304688
+[Timing prediction] Moving to torch took 0.0011990070343017578 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 2.3365020751953125e-05 seconds
+[Timing prediction] - m0 took 2.7238192558288574
+[Timing prediction] - m1 took 2.7654917240142822
+[Timing prediction] - m2 took 2.8283915519714355
+[Timing prediction] - m3 took 2.8052029609680176
+[Timing prediction] - m4 took 2.8349297046661377
+[Timing prediction] - m5 took 2.8206751346588135
+[Timing prediction] - m6 took 2.7841227054595947
+[Timing prediction] - m7 took 2.7613742351531982
+[Timing prediction] - Total m-predictions took 22.324187994003296 seconds
+[Timing prediction] - Final mult took 0.006957530975341797
+[Timing prediction] Moving to torch took 0.0011260509490966797 seconds
+[Timing prediction] Moving to cuda took 2.3126602172851562e-05 seconds
+[Timing prediction] Multshit took 1.33514404296875e-05 seconds
+[Timing prediction] - m0 took 2.724802017211914
+[Timing prediction] - m1 took 2.7389607429504395
+[Timing prediction] - m2 took 2.7334086894989014
+[Timing prediction] - m3 took 2.7238218784332275
+[Timing prediction] - m4 took 2.725292921066284
+[Timing prediction] - m5 took 2.74094295501709
+[Timing prediction] - m6 took 2.7431535720825195
+[Timing prediction] - m7 took 2.7250945568084717
+[Timing prediction] - Total m-predictions took 21.855682611465454 seconds
+[Timing prediction] - Final mult took 0.001804351806640625
+[Timing prediction] Moving to torch took 0.0012347698211669922 seconds
+[Timing prediction] Moving to cuda took 3.600120544433594e-05 seconds
+[Timing prediction] Multshit took 1.71661376953125e-05 seconds
+[Timing prediction] - m0 took 2.758841037750244
+[Timing prediction] - m1 took 2.7257938385009766
+[Timing prediction] - m2 took 2.7244534492492676
+[Timing prediction] - m3 took 2.7285685539245605
+[Timing prediction] - m4 took 2.744955539703369
+[Timing prediction] - m5 took 2.754859209060669
+[Timing prediction] - m6 took 2.7265889644622803
+[Timing prediction] - m7 took 2.7361488342285156
+[Timing prediction] - Total m-predictions took 21.90040159225464 seconds
+[Timing prediction] - Final mult took 0.002115011215209961
+[Timing prediction] Moving to torch took 0.0011687278747558594 seconds
+[Timing prediction] Moving to cuda took 3.7670135498046875e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7683424949645996
+[Timing prediction] - m1 took 2.742255449295044
+[Timing prediction] - m2 took 2.7514424324035645
+[Timing prediction] - m3 took 2.7670974731445312
+[Timing prediction] - m4 took 2.7403883934020996
+[Timing prediction] - m5 took 2.72621750831604
+[Timing prediction] - m6 took 2.7037465572357178
+[Timing prediction] - m7 took 2.7212045192718506
+[Timing prediction] - Total m-predictions took 21.92087459564209 seconds
+[Timing prediction] - Final mult took 0.0016906261444091797
+[Timing prediction] Moving to torch took 0.001218557357788086 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 1.2159347534179688e-05 seconds
+[Timing prediction] - m0 took 2.7181639671325684
+[Timing prediction] - m1 took 2.7095391750335693
+[Timing prediction] - m2 took 2.7142202854156494
+[Timing prediction] - m3 took 2.7271010875701904
+[Timing prediction] - m4 took 2.7426259517669678
+[Timing prediction] - m5 took 2.7146430015563965
+[Timing prediction] - m6 took 2.7702884674072266
+[Timing prediction] - m7 took 2.7305405139923096
+[Timing prediction] - Total m-predictions took 21.82731795310974 seconds
+[Timing prediction] - Final mult took 0.002012491226196289
+[Timing prediction] Moving to torch took 0.0011739730834960938 seconds
+[Timing prediction] Moving to cuda took 4.1484832763671875e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.7266104221343994
+[Timing prediction] - m1 took 2.713083028793335
+[Timing prediction] - m2 took 2.7097384929656982
+[Timing prediction] - m3 took 2.7199301719665527
+[Timing prediction] - m4 took 2.7209300994873047
+[Timing prediction] - m5 took 2.713284730911255
+[Timing prediction] - m6 took 2.753551959991455
+[Timing prediction] - m7 took 2.7499687671661377
+[Timing prediction] - Total m-predictions took 21.80728530883789 seconds
+[Timing prediction] - Final mult took 0.0015337467193603516
+[Timing prediction] Moving to torch took 0.0012247562408447266 seconds
+[Timing prediction] Moving to cuda took 3.62396240234375e-05 seconds
+[Timing prediction] Multshit took 1.0728836059570312e-05 seconds
+[Timing prediction] - m0 took 2.7421374320983887
+[Timing prediction] - m1 took 2.7658820152282715
+[Timing prediction] - m2 took 2.758746385574341
+[Timing prediction] - m3 took 2.738588571548462
+[Timing prediction] - m4 took 2.6983563899993896
+[Timing prediction] - m5 took 2.713775873184204
+[Timing prediction] - m6 took 2.72444224357605
+[Timing prediction] - m7 took 2.7031028270721436
+[Timing prediction] - Total m-predictions took 21.84521770477295 seconds
+[Timing prediction] - Final mult took 0.0019426345825195312
+[Timing prediction] Moving to torch took 0.0011136531829833984 seconds
+[Timing prediction] Moving to cuda took 2.09808349609375e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.6995046138763428
+[Timing prediction] - m1 took 2.719550132751465
+[Timing prediction] - m2 took 2.728123426437378
+[Timing prediction] - m3 took 2.7112350463867188
+[Timing prediction] - m4 took 2.7162511348724365
+[Timing prediction] - m5 took 2.7659053802490234
+[Timing prediction] - m6 took 2.723039150238037
+[Timing prediction] - m7 took 2.7133545875549316
+[Timing prediction] - Total m-predictions took 21.7771475315094 seconds
+[Timing prediction] - Final mult took 0.0016887187957763672
+[Timing prediction] Moving to torch took 0.0012590885162353516 seconds
+[Timing prediction] Moving to cuda took 3.7670135498046875e-05 seconds
+[Timing prediction] Multshit took 1.3828277587890625e-05 seconds
+[Timing prediction] - m0 took 2.714251756668091
+[Timing prediction] - m1 took 2.7201595306396484
+[Timing prediction] - m2 took 2.7100274562835693
+[Timing prediction] - m3 took 2.7195043563842773
+[Timing prediction] - m4 took 2.7445785999298096
+[Timing prediction] - m5 took 2.75075101852417
+[Timing prediction] - m6 took 2.7164182662963867
+[Timing prediction] - m7 took 2.759385108947754
+[Timing prediction] - Total m-predictions took 21.835264444351196 seconds
+[Timing prediction] - Final mult took 0.002025604248046875
+[Timing prediction] Moving to torch took 0.0010933876037597656 seconds
+[Timing prediction] Moving to cuda took 2.384185791015625e-05 seconds
+[Timing prediction] Multshit took 1.1682510375976562e-05 seconds
+[Timing prediction] - m0 took 2.742340087890625
+[Timing prediction] - m1 took 2.7338809967041016
+[Timing prediction] - m2 took 2.7031140327453613
+[Timing prediction] - m3 took 2.698408603668213
+[Timing prediction] - m4 took 2.71185564994812
+[Timing prediction] - m5 took 2.7358572483062744
+[Timing prediction] - m6 took 2.7365238666534424
+[Timing prediction] - m7 took 2.723083972930908
+[Timing prediction] - Total m-predictions took 21.785266160964966 seconds
+[Timing prediction] - Final mult took 0.0018248558044433594
+[Timing prediction] Moving to torch took 0.0012669563293457031 seconds
+[Timing prediction] Moving to cuda took 3.4332275390625e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.7218027114868164
+[Timing prediction] - m1 took 2.7441458702087402
+[Timing prediction] - m2 took 2.7290701866149902
+[Timing prediction] - m3 took 2.750605821609497
+[Timing prediction] - m4 took 2.7265257835388184
+[Timing prediction] - m5 took 2.7358744144439697
+[Timing prediction] - m6 took 2.7210006713867188
+[Timing prediction] - m7 took 2.6970343589782715
+[Timing prediction] - Total m-predictions took 21.82623553276062 seconds
+[Timing prediction] - Final mult took 0.0015244483947753906
+[Timing prediction] Moving to torch took 0.0011055469512939453 seconds
+[Timing prediction] Moving to cuda took 2.3365020751953125e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.70914888381958
+[Timing prediction] - m1 took 2.7413363456726074
+[Timing prediction] - m2 took 2.7447540760040283
+[Timing prediction] - m3 took 2.744863986968994
+[Timing prediction] - m4 took 2.7429795265197754
+[Timing prediction] - m5 took 2.7610392570495605
+[Timing prediction] - m6 took 2.748608112335205
+[Timing prediction] - m7 took 2.765188217163086
+[Timing prediction] - Total m-predictions took 21.958153247833252 seconds
+[Timing prediction] - Final mult took 0.0017209053039550781
+[Timing prediction] Moving to torch took 0.0012645721435546875 seconds
+[Timing prediction] Moving to cuda took 7.367134094238281e-05 seconds
+[Timing prediction] Multshit took 1.4781951904296875e-05 seconds
+[Timing prediction] - m0 took 2.7075037956237793
+[Timing prediction] - m1 took 2.7226645946502686
+[Timing prediction] - m2 took 2.7161033153533936
+[Timing prediction] - m3 took 2.730341911315918
+[Timing prediction] - m4 took 2.721747398376465
+[Timing prediction] - m5 took 2.7219181060791016
+[Timing prediction] - m6 took 2.706145763397217
+[Timing prediction] - m7 took 2.740788698196411
+[Timing prediction] - Total m-predictions took 21.767388582229614 seconds
+[Timing prediction] - Final mult took 0.0015881061553955078
+[Timing prediction] Moving to torch took 0.0011298656463623047 seconds
+[Timing prediction] Moving to cuda took 2.2411346435546875e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.7221810817718506
+[Timing prediction] - m1 took 2.715799570083618
+[Timing prediction] - m2 took 2.7614598274230957
+[Timing prediction] - m3 took 2.7319419384002686
+[Timing prediction] - m4 took 2.7344613075256348
+[Timing prediction] - m5 took 2.716599702835083
+[Timing prediction] - m6 took 2.7372496128082275
+[Timing prediction] - m7 took 2.739868640899658
+[Timing prediction] - Total m-predictions took 21.859789848327637 seconds
+[Timing prediction] - Final mult took 0.0018620491027832031
+[Timing prediction] Moving to torch took 0.0012848377227783203 seconds
+[Timing prediction] Moving to cuda took 5.054473876953125e-05 seconds
+[Timing prediction] Multshit took 1.1682510375976562e-05 seconds
+[Timing prediction] - m0 took 2.743834972381592
+[Timing prediction] - m1 took 2.753410816192627
+[Timing prediction] - m2 took 2.7170217037200928
+[Timing prediction] - m3 took 2.750727891921997
+[Timing prediction] - m4 took 2.722856283187866
+[Timing prediction] - m5 took 2.7846856117248535
+[Timing prediction] - m6 took 2.7323150634765625
+[Timing prediction] - m7 took 2.7317068576812744
+[Timing prediction] - Total m-predictions took 21.936760663986206 seconds
+[Timing prediction] - Final mult took 0.0018939971923828125
+[Timing prediction] Moving to torch took 0.001149892807006836 seconds
+[Timing prediction] Moving to cuda took 3.886222839355469e-05 seconds
+[Timing prediction] Multshit took 1.4066696166992188e-05 seconds
+[Timing prediction] - m0 took 2.7030041217803955
+[Timing prediction] - m1 took 2.733760356903076
+[Timing prediction] - m2 took 2.713696002960205
+[Timing prediction] - m3 took 2.735029697418213
+[Timing prediction] - m4 took 2.7144546508789062
+[Timing prediction] - m5 took 2.7327489852905273
+[Timing prediction] - m6 took 2.7334587574005127
+[Timing prediction] - m7 took 2.7068958282470703
+[Timing prediction] - Total m-predictions took 21.77322220802307 seconds
+[Timing prediction] - Final mult took 0.0015308856964111328
+[Timing prediction] Moving to torch took 0.0012781620025634766 seconds
+[Timing prediction] Moving to cuda took 2.09808349609375e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7600865364074707
+[Timing prediction] - m1 took 2.730177164077759
+[Timing prediction] - m2 took 2.7123050689697266
+[Timing prediction] - m3 took 2.718441963195801
+[Timing prediction] - m4 took 2.7282466888427734
+[Timing prediction] - m5 took 2.749018907546997
+[Timing prediction] - m6 took 2.739786386489868
+[Timing prediction] - m7 took 2.7496612071990967
+[Timing prediction] - Total m-predictions took 21.887918949127197 seconds
+[Timing prediction] - Final mult took 0.001863241195678711
+[Timing prediction] Moving to torch took 0.0011510848999023438 seconds
+[Timing prediction] Moving to cuda took 3.838539123535156e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.731884479522705
+[Timing prediction] - m1 took 2.737964630126953
+[Timing prediction] - m2 took 2.736381769180298
+[Timing prediction] - m3 took 2.8055667877197266
+[Timing prediction] - m4 took 2.7254831790924072
+[Timing prediction] - m5 took 2.722752571105957
+[Timing prediction] - m6 took 2.719975471496582
+[Timing prediction] - m7 took 2.7169129848480225
+[Timing prediction] - Total m-predictions took 21.897098779678345 seconds
+[Timing prediction] - Final mult took 0.0015857219696044922
+[Timing prediction] Moving to torch took 0.0012059211730957031 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.7170779705047607
+[Timing prediction] - m1 took 2.726644277572632
+[Timing prediction] - m2 took 2.719850778579712
+[Timing prediction] - m3 took 2.7429428100585938
+[Timing prediction] - m4 took 2.7284047603607178
+[Timing prediction] - m5 took 2.7100119590759277
+[Timing prediction] - m6 took 2.7145943641662598
+[Timing prediction] - m7 took 2.7757673263549805
+[Timing prediction] - Total m-predictions took 21.835493087768555 seconds
+[Timing prediction] - Final mult took 0.0018913745880126953
+[Timing prediction] Moving to torch took 0.0011091232299804688 seconds
+[Timing prediction] Moving to cuda took 3.600120544433594e-05 seconds
+[Timing prediction] Multshit took 1.2874603271484375e-05 seconds
+[Timing prediction] - m0 took 2.7131752967834473
+[Timing prediction] - m1 took 2.700793743133545
+[Timing prediction] - m2 took 2.7007367610931396
+[Timing prediction] - m3 took 2.776024341583252
+[Timing prediction] - m4 took 2.7187061309814453
+[Timing prediction] - m5 took 2.76474928855896
+[Timing prediction] - m6 took 2.734419107437134
+[Timing prediction] - m7 took 2.7670748233795166
+[Timing prediction] - Total m-predictions took 21.875857830047607 seconds
+[Timing prediction] - Final mult took 0.0014903545379638672
+[Timing prediction] Moving to torch took 0.0012302398681640625 seconds
+[Timing prediction] Moving to cuda took 2.1696090698242188e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.734794855117798
+[Timing prediction] - m1 took 2.7629177570343018
+[Timing prediction] - m2 took 2.7725155353546143
+[Timing prediction] - m3 took 2.7301230430603027
+[Timing prediction] - m4 took 2.741482973098755
+[Timing prediction] - m5 took 2.7464675903320312
+[Timing prediction] - m6 took 2.7608554363250732
+[Timing prediction] - m7 took 2.74023175239563
+[Timing prediction] - Total m-predictions took 21.9895920753479 seconds
+[Timing prediction] - Final mult took 0.0018837451934814453
+[Timing prediction] Moving to torch took 0.001207113265991211 seconds
+[Timing prediction] Moving to cuda took 3.886222839355469e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.713135004043579
+[Timing prediction] - m1 took 2.736461639404297
+[Timing prediction] - m2 took 2.7442736625671387
+[Timing prediction] - m3 took 2.7403135299682617
+[Timing prediction] - m4 took 2.734792947769165
+[Timing prediction] - m5 took 2.7818613052368164
+[Timing prediction] - m6 took 2.7248873710632324
+[Timing prediction] - m7 took 2.725517749786377
+[Timing prediction] - Total m-predictions took 21.901418685913086 seconds
+[Timing prediction] - Final mult took 0.0015571117401123047
+[Timing prediction] Moving to torch took 0.0011837482452392578 seconds
+[Timing prediction] Moving to cuda took 2.1219253540039062e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.7365164756774902
+[Timing prediction] - m1 took 2.7777273654937744
+[Timing prediction] - m2 took 2.748891830444336
+[Timing prediction] - m3 took 2.756730556488037
+[Timing prediction] - m4 took 2.7302494049072266
+[Timing prediction] - m5 took 2.7997756004333496
+[Timing prediction] - m6 took 2.740095853805542
+[Timing prediction] - m7 took 2.7471048831939697
+[Timing prediction] - Total m-predictions took 22.037270069122314 seconds
+[Timing prediction] - Final mult took 0.0016260147094726562
+[Timing prediction] Moving to torch took 0.0011174678802490234 seconds
+[Timing prediction] Moving to cuda took 2.3603439331054688e-05 seconds
+[Timing prediction] Multshit took 1.430511474609375e-05 seconds
+[Timing prediction] - m0 took 2.78971004486084
+[Timing prediction] - m1 took 2.7437686920166016
+[Timing prediction] - m2 took 2.745527982711792
+[Timing prediction] - m3 took 2.738306999206543
+[Timing prediction] - m4 took 2.8227734565734863
+[Timing prediction] - m5 took 2.7240068912506104
+[Timing prediction] - m6 took 2.732595682144165
+[Timing prediction] - m7 took 2.7315750122070312
+[Timing prediction] - Total m-predictions took 22.02857732772827 seconds
+[Timing prediction] - Final mult took 0.0019021034240722656
+[Timing prediction] Moving to torch took 0.0013020038604736328 seconds
+[Timing prediction] Moving to cuda took 5.841255187988281e-05 seconds
+[Timing prediction] Multshit took 2.0503997802734375e-05 seconds
+[Timing prediction] - m0 took 2.729660749435425
+[Timing prediction] - m1 took 2.715993642807007
+[Timing prediction] - m2 took 2.710968494415283
+[Timing prediction] - m3 took 2.785902500152588
+[Timing prediction] - m4 took 2.7318155765533447
+[Timing prediction] - m5 took 2.707068920135498
+[Timing prediction] - m6 took 2.711596965789795
+[Timing prediction] - m7 took 2.7966790199279785
+[Timing prediction] - Total m-predictions took 21.88991069793701 seconds
+[Timing prediction] - Final mult took 0.0018682479858398438
+[Timing prediction] Moving to torch took 0.001325845718383789 seconds
+[Timing prediction] Moving to cuda took 3.504753112792969e-05 seconds
+[Timing prediction] Multshit took 1.52587890625e-05 seconds
+[Timing prediction] - m0 took 2.696087121963501
+[Timing prediction] - m1 took 2.7199175357818604
+[Timing prediction] - m2 took 2.7189435958862305
+[Timing prediction] - m3 took 2.7666561603546143
+[Timing prediction] - m4 took 2.7373135089874268
+[Timing prediction] - m5 took 2.738801956176758
+[Timing prediction] - m6 took 2.7291455268859863
+[Timing prediction] - m7 took 2.715984582901001
+[Timing prediction] - Total m-predictions took 21.823025465011597 seconds
+[Timing prediction] - Final mult took 0.0015864372253417969
+[Timing prediction] Moving to torch took 0.0012753009796142578 seconds
+[Timing prediction] Moving to cuda took 2.1219253540039062e-05 seconds
+[Timing prediction] Multshit took 1.5497207641601562e-05 seconds
+[Timing prediction] - m0 took 2.684530019760132
+[Timing prediction] - m1 took 2.7218143939971924
+[Timing prediction] - m2 took 2.6811563968658447
+[Timing prediction] - m3 took 2.7295749187469482
+[Timing prediction] - m4 took 2.721184492111206
+[Timing prediction] - m5 took 2.708845615386963
+[Timing prediction] - m6 took 2.681805372238159
+[Timing prediction] - m7 took 2.7099318504333496
+[Timing prediction] - Total m-predictions took 21.63904857635498 seconds
+[Timing prediction] - Final mult took 0.0018029212951660156
+[Timing prediction] Moving to torch took 0.0013134479522705078 seconds
+[Timing prediction] Moving to cuda took 3.4809112548828125e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.730027675628662
+[Timing prediction] - m1 took 2.7113802433013916
+[Timing prediction] - m2 took 2.770289659500122
+[Timing prediction] - m3 took 2.727418899536133
+[Timing prediction] - m4 took 2.733731746673584
+[Timing prediction] - m5 took 2.745114803314209
+[Timing prediction] - m6 took 2.7477684020996094
+[Timing prediction] - m7 took 2.751044273376465
+[Timing prediction] - Total m-predictions took 21.916955947875977 seconds
+[Timing prediction] - Final mult took 0.00147247314453125
+[Timing prediction] Moving to torch took 0.0011966228485107422 seconds
+[Timing prediction] Moving to cuda took 2.0503997802734375e-05 seconds
+[Timing prediction] Multshit took 1.4543533325195312e-05 seconds
+[Timing prediction] - m0 took 2.7229132652282715
+[Timing prediction] - m1 took 2.752058744430542
+[Timing prediction] - m2 took 2.7365899085998535
+[Timing prediction] - m3 took 2.7149198055267334
+[Timing prediction] - m4 took 2.724224328994751
+[Timing prediction] - m5 took 2.751465320587158
+[Timing prediction] - m6 took 2.7270846366882324
+[Timing prediction] - m7 took 2.7060863971710205
+[Timing prediction] - Total m-predictions took 21.835551261901855 seconds
+[Timing prediction] - Final mult took 0.0018305778503417969
+[Timing prediction] Moving to torch took 0.0013289451599121094 seconds
+[Timing prediction] Moving to cuda took 3.5762786865234375e-05 seconds
+[Timing prediction] Multshit took 1.2636184692382812e-05 seconds
+[Timing prediction] - m0 took 2.6919631958007812
+[Timing prediction] - m1 took 2.7118043899536133
+[Timing prediction] - m2 took 2.693418025970459
+[Timing prediction] - m3 took 2.6844263076782227
+[Timing prediction] - m4 took 2.7165677547454834
+[Timing prediction] - m5 took 2.7152140140533447
+[Timing prediction] - m6 took 2.7363510131835938
+[Timing prediction] - m7 took 2.7261250019073486
+[Timing prediction] - Total m-predictions took 21.676042318344116 seconds
+[Timing prediction] - Final mult took 0.0014896392822265625
+[Timing prediction] Moving to torch took 0.0012402534484863281 seconds
+[Timing prediction] Moving to cuda took 2.3365020751953125e-05 seconds
+[Timing prediction] Multshit took 1.3113021850585938e-05 seconds
+[Timing prediction] - m0 took 2.791515588760376
+[Timing prediction] - m1 took 2.7351653575897217
+[Timing prediction] - m2 took 2.7300868034362793
+[Timing prediction] - m3 took 2.7565412521362305
+[Timing prediction] - m4 took 2.7328102588653564
+[Timing prediction] - m5 took 2.7522060871124268
+[Timing prediction] - m6 took 2.74226975440979
+[Timing prediction] - m7 took 2.7614927291870117
+[Timing prediction] - Total m-predictions took 22.002281427383423 seconds
+[Timing prediction] - Final mult took 0.0021190643310546875
+[Timing prediction] Moving to torch took 0.0013363361358642578 seconds
+[Timing prediction] Moving to cuda took 3.528594970703125e-05 seconds
+[Timing prediction] Multshit took 1.3589859008789062e-05 seconds
+[Timing prediction] - m0 took 2.7516849040985107
+[Timing prediction] - m1 took 2.582970142364502
+[Timing prediction] - m2 took 2.5747551918029785
+[Timing prediction] - m3 took 2.584071159362793
+[Timing prediction] - m4 took 2.5902836322784424
+[Timing prediction] - m5 took 2.584451198577881
+[Timing prediction] - m6 took 2.5795319080352783
+[Timing prediction] - m7 took 2.576869010925293
+[Timing prediction] - Total m-predictions took 20.82479453086853 seconds
+[Timing prediction] - Final mult took 0.001544952392578125
+[Timing prediction] Moving to torch took 0.0012166500091552734 seconds
+[Timing prediction] Moving to cuda took 2.2172927856445312e-05 seconds
+[Timing prediction] Multshit took 1.430511474609375e-05 seconds
+[Timing prediction] - m0 took 2.5618691444396973
+[Timing prediction] - m1 took 2.5893571376800537
+[Timing prediction] - m2 took 2.5820415019989014
+[Timing prediction] - m3 took 2.5777244567871094
+[Timing prediction] - m4 took 2.5953972339630127
+[Timing prediction] - m5 took 2.5814294815063477
+[Timing prediction] - m6 took 2.575885057449341
+[Timing prediction] - m7 took 2.578768730163574
+[Timing prediction] - Total m-predictions took 20.642661809921265 seconds
+[Timing prediction] - Final mult took 0.001783609390258789
+[Timing prediction] Moving to torch took 0.0010538101196289062 seconds
+[Timing prediction] Moving to cuda took 3.552436828613281e-05 seconds
+[Timing prediction] Multshit took 1.239776611328125e-05 seconds
+[Timing prediction] - m0 took 2.569547176361084
+[Timing prediction] - m1 took 2.58008074760437
+[Timing prediction] - m2 took 2.614009380340576
+[Timing prediction] - m3 took 2.5900609493255615
+[Timing prediction] - m4 took 2.654637098312378
+[Timing prediction] - m5 took 2.5776567459106445
+[Timing prediction] - m6 took 2.6037018299102783
+[Timing prediction] - m7 took 2.5901806354522705
+[Timing prediction] - Total m-predictions took 20.780073642730713 seconds
+[Timing prediction] - Final mult took 0.0016872882843017578
+[Timing prediction] Moving to torch took 0.0011792182922363281 seconds
+[Timing prediction] Moving to cuda took 2.288818359375e-05 seconds
+[Timing prediction] Multshit took 1.1205673217773438e-05 seconds
+[Timing prediction] - m0 took 2.606638193130493
+[Timing prediction] - m1 took 2.56777286529541
