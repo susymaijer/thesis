@@ -33,12 +33,3 @@ if __name__ == "__main__":
         new_path=os.path.join(out_dir,new_name)
         os.rename(os.path.join(out_dir,nifti_name), new_path)
 
-        # We also want to reorient it to see if the performance is differencet
-        img=sitk.ReadImage(new_path)
-        #print(img.GetDirection())
-        #print(img.GetOrigin()) 
-        img=sitk.DICOMOrient(img, 'LPS')
-        reoriented_name=f"panc_{scan_dir}reoriented_0000.nii.gz"
-        print(f"Saving reoriented file to {reoriented_name}")
-        sitk.WriteImage(img, os.path.join(out_dir, reoriented_name))
-

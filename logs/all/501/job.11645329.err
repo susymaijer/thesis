@@ -35,3 +35,4 @@ IMPORTANT: This is not the actual error message! Look further up to see what cau
     raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
 RuntimeError: Abort event was set. So someone died and we should end this madness. 
 IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+slurmstepd: error: *** JOB 11645329 ON res-hpc-lkeb08 CANCELLED AT 2022-09-05T11:40:21 ***
