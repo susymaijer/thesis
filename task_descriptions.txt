@@ -14,7 +14,9 @@
 ######## MRI
 600- amos, MRI only, pancreas only 
 605- amos, MRI only, all organs
-###### DUMM
+####### CT MAAR ZELF BEDACHT
+800- 80 van NIH en 80 MSD, only pancreas ofcourse
+###### DUMMY
 900- copy NIH
 901- copy BCV 4 organs (527)
 
