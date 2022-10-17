@@ -1,0 +1,61 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job12406432/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-tapdguxk/hiddenlayer_8bab255ea64d4d7f934c6ca3d939907f
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/pip/_internal/cli/base_command.py", line 173, in _main
+    status = self.run(options, args)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/pip/_internal/cli/req_command.py", line 203, in wrapper
+    return func(self, options, args)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/pip/_internal/commands/install.py", line 446, in run
+    self._handle_target_dir(
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/pip/_internal/commands/install.py", line 501, in _handle_target_dir
+    shutil.rmtree(target_item_dir)
+  File "/share/software/system/python/3.10.2/lib/python3.10/shutil.py", line 717, in rmtree
+    _rmtree_safe_fd(fd, path, onerror)
+  File "/share/software/system/python/3.10.2/lib/python3.10/shutil.py", line 674, in _rmtree_safe_fd
+    onerror(os.unlink, fullname, sys.exc_info())
+  File "/share/software/system/python/3.10.2/lib/python3.10/shutil.py", line 672, in _rmtree_safe_fd
+    os.unlink(entry.name, dir_fd=topfd)
+FileNotFoundError: [Errno 2] No such file or directory: 'ge.py'
+WARNING: You are using pip version 21.2.4; however, version 22.2.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+ERROR: ditable is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
+WARNING: You are using pip version 21.2.4; however, version 22.2.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_predict", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_predict')())
+  File "/home/smaijer/code/nnUNet/nnunet/inference/predict_simple.py", line 215, in main
+    assert isdir(model_folder_name), "model output folder not found. Expected: %s" % model_folder_name
+AssertionError: model output folder not found. Expected: /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task511/nnUNetTrainerV2__nnUNetPlansv2.1
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_predict", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_predict')())
+  File "/home/smaijer/code/nnUNet/nnunet/inference/predict_simple.py", line 215, in main
+    assert isdir(model_folder_name), "model output folder not found. Expected: %s" % model_folder_name
+AssertionError: model output folder not found. Expected: /exports/lkeb-hpc/smaijer/results/nnUNet/3d_fullres/Task511/nnUNetTrainerV2__nnUNetPlansv2.1
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_evaluate_folder", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_evaluate_folder')())
+  File "/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py", line 483, in nnunet_evaluate_folder
+    return evaluate_folder(args.ref, args.pred, args.l)
+  File "/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py", line 456, in evaluate_folder
+    assert all([i in files_pred for i in files_gt]), "files missing in folder_with_predictions"
+AssertionError: files missing in folder_with_predictions
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_evaluate_folder", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_evaluate_folder')())
+  File "/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py", line 483, in nnunet_evaluate_folder
+    return evaluate_folder(args.ref, args.pred, args.l)
+  File "/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py", line 456, in evaluate_folder
+    assert all([i in files_pred for i in files_gt]), "files missing in folder_with_predictions"
+AssertionError: files missing in folder_with_predictions

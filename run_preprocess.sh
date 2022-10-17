@@ -11,6 +11,10 @@ cpu=${cpu:-8}
 read -p "Default wall time is 01:00:00. If not desired, type other wall time:" t
 t=${t:-01:00:00}
 
+read -p "Enter plans (if any):" plan
+
+read -p "Enter plan identifier (if any):" ident
+
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
 job_file="${job_directory}/preprocess_${task}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
@@ -57,7 +61,13 @@ echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install --editable /home/smaijer/code/nnUNet
 
-nnUNet_plan_and_preprocess -t $task --verify_dataset_integrity -tl 6 -tf 6
+if [ -z $plan ]
+then
+    nnUNet_plan_and_preprocess -t $task --verify_dataset_integrity -tl 6 -tf 6
+else
+    echo "Use specific plans"
+    nnUNet_plan_and_preprocess -t $task --verify_dataset_integrity -tl 6 -tf 6 -overwrite_plans $plan -overwrite_plans_identifier $ident -pl3d ExperimentPlanner3D_v21_Pretrained
+fi
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

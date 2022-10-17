@@ -1,0 +1,298 @@
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job12487014/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-bwgx1oqy/hiddenlayer_8144fa3d3a414fc7a8944f4fc129d9f5
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.2.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+ERROR: ditable is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
+WARNING: You are using pip version 21.2.4; however, version 22.2.2 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+/var/spool/slurmd/job12487014/slurm_script: line 45: [: ==: unary operator expected
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py:381: RuntimeWarning: Mean of empty slice
+  all_scores["mean"][label][score] = float(np.nanmean(all_scores["mean"][label][score]))
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+Exception in thread Thread-5 (results_loop):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Traceback (most recent call last):
+Fatal Python error: _enter_buffered_busy: could not acquire lock for <_io.BufferedWriter name='<stderr>'> at interpreter shutdown, possibly due to daemon threads
+Python runtime state: finalizing (tstate=0x0000000001d0a4d0)
+
+Current thread 0x00007f9e76157740 (most recent call first):
+  <no Python frame>
+
+Extension modules: torch._C, torch._C._fft, torch._C._linalg, torch._C._nn, torch._C._sparse, torch._C._special, numpy.core._multiarray_umath, numpy.core._multiarray_tests, numpy.linalg._umath_linalg, numpy.fft._pocketfft_internal, numpy.random._common, numpy.random.bit_generator, numpy.random._bounded_integers, numpy.random._mt19937, numpy.random.mtrand, numpy.random._philox, numpy.random._pcg64, numpy.random._sfc64, numpy.random._generator, matplotlib._c_internal_utils, PIL._imaging, matplotlib._path, kiwisolver._cext, pandas._libs.tslibs.dtypes, pandas._libs.tslibs.base, pandas._libs.tslibs.np_datetime, pandas._libs.tslibs.nattype, pandas._libs.tslibs.timezones, pandas._libs.tslibs.ccalendar, pandas._libs.tslibs.tzconversion, pandas._libs.tslibs.strptime, pandas._libs.tslibs.fields, pandas._libs.tslibs.timedeltas, pandas._libs.tslibs.timestamps, pandas._libs.properties, pandas._libs.tslibs.offsets, pandas._libs.tslibs.parsing, pandas._libs.tslibs.conversion, pandas._libs.tslibs.period, pandas._libs.tslibs.vectorized, pandas._libs.ops_dispatch, pandas._libs.missing, pandas._libs.hashtable, pandas._libs.algos, pandas._libs.interval, pandas._libs.tslib, pandas._libs.lib, pandas._libs.hashing, pandas._libs.ops, pandas._libs.arrays, pandas._libs.index, pandas._libs.join, pandas._libs.sparse, pandas._libs.reduction, pandas._libs.indexing, pandas._libs.internals, pandas._libs.writers, pandas._libs.window.aggregations, pandas._libs.window.indexers, pandas._libs.reshape, pandas._libs.groupby, pandas._libs.testing, pandas._libs.parsers, pandas._libs.json, SimpleITK._SimpleITK, scipy._lib._ccallback_c, scipy.ndimage._nd_image, scipy.special._ufuncs_cxx, scipy.special._ufuncs, scipy.special._specfun, scipy.linalg._fblas, scipy.linalg._flapack, scipy.linalg._cythonized_array_utils, scipy.linalg._flinalg, scipy.linalg._solve_toeplitz, scipy.linalg._matfuncs_sqrtm_triu, scipy.linalg.cython_blas, scipy.linalg.cython_lapack, scipy.linalg._decomp_update, scipy.sparse._sparsetools, scipy.sparse._csparsetools, scipy.sparse.csgraph._tools, scipy.sparse.csgraph._shortest_path, scipy.sparse.csgraph._traversal, scipy.sparse.csgraph._min_spanning_tree, scipy.sparse.csgraph._flow, scipy.sparse.csgraph._matching, scipy.sparse.csgraph._reordering, scipy.special._comb, scipy.special._ellip_harm_2, _ni_label, scipy.ndimage._ni_label, scipy.spatial._ckdtree, scipy._lib.messagestream, scipy.spatial._qhull, scipy.spatial._voronoi, scipy.spatial._distance_wrap, scipy.spatial._hausdorff, scipy.spatial.transform._rotation, scipy.sparse.linalg._isolve._iterative, scipy.sparse.linalg._dsolve._superlu, scipy.sparse.linalg._eigen.arpack._arpack, scipy.optimize._minpack2, scipy.optimize._group_columns, scipy.optimize._trlib._trlib, numpy.linalg.lapack_lite, scipy.optimize._lbfgsb, _moduleTNC, scipy.optimize._moduleTNC, scipy.optimize._cobyla, scipy.optimize._slsqp, scipy.optimize._minpack, scipy.optimize._lsq.givens_elimination, scipy.optimize._zeros, scipy.optimize.__nnls, scipy.optimize._highs.cython.src._highs_wrapper, scipy.optimize._highs._highs_wrapper, scipy.optimize._highs.cython.src._highs_constants, scipy.optimize._highs._highs_constants, scipy.linalg._interpolative, scipy.optimize._bglu_dense, scipy.optimize._lsap_module, scipy.integrate._odepack, scipy.integrate._quadpack, scipy.integrate._vode, scipy.integrate._dop, scipy.integrate._lsoda, scipy.interpolate._fitpack, scipy.interpolate.dfitpack, scipy.interpolate._bspl, scipy.interpolate._ppoly, scipy.interpolate.interpnd, scipy.interpolate._rbfinterp_pythran, scipy.special.cython_special, scipy.stats._stats, beta_ufunc, scipy.stats._boost.beta_ufunc, binom_ufunc, scipy.stats._boost.binom_ufunc, nbinom_ufunc, scipy.stats._boost.nbinom_ufunc, hypergeom_ufunc, scipy.stats._boost.hypergeom_ufunc, scipy.stats._biasedurn, scipy.stats._hypotests_pythran, scipy.stats._statlib, scipy.stats._mvn, scipy.stats._sobol, scipy.stats._qmc_cy, scipy.stats._unuran.unuran_wrapper, skimage._shared.geometry, skimage.draw._draw, skimage.transform._hough_transform, scipy._lib._uarray._uarray, skimage.transform._warps_cy, skimage.measure._find_contours_cy, skimage.measure._marching_cubes_lewiner_cy, skimage.measure._marching_cubes_classic_cy, skimage.measure._moments_cy, scipy.signal._sigtools, scipy.signal._max_len_seq_inner, scipy.signal._upfirdn_apply, scipy.signal._spline, scipy.signal._sosfilt, scipy.signal._spectral, scipy.signal._peak_finding_utils, skimage.measure._pnpoly, skimage.measure._ccomp, skimage.transform._radon_transform, skimage.morphology._skeletonize_cy, skimage.morphology._skeletonize_3d_cy, skimage.morphology._convex_hull, skimage.morphology._extrema_cy, skimage.morphology._flood_fill_cy, skimage.morphology._max_tree, sklearn.__check_build._check_build, sklearn.utils.murmurhash, sklearn.utils._openmp_helpers, sklearn.utils._logistic_sigmoid, sklearn.utils.sparsefuncs_fast, sklearn.preprocessing._csr_polynomial_expansion, sklearn.utils._typedefs, sklearn.utils._readonly_array_wrapper, sklearn.metrics._dist_metrics, sklearn.metrics.cluster._expected_mutual_info_fast, sklearn.utils._cython_blas, sklearn.utils._heap, sklearn.utils._sorting, sklearn.utils._vector_sentinel, sklearn.metrics._pairwise_distances_reduction, sklearn.metrics._pairwise_fast, sklearn.utils._random, matplotlib._image, _gdcm._gdcmswig, PIL._imagingft (total: 195)
+/var/spool/slurmd/job12487014/slurm_script: line 106: 1271439 Aborted                 (core dumped) nnUNet_train 3d_fullres nnUNetTrainerV2_Loss_DC_CE_weight09 526 2
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py:381: RuntimeWarning: Mean of empty slice
+  all_scores["mean"][label][score] = float(np.nanmean(all_scores["mean"][label][score]))
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+    self.run()
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py:381: RuntimeWarning: Mean of empty slice
+  all_scores["mean"][label][score] = float(np.nanmean(all_scores["mean"][label][score]))
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+Exception in thread Thread-4 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+Exception in thread Thread-5 (results_loop):
+Traceback (most recent call last):
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self._target(*self._args, **self._kwargs)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+    self.run()
+  File "/share/software/system/python/3.10.2/lib/python3.10/threading.py", line 946, in run
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+    self._target(*self._args, **self._kwargs)
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/dataloading/multi_threaded_augmenter.py", line 92, in results_loop
+
+    raise RuntimeError("Abort event was set. So someone died and we should end this madness. \nIMPORTANT: "
+RuntimeError: Abort event was set. So someone died and we should end this madness. 
+IMPORTANT: This is not the actual error message! Look further up to see what caused the error. Please also check whether your RAM was full
+OrderedDict([('all', [OrderedDict([('1', OrderedDict([('Accuracy', 0.9996910614221275), ('Dice', 0.9285143841909005), ('False Discovery Rate', 0.06112932604735888), ('False Negative Rate', 0.08161592644945181), ('False Omission Rate', 0.00017868651395068106), ('False Positive Rate', 0.0001309199367370839), ('Jaccard', 0.8665672879703209), ('Negative Predictive Value', 0.9998213134860493), ('Precision', 0.9388706739526411), ('Recall', 0.9183840735505482), ('Total Positives Reference', 84187), ('Total Positives Test', 82350), ('True Negative Rate', 0.9998690800632629)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0001.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0001.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998357210227912), ('Dice', 0.923896460537022), ('False Discovery Rate', 0.07998683344305468), ('False Negative Rate', 0.07218732444716813), ('False Omission Rate', 7.766798882657928e-05), ('False Positive Rate', 8.678844669118835e-05), ('Jaccard', 0.8585572174570544), ('Negative Predictive Value', 0.9999223320111734), ('Precision', 0.9200131665569453), ('Recall', 0.9278126755528319), ('Total Positives Reference', 39162), ('Total Positives Test', 39494), ('True Negative Rate', 0.9999132115533088)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0002.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0002.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998905682804609), ('Dice', 0.919746806827173), ('False Discovery Rate', 0.08297410757050683), ('False Negative Rate', 0.07751608423320011), ('False Omission Rate', 5.272897102603772e-05), ('False Positive Rate', 5.677740072052018e-05), ('Jaccard', 0.8514178089358585), ('Negative Predictive Value', 0.999947271028974), ('Precision', 0.9170258924294932), ('Recall', 0.9224839157667999), ('Total Positives Reference', 35283), ('Total Positives Test', 35493), ('True Negative Rate', 0.9999432225992795)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0003.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0003.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997347695486886), ('Dice', 0.9224493698115012), ('False Discovery Rate', 0.08237569148345991), ('False Negative Rate', 0.07267455829822678), ('False Omission Rate', 0.0001238363186838817), ('False Positive Rate', 0.00014184830387009573), ('Jaccard', 0.8560612782066069), ('Negative Predictive Value', 0.9998761636813162), ('Precision', 0.9176243085165401), ('Recall', 0.9273254417017732), ('Total Positives Reference', 62429), ('Total Positives Test', 63089), ('True Negative Rate', 0.9998581516961299)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0004.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0004.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997124631180723), ('Dice', 0.9060439150677051), ('False Discovery Rate', 0.08474138487698835), ('False Negative Rate', 0.10298708969707193), ('False Omission Rate', 0.0001594154253983647), ('False Positive Rate', 0.00012856163402130694), ('Jaccard', 0.8282269531173916), ('Negative Predictive Value', 0.9998405845746017), ('Precision', 0.9152586151230117), ('Recall', 0.8970129103029281), ('Total Positives Reference', 47404), ('Total Positives Test', 46459), ('True Negative Rate', 0.9998714383659787)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0005.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0005.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998689663190783), ('Dice', 0.887282829706279), ('False Discovery Rate', 0.11469548449300981), ('False Negative Rate', 0.11072999475404544), ('False Omission Rate', 6.425540305044564e-05), ('False Positive Rate', 6.685448209897693e-05), ('Jaccard', 0.7974019394992039), ('Negative Predictive Value', 0.9999357445969496), ('Precision', 0.8853045155069902), ('Recall', 0.8892700052459546), ('Total Positives Reference', 24781), ('Total Positives Test', 24892), ('True Negative Rate', 0.999933145517901)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0007.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0007.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998060648873348), ('Dice', 0.8977912107187673), ('False Discovery Rate', 0.10978807663491386), ('False Negative Rate', 0.09449933317002801), ('False Omission Rate', 8.897525821532238e-05), ('False Positive Rate', 0.00010514388863003266), ('Jaccard', 0.8145382430711977), ('Negative Predictive Value', 0.9999110247417847), ('Precision', 0.8902119233650861), ('Recall', 0.905500666829972), ('Total Positives Reference', 36741), ('Total Positives Test', 37372), ('True Negative Rate', 0.99989485611137)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0009.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0009.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997725100130648), ('Dice', 0.892229168701768), ('False Discovery Rate', 0.1300154780330992), ('False Negative Rate', 0.08435878800030072), ('False Omission Rate', 8.685259883179385e-05), ('False Positive Rate', 0.0001408762829900878), ('Jaccard', 0.8054275699389343), ('Negative Predictive Value', 0.9999131474011682), ('Precision', 0.8699845219669008), ('Recall', 0.9156412119996993), ('Total Positives Reference', 39901), ('Total Positives Test', 41995), ('True Negative Rate', 0.9998591237170099)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0010.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0010.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.999764048969829), ('Dice', 0.9039703822727915), ('False Discovery Rate', 0.10907806882383153), ('False Negative Rate', 0.08259327001476457), ('False Omission Rate', 0.00010010720124410708), ('False Positive Rate', 0.00013613340999396595), ('Jaccard', 0.824768206672478), ('Negative Predictive Value', 0.9998998927987559), ('Precision', 0.8909219311761685), ('Recall', 0.9174067299852354), ('Total Positives Reference', 45379), ('Total Positives Test', 46728), ('True Negative Rate', 0.999863866590006)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0021.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0021.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998339535145278), ('Dice', 0.9376227739670885), ('False Discovery Rate', 0.0721182956754517), ('False Negative Rate', 0.05242945943307187), ('False Omission Rate', 6.914330161711633e-05), ('False Positive Rate', 9.712409253026522e-05), ('Jaccard', 0.8825704759017884), ('Negative Predictive Value', 0.9999308566983829), ('Precision', 0.9278817043245483), ('Recall', 0.9475705405669281), ('Total Positives Reference', 30727), ('Total Positives Test', 31379), ('True Negative Rate', 0.9999028759074697)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0022.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0022.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998292525609335), ('Dice', 0.9069127618552457), ('False Discovery Rate', 0.12389084212288637), ('False Negative Rate', 0.060038618707620506), ('False Omission Rate', 5.3178093075742946e-05), ('False Positive Rate', 0.00011772400521725679), ('Jaccard', 0.8296801300091164), ('Negative Predictive Value', 0.9999468219069243), ('Precision', 0.8761091578771136), ('Recall', 0.9399613812923795), ('Total Positives Reference', 22269), ('Total Positives Test', 23892), ('True Negative Rate', 0.9998822759947827)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0023.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0023.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997917605984595), ('Dice', 0.9274654150727061), ('False Discovery Rate', 0.06708631542640342), ('False Negative Rate', 0.07791958749707029), ('False Omission Rate', 0.00011266358401191296), ('False Positive Rate', 9.587502333330278e-05), ('Jaccard', 0.8647417324408033), ('Negative Predictive Value', 0.999887336415988), ('Precision', 0.9329136845735966), ('Recall', 0.9220804125029297), ('Total Positives Reference', 46933), ('Total Positives Test', 46388), ('True Negative Rate', 0.9999041249766667)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0024.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0024.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998299542595358), ('Dice', 0.9190678599653972), ('False Discovery Rate', 0.07673161102051329), ('False Negative Rate', 0.08509462045502869), ('False Omission Rate', 8.989647214974947e-05), ('False Positive Rate', 8.032805113500352e-05), ('Jaccard', 0.8502549104849227), ('Negative Predictive Value', 0.9999101035278503), ('Precision', 0.9232683889794867), ('Recall', 0.9149053795449713), ('Total Positives Reference', 23515), ('Total Positives Test', 23302), ('True Negative Rate', 0.999919671948865)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0025.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0025.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998387635209178), ('Dice', 0.8789276889773249), ('False Discovery Rate', 0.11392293448549506), ('False Negative Rate', 0.128107240466791), ('False Omission Rate', 8.604768166332354e-05), ('False Positive Rate', 7.529617344792516e-05), ('Jaccard', 0.7840062414667447), ('Negative Predictive Value', 0.9999139523183367), ('Precision', 0.8860770655145049), ('Recall', 0.871892759533209), ('Total Positives Reference', 23051), ('Total Positives Test', 22682), ('True Negative Rate', 0.9999247038265521)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0026.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0026.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997489669106223), ('Dice', 0.8817559979581419), ('False Discovery Rate', 0.11351972738843041), ('False Negative Rate', 0.12291818994231862), ('False Omission Rate', 0.00013131221301218977), ('False Positive Rate', 0.00011998756815967404), ('Jaccard', 0.7885184238396085), ('Negative Predictive Value', 0.9998686877869878), ('Precision', 0.8864802726115696), ('Recall', 0.8770818100576814), ('Total Positives Reference', 24618), ('Total Positives Test', 24357), ('True Negative Rate', 0.9998800124318403)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0027.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0027.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998742864373025), ('Dice', 0.9231857109184716), ('False Discovery Rate', 0.08584024896265563), ('False Negative Rate', 0.06760831614029517), ('False Omission Rate', 5.482264231752039e-05), ('False Positive Rate', 7.099374470043163e-05), ('Jaccard', 0.85733047961864), ('Negative Predictive Value', 0.9999451773576825), ('Precision', 0.9141597510373444), ('Recall', 0.9323916838597048), ('Total Positives Reference', 18903), ('Total Positives Test', 19280), ('True Negative Rate', 0.9999290062552996)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0028.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0028.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997657012939453), ('Dice', 0.9301823307415996), ('False Discovery Rate', 0.06274339121271821), ('False Negative Rate', 0.07678595604494787), ('False Omission Rate', 0.00013003068387886229), ('False Positive Rate', 0.00010466149857690787), ('Jaccard', 0.8694774422508872), ('Negative Predictive Value', 0.9998699693161212), ('Precision', 0.9372566087872818), ('Recall', 0.9232140439550521), ('Total Positives Reference', 44318), ('Total Positives Test', 43654), ('True Negative Rate', 0.9998953385014231)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0029.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0029.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998191883361417), ('Dice', 0.9300782907169578), ('False Discovery Rate', 0.07096078280298945), ('False Negative Rate', 0.06888030888030883), ('False Omission Rate', 8.907503663111021e-05), ('False Positive Rate', 9.197070757926973e-05), ('Jaccard', 0.8692956528008075), ('Negative Predictive Value', 0.9999109249633689), ('Precision', 0.9290392171970105), ('Recall', 0.9311196911196912), ('Total Positives Reference', 51800), ('Total Positives Test', 51916), ('True Negative Rate', 0.9999080292924207)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0030.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0030.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997566387217532), ('Dice', 0.9186379780858738), ('False Discovery Rate', 0.08341086968419897), ('False Negative Rate', 0.07930399406250854), ('False Omission Rate', 0.00011851529299157658), ('False Positive Rate', 0.0001252104659353881), ('Jaccard', 0.8495193649022243), ('Negative Predictive Value', 0.9998814847070084), ('Precision', 0.916589130315801), ('Recall', 0.9206960059374915), ('Total Positives Reference', 36379), ('Total Positives Test', 36542), ('True Negative Rate', 0.9998747895340646)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0031.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0031.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.999748706817627), ('Dice', 0.9115359507600485), ('False Discovery Rate', 0.0864534459876255), ('False Negative Rate', 0.09046582174827389), ('False Omission Rate', 0.00012895527734948172), ('False Positive Rate', 0.0001226953079165316), ('Jaccard', 0.837451591898283), ('Negative Predictive Value', 0.9998710447226505), ('Precision', 0.9135465540123745), ('Recall', 0.9095341782517261), ('Total Positives Reference', 53733), ('Total Positives Test', 53497), ('True Negative Rate', 0.9998773046920835)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0032.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0032.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997773537269006), ('Dice', 0.9117937688909556), ('False Discovery Rate', 0.07196947287463762), ('False Negative Rate', 0.10388460439874325), ('False Omission Rate', 0.00013356999129977154), ('False Positive Rate', 8.935665631426559e-05), ('Jaccard', 0.8378869214539433), ('Negative Predictive Value', 0.9998664300087002), ('Precision', 0.9280305271253624), ('Recall', 0.8961153956012567), ('Total Positives Reference', 35010), ('Total Positives Test', 33806), ('True Negative Rate', 0.9999106433436857)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0033.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0033.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9997628659618144), ('Dice', 0.9268403987030143), ('False Discovery Rate', 0.10659134581992458), ('False Negative Rate', 0.037128527584399995), ('False Omission Rate', 5.8018664932033356e-05), ('False Positive Rate', 0.00017949293246577458), ('Jaccard', 0.8636556925762628), ('Negative Predictive Value', 0.999941981335068), ('Precision', 0.8934086541800754), ('Recall', 0.9628714724156), ('Total Positives Reference', 40077), ('Total Positives Test', 43193), ('True Negative Rate', 0.9998205070675342)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0034.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0034.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998767894247304), ('Dice', 0.898356393986557), ('False Discovery Rate', 0.11682415845579586), ('False Negative Rate', 0.08593206181261315), ('False Omission Rate', 5.121900930984843e-05), ('False Positive Rate', 7.206607077114846e-05), ('Jaccard', 0.8154691672359188), ('Negative Predictive Value', 0.9999487809906902), ('Precision', 0.8831758415442041), ('Recall', 0.9140679381873869), ('Total Positives Reference', 28732), ('Total Positives Test', 29737), ('True Negative Rate', 0.9999279339292289)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0036.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0036.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998329624985204), ('Dice', 0.9533575063750122), ('False Discovery Rate', 0.05006646940263304), ('False Negative Rate', 0.043193745545645035), ('False Omission Rate', 7.720333095315464e-05), ('False Positive Rate', 9.013372331834191e-05), ('Jaccard', 0.9108721575722686), ('Negative Predictive Value', 0.9999227966690468), ('Precision', 0.949933530597367), ('Recall', 0.956806254454355), ('Total Positives Reference', 46303), ('Total Positives Test', 46638), ('True Negative Rate', 0.9999098662766817)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0037.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0037.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998082351684571), ('Dice', 0.9124932546521142), ('False Discovery Rate', 0.08599525735806945), ('False Negative Rate', 0.08901324250112963), ('False Omission Rate', 9.780138215769784e-05), ('False Positive Rate', 9.417379280829419e-05), ('Jaccard', 0.839069052725934), ('Negative Predictive Value', 0.9999021986178424), ('Precision', 0.9140047426419305), ('Recall', 0.9109867574988704), ('Total Positives Reference', 28771), ('Total Positives Test', 28676), ('True Negative Rate', 0.9999058262071917)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0038.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0038.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9998767754970452), ('Dice', 0.9410520602300271), ('False Discovery Rate', 0.057828164527311876), ('False Negative Rate', 0.0600650564570403), ('False Omission Rate', 6.292015925282261e-05), ('False Positive Rate', 6.0433269333359796e-05), ('Jaccard', 0.8886669730283856), ('Negative Predictive Value', 0.9999370798407472), ('Precision', 0.9421718354726881), ('Recall', 0.9399349435429597), ('Total Positives Reference', 53492), ('Total Positives Test', 53365), ('True Negative Rate', 0.9999395667306666)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTr/panc_0040.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTr/panc_0040.nii.gz')])]), ('mean', OrderedDict([('1', OrderedDict([('Accuracy', 0.9998018588011802), ('Dice', 0.9150457949880941), ('False Discovery Rate', 0.08848991479284476), ('False Negative Rate', 0.08107429695161783), ('False Omission Rate', 9.526532676273569e-05), ('False Positive Rate', 0.00010313180266524613), ('Jaccard', 0.8439012659644454), ('Negative Predictive Value', 0.9999047346732374), ('Precision', 0.9115100852071552), ('Recall', 0.9189257030483822), ('Total Positives Reference', 39380.692307692305), ('Total Positives Test', 39622.153846153844), ('True Negative Rate', 0.9998968681973348)]))]))])
+OrderedDict([('all', [OrderedDict([('1', OrderedDict([('Accuracy', 0.9994999834599386), ('Dice', 0.7908042056017835), ('False Discovery Rate', 0.2592719388337328), ('False Negative Rate', 0.15185804630742694), ('False Omission Rate', 0.00016943148665647588), ('False Positive Rate', 0.00033117025130280364), ('Jaccard', 0.6539918591061137), ('Negative Predictive Value', 0.9998305685133435), ('Precision', 0.7407280611662672), ('Recall', 0.8481419536925731), ('Total Positives Reference', 38266), ('Total Positives Test', 43815), ('True Negative Rate', 0.9996688297486972)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTs/panc_0006.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTs/panc_0006.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.9996776323060732), ('Dice', 0.8847100467354332), ('False Discovery Rate', 0.12636312330462962), ('False Negative Rate', 0.10393247936662064), ('False Omission Rate', 0.0001436669499653648), ('False Positive Rate', 0.00017915143905244957), ('Jaccard', 0.793255640962063), ('Negative Predictive Value', 0.9998563330500346), ('Precision', 0.8736368766953704), ('Recall', 0.8960675206333794), ('Total Positives Reference', 53554), ('Total Positives Test', 54929), ('True Negative Rate', 0.9998208485609476)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTs/panc_0008.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTs/panc_0008.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.99977452704247), ('Dice', 0.8585611730563617), ('False Discovery Rate', 0.11960948104834501), ('False Negative Rate', 0.1622118441971383), ('False Omission Rate', 0.00013260293013080539), ('False Positive Rate', 9.304910588381343e-05), ('Jaccard', 0.7521744948481199), ('Negative Predictive Value', 0.9998673970698692), ('Precision', 0.880390518951655), ('Recall', 0.8377881558028617), ('Total Positives Reference', 20128), ('Total Positives Test', 19154), ('True Negative Rate', 0.9999069508941162)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTs/panc_0035.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTs/panc_0035.nii.gz')]), OrderedDict([('1', OrderedDict([('Accuracy', 0.999793455335829), ('Dice', 0.8761594957940482), ('False Discovery Rate', 0.08284118116520356), ('False Negative Rate', 0.16133112776101977), ('False Omission Rate', 0.00014066245824613513), ('False Positive Rate', 6.605180650631759e-05), ('Jaccard', 0.7796119578490344), ('Negative Predictive Value', 0.9998593375417538), ('Precision', 0.9171588188347964), ('Recall', 0.8386688722389802), ('Total Positives Reference', 20554), ('Total Positives Test', 18795), ('True Negative Rate', 0.9999339481934937)])), ('test', '/exports/lkeb-hpc/smaijer/output/526/3d_fullres/nnUNetTrainerV2_Loss_DC_CE_weight09/526/imagesTs/panc_0039.nii.gz'), ('reference', '/exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task526/labelsTs/panc_0039.nii.gz')])]), ('mean', OrderedDict([('1', OrderedDict([('Accuracy', 0.9996863995360777), ('Dice', 0.8525587302969067), ('False Discovery Rate', 0.14702143108797774), ('False Negative Rate', 0.1448333744080514), ('False Omission Rate', 0.0001465909562496953), ('False Positive Rate', 0.00016735565068634606), ('Jaccard', 0.7447584881913327), ('Negative Predictive Value', 0.9998534090437503), ('Precision', 0.8529785689120223), ('Recall', 0.8551666255919487), ('Total Positives Reference', 33125.5), ('Total Positives Test', 34173.25), ('True Negative Rate', 0.9998326443493137)]))]))])

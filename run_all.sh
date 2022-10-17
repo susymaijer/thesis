@@ -15,6 +15,10 @@ read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
 read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,Loss_DC_CE_weight0X,empty]:" trainer
 
+read -p "Enter path to pretrained weights:" pretrained
+
+read -p "Enter plans identifier:" identifier
+
 read -p "Perform preprocessing? [y,]" prep
 
 # lowres of fullres
@@ -98,18 +102,62 @@ then
 fi
 
 echo "Done preprocessing! Start training all the folds.."
-nnUNet_train $config $trainer $task 0
-nnUNet_train $config $trainer $task 1
-nnUNet_train $config $trainer $task 2
-nnUNet_train $config $trainer $task 3
-nnUNet_train $config $trainer $task 4
+if [ -z $pretrained ];
+then
 
-echo "Done training all the folds! Now start the same command but with continue option, to generate log files"
-nnUNet_train $config $trainer $task 0 -c --val_disable_overwrite
-nnUNet_train $config $trainer $task 1 -c --val_disable_overwrite
-nnUNet_train $config $trainer $task 2 -c --val_disable_overwrite
-nnUNet_train $config $trainer $task 3 -c --val_disable_overwrite
-nnUNet_train $config $trainer $task 4 -c --val_disable_overwrite
+    if [ ! -z $identifier ];
+    then
+         echo "Run with specific identifier $identifier"
+         nnUNet_train $config $trainer $task 0 -p $identifier
+         nnUNet_train $config $trainer $task 1 -p $identifier
+         nnUNet_train $config $trainer $task 2 -p $identifier
+         nnUNet_train $config $trainer $task 3 -p $identifier
+         nnUNet_train $config $trainer $task 4 -p $identifier
+    else
+        nnUNet_train $config $trainer $task 0
+         nnUNet_train $config $trainer $task 1
+         nnUNet_train $config $trainer $task 2
+         nnUNet_train $config $trainer $task 3
+         nnUNet_train $config $trainer $task 4 
+    fi
+
+    echo "Done training all the folds! Now start the same command but with continue option, to generate log files"
+    nnUNet_train $config $trainer $task 0 -c --val_disable_overwrite
+    nnUNet_train $config $trainer $task 1 -c --val_disable_overwrite
+    nnUNet_train $config $trainer $task 2 -c --val_disable_overwrite
+    nnUNet_train $config $trainer $task 3 -c --val_disable_overwrite
+    nnUNet_train $config $trainer $task 4 -c --val_disable_overwrite
+    
+    if [ ! -z $identifier ];
+    then
+	 nnUNet_train $config $trainer $task 0 -p $identifier -c --val_disable_overwrite
+         nnUNet_train $config $trainer $task 1 -p $identifier -c --val_disable_overwrite
+         nnUNet_train $config $trainer $task 2 -p $identifier -c --val_disable_overwrite
+         nnUNet_train $config $trainer $task 3 -p $identifier -c --val_disable_overwrite
+         nnUNet_train $config $trainer $task 4 -p $identifier -c --val_disable_overwrite
+    else
+         nnUNet_train $config $trainer $task 0 -c --val_disable_overwrite
+         nnUNet_train $config $trainer $task 1 -c --val_disable_overwrite
+         nnUNet_train $config $trainer $task 2 -c --val_disable_overwrite
+         nnUNet_train $config $trainer $task 3 -c --val_disable_overwrite
+         nnUNet_train $config $trainer $task 4 -c --val_disable_overwrite
+    fi
+
+else
+    echo "Use pretrained!"
+    nnUNet_train $config $trainer $task 0 -pretrained_weights $pretrained/fold_0/model_best.model -p $identifier
+    nnUNet_train $config $trainer $task 1 -pretrained_weights $pretrained/fold_1/model_best.model -p $identifier
+    nnUNet_train $config $trainer $task 2 -pretrained_weights $pretrained/fold_2/model_best.model -p $identifier
+    nnUNet_train $config $trainer $task 3 -pretrained_weights $pretrained/fold_3/model_best.model -p $identifier
+    nnUNet_train $config $trainer $task 4 -pretrained_weights $pretrained/fold_4/model_best.model -p $identifier
+
+    echo "Done training all the folds! Now start the same command but with continue option, to generate log files"
+    nnUNet_train $config $trainer $task 0 -c -pretrained_weights $pretrained/fold_0/model_best.model --val_disable_overwrite -p $identifier
+    nnUNet_train $config $trainer $task 1 -c -pretrained_weights $pretrained/fold_1/model_best.model --val_disable_overwrite -p $identifier
+    nnUNet_train $config $trainer $task 2 -c -pretrained_weights $pretrained/fold_2/model_best.model --val_disable_overwrite -p $identifier
+    nnUNet_train $config $trainer $task 3 -c -pretrained_weights $pretrained/fold_3/model_best.model --val_disable_overwrite -p $identifier
+    nnUNet_train $config $trainer $task 4 -c -pretrained_weights $pretrained/fold_4/model_best.model --val_disable_overwrite -p $identifier
+fi
 
 echo "Start postprocessing.."
 nnUNet_determine_postprocessing -t $task -m $config -tr $trainer
