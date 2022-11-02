@@ -4,93 +4,59 @@ import sys
 import glob
 import shutil
 import random
+import zipfile
 from datetime import date
 from collections import OrderedDict
-import json
 import SimpleITK as sitk
 from pydicom import dcmread 
 from pydicom.fileset import FileSet
 import shared # our own
 
-def get_id(dir):
-    # List all the files
-    files = os.listdir(dir)
-
-    # Already files present
-    if len(files) > 0:
-        new = max([int(f.split("_")[1]) for f in files]) + 1 # Get the newest id
-        new_str = "00000" + str(new)
-        return new_str[-5:] # the id has 5 decimals
-
-    # First one, so id is 00000
-    else:
-        return "00000"
-
-def generate_dataset_json(overwrite_json_file, reference, task_dir, task, modality, labels,
-                            tr_label_dir, ts_label_dir):
-    json_file_exist = False
-    json_path = os.path.join(task_dir, 'dataset.json')
-
-    if os.path.exists(json_path):
-        print(f'dataset.json already exist! {json_path}')
-        json_file_exist = True
-
-    if json_file_exist==False or overwrite_json_file:
-
-        json_dict = OrderedDict()
-        json_dict['name'] = f"Task{task}"
-        json_dict['description'] = task
-        json_dict['tensorImageSize'] = "3D"
-        json_dict['reference'] = reference
-        json_dict['licence'] = reference
-        json_dict['release'] = "0.0"
-        json_dict['modality'] = modality
-        json_dict['labels'] = labels
-
-        train_ids = os.listdir(tr_label_dir)
-        test_ids = os.listdir(ts_label_dir)
-        json_dict['numTraining'] = len(train_ids)
-
-        #no modality in train image and labels in dataset.json
-        json_dict['training'] = [{'image': f"./imagesTr/{i}", "label": f"./labelsTr/{i}"} for i in train_ids]
-        json_dict['test'] = [f"./imagesTs/{i}" for i in test_ids]
-        with open(json_path, 'w') as f:
-            json.dump(json_dict, f, indent=4, sort_keys=True)
+def determine_new_task_id():
+    base=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data')
+    return max([int(x[4:]) for x in os.listdir(base) if x.startswith('Task6')]) + 1
 
 if __name__ == "__main__":
-    task=shared.initial_task
 
-    print("ALERT!!!! This will remove the current data from task {task}, which is the initial P16 batch. Is this OK? Press y/n."
-    x = input()
-    if x != "y":
-        sys.exit("Abort.")
+    # Get the batch id and task id
+    batch=shared.determine_batch_id()
+    task=determine_new_task_id()    
+    print(f"We're going to create task {task} from batch {batch}. Is this OK? Enter [y/n].")
+    answer=input()
+    if answer != "y":
+        sys.exit("Abort")
 
     # Define the paths to the folder containing the scans which we need to convert + the output dir
     task_name=f'Task{task}'
-    img_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'p16', 'initial', 'scans')
-    seg_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'p16', 'initial', 'labels')
-    out_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', task_name) 
+    img_dir=os.path.join(shared.p16_dir, f'batch{batch}')
+    out_niftis_dir=os.path.join(img_dir, 'niftis')
+    out_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', task_name)
     img_tr_dir=os.path.join(out_dir, 'imagesTr')
     img_ts_dir=os.path.join(out_dir, 'imagesTs')
     lab_tr_dir=os.path.join(out_dir, 'labelsTr')
     lab_ts_dir=os.path.join(out_dir, 'labelsTs')
     identify_path = os.path.join(out_dir, "identify.txt")
+    os.mkdir(out_niftis_dir)
 
-    # Create the output dir if it doesn't exist yet
-    if (not(os.path.exists(img_dir)) or not(os.path.exists(seg_dir))):
-        sys.exit(f"Directory {data_dir} does not exist. Abort program.")
+    # Copy contents of previous task to new task
+    if (not(os.path.exists(img_dir))):
+        sys.exit(f"Directory {img_dir} does not exist. Abort program.")
     else:
-        print(f"Cleaning {out_dir} and creating again")
-        if(os.path.exists(out_dir)):
-            shutil.rmtree(out_dir)
-        os.makedirs(out_dir, exist_ok=True)
-        os.makedirs(img_tr_dir, exist_ok=True)
-        os.makedirs(img_ts_dir, exist_ok=True)
-        os.makedirs(lab_tr_dir, exist_ok=True)
-        os.makedirs(lab_ts_dir, exist_ok=True)
+        # Add the data of the old task to the new directory
+        prev_task_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', f'Task{task-1}')
+        shutil.copytree(prev_task_dir, out_dir)
+        print(f"Copied contents of {prev_task_dir} to new task dir\n")
+    
+    # Unzip the folder from the LUMC cluster and get paths to files
+    print("Unzipping LUMC folder..\n")
+    img_zip=[x for x in os.listdir(img_dir) if x.endswith(".zip")][0]
+    with zipfile.ZipFile(os.path.join(img_dir, img_zip),"r") as zip_ref:
+       zip_ref.extractall(img_dir)
+    img_dir=os.path.join(img_dir, img_zip.split(".zip")[0])
 
     # Process each patient folder (either caseX or controlX)
     for case in os.listdir(img_dir):
+        print(f"Processing {case}")
         # Read the DICOMDIR file
         ds = dcmread(os.path.join(img_dir, case, "DICOMDIR"))
         fs = FileSet(ds)
@@ -138,15 +104,12 @@ if __name__ == "__main__":
 
             # Read the image and segmentation
             img = sitk.ReadImage(sorted_file_names)
-            lab = sitk.ReadImage(os.path.join(seg_dir, case, p.split(os.sep)[-1], "segmentation.nii"))
 
             # Orient both to LPS
             img = sitk.DICOMOrient(img, 'RAS')
-            lab = sitk.DICOMOrient(lab, 'RAS')
-            lab = sitk.Resample(lab, img, interpolator=sitk.sitkNearestNeighbor)
 
             # Get the id for this scan
-            scan_id = get_scan_id(img_tr_dir)
+            scan_id = shared.get_scan_id(img_tr_dir)
             identify_record = f"Patient {patient}, folder {case}, date {d}, series {s}, created scan_id {scan_id}\n"
             f = open(identify_path, "a")
             f.write(identify_record)
@@ -155,12 +118,12 @@ if __name__ == "__main__":
             # Write the image
             print(identify_record)
             sitk.WriteImage(img, os.path.join(img_tr_dir, f'panc_{scan_id}_0000.nii.gz'))
-            sitk.WriteImage(lab, os.path.join(lab_tr_dir, f'panc_{scan_id}.nii.gz'))
+            sitk.WriteImage(img, os.path.join(out_niftis_dir, f'panc_{scan_id}_0000.nii.gz'))
 
-    print("Done")
+    print(f"Done")
     f = open(identify_path, "a")
-    f.write("Done\n")
+    f.write(f"Done batch {batch}\n")
     f.close()
 
     # Create dataset.json
-    generate_dataset_json(True, f"P16 {date.today()}", out_dir, task, {"0": "MRI"}, {"0": "background", "1": "pancreas"}, lab_tr_dir, lab_ts_dir)
+    shared.generate_dataset_json(True, f"P16 {date.today()} batch{batch}", out_dir, task, {"0": "MRI"}, {"0": "background", "1": "pancreas"}, img_tr_dir, img_ts_dir, False)
