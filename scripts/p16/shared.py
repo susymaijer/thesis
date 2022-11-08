@@ -2,8 +2,20 @@ import json
 import os
 from collections import OrderedDict
 
-initial_task = 610
+initial_task = 610 # don't change! this was used for the creation of the first batch. 
 p16_dir = os.path.join(os.environ.get('nnUNet_raw_data_base'), 'p16')
+
+def getUserspecificEnvironmentVariables(filename):
+    import importlib
+    f = open(filename)
+    global data
+    data = imp.load_source('data', '', f)
+    f.close()
+    return data
+
+def determine_task_id():
+    base=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data')
+    return max([int(x[4:]) for x in os.listdir(base) if x.startswith('Task6')])
 
 def determine_batch_id():
     base=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'p16')

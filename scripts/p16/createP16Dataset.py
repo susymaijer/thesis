@@ -12,23 +12,23 @@ from pydicom import dcmread
 from pydicom.fileset import FileSet
 import shared # our own
 
-def determine_new_task_id():
-    base=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data')
-    return max([int(x[4:]) for x in os.listdir(base) if x.startswith('Task6')]) + 1
 
 if __name__ == "__main__":
 
     # Get the batch id and task id
     batch=shared.determine_batch_id()
-    task=determine_new_task_id()    
+    task=shared.determine_task_id() + 1  
     print(f"We're going to create task {task} from batch {batch}. Is this OK? Enter [y/n].")
     answer=input()
     if answer != "y":
         sys.exit("Abort")
 
+    # Get the environmentvariables
+    env_vars=shared.getVarFromFile(os.path.dirname(os.path.abspath(__file__)))
+
     # Define the paths to the folder containing the scans which we need to convert + the output dir
     task_name=f'Task{task}'
-    img_dir=os.path.join(shared.p16_dir, f'batch{batch}')
+    img_dir=os.path.join(env_vars.p16_dir, f'batch{batch}')
     out_niftis_dir=os.path.join(img_dir, 'niftis')
     out_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', task_name)
     img_tr_dir=os.path.join(out_dir, 'imagesTr')
@@ -111,7 +111,10 @@ if __name__ == "__main__":
             # Get the id for this scan
             scan_id = shared.get_scan_id(img_tr_dir)
             identify_record = f"Patient {patient}, folder {case}, date {d}, series {s}, created scan_id {scan_id}\n"
-            f = open(identify_path, "a")
+            f = open(identify_path, "a") # append to all-encompassing within $nnunet_raw_data_base
+            f.write(identify_record)
+            f.close()
+            f = open(os.path.join(out_niftis, "identify.txt"), "a") # within batch folder
             f.write(identify_record)
             f.close()
 
