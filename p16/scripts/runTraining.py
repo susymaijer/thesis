@@ -12,14 +12,25 @@ if __name__ == "__main__":
     answer=input()
     if answer != "y":
         sys.exit("Abort")
+    prev_task=int(task)-1
+    print(f"We're going to use the weights from task{prev_task} as the starting weights. Is this OK? Enter [y/n].")
+    answer=input()
+    pretrained=True
+    if answer != "y":
+        pretrained=False    
+    print(f"We assume this is the first training run for this task and thus are performing preprocessing. Is this OK? Enter [y/n].")
+    answer=input()
+    preprocess=True
+    if answer != "y":
+        preprocess=False
 
     # Get cpu amount
-    print(f"How many cpu's do you want to use?")
+    print(f"How many cpu's do you want to use? Recommended values are [6,8,10].")
     cpu=input()
     
     # Get slurm job file path
     ts=datetime.now().strftime("%Y%m%d%H%M%S")
-    job_file=os.path.join(shared.job_dir, f"p16_training_model{task}_{ts}.job")
+    job_file=os.path.join(shared.job_dir, f"p16_training_model{task}_{cpu}_{ts}.job")
     
     # Fill the slurm job file
     with open(job_file, "w+") as fh:
@@ -62,24 +73,43 @@ if __name__ == "__main__":
         fh.writelines(f"python -m pip install --editable {shared.nnunet_code_dir}\n")
 
         # Perform preprocessing
-        fh.writelines("echo \" Start preprocessing\"")
-        fh.writelines(f"nnUNet_plan_and_preprocess -t {task} --verify_dataset_integrity -tl 4 -tf 4")
+        if preprocess:
+            fh.writelines("echo \" Start preprocessing\"")
+            fh.writelines(f"nnUNet_plan_and_preprocess -t {task} --verify_dataset_integrity -tl 4 -tf 4")
 
-        # Perform training
-        fh.writelines("echo \" Start training\"")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 0")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 1")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 2")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 3")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 4")
+        if pretrained:
+            # Perform training
+            fh.writelines("echo \" Start training using prerained weights\"")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 0 -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0/model_best.model")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 1 -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1/model_best.model")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 2 -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2/model_best.model")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 3 -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/model_best.model")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 4 -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_4/model_best.model")
 
-        # Perform training again so we get filled logfiles
-        fh.writelines("echo \"Done training all the folds! Now start the same command but with continue option, to generate log files\n")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 0 -c --val_disable_overwrite")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 1 -c --val_disable_overwrite")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 2 -c --val_disable_overwrite")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 3 -c --val_disable_overwrite")
-        fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 4 -c --val_disable_overwrite")
+            # Perform training again so we get filled logfiles
+            fh.writelines("echo \"Done training all the folds! Now start the same command but with continue option, to generate log files\n")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 0 -c --val_disable_overwrite -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_0/model_best.model")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 1 -c --val_disable_overwrite -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_1/model_best.model")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 2 -c --val_disable_overwrite -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_2/model_best.model")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 3 -c --val_disable_overwrite -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_3/model_best.model")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 4 -c --val_disable_overwrite -pretrained_weights {RESULTS_FOLDER}/nnUNet/3d_fullres/Task{pretrained_task}/nnUNetTrainerV2__nnUNetPlansv2.1/fold_4/model_best.model")
+
+        else:
+            # Perform training
+            fh.writelines("echo \" Start training\"")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 0")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 1")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 2")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 3")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 4")
+
+            # Perform training again so we get filled logfiles
+            fh.writelines("echo \"Done training all the folds! Now start the same command but with continue option, to generate log files\n")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 0 -c --val_disable_overwrite")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 1 -c --val_disable_overwrite")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 2 -c --val_disable_overwrite")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 3 -c --val_disable_overwrite")
+            fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 4 -c --val_disable_overwrite")
 
         # Start postprocessing
         fh.writelines("echo \"Start postprocessing\"")

@@ -21,12 +21,9 @@ MANUAL STEPS FOR BATCHX
 6. After manual correction, upload the corrected segmentations from:
   \\vf-mdlz-onderzoekstraject\mdlz-onderzoekstraject$\MRI - segmentaties\BatchX\segmentaties_corr
   to:
-  $nnUNet_raw_data_base/nnuNet_raw_data_base/Task[Y+1]/imagesTr
-  (here, taskY+1 is the newly created task in step 3) 
+  $p16_dir/batchX/corr
 
-7. Run ./run_training_pretrained.sh
-   --> task = task[Y+1] 
-   --> task_pretrained = task[Y]        or another model if you wish. but recommended is to use most recent model
-   --> perform preprocessing = y
-   Defaults should be fine!
-
+7. Run ./1_evaluateCorrectionsAndStartNewTraining.sh
+   --> evaluates the predictions by comparing them to the corrections
+   --> copies the corrections to the task created by step 3
+   --> starts a training run for this new task (including preprocessing step)
