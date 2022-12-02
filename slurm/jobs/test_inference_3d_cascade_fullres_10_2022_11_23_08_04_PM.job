@@ -1,0 +1,54 @@
+#!/bin/bash
+#SBATCH -J test
+#SBATCH -p LKEBgpu
+#SBATCH -N 1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=10
+#SBATCH --time=01:00:00
+#SBATCH --mem=85GB
+#SBATCH --gres=gpu:RTX6000:1
+#SBATCH --error=/exports/lkeb-hpc/smaijer/test/logs/performance_{501}_{3d_cascade_fullres}_{10}.%J.err
+#SBATCH --output=/exports/lkeb-hpc/smaijer/test/logs/performance_{501}_{3d_cascade_fullres}_{10}.%J.out
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=susy.maijer@lumc.nl
+
+# Prepare nnUnet
+echo "Starting at Wed Nov 23 20:04:12 CET 2022"
+
+echo "Running on hosts: $SLURM_JOB_NODELIST"
+echo "Running on $SLURM_JOB_NUM_NODES nodes."
+echo "Running $SLURM_NTASKS tasks."
+echo "CPUs on node: $SLURM_CPUS_ON_NODE."
+echo "Account: $SLURM_JOB_ACCOUNT"
+echo "Job ID: $SLURM_JOB_ID"
+echo "Job name: $SLURM_JOB_NAME"
+echo "Node running script: $SLURMD_NODENAME"
+echo "Submit host: $SLURM_SUBMIT_HOST"
+echo "GPUS: $CUDA_VISIBLE_DEVICES or $SLURM_STEP_GPUS"
+nvidia-smi
+echo "Current working directory is /home/smaijer/scripts/performance"
+
+echo Load all modules..
+module purge
+module add system/python/3.10.2
+echo Done with loading all modules. Modules:
+module li
+echo Activate conda env nnunet..
+source /exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate
+echo Verifying environment variables:
+conda env config vars list
+echo Installing hidden layer and nnUnet..
+python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
+python -m pip install --editable /home/smaijer/code/nnUNet
+
+rm /exports/lkeb-hpc/smaijer/test/dummy -r
+mkdir -p /exports/lkeb-hpc/smaijer/test/dummy
+
+echo Predict test cases
+nnUNet_predict -i /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/imagesTs -o /exports/lkeb-hpc/smaijer/test/dummy -t 501 -m 3d_cascade_fullres -tr nnUNetTrainerV2CascadeFullRes -f 0 --disable_tta
+nnUNet_evaluate_folder -ref /exports/lkeb-hpc/smaijer/data/nnUNet_raw_data_base/nnUNet_raw_data/Task501/labelsTs -pred /exports/lkeb-hpc/smaijer/test/dummy -l 1
+
+sstat 
+sacct -l -j 
+
+echo "Program finished with exit code 0 at: Wed Nov 23 20:04:12 CET 2022"
