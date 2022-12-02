@@ -1,4 +1,0 @@
-
-# Activate the conda environment
-
-

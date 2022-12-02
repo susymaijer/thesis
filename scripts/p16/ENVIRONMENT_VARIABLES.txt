@@ -1,5 +1,0 @@
-job_dir="/home/smaijer/slurm/jobs/"
-log_dir="/home/smaijer/logs/p16"
-conda_env_dir="/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate"
-nnunet_code_dir="/home/smaijer/code/nnUNet"
-

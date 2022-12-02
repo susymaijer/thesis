@@ -140,36 +140,23 @@ then
 
 else
     echo "Use pretrained!"
-    nnUNet_train $config $trainer $task 0 -pretrained_weights $pretrained/fold_0/model_best.model -p nnUNetPlans_pretrained_$identifier
-    nnUNet_train $config $trainer $task 1 -pretrained_weights $pretrained/fold_1/model_best.model -p nnUNetPlans_pretrained_$identifier
-    nnUNet_train $config $trainer $task 2 -pretrained_weights $pretrained/fold_2/model_best.model -p nnUNetPlans_pretrained_$identifier
-    nnUNet_train $config $trainer $task 3 -pretrained_weights $pretrained/fold_3/model_best.model -p nnUNetPlans_pretrained_$identifier
-    nnUNet_train $config $trainer $task 4 -pretrained_weights $pretrained/fold_4/model_best.model -p nnUNetPlans_pretrained_$identifier
+    nnUNet_train $config $trainer $task 0 -pretrained_weights $pretrained/fold_0/model_best.model
+    nnUNet_train $config $trainer $task 1 -pretrained_weights $pretrained/fold_1/model_best.model
+    nnUNet_train $config $trainer $task 2 -pretrained_weights $pretrained/fold_2/model_best.model
+    nnUNet_train $config $trainer $task 3 -pretrained_weights $pretrained/fold_3/model_best.model
+    nnUNet_train $config $trainer $task 4 -pretrained_weights $pretrained/fold_4/model_best.model
 
     echo "Done training all the folds! Now start the same command but with continue option, to generate log files"
-    nnUNet_train $config $trainer $task 0 -c -pretrained_weights $pretrained/fold_0/model_best.model --val_disable_overwrite -p nnUNetPlans_pretrained_$identifier
-    nnUNet_train $config $trainer $task 1 -c -pretrained_weights $pretrained/fold_1/model_best.model --val_disable_overwrite -p nnUNetPlans_pretrained_$identifier
-    nnUNet_train $config $trainer $task 2 -c -pretrained_weights $pretrained/fold_2/model_best.model --val_disable_overwrite -p nnUNetPlans_pretrained_$identifier
-    nnUNet_train $config $trainer $task 3 -c -pretrained_weights $pretrained/fold_3/model_best.model --val_disable_overwrite -p nnUNetPlans_pretrained_$identifier
-    nnUNet_train $config $trainer $task 4 -c -pretrained_weights $pretrained/fold_4/model_best.model --val_disable_overwrite -p nnUNetPlans_pretrained_$identifier
+    nnUNet_train $config $trainer $task 0 -c -pretrained_weights $pretrained/fold_0/model_best.model --val_disable_overwrite
+    nnUNet_train $config $trainer $task 1 -c -pretrained_weights $pretrained/fold_1/model_best.model --val_disable_overwrite
+    nnUNet_train $config $trainer $task 2 -c -pretrained_weights $pretrained/fold_2/model_best.model --val_disable_overwrite
+    nnUNet_train $config $trainer $task 3 -c -pretrained_weights $pretrained/fold_3/model_best.model --val_disable_overwrite
+    nnUNet_train $config $trainer $task 4 -c -pretrained_weights $pretrained/fold_4/model_best.model --val_disable_overwrite
 fi
 
 echo "Start postprocessing.."
-if [ ! -z $identifier ];
+if [ -z $identifier ];
 then
-    echo "Postprocessing with specific plan identifier"
-    nnUNet_determine_postprocessing -t $task -m $config -tr $trainer -pl $identifier
-
-    echo "Done postprocessing! Now start inferencing its own train and test files."
-    mkdir -p $OUTPUT/$task/$config/$trainer/$identifier/$task/imagesTr
-    mkdir -p $OUTPUT/$task/$config/$trainer/$identifier/$task/imagesTs
-    nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/imagesTr -o $OUTPUT/$task/$config/$trainer/$identifier/$task/imagesTr -t $task -m $config -tr $trainer
-    nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/imagesTs -o $OUTPUT/$task/$config/$trainer/$identifier/$task/imagesTs -t $task -m $config -tr $trainer
-
-    echo "Done inferencing! Now start the evaluation."
-    nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labelsTr -pred $OUTPUT/$task/$config/$trainer/$identifier/$task/imagesTr -l 1
-    nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labelsTs -pred $OUTPUT/$task/$config/$trainer/$identifier/$task/imagesTs -l 1
-else
     echo "Postprocessing with default plans"
     nnUNet_determine_postprocessing -t $task -m $config -tr $trainer
 
@@ -182,8 +169,8 @@ else
     echo "Done inferencing! Now start the evaluation."
     nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labelsTr -pred $OUTPUT/$task/$config/$trainer/$task/imagesTr -l 1
     nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$task/labelsTs -pred $OUTPUT/$task/$config/$trainer/$task/imagesTs -l 1
-
 fi
+
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file
 
