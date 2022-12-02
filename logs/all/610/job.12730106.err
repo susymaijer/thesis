@@ -1,0 +1,116 @@
+environment: line 17: /usr/share/lmod/lmod/libexec/lmod: No such file or directory
+environment: line 17: /usr/share/lmod/lmod/libexec/lmod: No such file or directory
+environment: line 17: /usr/share/lmod/lmod/libexec/lmod: No such file or directory
+/var/spool/slurmd/job12730106/slurm_script: line 38: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-gj34pucm/hiddenlayer_1ec1dd88056a47dd870f098e2fea8a14
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  Branch 'more_plotted_details' set up to track remote branch 'more_plotted_details' from 'origin'.
+WARNING: You are using pip version 21.2.4; however, version 22.3 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+ERROR: ditable is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
+WARNING: You are using pip version 21.2.4; however, version 22.3 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+/var/spool/slurmd/job12730106/slurm_script: line 45: [: ==: unary operator expected
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_train", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_train')())
+  File "/home/smaijer/code/nnUNet/nnunet/run/run_training.py", line 138, in main
+    trainer_class = get_default_configuration(network, task, network_trainer, plans_identifier)
+  File "/home/smaijer/code/nnUNet/nnunet/run/default_configuration.py", line 47, in get_default_configuration
+    plans = load_pickle(plans_file)
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/lib/python3.10/site-packages/batchgenerators/utilities/file_and_folder_operations.py", line 57, in load_pickle
+    with open(file, mode) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/exports/lkeb-hpc/smaijer/data/nnUNet_preprocessed/Task610/nnUNetPlans_pretrained_p16_plans_3D.pkl'
+/var/spool/slurmd/job12730106/slurm_script: line 118: syntax error near unexpected token `else'
+/var/spool/slurmd/job12730106/slurm_script: line 118: `else'
