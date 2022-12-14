@@ -13,10 +13,17 @@ if __name__ == "__main__":
 
     # Get the batch id
     batch=shared.determine_batch_id()
+    task=shared.determine_task_id()
     print(f"We're going to evaluate the corrections on batch {batch}. Is this OK? Enter [y/n].")
     answer=input()
     if answer != "y":
-        sys.exit("Abort")
+        print("Please enter the batch id.")
+        batch=input()    
+    print(f"We're going to evaluate the predictions made by model of task{task}. Is this OK? Enter [y/n].")
+    answer=input()
+    if answer != "y":
+        print("Please enter the task id.")
+        task=input()
 
     # Get cpu amount
     print(f"How many cpu's do you want to use? Recommended values are [4,6,8].")
@@ -32,7 +39,7 @@ if __name__ == "__main__":
     # Define the paths to the folder containing the niftis which we are going to predict
     batch_dir=os.path.join(env_vars['p16_dir'], f'batch{batch}')
     corr_dir=os.path.join(batch_dir, 'corr')
-    auto_dir=os.path.join(batch_dir, 'segmentations')
+    auto_dir=os.path.join(batch_dir, 'segmentations', f"Task{task}")
 
     # Get slurm job file path
     ts=datetime.now().strftime("%Y%m%d%H%M%S")
@@ -79,7 +86,7 @@ if __name__ == "__main__":
         fh.writelines("python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer\n")
         fh.writelines(f"python -m pip install --editable {env_vars['nnUNet_code_dir']}\n")
 
-        fh.writelines(f"nnUNet_evaluate_folder -ref {corr_dir} -pred {auto_dir}")
+        fh.writelines(f"nnUNet_evaluate_folder -ref {corr_dir} -pred {auto_dir} -l 1\n")
         fh.writelines("echo \"Program finished with exit code $? at: `\date`\"")
         fh.writelines("")
     

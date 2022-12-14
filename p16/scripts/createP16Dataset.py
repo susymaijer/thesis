@@ -68,8 +68,8 @@ if __name__ == "__main__":
     # Unzip the folder from the LUMC cluster and get paths to files
     print("Unzipping LUMC folder..\n")
     img_zip=[x for x in os.listdir(img_dir) if x.endswith(".zip")][0]
-    with zipfile.ZipFile(os.path.join(img_dir, img_zip),"r") as zip_ref:
-       zip_ref.extractall(img_dir)
+    #with zipfile.ZipFile(os.path.join(img_dir, img_zip),"r") as zip_ref:
+    #   zip_ref.extractall(img_dir)
     img_dir=os.path.join(img_dir, img_zip.split(".zip")[0])
 
     # Get paths to T2 DICOMdirs from each patient
@@ -98,14 +98,16 @@ if __name__ == "__main__":
             if type == "SERIES":
                 series_desc = x[0x0008, 0x103e].value # Series description
                 # T2 series, so we want this series
-                if series_desc.startswith("T2"):
+                # We exlude coronal sequences
+                if series_desc.startswith("T2") and not "COR" in series_desc and not "SPAIR" in series_desc:
                     new_T2_series = series_desc
                     continue
 
             # Get the root directory of the new T2 series
             if new_T2_series:
-                p = os.path.join(fs.path, *x[0x0004, 0x1500].value[:-1])
-                paths.append((p, study_date, new_T2_series))
+                if type == "IMAGE":
+                    p = os.path.join(fs.path, *x[0x0004, 0x1500].value[:-1])
+                    paths.append((p, study_date, new_T2_series))
                 new_T2_series = False
 
         # Now read the DICOM and segmentations, convert to nift and save in nnUNet format

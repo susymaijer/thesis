@@ -15,7 +15,7 @@ source $conda_env_dir
 
 # Create the dataset
 echo "Create a new nnU-Net dataset from the new batch."
-#python scripts/createP16Dataset.py $pwd
+python scripts/createP16Dataset.py $pwd
 
 # Perform inference
 echo "Use the latest model to generate segmentations for the new batch."
