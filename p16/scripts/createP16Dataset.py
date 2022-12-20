@@ -68,8 +68,8 @@ if __name__ == "__main__":
     # Unzip the folder from the LUMC cluster and get paths to files
     print("Unzipping LUMC folder..\n")
     img_zip=[x for x in os.listdir(img_dir) if x.endswith(".zip")][0]
-    #with zipfile.ZipFile(os.path.join(img_dir, img_zip),"r") as zip_ref:
-    #   zip_ref.extractall(img_dir)
+    with zipfile.ZipFile(os.path.join(img_dir, img_zip),"r") as zip_ref:
+       zip_ref.extractall(img_dir)
     img_dir=os.path.join(img_dir, img_zip.split(".zip")[0])
 
     # Get paths to T2 DICOMdirs from each patient
@@ -101,17 +101,41 @@ if __name__ == "__main__":
                 # We exlude coronal sequences
                 if series_desc.startswith("T2") and not "COR" in series_desc and not "SPAIR" in series_desc:
                     new_T2_series = series_desc
+                    instance_id = x[0x0020, 0x000e].value
                     continue
 
             # Get the root directory of the new T2 series
             if new_T2_series:
                 if type == "IMAGE":
                     p = os.path.join(fs.path, *x[0x0004, 0x1500].value[:-1])
-                    paths.append((p, study_date, new_T2_series))
+                    paths.append((p, study_date, new_T2_series, instance_id))
                 new_T2_series = False
 
+        # We always assume there is only single T2 scan
+        # However, something can go wrong during the creation of the scans (for example: the patient inhaled too much)
+        # Then another scan is created with the exact same T2 sequence
+        # Here, we check whether there is more than 1 scan for the T2 sequence and we pick the latest
+        keep = {}
+        discard = {}
+        for p, d, s, i in paths:
+            # First scan we encountered for this sequence
+            if s not in keep.keys():
+                keep[s] = (p, d, s, i)
+            # We already have a scan for this sequence, so check which one is newest
+            else:
+                ts = i.split(".")[-1] # only keep timestamp
+                ts_cur = keep[s][3].split(".")[-1] # only keep timestamp
+
+                # This scan is newer, so we replace the old scan
+                if ts > ts_cur:
+                   discard[s] = keep[s]
+                   keep[s] = (p, d, s, i)
+
         # Now read the DICOM and segmentations, convert to nift and save in nnUNet format
-        for p, d, s in paths:
+        for p, d, s, i in paths:
+            if not(p == keep[s][0]):
+                continue
+
             # Get first file in the scan directory
             file_name = glob.glob(p + os.sep + "*")[0]
             file_reader = sitk.ImageFileReader()
@@ -131,6 +155,9 @@ if __name__ == "__main__":
             # Get the id for this scan
             scan_id = shared.get_scan_id(img_tr_dir)
             identify_record = f"Patient {patient}, folder {case}, date {d}, series {s}, created scan_id {scan_id}\n"
+            # Check whether we have discarded other scans
+            if s in discard.keys():
+                identify_record += f"\t NOTE: We have discarded another scan of this T2 sequence, with ID {discard[s][-1]}!\n"
             f = open(identify_path, "a") # append to new nnUnet task (which contains all p16 we have till now)
             f.write(identify_record)
             f.close()
