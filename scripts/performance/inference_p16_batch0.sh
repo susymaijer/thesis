@@ -87,17 +87,11 @@ echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install --editable /home/smaijer/code/nnUNet
 
-rm $TEST/$task/$config/single -r
-mkdir -p $TEST/$task/$config/single
+rm $TEST/$task/$config/p16 -r
+mkdir -p $TEST/$task/$config/p16
 
 echo "Predict test cases"
-
-if [ $config == "3d_cascade_fullres" ];
-then
-	nnUNet_predict -i $TEST/cases/images/single -o $TEST/$task/$config/single -t $task -m $config -ctr $trainer -f 0 --disable_tta
-else
-        nnUNet_predict -i $TEST/cases/images/single -o $TEST/$task/$config/single -t $task -m $config -tr $trainer -f 0 --disable_tta
-fi
+nnUNet_predict -i $TEST/p16/imagesTr -o $TEST/$task/$config -t $task -m $config -tr $trainer -f 0 --disable_tta --overwrite_existing --num_threads_preprocessing 1 --num_threads_nifti_save 1
 
 sstat $SLURM_JOB_ID
 sacct -l -j $SLURM_JOB_ID
