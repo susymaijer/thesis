@@ -1,1 +1,8 @@
-Use seff for memory
+Various scripts to analyse performance. We used
+- printing statements to determine timing of various steps 
+- seff for determining memory requirements.
+
+Scripts:
+1. performance_inference.sh to analyse the effect of mode / disable_TTA / folds [1 or all folds]
+2. timing_inference.sh to get better insights into the timing of the steps for scans of different sizes (small / medium / large)
+3. inference_p16_batch0.sh to get a better view of how long single-threaded inference takes on the P16 data
