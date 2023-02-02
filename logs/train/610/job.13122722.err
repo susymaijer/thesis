@@ -1,6 +1,0 @@
-environment: line 17: /usr/share/lmod/lmod/libexec/lmod: No such file or directory
-environment: line 17: /usr/share/lmod/lmod/libexec/lmod: No such file or directory
-environment: line 17: /usr/share/lmod/lmod/libexec/lmod: No such file or directory
-/var/spool/slurmd/job13122722/slurm_script: line 38: conda: command not found
-  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-cy3i94te/hiddenlayer_53a979dc8d8a4ad7ae944604c58d7ef4
-slurmstepd: error: *** JOB 13122722 ON res-hpc-lkeb05 CANCELLED AT 2022-11-26T22:23:17 ***
