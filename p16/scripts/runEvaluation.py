@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     # Get the batch and task
     batch = shared.determine_batch_id()
-    task = shared.determine_task_id()
+    task = shared.determine_task_id()-1
     print(f"We're going to evaluate the corrections on batch {batch}. Is this OK? Enter [y/n].")
     answer = input()
     if answer != "y":
