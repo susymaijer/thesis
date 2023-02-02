@@ -6,6 +6,14 @@ import random
 from collections import OrderedDict
 import json
 
+'''
+    This script was used to create a TotalSegmentator nnU-Net task. We wanted to use this data-set as well,
+    but the data turned out to be corrupt.
+
+    So, not used for thesis.
+
+'''
+
 def generate_dataset_json(overwrite_json_file, reference, task_dir, task, modality, labels,
                             tr_label_dir, ts_label_dir):
     json_file_exist = False

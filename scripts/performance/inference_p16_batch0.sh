@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "Make predictions for a specific folder. We do this either for training images or test images!"
+echo "Make predictions for the P16 batch 1."
+echo "We analyse what happens when doing everything single threaded."
 echo ""
 
 read -p "Enter task:" task
@@ -15,7 +16,7 @@ cpu=${cpu:-6}
 read -p "Default wall time is 01:00:00. If not desired, type other wall time:" t
 t=${t:-01:00:00}
 
-# lowres of fullres
+# lowres or fullres
 if [ $config != "3d_cascade_fullres" ];
 then
    if [ ! -z $trainer ];

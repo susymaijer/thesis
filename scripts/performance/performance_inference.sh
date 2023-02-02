@@ -1,6 +1,10 @@
 #!/bin/bash
 
-echo "Make predictions for a specific folder. We do this either for training images or test images!"
+echo "Make predictions for test cases of folders."
+echo "We do this as part of a performance analysis, where we analyse the effects of changing:"
+echo "- the mode"
+echo "- the amount of folds [1 or all]"
+echo "- disabling TTA"
 echo ""
 
 read -p "Enter task of model:" task
@@ -16,7 +20,7 @@ t=${t:-01:00:00}
 read -p "Enter folds, default is '0 1 2 3 4':" folds
 folds=${folds:-0 1 2 3 4}
 
-read -p "Enter foldsname, default is '01234':" foldname
+read -p "Enter foldsname for printing, default is '01234':" foldname
 foldname=${foldname:-01234}
 
 read -p "Enter mode, default is 'normal' (otherwise choose 'fast', 'fastest'):" mode
@@ -24,17 +28,13 @@ mode=${mode:-normal}
 
 read -p "Disable tta? [y,n]" disable_tta
 
-# determine predict variables
-config="3d_fullres"
-trainer="nnUNetTrainerV2"
-
 if [ $disable_tta == "y" ];
 then
 	tta="--disable_tta"
 fi
 
 # create dir
-output_dir="$OUTPUT/$task/$config/$trainer/$taskPredict/${cpu}_${mode}_${foldname}_${disable_tta}/imagesTs"
+output_dir="$OUTPUT/$task/$taskPredict/${cpu}_${mode}_${foldname}_${disable_tta}/imagesTs"
 mkdir -p $output_dir
 
 # We assume running this from the script directory
@@ -84,7 +84,7 @@ echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install --editable /home/smaijer/code/nnUNet
 
-nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/imagesTs -o $output_dir -t $task -m $config -tr $trainer -f $folds --mode $mode $tta
+nnUNet_predict -i $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/imagesTs -o $output_dir -t $task -m 3d_fullres -tr nnUNetTrainerV2 -f $folds --mode $mode $tta
 
 nnUNet_evaluate_folder -ref $nnUNet_raw_data_base/nnUNet_raw_data/Task$taskPredict/labelsTs -pred $output_dir -l 1
 

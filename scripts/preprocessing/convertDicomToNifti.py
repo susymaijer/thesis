@@ -5,6 +5,13 @@ import dicom2nifti
 import SimpleITK as sitk
 import shutil
 
+'''
+    This script was used to convert some in-house LUMC CT scans to nifti format. 
+
+    Not part of thesis. Only meant as a favour to Alexander.
+
+'''
+
 if __name__ == "__main__":
 
     # Define the paths to the folder containing the scans which we need to convert + the output dir

@@ -41,3 +41,4 @@ FURTHER:
 
 OPLETTNE:
 -check identify.txt of er geen extra shit tussenzit. BIJVOORBEELD
+-andere opties: single threaded etc voor performance IRL uitvoeren. veel opties! goed doorlezen

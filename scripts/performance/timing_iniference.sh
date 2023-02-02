@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "Make predictions for a specific folder. We do this either for training images or test images!"
+echo "Make predictions for MSD scans of different sizes (3x small, 3x medium, 3x large). Use the default MSD model."
+echo "We added printing statements to the steps, so we can analyse how long each step takes."
 echo ""
 
 read -p "Default cpu amount is 6. If not desired, type other amount:" cpu
@@ -13,10 +14,6 @@ read -p "Enter folds, like '0 1 2 3 4':" folds
 t=${t:-0 1 2 3 4}
 
 read -p "Enter name:" name
-
-trainer="nnUNetTrainerV2"
-config="3d_fullres"
-task="510"
 
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
@@ -70,15 +67,15 @@ mkdir -p $TEST/$name/medium
 mkdir -p $TEST/$name/big
 
 echo "We start with small images"
-nnUNet_predict -i $TEST/cases/images/small -o $TEST/$name/small -t $task -m $config -tr $trainer -f $folds
+nnUNet_predict -i $TEST/cases/images/small -o $TEST/$name/small -t 510 -m 3d_fullres -tr nnUNetTrainerV2 -f $folds
 nnUNet_evaluate_folder -ref $TEST/cases/labels/small -pred $TEST/$name/small -l 1
 
 echo "Now onto medium images"
-nnUNet_predict -i $TEST/cases/images/medium -o $TEST/$name/medium -t $task -m $config -tr $trainer -f $folds
+nnUNet_predict -i $TEST/cases/images/medium -o $TEST/$name/medium -t 510 -m 3d_fullres -tr nnUNetTrainerV2 -f $folds
 nnUNet_evaluate_folder -ref $TEST/cases/labels/medium -pred $TEST/$name/medium -l 1
 
 echo "And finally big images"
-nnUNet_predict -i $TEST/cases/images/big -o $TEST/$name/big -t $task -m $config -tr $trainer -f $folds
+nnUNet_predict -i $TEST/cases/images/big -o $TEST/$name/big -t 510 -m 3d_fullres -tr nnUNetTrainerV2r -f $folds
 nnUNet_evaluate_folder -ref $TEST/cases/labels/big -pred $TEST/$name/big -l 1
 
 sstat $SLURM_JOB_ID
