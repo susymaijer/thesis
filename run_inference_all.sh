@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Make predictions for a specific folder. We do this either for training images or test images!"
+echo "Make predictions for a specific folder. We do this directly for both the training and test data."
 echo ""
 
 read -p "Enter task of model:" task
@@ -84,10 +84,8 @@ module purge
 module add system/python/3.10.2
 echo "Done with loading all modules. Modules:"
 module li
-echo "Activate conda env nnunet.."
+echo "Activate virtualenv pancreasThesis.."
 source /exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate
-echo "Verifying environment variables:"
-conda env config vars list
 echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install -editable /home/smaijer/code/nnUNet

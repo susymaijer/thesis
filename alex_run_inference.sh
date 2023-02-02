@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Make predictions for a specific folder. We do this either for training images or test images!"
+echo "Make predictions for CT scans for Alexander Broersen (not part of thesis)."
 echo ""
 
 read -p "Enter task of model:" task
@@ -16,16 +16,6 @@ cpu=${cpu:-6}
 read -p "Default wall time is 01:00:00. If not desired, type other wall time:" t
 t=${t:-01:00:00}
 
-read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
-
-read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,empty]:" trainer
-
-read -p "Default folds is '0 1 2 3 4'. If not desired, type other fold name:" folds
-folds=${folds:-0 1 2 3 4}
-
-read -p "Default folds string version is '0 1 2 3 4'. If not desired, type other fold name:" foldname
-foldname=${foldname:-01234}
-
 read -p "Disable tta? Type 'y' or 'n':" disable_tta
 
 # Disable tta
@@ -34,34 +24,9 @@ then
         tta="--disable_tta"
 fi
 
-# lowres of fullres
-if [ $config != "3d_cascade_fullres" ];
-then
-   if [ ! -z $trainer ];
-   then
-      trainer="nnUNetTrainerV2_$trainer"
-   fi
-   if [ -z $trainer ];
-   then
-      trainer="nnUNetTrainerV2"
-   fi
-fi
-# cascade
-if [ $config == "3d_cascade_fullres" ];
-then
-   if [ ! -z $trainer ];
-   then
-      trainer="nnUNetTrainerV2CascadeFullRes_$trainer"
-   fi
-   if [ -z $trainer ];
-   then
-      trainer="nnUNetTrainerV2CascadeFullRes"
-   fi
-fi
-
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/inference_eval_${task}_${folder}_${p}_${trainer}_${cpu}_${config}_${foldname}_${disable_tta}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/inference_eval_${task}_${folder}_${p}_${cpu}_${foldname}_${disable_tta}_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
 #SBATCH -J Inference
@@ -98,17 +63,15 @@ module purge
 module add system/python/3.10.2
 echo "Done with loading all modules. Modules:"
 module li
-echo "Activate conda env nnunet.."
+echo "Activate virtualenv pancreasThesis.."
 source /exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/activate
-echo "Verifying environment variables:"
-conda env config vars list
 echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install --editable /home/smaijer/code/nnUNet
 
 mkdir -p $nnUNet_raw_data_base/alex/$folder/segmentations/$task/$foldname/$disable_tta
 
-nnUNet_predict -i $nnUNet_raw_data_base/alex/$folder/scans -o $nnUNet_raw_data_base/alex/$folder/segmentations/$task/$foldname/$disable_tta -t $task -m $config -tr $trainer -f $folds $tta
+nnUNet_predict -i $nnUNet_raw_data_base/alex/$folder/scans -o $nnUNet_raw_data_base/alex/$folder/segmentations/$task/$foldname/$disable_tta -t $task -m 3d_fullres -tr nnUNetTrainerV2 -f 0 1 2 3 4 $tta
 
 echo \"Program finished with exit code $? at: `\date`\"" > $job_file
 sbatch $job_file

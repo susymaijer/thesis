@@ -10,7 +10,9 @@ read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
 read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,empty]:" trainer
 
-# lowres of fullres
+read -p "P16 data? Type 'y' or 'n':" isp16
+
+# Create trainer name NOT cascade
 if [ $config != "3d_cascade_fullres" ];
 then
    if [ ! -z $trainer ];
@@ -22,7 +24,7 @@ then
       trainer="nnUNetTrainerV2"
    fi
 fi
-# cascade
+# Create trainer name YES cascade
 if [ $config == "3d_cascade_fullres" ];
 then
    if [ ! -z $trainer ];
@@ -38,11 +40,14 @@ fi
 download="$DOWNLOAD/$task/$config/$trainer"
 mkdir -p $download
 
-# Extract the final segmentations of training and testing dataset 
-cd $OUTPUT/$task/$config/$trainer
-ls -l
-zip -r inference.zip *
-mv inference.zip $download
+# Only if NOT p16: Extract the final segmentations of training and testing dataset 
+if [ $isp16 == "n" ];
+then
+	cd $OUTPUT/$task/$config/$trainer
+	ls -l
+	zip -r inference.zip *
+	mv inference.zip $download
+fi
 
 # Extract the cross validation ensembled results of all the training images
 cd $RESULTS_FOLDER/nnUNet/$config/Task$task/${trainer}__nnUNetPlansv2.1/cv_niftis_postprocessed
