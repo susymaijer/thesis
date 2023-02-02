@@ -36,6 +36,8 @@ if __name__ == "__main__":
         sys.exit(f"Directory {labels_dir} does not exist. Abort program.")
     else:
         # Add the corrected ground truth to LabelsTr of most recent task
-        shutil.copytree(corr_labels_dir, labels_dir)
+        for file_name in os.listdir(corr_labels_dir):
+            shutil.copy(os.path.join(corr_labels_dir,file_name), os.path.join(labels_dir,file_name))
+            print('copied', file_name)
         print(f"Copied contents of {corr_labels_dir} to {labels_dir}\n")
     

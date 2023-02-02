@@ -87,7 +87,7 @@ if __name__ == "__main__":
         fh.writelines("conda env config vars list\n")
         fh.writelines("echo \"Installing hidden layer and nnUnet\"\n\n")
         fh.writelines("python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer\n")
-        fh.writelines(f"python -m pip install --editable {env_vars['nnunet_code_dir']}\n")
+        fh.writelines(f"python -m pip install --editable {env_vars['nnUNet_code_dir']}\n")
 
         # Perform preprocessing
         if preprocess:
