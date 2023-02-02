@@ -99,7 +99,7 @@ if __name__ == "__main__":
                 series_desc = x[0x0008, 0x103e].value # Series description
                 # T2 series, so we want this series
                 # We exlude coronal sequences
-                if series_desc.startswith("T2") and not "COR" in series_desc and not "SPAIR" in series_desc:
+                if series_desc.startswith("T2") and not "COR" in series_desc and not "SPAIR" in series_desc and not "SPIR" in series_desc:
                     new_T2_series = series_desc
                     instance_id = x[0x0020, 0x000e].value
                     continue

@@ -13,7 +13,7 @@ MANUAL STEPS FOR BATCHX
        $p16_dir/batchX/segmentations/TaskY
        (here, TaskY is the task of the most recent model)
 
-4. Upload the following to the LUMC fileserver:
+4. Upload the following to the LUMC fileserver (you need to create the LUMC fileserver folders yourself):
    a. NIFTIS
    shark location:  $p16_dir/batchX/niftis
    lumc fileserver:  \\vf-mdlz-onderzoekstraject\mdlz-onderzoekstraject$\MRI - segmentaties\Batch[X]\scans
@@ -23,7 +23,7 @@ MANUAL STEPS FOR BATCHX
    lumc fileserver:   \\vf-mdlz-onderzoekstraject\mdlz-onderzoekstraject$\MRI - segmentaties\Batch[X]\segmentaties_auto
   
    c. KEY FILE
-   shark location:  $p16_dir/batchX/identify.txt
+   shark location:  $p16_dir/batchX/niftis/identify.txt
    lumc fileserver: \\vf-mdlz-onderzoekstraject\mdlz-onderzoekstraject$\MRI - segmentaties\Batch[X]
 
 5. Wait for medical experts to correct the scans.
