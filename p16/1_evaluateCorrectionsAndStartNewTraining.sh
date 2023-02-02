@@ -15,13 +15,13 @@ source $conda_env_dir
 
 # Run evaluation of the corrected scans
 echo "Run evaluation of the corrected scans"
-python runEvaluation.py
+python scripts/runEvaluation.py
 
 # Copy corrections to new task
 echo "Copy corrections to new task"
-python moveCorrectionsToTask.py
+python scripts/copyCorrectionsToNewTask.py
 
 # Start new training run, using the weights of the previous model as the starting weights
 echo "Start new training run, using the weights of the previous model as the starting weights"
-python runTraining.py
+python scripts/runTraining.py
 

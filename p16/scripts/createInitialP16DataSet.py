@@ -3,7 +3,6 @@ import os
 import sys
 import glob
 import shutil
-import random
 from datetime import date
 from collections import OrderedDict
 import json
@@ -12,29 +11,23 @@ from pydicom import dcmread
 from pydicom.fileset import FileSet
 import shared # our own
 
-def get_id(dir):
-    # List all the files
-    files = os.listdir(dir)
+'''
+    NOTE: DO NOT RUN THIS!!!!!!!!!!!!
 
-    # Already files present
-    if len(files) > 0:
-        new = max([int(f.split("_")[1]) for f in files]) + 1 # Get the newest id
-        new_str = "00000" + str(new)
-        return new_str[-5:] # the id has 5 decimals
-
-    # First one, so id is 00000
-    else:
-        return "00000"
+    Only ran this once to create the first P16 batch.
+'''
 
 def generate_dataset_json(overwrite_json_file, reference, task_dir, task, modality, labels,
                             tr_label_dir, ts_label_dir):
+
+    # Determine whether there already exists a dataset.json
     json_file_exist = False
     json_path = os.path.join(task_dir, 'dataset.json')
-
     if os.path.exists(json_path):
         print(f'dataset.json already exist! {json_path}')
         json_file_exist = True
 
+    # Create a new dataset.json file
     if json_file_exist==False or overwrite_json_file:
 
         json_dict = OrderedDict()
@@ -46,12 +39,9 @@ def generate_dataset_json(overwrite_json_file, reference, task_dir, task, modali
         json_dict['release'] = "0.0"
         json_dict['modality'] = modality
         json_dict['labels'] = labels
-
         train_ids = os.listdir(tr_label_dir)
         test_ids = os.listdir(ts_label_dir)
         json_dict['numTraining'] = len(train_ids)
-
-        #no modality in train image and labels in dataset.json
         json_dict['training'] = [{'image': f"./imagesTr/{i}", "label": f"./labelsTr/{i}"} for i in train_ids]
         json_dict['test'] = [f"./imagesTs/{i}" for i in test_ids]
         with open(json_path, 'w') as f:
@@ -65,21 +55,22 @@ if __name__ == "__main__":
     if x != "y":
         sys.exit("Abort.")
 
-    # Define the paths to the folder containing the scans which we need to convert
-    task_name=f'Task{task}'
-    img_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'p16', 'initial', 'scans')
-    seg_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'p16', 'initial', 'labels')
+    # Define the paths to the folder containing the DICOM scans + nifti ground truths which we need to convert
+    task_name = f'Task{task}'
+    img_dir = os.path.join(os.environ.get('nnUNet_raw_data_base'), 'p16', 'initial', 'scans')
+    seg_dir = os.path.join(os.environ.get('nnUNet_raw_data_base'), 'p16', 'initial', 'labels')
+
     # Define the paths to the output dir 
-    out_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', task_name) 
-    img_tr_dir=os.path.join(out_dir, 'imagesTr')
-    img_ts_dir=os.path.join(out_dir, 'imagesTs')
-    lab_tr_dir=os.path.join(out_dir, 'labelsTr')
-    lab_ts_dir=os.path.join(out_dir, 'labelsTs')
+    out_dir = os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', task_name) 
+    img_tr_dir = os.path.join(out_dir, 'imagesTr')
+    img_ts_dir = os.path.join(out_dir, 'imagesTs')
+    lab_tr_dir= os.path.join(out_dir, 'labelsTr')
+    lab_ts_dir = os.path.join(out_dir, 'labelsTs')
     identify_path = os.path.join(out_dir, "identify.txt")
 
     # Check whether there's data in both the DICOMdir and segmentation dir
     if (not(os.path.exists(img_dir)) or not(os.path.exists(seg_dir))):
-        sys.exit(f"Directory {data_dir} does not exist. Abort program.")
+        sys.exit(f"Directory {img_dir} does not exist. Abort program.")
     # Create the output directories
     else:
         print(f"Cleaning {out_dir} and creating again")
@@ -98,11 +89,11 @@ if __name__ == "__main__":
         fs = FileSet(ds)
         seq = ds[0x0004, 0x1220] # Directory Record Sequence
 
-        # Get the paths to the T2 series (we also have Dixon scans)
+        # Get the paths to the T2 series (we also have Dixon scans, which we want to skip)
         new_T2_series = False
         paths = []
         for i, x in enumerate(seq):
-            type = x[0x0004, 0x1430].value
+            type = x[0x0004, 0x1430].value # Type
             
             # Patient data
             if type == "PATIENT":
@@ -148,7 +139,7 @@ if __name__ == "__main__":
             lab = sitk.Resample(lab, img, interpolator=sitk.sitkNearestNeighbor)
 
             # Get the id for this scan
-            scan_id = get_scan_id(img_tr_dir)
+            scan_id = shared.get_scan_id(img_tr_dir)
             identify_record = f"Patient {patient}, folder {case}, date {d}, series {s}, created scan_id {scan_id}\n"
             f = open(identify_path, "a")
             f.write(identify_record)
@@ -165,4 +156,11 @@ if __name__ == "__main__":
     f.close()
 
     # Create dataset.json
-    generate_dataset_json(True, f"P16 {date.today()}", out_dir, task, {"0": "MRI"}, {"0": "background", "1": "pancreas"}, lab_tr_dir, lab_ts_dir)
+    generate_dataset_json(True, 
+                        f"P16 {date.today()}", 
+                        out_dir, 
+                        task, 
+                        {"0": "MRI"},
+                         {"0": "background", "1": "pancreas"}, 
+                         lab_tr_dir, 
+                         lab_ts_dir)

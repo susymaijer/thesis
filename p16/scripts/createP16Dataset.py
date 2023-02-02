@@ -3,14 +3,12 @@ import os
 import sys
 import glob
 import shutil
-import random
 import zipfile
 from datetime import date
-from collections import OrderedDict
 import SimpleITK as sitk
 from pydicom import dcmread 
 from pydicom.fileset import FileSet
-import shared # our own
+import shared 
 
 ''' 
     PREREQUISITE
@@ -28,10 +26,10 @@ import shared # our own
 if __name__ == "__main__":
 
     # Get the batch id and task id
-    batch=shared.determine_batch_id()
-    task=shared.determine_task_id() + 1  
+    batch = shared.determine_batch_id()
+    task = shared.determine_task_id() + 1  
     print(f"We're going to create task {task} from batch {batch}. Is this OK? Enter [y/n].")
-    answer=input()
+    answer = input()
     if answer != "y":
         sys.exit("Abort")
 
@@ -39,20 +37,20 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         env_var_dir=sys.argv[1]
     else:
-        env_var_dir=os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
-    env_vars=shared.getUserspecificEnvironmentVariables(os.path.join(env_var_dir, "ENVIRONMENT_VARIABLES.txt"))
+        env_var_dir = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
+    env_vars = shared.getUserspecificEnvironmentVariables(os.path.join(env_var_dir, "ENVIRONMENT_VARIABLES.txt"))
 
     # Define the paths to the folder containing the scans which we need to convert 
-    task_name=f'Task{task}'
-    img_dir=os.path.join(env_vars['p16_dir'], f'batch{batch}')
-    out_niftis_dir=os.path.join(img_dir, 'niftis') # here we will put the niftis from the new images so we can use the latest model to create predictions
+    task_name = f'Task{task}'
+    img_dir = os.path.join(env_vars['p16_dir'], f'batch{batch}')
+    out_niftis_dir = os.path.join(img_dir, 'niftis') # here we will put the niftis from the new images so we can use the latest model to create predictions
 
-    # Define the paths to the new nnUnet task containing the old p16 scans/labels and the new p16 scans
-    out_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', task_name)
-    img_tr_dir=os.path.join(out_dir, 'imagesTr')
-    img_ts_dir=os.path.join(out_dir, 'imagesTs')
-    lab_tr_dir=os.path.join(out_dir, 'labelsTr')
-    lab_ts_dir=os.path.join(out_dir, 'labelsTs')
+    # Define the paths to the new nnUnet task which is going to contain the old p16 scans/labels and the new p16 scans
+    out_dir = os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', task_name)
+    img_tr_dir = os.path.join(out_dir, 'imagesTr')
+    img_ts_dir = os.path.join(out_dir, 'imagesTs')
+    lab_tr_dir = os.path.join(out_dir, 'labelsTr')
+    lab_ts_dir = os.path.join(out_dir, 'labelsTs')
     identify_path = os.path.join(out_dir, "identify.txt")
     os.mkdir(out_niftis_dir)
 
@@ -61,16 +59,16 @@ if __name__ == "__main__":
         sys.exit(f"Directory {img_dir} does not exist. Abort program.")
     else:
         # Add the data of the old task to the new directory
-        prev_task_dir=os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', f'Task{task-1}')
+        prev_task_dir = os.path.join(os.environ.get('nnUNet_raw_data_base'), 'nnUNet_raw_data', f'Task{task-1}')
         shutil.copytree(prev_task_dir, out_dir)
         print(f"Copied contents of {prev_task_dir} to new task dir\n")
     
     # Unzip the folder from the LUMC cluster and get paths to files
     print("Unzipping LUMC folder..\n")
-    img_zip=[x for x in os.listdir(img_dir) if x.endswith(".zip")][0]
+    img_zip = [x for x in os.listdir(img_dir) if x.endswith(".zip")][0]
     with zipfile.ZipFile(os.path.join(img_dir, img_zip),"r") as zip_ref:
        zip_ref.extractall(img_dir)
-    img_dir=os.path.join(img_dir, img_zip.split(".zip")[0])
+    img_dir = os.path.join(img_dir, img_zip.split(".zip")[0])
 
     # Get paths to T2 DICOMdirs from each patient
     for case in os.listdir(img_dir):
@@ -97,9 +95,12 @@ if __name__ == "__main__":
             # Check whether a new T2 series started
             if type == "SERIES":
                 series_desc = x[0x0008, 0x103e].value # Series description
-                # T2 series, so we want this series
-                # We exlude coronal sequences
-                if series_desc.startswith("T2") and not "COR" in series_desc and not "SPAIR" in series_desc and not "SPIR" in series_desc:
+                # We only want T2 series. We exclude:
+                # - Coronal series
+                # - T2 SPAIR series
+                # - T2 SPIR series
+                # - Maybe more that we have not seen yet....
+                if series_desc.startswith("T2") and not ("COR" in series_desc or "SPAIR" in series_desc or "SPIR" in series_desc):
                     new_T2_series = series_desc
                     instance_id = x[0x0020, 0x000e].value
                     continue
@@ -158,10 +159,10 @@ if __name__ == "__main__":
             # Check whether we have discarded other scans
             if s in discard.keys():
                 identify_record += f"\t NOTE: We have discarded another scan of this T2 sequence, with ID {discard[s][-1]}!\n"
-            f = open(identify_path, "a") # append to new nnUnet task (which contains all p16 we have till now)
+            f = open(identify_path, "a") # append to identify.txt in new nnUnet task (which contains all p16 we have till now)
             f.write(identify_record)
             f.close()
-            f = open(os.path.join(out_niftis_dir, "identify.txt"), "a") # within batch folder
+            f = open(os.path.join(out_niftis_dir, "identify.txt"), "a") # new identify.txt in batch folder
             f.write(identify_record)
             f.close()
 
@@ -176,4 +177,11 @@ if __name__ == "__main__":
     f.close()
 
     # Create dataset.json
-    shared.generate_dataset_json(True, f"P16 {date.today()} batch{batch}", out_dir, task, {"0": "MRI"}, {"0": "background", "1": "pancreas"}, img_tr_dir, img_ts_dir, False)
+    shared.generate_dataset_json(True, 
+                                f"P16 {date.today()} batch{batch}", 
+                                out_dir, task, 
+                                {"0": "MRI"}, 
+                                {"0": "background", "1": "pancreas"}, 
+                                img_tr_dir, 
+                                img_ts_dir, 
+                                False)

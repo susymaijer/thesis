@@ -6,44 +6,44 @@ from datetime import date, datetime
 import shared
 
 '''
-  TODOOOOO
+    This script evaluates the performance of the most recent model, by comparing the predictions with the corrections from the medical exper.
 '''
 
 if __name__ == "__main__":
 
-    # Get the batch id
-    batch=shared.determine_batch_id()
-    task=shared.determine_task_id()
+    # Get the batch and task
+    batch = shared.determine_batch_id()
+    task = shared.determine_task_id()
     print(f"We're going to evaluate the corrections on batch {batch}. Is this OK? Enter [y/n].")
-    answer=input()
+    answer = input()
     if answer != "y":
         print("Please enter the batch id.")
-        batch=input()    
+        batch = input()    
     print(f"We're going to evaluate the predictions made by model of task{task}. Is this OK? Enter [y/n].")
-    answer=input()
+    answer = input()
     if answer != "y":
         print("Please enter the task id.")
-        task=input()
+        task = input()
 
     # Get cpu amount
     print(f"How many cpu's do you want to use? Recommended values are [4,6,8].")
-    cpu=input()
+    cpu = input()
 
     # Get the environment variables
     if len(sys.argv) > 1:
-        env_var_dir=sys.argv[1]
+        env_var_dir = sys.argv[1]
     else:
-        env_var_dir=os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
-    env_vars=shared.getUserspecificEnvironmentVariables(os.path.join(env_var_dir, "ENVIRONMENT_VARIABLES.txt"))
+        env_var_dir = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
+    env_vars = shared.getUserspecificEnvironmentVariables(os.path.join(env_var_dir, "ENVIRONMENT_VARIABLES.txt"))
 
     # Define the paths to the folder containing the niftis which we are going to predict
-    batch_dir=os.path.join(env_vars['p16_dir'], f'batch{batch}')
-    corr_dir=os.path.join(batch_dir, 'corr')
-    auto_dir=os.path.join(batch_dir, 'segmentations', f"Task{task}")
+    batch_dir = os.path.join(env_vars['p16_dir'], f'batch{batch}')
+    corr_dir = os.path.join(batch_dir, 'corr')
+    auto_dir = os.path.join(batch_dir, 'segmentations', f"Task{task}")
 
     # Get slurm job file path
-    ts=datetime.now().strftime("%Y%m%d%H%M%S")
-    job_file=os.path.join(env_vars['job_dir'], f"p16_evaluate_batch{batch}_{ts}.job")
+    ts = datetime.now().strftime("%Y%m%d%H%M%S")
+    job_file = os.path.join(env_vars['job_dir'], f"p16_evaluate_batch{batch}_{ts}.job")
     
     # Fill the slurm job file
     with open(job_file, "w+") as fh:

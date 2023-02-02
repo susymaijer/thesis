@@ -19,36 +19,36 @@ import shared
 if __name__ == "__main__":
 
     # Get the batch id and task id
-    batch=shared.determine_batch_id()
-    task=shared.determine_task_id() - 1 # the most current task contains the niftis of our batch and does not have an associated model yet
+    batch = shared.determine_batch_id()
+    task = shared.determine_task_id() - 1 # the most current task contains the niftis of our batch and does not have an associated model yet
     print(f"We're going to make predictions on batch {batch} with model {task}. Is this OK? Enter [y/n].")
-    answer=input()
+    answer = input()
     if answer != "y":
         print("Which model would you like to use instead?")
-        task=input()
+        task = input()
         print(f"We're going to make predictions with the model of task {task} instead. Is this OK? Enter [y/n]")
-        answer=input()
+        answer = input()
         if answer != "y":
             sys.exit("Abort")
 
     # Get cpu amount
     print(f"How many cpu's do you want to use? Recommended values are 4 / 6 / 8.")
-    cpu=input()
+    cpu = input()
 
     # Get the environment variables
     if len(sys.argv) > 1:
-        env_var_dir=sys.argv[1]
+        env_var_dir = sys.argv[1]
     else:
-        env_var_dir=os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
-    env_vars=shared.getUserspecificEnvironmentVariables(os.path.join(env_var_dir, "ENVIRONMENT_VARIABLES.txt"))
+        env_var_dir = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
+    env_vars = shared.getUserspecificEnvironmentVariables(os.path.join(env_var_dir, "ENVIRONMENT_VARIABLES.txt"))
 
     # Define the paths to the folder containing the niftis which we are going to predict
-    batch_dir=os.path.join(env_vars['p16_dir'], f'batch{batch}')
-    niftis_dir=os.path.join(batch_dir, 'niftis')
+    batch_dir = os.path.join(env_vars['p16_dir'], f'batch{batch}')
+    niftis_dir = os.path.join(batch_dir, 'niftis')
 
     # Get slurm job file path
-    ts=datetime.now().strftime("%Y%m%d%H%M%S")
-    job_file=os.path.join(env_vars['job_dir'], f"p16_inference_model{task}_batch{batch}_{ts}.job")
+    ts = datetime.now().strftime("%Y%m%d%H%M%S")
+    job_file = os.path.join(env_vars['job_dir'], f"p16_inference_model{task}_batch{batch}_{ts}.job")
     
     # Fill the slurm job file
     with open(job_file, "w+") as fh:

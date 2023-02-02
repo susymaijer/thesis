@@ -25,6 +25,8 @@ def determine_batch_id():
     return max([int(x[5:]) for x in os.listdir(base) if x.startswith('batch')])
 
 def get_scan_id(dir_name):
+    ''' Get the next nnU-Net scan ID. '''
+    
     # List all the files
     files = os.listdir(dir_name)
 
