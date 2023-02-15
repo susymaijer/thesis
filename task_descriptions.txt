@@ -17,8 +17,10 @@
 601- amos, MRI only, pancreas only, pretrained on CT( failed)
 602- amos, MRI only, pancreas only, trained with p16 config
 603- amos+P16, MRI only, pancreas only
-610- p16, MRI only, pancreas only, first 8 scans
-611- p16, MRI only, pancreas only, first 8 scans + pretrained on AMOS (weights from 602)
+610- p16, MRI only, pancreas only, Batch0
+611- p16, MRI only, pancreas only, Batch0 + pretrained on AMOS (weights from 602)
+612- p16, MRI only, pancreas only, Batch0 + Batch1
+613- p16, MRI only, pancreas only, Batch0 + Batch1 + Batch2
 ####### CT MAAR ZELF BEDACHT
 800- 80 van NIH en 80 MSD, only pancreas ofcourse
 ###### DUMMY

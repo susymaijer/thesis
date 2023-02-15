@@ -36,9 +36,10 @@ python -c 'import torch;print(torch.__version__)'
 
 FURTHER:
 -tasks starting with 61 XX are P16 tasks. But please correct this to 500.
--kopieer mijn data van p16 naar XX
--kopieer de most recent models uit $RESULTS en $preprocessed naar XX
+-copy my p16 data to your own folder
+-copy the most recent models (from $RESULTS and $preprocessed) to your own folder
 
-OPLETTNE:
--check identify.txt of er geen extra shit tussenzit. BIJVOORBEELD
--andere opties: single threaded etc voor performance IRL uitvoeren. veel opties! goed doorlezen
+ALSO NOTE:
+-always check identify.txt if there are not extra scans that should not be there
+-also. nnU-Net offers loads of options, like disable TTA or singlethreading workers. I recommend reading the repository thorougly.
+
