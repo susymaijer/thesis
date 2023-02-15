@@ -10,8 +10,8 @@ read -p "Enter config [3d_lowres, 3d_cascade_fullres, 3d_fullres]:" config
 
 read -p "Enter trainer [UNETR,UNETRLarge,Hybrid,Hybrid2,Hybrid2LR,Loss_DC_CE_weight0X,empty]:" trainer
 
-read -p "Default cpu amount is 6. If not desired, type other amount:" cpu
-cpu=${cpu:-6}
+#read -p "Default cpu amount is 6. If not desired, type other amount:" cpu
+#cpu=${cpu:-6}
 
 read -p "Default wall time is 01:00:00. If not desired, type other wall time:" t
 t=${t:-01:00:00}
@@ -43,16 +43,16 @@ fi
 
 # We assume running this from the script directory
 job_directory=/home/smaijer/slurm/jobs/
-job_file="${job_directory}/test_inference_${config}_${cpu}_$(date +"%Y_%m_%d_%I_%M_%p").job"
+job_file="${job_directory}/test_inference_${config}_${cpu}_1_$(date +"%Y_%m_%d_%I_%M_%p").job"
 
 echo "#!/bin/bash
 #SBATCH -J test
 #SBATCH -p LKEBgpu
 #SBATCH -N 1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=$cpu
+#SBATCH --cpus-per-task=1
 #SBATCH --time=$t
-#SBATCH --mem=85GB
+#SBATCH --mem=12GB
 #SBATCH --gres=gpu:RTX6000:1
 #SBATCH --error=$TEST/logs/performance_${task}_${config}_${cpu}.%J.err
 #SBATCH --output=$TEST/logs/performance_${task}_${config}_${cpu}.%J.out
@@ -88,8 +88,8 @@ echo "Installing hidden layer and nnUnet.."
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
 python -m pip install --editable /home/smaijer/code/nnUNet
 
-rm $TEST/$task/$config/p16 -r
-mkdir -p $TEST/$task/$config/p16
+rm $TEST/$task/$config -r
+mkdir -p $TEST/$task/$config
 
 echo "Predict test cases"
 nnUNet_predict -i $TEST/p16/imagesTr -o $TEST/$task/$config -t $task -m $config -tr $trainer -f 0 --disable_tta --overwrite_existing --num_threads_preprocessing 1 --num_threads_nifti_save 1
