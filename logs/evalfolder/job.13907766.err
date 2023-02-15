@@ -1,0 +1,25 @@
+/var/spool/slurmd/job13907766/slurm_script: line 26: nvidia-smi: command not found
+
+Currently Loaded Modules:
+  1) system/python/3.10.2
+
+ 
+
+/var/spool/slurmd/job13907766/slurm_script: line 37: conda: command not found
+  Running command git clone -q https://github.com/FabianIsensee/hiddenlayer.git /tmp/pip-install-hjbh1tux/hiddenlayer_d432920de1974bba86934010617b89b1
+  Running command git checkout -b more_plotted_details --track origin/more_plotted_details
+  Switched to a new branch 'more_plotted_details'
+  branch 'more_plotted_details' set up to track 'origin/more_plotted_details'.
+WARNING: You are using pip version 21.2.4; however, version 23.0 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+ERROR: ditable is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
+WARNING: You are using pip version 21.2.4; however, version 23.0 is available.
+You should consider upgrading via the '/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/python -m pip install --upgrade pip' command.
+Traceback (most recent call last):
+  File "/exports/lkeb-hpc/smaijer/venv_environments/pancreasThesis/bin/nnUNet_evaluate_folder", line 33, in <module>
+    sys.exit(load_entry_point('nnunet', 'console_scripts', 'nnUNet_evaluate_folder')())
+  File "/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py", line 483, in nnunet_evaluate_folder
+    return evaluate_folder(args.ref, args.pred, args.l)
+  File "/home/smaijer/code/nnUNet/nnunet/evaluation/evaluator.py", line 456, in evaluate_folder
+    assert all([i in files_pred for i in files_gt]), "files missing in folder_with_predictions"
+AssertionError: files missing in folder_with_predictions
