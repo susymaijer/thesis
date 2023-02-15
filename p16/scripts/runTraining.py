@@ -121,7 +121,7 @@ if __name__ == "__main__":
             fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 4\n")
 
             # Perform training again so we get filled logfiles
-            fh.writelines("echo \"Done training all the folds! Now start the same command but with continue option, to generate log files\n\n")
+            fh.writelines("echo \"Done training all the folds! Now start the same command but with continue option, to generate log files\"\n\n")
             fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 0 -c --val_disable_overwrite\n")
             fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 1 -c --val_disable_overwrite\n")
             fh.writelines(f"nnUNet_train 3d_fullres nnUNetTrainerV2 {task} 2 -c --val_disable_overwrite\n")

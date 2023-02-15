@@ -21,15 +21,16 @@ if __name__ == "__main__":
     # Get the batch id and task id
     batch = shared.determine_batch_id()
     task = shared.determine_task_id() - 1 # the most current task contains the niftis of our batch and does not have an associated model yet
-    print(f"We're going to make predictions on batch {batch} with model {task}. Is this OK? Enter [y/n].")
+    print(f"We're going to make predictions on batch {batch}. Is this OK? Enter [y/n].")
     answer = input()
     if answer != "y":
-        print("Which model would you like to use instead?")
+        print("Please enter batch id.")
+        batch = input()
+    print(f"We're going to make predictions with the model of task {task} Is this OK? Enter [y/n].")
+    answer = input()
+    if answer != "y":
+        print("Please enter model task.")
         task = input()
-        print(f"We're going to make predictions with the model of task {task} instead. Is this OK? Enter [y/n]")
-        answer = input()
-        if answer != "y":
-            sys.exit("Abort")
 
     # Get cpu amount
     print(f"How many cpu's do you want to use? Recommended values are 4 / 6 / 8.")
